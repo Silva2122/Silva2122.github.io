@@ -1,0 +1,580 @@
+/* ==========================================================================
+   Аксель·НН — главная страница
+   ========================================================================== */
+
+/* --- Токены ------------------------------------------------------------- */
+:root {
+  --ink: #1E2A2C;
+  --muted: #8A9294;
+  --teal: #1690A0;
+  --teal-deep: #0E7A88;
+  --tint: #DCEBED;
+  --grey: #F0F2F2;
+  --line: #E4E6E6;
+  --pill: #D8DDDD;
+  --canvas: #EAEBEB;
+}
+
+/* --- Сброс -------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html, body { margin: 0; }
+
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: 'Montserrat', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+img { display: block; max-width: 100%; }
+
+input { font-family: inherit; }
+
+::selection { background: var(--teal); color: #fff; }
+
+/* --- Каркас -------------------------------------------------------------
+   Страница во всю ширину монитора: в макете здесь была карточка
+   max-width:1760px со скруглением 26px на серой подложке --canvas.
+   -------------------------------------------------------------------- */
+.page {
+  padding: 0;
+}
+
+.shell {
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* --- Типографика -------------------------------------------------------- */
+.logo {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .02em;
+}
+
+.logo__dot { color: var(--teal); }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 3.8vw, 50px);
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+/* --- Утилиты ------------------------------------------------------------ */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--pill);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 11px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: #727A7B;
+  font-weight: 400;
+}
+
+.pill:hover { border-color: var(--teal); color: var(--teal); }
+
+/* Горизонтальная лента без видимого скроллбара */
+.cx-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cx-scroll::-webkit-scrollbar { height: 0; width: 0; display: none; }
+
+/* Плейсхолдер под фото: серый блок в тон макета */
+.ph {
+  width: 100%;
+  height: 100%;
+  background: var(--grey);
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Шапка
+   ========================================================================== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 2vw, 32px);
+  padding: clamp(22px, 2.8vw, 32px) clamp(24px, 5vw, 64px);
+}
+
+.header__logo {
+  flex: 0 0 auto;
+  font-size: clamp(22px, 2vw, 28px);
+}
+
+.header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(10px, 1.1vw, 22px);
+}
+
+.navlink {
+  position: relative;
+  font-size: 12px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 400;
+  padding-bottom: 3px;
+  white-space: nowrap;
+}
+
+.navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .3s ease;
+}
+
+.navlink:hover { color: var(--teal-deep); }
+.navlink:hover::after { transform: scaleX(1); }
+
+.header__tools {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.5vw, 20px);
+}
+
+.header__tool {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header__tool:hover { color: var(--teal); }
+
+.header__count {
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Герой
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: clamp(460px, 60vh, 780px);
+  background: #fff;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Кадр 2752×1536, модель справа, слева пустое поле под заголовок.
+     Верхняя привязка держит голову в кадре на широких экранах,
+     70% по горизонтали не даёт срезать модель на узких. */
+  object-position: 70% 0;
+}
+
+.hero__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(20px, 2.4vw, 32px);
+  padding: clamp(24px, 5vw, 72px);
+  pointer-events: none;
+}
+
+.hero__eyebrow {
+  font-size: 12px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+
+.hero__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(38px, 6vw, 92px);
+  line-height: 1.06;
+  letter-spacing: .01em;
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.hero__cta {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--teal);
+  color: #fff;
+  padding: 18px 34px;
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.hero__cta:hover { background: var(--teal-deep); }
+
+/* ==========================================================================
+   Секции с каруселью товаров
+   ========================================================================== */
+.section {
+  padding: clamp(48px, 6vw, 90px) clamp(24px, 5vw, 64px);
+}
+
+.section--deals {
+  padding: clamp(24px, 3vw, 40px) clamp(24px, 5vw, 64px) clamp(48px, 6vw, 84px);
+}
+
+.section--promo {
+  padding: clamp(8px, 2vw, 24px) clamp(24px, 5vw, 64px) clamp(48px, 6vw, 84px);
+}
+
+.section__head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: clamp(30px, 4vw, 52px);
+}
+
+.section__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+}
+
+.section__link:hover { color: var(--teal); }
+
+/* --- Карусель ----------------------------------------------------------- */
+.carousel { position: relative; }
+
+.carousel__track {
+  display: flex;
+  gap: clamp(14px, 1.6vw, 26px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 4px;
+}
+
+.carousel__next {
+  position: absolute;
+  top: clamp(150px, 18vw, 230px);
+  right: -6px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -8px rgba(22, 144, 160, .6);
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Полоса прогресса под каруселью */
+.progress {
+  height: 2px;
+  background: var(--line);
+  margin-top: clamp(28px, 4vw, 48px);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress__bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 34%;
+  background: var(--teal);
+}
+
+/* --- Карточка товара ---------------------------------------------------- */
+.card {
+  flex: 0 0 auto;
+  width: clamp(280px, 29vw, 380px);
+  scroll-snap-align: start;
+}
+
+.card:hover { opacity: .85; }
+
+.card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--grey);
+  overflow: hidden;
+}
+
+.card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: .06em;
+  padding: 5px 10px;
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.card__name {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.card__name--block { display: block; margin-top: 16px; }
+
+.card__price {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.card__prices {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.card__price-new {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card__price-old {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* ==========================================================================
+   Промо-баннер
+   ========================================================================== */
+.promo {
+  position: relative;
+  display: block;
+  height: clamp(240px, 28vw, 420px);
+  overflow: hidden;
+  background: var(--grey);
+}
+
+.promo:hover { opacity: .97; }
+
+.promo__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.promo__inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: clamp(28px, 5vw, 72px);
+  background: linear-gradient(90deg, rgba(30, 42, 44, .55), rgba(30, 42, 44, .12) 55%, rgba(30, 42, 44, 0) 80%);
+  pointer-events: none;
+}
+
+.promo__eyebrow {
+  font-size: 12px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .35);
+}
+
+.promo__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 64px);
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  color: #fff;
+  max-width: 14ch;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .35);
+}
+
+.promo__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .6);
+  padding: 15px 26px;
+  align-self: flex-start;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Популярные категории
+   ========================================================================== */
+.categories__title { margin-bottom: clamp(30px, 4vw, 52px); }
+
+.categories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: clamp(14px, 1.4vw, 22px);
+}
+
+.category { display: block; }
+
+.category:hover { opacity: .9; }
+
+.category__media {
+  aspect-ratio: 1 / 1;
+  background: var(--grey);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.category__media .ph { object-fit: cover; }
+
+.category__name {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Подвал
+   ========================================================================== */
+.footer {
+  padding: clamp(44px, 5vw, 72px) clamp(24px, 5vw, 64px) clamp(28px, 3vw, 40px);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+.footer__logo {
+  font-size: 24px;
+  display: inline-block;
+  margin-bottom: 22px;
+}
+
+.footer__nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 40px;
+  max-width: 440px;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.footer__nav a { color: var(--ink); }
+.footer__nav a:hover { color: var(--teal); }
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.footer__social {
+  display: flex;
+  gap: 26px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.footer__social a {
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 2px;
+}
+
+.footer__about {
+  font-size: 11px;
+  letter-spacing: .05em;
+  line-height: 1.8;
+  text-transform: uppercase;
+  color: #5C6465;
+  max-width: 340px;
+  margin: 0;
+}
+
+.footer__phone {
+  font-size: 15px;
+  letter-spacing: .04em;
+}
+
+.footer__bottom {
+  margin-top: clamp(34px, 4vw, 52px);
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  align-items: center;
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer__bottom a {
+  border-bottom: 1px solid var(--muted);
+  padding-bottom: 1px;
+}

@@ -1,0 +1,19 @@
+# Зеркало старого сайта — 410 МБ, восстанавливается через tools/crawl.mjs
+old_version/site/
+
+# Генерируемые артефакты выгрузки
+old_version/products.json
+old_version/products.md
+old_version/categories.json
+old_version/_crawl-state.json
+old_version/_missing.json
+
+# Сборка и рабочий мусор
+dist/
+.shots/
+node_modules/
+
+# Системное
+Thumbs.db
+desktop.ini
+.DS_Store
