@@ -101,6 +101,27 @@ try {
       octx.fillRect(0, 0, out, out);
       octx.imageSmoothingQuality = 'high';
 
+      // Баланс белого: подтягиваем каналы так, чтобы фон исходника стал чистым
+      // белым. Обрезка кремовый или серый фон не убирает — он внутри кадра, и
+      // в ряду карточек остаётся видимым прямоугольником. Поканальный множитель
+      // убирает подложку целиком и не съедает белый товар, в отличие от
+      // порогового вырезания: сохраняются относительные тона предмета.
+      if (bg[0] < 253 || bg[1] < 253 || bg[2] < 253) {
+        const k = bg.map((v) => 255 / Math.max(v, 1));
+        const region = ctx.getImageData(x0, y0, bw, bh);
+        const rp = region.data;
+        for (let i = 0; i < rp.length; i += 4) {
+          rp[i] = Math.min(255, rp[i] * k[0]);
+          rp[i + 1] = Math.min(255, rp[i + 1] * k[1]);
+          rp[i + 2] = Math.min(255, rp[i + 2] * k[2]);
+        }
+        const tmp = document.createElement('canvas');
+        tmp.width = bw; tmp.height = bh;
+        tmp.getContext('2d').putImageData(region, 0, 0);
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(tmp, x0, y0);
+      }
+
       const scale = (out * fill) / Math.max(bw, bh);
       const dw = bw * scale, dh = bh * scale;
       octx.drawImage(cv, x0, y0, bw, bh, (out - dw) / 2, (out - dh) / 2, dw, dh);

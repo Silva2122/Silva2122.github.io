@@ -29,12 +29,12 @@ const MODEL_KEY = arg('--model', 'rmbg');
 const SIZE = Number(arg('--size', 1000));   // сторона итогового квадрата
 const PAD = Number(arg('--pad', 0.06));     // поля вокруг предмета, доля стороны
 
-// У моделей разный выход: RMBG отдаёт маску одним каналом, BiRefNet — так же,
-// но веса и препроцессинг тянутся из своих репозиториев.
+// Маску все три отдают одним каналом, но входной тензор у каждой зовётся по-своему:
+// подашь под чужим именем — onnxruntime ответит «Missing the following inputs».
 const MODELS = {
-  rmbg: { id: 'briaai/RMBG-1.4', note: 'лицензия только для некоммерческого использования' },
-  birefnet: { id: 'onnx-community/BiRefNet_lite', note: 'MIT' },
-  modnet: { id: 'Xenova/modnet', note: 'Apache-2.0' },
+  rmbg: { id: 'briaai/RMBG-1.4', input: 'input', note: 'лицензия только для некоммерческого использования' },
+  birefnet: { id: 'onnx-community/BiRefNet_lite', input: 'input_image', note: 'MIT' },
+  modnet: { id: 'Xenova/modnet', input: 'input', note: 'Apache-2.0' },
 };
 const MODEL = MODELS[MODEL_KEY];
 if (!MODEL) { console.error(`Неизвестная модель: ${MODEL_KEY}. Есть: ${Object.keys(MODELS).join(', ')}`); process.exit(1); }
@@ -95,7 +95,7 @@ for (const [i, it] of items.entries()) {
     // Модель работает со своим разрешением, но маску возвращаем в размер оригинала.
     const image = await RawImage.read(src);
     const { pixel_values } = await processor(image);
-    const out = await model({ input: pixel_values });
+    const out = await model({ [MODEL.input]: pixel_values });
 
     // Выход у разных моделей лежит под разными именами — берём первый тензор.
     // Модель отдаёт маску с batch-измерением ([1,1,H,W]), а fromTensor ждёт [C,H,W],

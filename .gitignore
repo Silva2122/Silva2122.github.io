@@ -16,4 +16,8 @@ node_modules/
 # Системное
 Thumbs.db
 desktop.ini
-.DS_Storeassets/img/catalog-original/
+.DS_Store
+
+# Оригиналы кадров до нормализации
+assets/img/catalog-original/
+
