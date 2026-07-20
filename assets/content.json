@@ -1,0 +1,268 @@
+{
+  "showcase": [
+    {
+      "name": "Ботинки Risport RF3 Pro",
+      "price": 45000,
+      "url": "/catalog/botinki_dlya_figurnogo_kataniya/figurnye_botinki_edea_/22443/",
+      "cat": "Ботинки для фигурного катания/Фигурные ботинки Edea,Risport",
+      "img": "/upload/iblock/332/x40qsw59cihyqytccdbmqg0hxnjspf7s.jpg",
+      "px": 2000,
+      "size": "2000×2000",
+      "local": "assets/img/catalog/item-botinki-risport-rf3-pro.jpg"
+    },
+    {
+      "name": "Фигурные коньки Edea OVERTURE SET ROTATION",
+      "price": 34500,
+      "url": "/catalog/figure-skates/konki_edea____/25014/",
+      "cat": "Фигурные коньки/Коньки Edea",
+      "img": "/upload/iblock/b8d/ouu9k43q2rn01n74i3v8sfeoqekbtcdu.jpg",
+      "px": 731,
+      "size": "731×837",
+      "local": "assets/img/catalog/item-figurnye-konki-edea-overture-set-rotation.jpg"
+    },
+    {
+      "name": "Лезвия для конков MK Professional",
+      "price": 27000,
+      "url": "/catalog/blades/7398/",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/93d/93d146e8c88047f7b373fc5986aa2c23.jpg",
+      "px": 1500,
+      "size": "1500×1500",
+      "local": "assets/img/catalog/item-lezviya-dlya-konkov-mk-professional.jpg"
+    },
+    {
+      "name": "«Cube» Капибара восхождение Сумка-рюкзак на колесиках",
+      "price": 13350,
+      "url": "/catalog/sumki_ryukzaki/sumki_na_kolesakh/23645/",
+      "cat": "Сумки,рюкзаки/Сумки на колесах",
+      "img": "/upload/iblock/31d/z9h9f57lof0iht809fpmhaeb6fzw0efm.jpg",
+      "px": 1500,
+      "size": "1500×1500",
+      "local": "assets/img/catalog/item-cube-kapibara-voshozhdenie-sumka-ryukzak-na-.jpg"
+    },
+    {
+      "name": "Защита запястья «Спринтер»",
+      "price": 760,
+      "url": "/catalog/zashchita_figurista_/19912/",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/30c/30c73be36b4f1f47d240e27064879e8a.jpg",
+      "px": 900,
+      "size": "900×900",
+      "local": "assets/img/catalog/item-zaschita-zapyastya-sprinter.jpg"
+    },
+    {
+      "name": "Термоперчатки «Anti-Slip»",
+      "price": 1300,
+      "url": "/catalog/aksessuary_dlya_lda/perchatki/21507/",
+      "cat": "Аксессуары для льда/Перчатки",
+      "img": "/upload/iblock/0d6/06wpzd4suk0flirwdaoxne1svxjaj4b2.png",
+      "px": 1200,
+      "size": "1200×1200",
+      "local": "assets/img/catalog/item-termoperchatki-anti-slip.png"
+    }
+  ],
+  "clothes": [
+    {
+      "name": "Термо комбинезон \"Ванесса\" 1 ЛЕО",
+      "price": 8515,
+      "url": "/catalog/odezhda_dlya_devochek/kollektsiya_safari/23398/",
+      "cat": "Одежда для девочек/Коллекция \"Сафари\"",
+      "img": "/upload/iblock/ed7/6r85j9rh6z3r7rfo14zmx8cytcka2vpw.jpg",
+      "px": 1080,
+      "size": "1080×1620",
+      "local": "assets/img/catalog/item-termo-kombinezon-vanessa-1-leo.jpg"
+    },
+    {
+      "name": "Термо комплект \"Империя\"",
+      "price": 7955,
+      "url": "/catalog/odezhda_dlya_devochek/termokostyumy/19449/",
+      "cat": "Одежда для девочек/Термокостюмы",
+      "img": "/upload/iblock/6f9/6f95f42374379c15bc111ccb91bd855b.jpg",
+      "px": 754,
+      "size": "754×1044",
+      "local": "assets/img/catalog/item-termo-komplekt-imperiya.jpg"
+    },
+    {
+      "name": "Термо комплект \"POWER\"",
+      "price": 6875,
+      "url": "/catalog/odezhda_dlya_devochek/termokostyumy/19333/",
+      "cat": "Одежда для девочек/Термокостюмы",
+      "img": "/upload/iblock/4d3/4d3f0231a743188a7b1a183e162cf1be.jpg",
+      "px": 1080,
+      "size": "1080×1620",
+      "local": "assets/img/catalog/item-termo-komplekt-power.jpg"
+    },
+    {
+      "name": "Термо платье \"Одри NEW\"",
+      "price": 5675,
+      "url": "/catalog/odezhda_dlya_devochek/termoplatya/19533/",
+      "cat": "Одежда для девочек/Термоплатья",
+      "img": "/upload/iblock/efe/efe7bd6630ea6aa03cd6dcdff1eb8ca4.jpg",
+      "px": 1080,
+      "size": "1080×1620",
+      "local": "assets/img/catalog/item-termo-plate-odri-new.jpg"
+    },
+    {
+      "name": "Термо бельё на девочку(ЦВЕТНОЕ) БОРДО+НОЧЬ",
+      "price": 5170,
+      "url": "/catalog/odezhda_dlya_devochek/termobele/20110/",
+      "cat": "Одежда для девочек/Термобелье",
+      "img": "/upload/iblock/3ff/45bee9afxkdykl8ykrxown1g6tws8gp6.jpg",
+      "px": 1080,
+      "size": "1080×1620",
+      "local": "assets/img/catalog/item-termo-bele-na-devochku-cvetnoe-bordo-noch.jpg"
+    },
+    {
+      "name": "Термо белье раздельное,черное",
+      "price": 5170,
+      "url": "/catalog/odezhda_dlya_devochek/termobele/21651/",
+      "cat": "Одежда для девочек/Термобелье",
+      "img": "/upload/iblock/5f0/6lomc1pblkrqastuck5k4uo4pifb7j2g.jpg",
+      "px": 2000,
+      "size": "2000×2000",
+      "local": "assets/img/catalog/item-termo-bele-razdelnoe-chernoe.jpg"
+    },
+    {
+      "name": "Термо бельё (комбинезон) unisex с воротником св.тел.",
+      "price": 4375,
+      "url": "/catalog/odezhda_dlya_devochek/termobele/20010/",
+      "cat": "Одежда для девочек/Термобелье",
+      "img": "/upload/iblock/75b/75bd68ecf361a0620a551150e28d3094.jpg",
+      "px": 1080,
+      "size": "1080×1620",
+      "local": "assets/img/catalog/item-termo-bele-kombinezon-unisex-s-vorotnikom-sv.jpg"
+    },
+    {
+      "name": "Платье термо \"Шарм\"",
+      "price": 4260,
+      "url": "/catalog/odezhda_dlya_devochek/termoplatya/14375/",
+      "cat": "Одежда для девочек/Термоплатья",
+      "img": "/upload/iblock/930/930f34409704326ec43d6b6dbc2be1d4.jpg",
+      "px": 3000,
+      "size": "3000×4495",
+      "local": "assets/img/catalog/item-plate-termo-sharm.jpg"
+    }
+  ],
+  "categories": {
+    "Аксессуары для льда": {
+      "name": "Коврик с принтом АРТ. 08-020",
+      "price": 550,
+      "url": "/catalog/aksessuary_dlya_lda/kovriki_/7316/",
+      "cat": "Аксессуары для льда/Коврики для ног",
+      "img": "/upload/iblock/9fe/9fec2e62079edca67bebfca80be7b9db.JPG",
+      "px": 1230,
+      "size": "1230×1600",
+      "local": "assets/img/catalog/cat-kovrik-s-printom-art-08-020.JPG"
+    },
+    "Ботинки для фигурного катания": {
+      "name": "Ботинки Risport RF3 Pro",
+      "price": 45000,
+      "url": "/catalog/botinki_dlya_figurnogo_kataniya/figurnye_botinki_edea_/22443/",
+      "cat": "Ботинки для фигурного катания/Фигурные ботинки Edea,Risport",
+      "img": "/upload/iblock/332/x40qsw59cihyqytccdbmqg0hxnjspf7s.jpg",
+      "px": 2000,
+      "size": "2000×2000",
+      "local": "assets/img/catalog/cat-botinki-risport-rf3-pro.jpg"
+    },
+    "Защита фигуриста": {
+      "name": "Защита запястья «Спринтер»",
+      "price": 760,
+      "url": "/catalog/zashchita_figurista_/19912/",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/30c/30c73be36b4f1f47d240e27064879e8a.jpg",
+      "px": 900,
+      "size": "900×900",
+      "local": "assets/img/catalog/cat-zaschita-zapyastya-sprinter.jpg"
+    },
+    "Лезвия": {
+      "name": "Лезвия Ultima Aspire , UB20",
+      "price": 10000,
+      "url": "/catalog/blades/22434/",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/4f6/asjbxkvuv1wvruh3i04ywgjopo6nerk0.jpg",
+      "px": 2000,
+      "size": "2000×2000",
+      "local": "assets/img/catalog/cat-lezviya-ultima-aspire-ub20.jpg"
+    },
+    "Мешки для обуви": {
+      "name": "Мешок для обуви 6",
+      "price": 720,
+      "url": "/catalog/meshki_dlya_obuvi/19930/",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/486/486088591696df212b18b12d40ac59d1.jpg",
+      "px": 864,
+      "size": "864×1080",
+      "local": "assets/img/catalog/cat-meshok-dlya-obuvi-6.jpg"
+    },
+    "Одежда для девочек": {
+      "name": "Платье термо \"Шарм\"",
+      "price": 4260,
+      "url": "/catalog/odezhda_dlya_devochek/termoplatya/14375/",
+      "cat": "Одежда для девочек/Термоплатья",
+      "img": "/upload/iblock/930/930f34409704326ec43d6b6dbc2be1d4.jpg",
+      "px": 3000,
+      "size": "3000×4495",
+      "local": "assets/img/catalog/cat-plate-termo-sharm.jpg"
+    },
+    "Одежда для мальчиков": {
+      "name": "Костюм термо \"Форсаж\"",
+      "price": 6895,
+      "url": "/catalog/odezhda_dlya_malchikov/termokomplekty/13018/",
+      "cat": "Одежда для мальчиков/Термокостюмы",
+      "img": "/upload/iblock/9f4/9f457ac8fa95b0d2d954a30f238b909a.jpg",
+      "px": 3000,
+      "size": "3000×4495",
+      "local": "assets/img/catalog/cat-kostyum-termo-forsazh.jpg"
+    },
+    "Сувениры": {
+      "name": "Думочка 10",
+      "price": 720,
+      "url": "/catalog/suveniry/dumochki_pledy/12642/",
+      "cat": "Сувениры/Думочки,пледы",
+      "img": "/upload/iblock/b31/b3165787f471c0353525c45adcede239.jpg",
+      "px": 2000,
+      "size": "2000×2000",
+      "local": "assets/img/catalog/cat-dumochka-10.jpg"
+    },
+    "Сумки,рюкзаки": {
+      "name": "«Cube» Капибара восхождение Сумка-рюкзак на колесиках",
+      "price": 13350,
+      "url": "/catalog/sumki_ryukzaki/sumki_na_kolesakh/23645/",
+      "cat": "Сумки,рюкзаки/Сумки на колесах",
+      "img": "/upload/iblock/31d/z9h9f57lof0iht809fpmhaeb6fzw0efm.jpg",
+      "px": 1500,
+      "size": "1500×1500",
+      "local": "assets/img/catalog/cat-cube-kapibara-voshozhdenie-sumka-ryukzak-na-.jpg"
+    },
+    "Тренажеры": {
+      "name": "Доска для отработки вращения \"Figure Skating\"",
+      "price": 950,
+      "url": "/catalog/trenazhery_/doska_dlya_otrabotki_vrashcheniya/21704/",
+      "cat": "Тренажеры /Доска для отработки вращения",
+      "img": "/upload/iblock/e2d/oio1l79ash742l0skyj2x1vdvfbn3j5p.jpg",
+      "px": 1200,
+      "size": "1200×1200",
+      "local": "assets/img/catalog/cat-doska-dlya-otrabotki-vrascheniya-figure-skat.jpg"
+    },
+    "Фигурные коньки": {
+      "name": "Коньки фигурные Runa Base",
+      "price": 9500,
+      "url": "/catalog/figure-skates/konki_runa/7349/",
+      "cat": "Фигурные коньки/Коньки Runa",
+      "img": "/upload/iblock/2e3/2e33e8a60f7b22ee75bc18b0bca45124.jpg",
+      "px": 900,
+      "size": "900×900",
+      "local": "assets/img/catalog/cat-konki-figurnye-runa-base.jpg"
+    },
+    "Хранение": {
+      "name": "Сушки для обуви 010",
+      "price": 600,
+      "url": "/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21120/",
+      "cat": "Хранение/уход за коньками/Сушки в ботинки",
+      "img": "/upload/iblock/6af/b3nryebfrieqigwxo6hq64bgpzwozxjg.jpg",
+      "px": 1599,
+      "size": "1599×2000",
+      "local": "assets/img/catalog/cat-sushki-dlya-obuvi-010.jpg"
+    }
+  }
+}

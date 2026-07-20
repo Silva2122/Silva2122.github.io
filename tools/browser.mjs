@@ -64,6 +64,26 @@ export async function openPage(browser, url, { width, height = 900 } = {}) {
   page.on('response', (r) => { if (r.status() >= 400) failed.push({ url: r.url(), reason: `HTTP ${r.status()}` }); });
 
   await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+
+  // Прокручиваем страницу целиком: без этого loading="lazy" картинки ниже сгиба
+  // не начинают грузиться, и на fullPage-снимке вместо них остаются пустые блоки.
+  await page.evaluate(async () => {
+    const step = window.innerHeight;
+    for (let y = 0; y < document.body.scrollHeight; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 60));
+    }
+    window.scrollTo(0, 0);
+    // Ждём догрузки, но не бесконечно: картинка может не выстрелить ни onload,
+    // ни onerror, и тогда снимок никогда бы не состоялся.
+    const pending = [...document.images].filter((i) => !i.complete)
+      .map((i) => new Promise((r) => { i.onload = i.onerror = r; }));
+    await Promise.race([
+      Promise.all(pending),
+      new Promise((r) => setTimeout(r, 5000)),
+    ]);
+  });
+
   // Шрифты грузятся с Google Fonts — без этого снимем фолбэк вместо Playfair.
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(250);

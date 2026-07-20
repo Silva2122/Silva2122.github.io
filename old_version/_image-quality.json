@@ -1,0 +1,5424 @@
+{
+  "studio": [
+    {
+      "name": "Коврик с принтом АРТ. 08-005",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/f74/f740eb40b5cec6ba8e9a3ecad43af81e.JPG",
+      "px": 1200,
+      "mean": 246.3,
+      "sd": 7.5
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-006",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/3a0/3a07e3c9eae06ffa1723ed9840912de4.JPG",
+      "px": 1200,
+      "mean": 242.7,
+      "sd": 11.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-007",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/686/686e2715d083f83e23b7f83f9c024b84.JPG",
+      "px": 1200,
+      "mean": 236.6,
+      "sd": 15.6
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-008",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/aa8/aa8978345ebbd86889dbdcb9f6ac35e5.JPG",
+      "px": 1200,
+      "mean": 235.6,
+      "sd": 15.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-009",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/b5a/b5a5ba9562dd41b8237346566fe1a05f.JPG",
+      "px": 1200,
+      "mean": 241,
+      "sd": 17.5
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-011",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/131/13196308d60667564d6ae13454caa7c9.JPG",
+      "px": 1200,
+      "mean": 238.2,
+      "sd": 19.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-014",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/e9a/e9a4cc5aa35aa115ca9fe7decfad3ee6.JPG",
+      "px": 1200,
+      "mean": 239.4,
+      "sd": 11.4
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-020",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/9fe/9fec2e62079edca67bebfca80be7b9db.JPG",
+      "px": 1230,
+      "mean": 238.1,
+      "sd": 17.4
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-021",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/096/09608b7a9d3ba3bbdf19aa876b40582d.JPG",
+      "px": 1200,
+      "mean": 235.1,
+      "sd": 9.9
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-022",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/a04/a0428b39dd6cdb2257c7efed664d67ca.JPG",
+      "px": 1200,
+      "mean": 238.6,
+      "sd": 17.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-035",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/503/503101ab7120ab6549f6a2feabf771f0.JPG",
+      "px": 1200,
+      "mean": 229.5,
+      "sd": 17.8
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-036",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/c7e/c7e2fb6d651657bcb4fa76f6899105ad.JPG",
+      "px": 1200,
+      "mean": 230.2,
+      "sd": 11.7
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-037",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/d7a/d7a3cebbb7910f18944f0570bcb518b2.JPG",
+      "px": 1212,
+      "mean": 241.6,
+      "sd": 8.9
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-038",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/3f4/3f413e2641e1fc31baa92f63f051450e.JPG",
+      "px": 1200,
+      "mean": 238.7,
+      "sd": 14.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-039",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/8c4/8c48b4e13ade67b171c8f0dc985d2c9b.JPG",
+      "px": 1200,
+      "mean": 219.8,
+      "sd": 22
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-040",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/063/0639ff6b0d7569c1f6e13528453d2b6c.JPG",
+      "px": 1200,
+      "mean": 231.4,
+      "sd": 20
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-044",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/e2b/e2b3a3983788e2322e063c1346163e3e.JPG",
+      "px": 1200,
+      "mean": 237.9,
+      "sd": 10.6
+    },
+    {
+      "name": "Термоперчатки «Anti-Slip»",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/0d6/06wpzd4suk0flirwdaoxne1svxjaj4b2.png",
+      "px": 1200,
+      "mean": 248.8,
+      "sd": 19.6
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-001",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/dde/ddeaedb424912e37d597e45bafdcfdcd.jpg",
+      "px": 1200,
+      "mean": 238.7,
+      "sd": 6.8
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-002",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/c88/c885d68d3130c7eca53bd4fb7f153230.jpg",
+      "px": 1200,
+      "mean": 225.3,
+      "sd": 17.8
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-004",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/0c9/0c9b883aac64ec5fe4326bc37c1a24c6.jpg",
+      "px": 1200,
+      "mean": 241.3,
+      "sd": 6.8
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-005",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/c26/c2629cd49d6175cf5f5666822e2d439c.jpg",
+      "px": 1200,
+      "mean": 221.4,
+      "sd": 10.6
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-006",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/11f/11f61beac7dfed1d167826679127d7ca.jpg",
+      "px": 1200,
+      "mean": 236.4,
+      "sd": 7.2
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-007",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/573/573671a408ebe2bd7a4863ffa6037049.jpg",
+      "px": 1200,
+      "mean": 238.4,
+      "sd": 6.7
+    },
+    {
+      "name": "Ботинки для фигурного катания Risport Electra Light",
+      "cat": "Ботинки для фигурного катания",
+      "img": "/upload/iblock/bdc/bdcd968497cbef6f248263fb4da121f0.png",
+      "px": 1378,
+      "mean": 246.3,
+      "sd": 5.3
+    },
+    {
+      "name": "Ботинки Risport RF3 Pro",
+      "cat": "Ботинки для фигурного катания",
+      "img": "/upload/iblock/332/x40qsw59cihyqytccdbmqg0hxnjspf7s.jpg",
+      "px": 2000,
+      "mean": 251,
+      "sd": 16
+    },
+    {
+      "name": "Фигурные ботинки Edea Overture (Белые)1",
+      "cat": "Ботинки для фигурного катания",
+      "img": "/upload/iblock/59e/59ece31e58be7644751dc68a8bb63654.jpg",
+      "px": 1500,
+      "mean": 254,
+      "sd": 6.3
+    },
+    {
+      "name": "Защита запястья «Спринтер»",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/30c/30c73be36b4f1f47d240e27064879e8a.jpg",
+      "px": 900,
+      "mean": 248.1,
+      "sd": 14.4
+    },
+    {
+      "name": "ЛЕЗВИЕ  Ultima Mark 4",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/0ee/3zl2osu6wp08fyg28wwfrx4z1s1c5b2l.jpg",
+      "px": 2000,
+      "mean": 251.5,
+      "sd": 9.2
+    },
+    {
+      "name": "Лезвие Astra Эклипс",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/27e/p125axfef5e3k1lhnstfmoc000v6yyn7.jpg",
+      "px": 2000,
+      "mean": 252.6,
+      "sd": 11.8
+    },
+    {
+      "name": "Лезвия для конков MK Professional",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/93d/93d146e8c88047f7b373fc5986aa2c23.jpg",
+      "px": 1500,
+      "mean": 254.5,
+      "sd": 5.1
+    },
+    {
+      "name": "Лезвия Ultima Aspire , UB20",
+      "cat": "Лезвия",
+      "img": "/upload/iblock/4f6/asjbxkvuv1wvruh3i04ywgjopo6nerk0.jpg",
+      "px": 2000,
+      "mean": 251.4,
+      "sd": 10.7
+    },
+    {
+      "name": "Мешок для обуви 11",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/b6e/b6e582cfcaa2eb943e9cfb23896cb955.jpg",
+      "px": 810,
+      "mean": 211.9,
+      "sd": 16.4
+    },
+    {
+      "name": "Мешок для обуви 6",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/486/486088591696df212b18b12d40ac59d1.jpg",
+      "px": 864,
+      "mean": 208.1,
+      "sd": 16
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/08d/5n1cxlzss3e3x0u2ni0dtpr9y9aa0h5v.jpg",
+      "px": 1080,
+      "mean": 206.2,
+      "sd": 7
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты),2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/acd/al8hoxo6crxymd9cisiplng1bhpim512.jpg",
+      "px": 1080,
+      "mean": 206.1,
+      "sd": 6.7
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты),3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a39/r8b7euqruvzicofxf640wm5lnqigmkkn.jpg",
+      "px": 1080,
+      "mean": 207,
+      "sd": 6.4
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты),4",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5c4/xb8r5p1oh8p7l3emxvwrurzd4cxhdzkx.jpg",
+      "px": 1080,
+      "mean": 206.6,
+      "sd": 6.5
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты),5",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/056/c7mzzm651i05qyn5t26a9ugmt3odco08.jpg",
+      "px": 1080,
+      "mean": 205.9,
+      "sd": 6.8
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты),6",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9a5/plvh5hahch4bk8qhfqwm0a0qdlitj14i.jpg",
+      "px": 1080,
+      "mean": 205.9,
+      "sd": 6.9
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты)1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/10d/qtk3641gr6b6e2ejb1qsw0phmalaf79z.jpg",
+      "px": 1080,
+      "mean": 206.3,
+      "sd": 6.7
+    },
+    {
+      "name": "Комплект \"Клер\" (майка+шорты)7",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/070/nqy3qfgv2vt2y0nn1ybklpz064s5jm8v.jpg",
+      "px": 1080,
+      "mean": 206.4,
+      "sd": 6.7
+    },
+    {
+      "name": "Комплект \"Клер\"8 (майка+шорты)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4e8/i48dyh738ufey3z726nqm65gie6jw49g.jpg",
+      "px": 1080,
+      "mean": 206.6,
+      "sd": 6.6
+    },
+    {
+      "name": "Комплект \"Jump\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/46c/m6d6zigev90ak1z1b7n7t44343600n7f.jpg",
+      "px": 1080,
+      "mean": 208.1,
+      "sd": 13
+    },
+    {
+      "name": "Юбка для гимнастики из сетки",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ed9/ed92d8be5b77a13e7cdc1951604afa8d.jpg",
+      "px": 900,
+      "mean": 254.9,
+      "sd": 2.3
+    },
+    {
+      "name": "Для выступлений Колготки арт. 1155 В БОТИНОК",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f87/v1owpjynylpwb0wxsfmfxqtvpd629226.jpg",
+      "px": 900,
+      "mean": 250.3,
+      "sd": 19.6
+    },
+    {
+      "name": "Колготки для выступлений (на ботинок) со стразами Prostyle",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a6e/a6e72a9bf629de8816565585a177227a.jpg",
+      "px": 900,
+      "mean": 249.5,
+      "sd": 20.2
+    },
+    {
+      "name": "Колготки для выступлений (на ботинок) Prostyle",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/fac/fac5b4665226fbc57453bf2cf1f39302.png",
+      "px": 900,
+      "mean": 251.1,
+      "sd": 17.6
+    },
+    {
+      "name": "Колготки для тренировок Prostyle",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/45d/45d5d9ee69f7ade9c559783b65d1d64b.jpg",
+      "px": 800,
+      "mean": 251,
+      "sd": 19.2
+    },
+    {
+      "name": "Колготки со стразами арт. 1152 В БОТИНОК",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/970/fhj0y37lg6qg6r70s7677ygtszi3pz6k.jpg",
+      "px": 900,
+      "mean": 250.8,
+      "sd": 13.1
+    },
+    {
+      "name": "Термо комбинезон \"Ванесса\" 1 ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ed7/6r85j9rh6z3r7rfo14zmx8cytcka2vpw.jpg",
+      "px": 1080,
+      "mean": 205.9,
+      "sd": 17.8
+    },
+    {
+      "name": "Термо футболка \"Вики\" 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b0b/dgriwhdwqbe3uq9b3hl361ucrez2z430.jpg",
+      "px": 1080,
+      "mean": 205.2,
+      "sd": 18.8
+    },
+    {
+      "name": "Туника \"Магия\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/bd7/dfui8ignsua8ve2rt4b4pfk2ix1lidwx.jpg",
+      "px": 1080,
+      "mean": 205,
+      "sd": 17.8
+    },
+    {
+      "name": "Туника \"Магия\" 3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a13/2i0kj9wrzbh9gs2ui9f3sj6cc3pkmh2f.jpg",
+      "px": 1080,
+      "mean": 207.1,
+      "sd": 14.4
+    },
+    {
+      "name": "Термо бельё (комбинезон) unisex с воротником св.тел.",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/75b/75bd68ecf361a0620a551150e28d3094.jpg",
+      "px": 1080,
+      "mean": 209.2,
+      "sd": 13.1
+    },
+    {
+      "name": "Термо бельё (комбинезон) unisex с воротником,черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b5f/8nqdhz4vt684co2faldzbzcf74p45uiv.jpg",
+      "px": 725,
+      "mean": 207,
+      "sd": 14.7
+    },
+    {
+      "name": "Термо бельё на девочку(ЦВЕТНОЕ) БОРДО+НОЧЬ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3ff/45bee9afxkdykl8ykrxown1g6tws8gp6.jpg",
+      "px": 1080,
+      "mean": 206.4,
+      "sd": 13.2
+    },
+    {
+      "name": "Термо белье раздельное,черное",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5f0/6lomc1pblkrqastuck5k4uo4pifb7j2g.jpg",
+      "px": 2000,
+      "mean": 205.7,
+      "sd": 12
+    },
+    {
+      "name": "Термо комбинезон \"Ванесса\" ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/7eb/rbv7s2u782qvea53cly3lx3lavdh22ms.jpg",
+      "px": 1080,
+      "mean": 205.9,
+      "sd": 17.8
+    },
+    {
+      "name": "Термо комбинезон \"Николь\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/501/ecm0sigarxzemrmgg98867tezokc8s1q.jpg",
+      "px": 1080,
+      "mean": 206.2,
+      "sd": 16.7
+    },
+    {
+      "name": "Термо комбинезон \"Норис\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/980/q66vlasb8usulaxgrb3acuj2cdxdqbwq.jpg",
+      "px": 1080,
+      "mean": 205.3,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комбинезон \"Норис\" ФИОЛЕТ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b6c/nqjqfomwmje6vpf8gylegz1aivb4omts.jpg",
+      "px": 1080,
+      "mean": 207.5,
+      "sd": 16.6
+    },
+    {
+      "name": "Термо комплект \"Империя\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/6f9/6f95f42374379c15bc111ccb91bd855b.jpg",
+      "px": 754,
+      "mean": 236.5,
+      "sd": 23.8
+    },
+    {
+      "name": "Термо комплект \"POWER\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4d3/4d3f0231a743188a7b1a183e162cf1be.jpg",
+      "px": 1080,
+      "mean": 206,
+      "sd": 13.7
+    },
+    {
+      "name": "Платье термо \"Шарм\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/930/930f34409704326ec43d6b6dbc2be1d4.jpg",
+      "px": 3000,
+      "mean": 220.4,
+      "sd": 25.9
+    },
+    {
+      "name": "Платье термо \"Шарм\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8d3/8d36a120a28551aed504ebeaebab8cac.jpg",
+      "px": 3000,
+      "mean": 223.4,
+      "sd": 9.7
+    },
+    {
+      "name": "Платье термо \"Шарм\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e58/e588f5950082e8293e609eb45988d631.jpg",
+      "px": 3000,
+      "mean": 222.4,
+      "sd": 22.2
+    },
+    {
+      "name": "Платье термо \"Шарм\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/619/619d73f692cfcf62ade570535b182171.jpg",
+      "px": 3000,
+      "mean": 220.9,
+      "sd": 11.3
+    },
+    {
+      "name": "Термо платье \"Одри NEW\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/efe/efe7bd6630ea6aa03cd6dcdff1eb8ca4.jpg",
+      "px": 1080,
+      "mean": 205.4,
+      "sd": 13.5
+    },
+    {
+      "name": "Брюки термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/e6e/e6e5a10ca65eaaca8fdb0c250ac66040.jpg",
+      "px": 1334,
+      "mean": 218.1,
+      "sd": 19.7
+    },
+    {
+      "name": "Костюм термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/9f4/9f457ac8fa95b0d2d954a30f238b909a.jpg",
+      "px": 3000,
+      "mean": 218.4,
+      "sd": 17.3
+    },
+    {
+      "name": "Костюм термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/8cb/8cb222592db4bddc08ea1c62312542b7.jpg",
+      "px": 3000,
+      "mean": 218.4,
+      "sd": 17
+    },
+    {
+      "name": "Костюм термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/439/43979557404b7e24b62114a51de9b795.jpg",
+      "px": 3000,
+      "mean": 219.5,
+      "sd": 17.6
+    },
+    {
+      "name": "Костюм термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/3ed/3ed68c5fabcfea7517c3687e5881211c.jpg",
+      "px": 1334,
+      "mean": 222.2,
+      "sd": 18.3
+    },
+    {
+      "name": "Думочка 10",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/b31/b3165787f471c0353525c45adcede239.jpg",
+      "px": 2000,
+      "mean": 223.4,
+      "sd": 25.5
+    },
+    {
+      "name": "Думочка 11",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/729/7299f0a3e40232257e8a9c55018c4c0e.jpg",
+      "px": 2000,
+      "mean": 225.8,
+      "sd": 22.3
+    },
+    {
+      "name": "Думочка 12",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d3c/d3c114c52728757dd1b1be221ff6e8ae.jpg",
+      "px": 1440,
+      "mean": 224.2,
+      "sd": 23.4
+    },
+    {
+      "name": "Думочка 13",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/c64/c6476066e6587e7922dfe5277293b223.jpg",
+      "px": 1440,
+      "mean": 222.6,
+      "sd": 14.4
+    },
+    {
+      "name": "Коврик для компьютерной мыши АРТ. 005",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d6a/d6a078194ce928b9f985db2d9e975cdc.jpg",
+      "px": 1024,
+      "mean": 226.9,
+      "sd": 17.4
+    },
+    {
+      "name": "Футболка х/б \"Катаемся по -русски\" черная",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/eb7/b3b2j440xgrne6914qp1w70i49e03kp9.jpeg",
+      "px": 896,
+      "mean": 217.5,
+      "sd": 12.1
+    },
+    {
+      "name": "Футболка х\\б \"Маруся\" черная",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/22c/9rrj8a9rbzdamatmbdd6yovr0v3y1ksg.jpeg",
+      "px": 896,
+      "mean": 205.4,
+      "sd": 5
+    },
+    {
+      "name": "Футболка\"Мама фигуриста\"МЕДАЛЬ",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/95c/mact09q38udyyzqou2ig26uvi74f8oas.jpg",
+      "px": 1620,
+      "mean": 254.5,
+      "sd": 4.6
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Зимний сад-blue",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/446/446548b41e110d2ee0f9199a537b7b9b.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.2
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Котёнок",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/38a/m2nm5ip05q3qvdp4916v3vk1ktcarzto.jpg",
+      "px": 1200,
+      "mean": 245,
+      "sd": 0
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Котята",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/0f7/h40xpg44y2yigl3pyuhfpwj1qpy2jsc9.jpg",
+      "px": 1500,
+      "mean": 243.5,
+      "sd": 2.3
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Лёд",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/ff8/23cppacjp36bi1lu6hvwofr05iryl4nf.jpg",
+      "px": 1200,
+      "mean": 243.9,
+      "sd": 1.1
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Black Panther",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/0fc/0fc69cbc09bf03e84cd3d3b368f3f478.jpg",
+      "px": 1200,
+      "mean": 229.8,
+      "sd": 6.6
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Tiger",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/bef/bef5a8bfc986a17b79868c05b7e88f44.jpg",
+      "px": 1200,
+      "mean": 229.8,
+      "sd": 6.6
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Unicorn",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/7d0/7d026586986caf4fa1a7ebda9063da53.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 0.6
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Unicorn-blue",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/828/8281af7f2aef57ac5f7d77b33940d96e.jpg",
+      "px": 1200,
+      "mean": 229.8,
+      "sd": 6.6
+    },
+    {
+      "name": "Рюкзак \"Runa\" - Wolf",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/7f2/7f2b275ac8fd1c4249b135751ca00462.jpg",
+      "px": 1200,
+      "mean": 229.8,
+      "sd": 6.6
+    },
+    {
+      "name": "Косметичка АРТ.010-01",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/422/422e2e997211cd6c09a318fb07a7e545.jpg",
+      "px": 1500,
+      "mean": 227.6,
+      "sd": 20.1
+    },
+    {
+      "name": "Косметичка АРТ.010-03",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/cd2/cd263fbbb396d6156ed971362ec2ec8a.jpg",
+      "px": 1500,
+      "mean": 224,
+      "sd": 20.2
+    },
+    {
+      "name": "Косметичка АРТ.010-05",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/328/3284a813ad963d3161c23bbae7e6474a.jpg",
+      "px": 1500,
+      "mean": 210,
+      "sd": 21.9
+    },
+    {
+      "name": "Косметичка АРТ.010-06",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/429/429607cce582b86b0874e0eb6d4cd9ae.jpg",
+      "px": 1500,
+      "mean": 227,
+      "sd": 24
+    },
+    {
+      "name": "Косметичка АРТ.010-08",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/597/5978dd3971fbd829e5eda0bf18a50826.jpg",
+      "px": 1500,
+      "mean": 238,
+      "sd": 18
+    },
+    {
+      "name": "Портплед",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/2b2/p23j2ls5espd1wa3ln7bmva6d3uh26wv.jpg",
+      "px": 900,
+      "mean": 221.4,
+      "sd": 22.8
+    },
+    {
+      "name": "Портплед фиолетовый",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/644/ai6x85bzj6jz9uzw87f4rwlqytv9y6bb.jpg",
+      "px": 900,
+      "mean": 221.4,
+      "sd": 22.8
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - 1000 Stars",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/8f2/8f2cd11d2d7df004e279fe04fce25c58.jpg",
+      "px": 1200,
+      "mean": 229.8,
+      "sd": 6.6
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - Котогоры",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/fc1/qd0lqqmcyyvmluyj413fhi6j6oi3us6o.jpg",
+      "px": 1500,
+      "mean": 243.9,
+      "sd": 0.3
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - Лайки",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/bd8/h0nv4axt09l1wijotovz8omo0rerh7l7.jpg",
+      "px": 1500,
+      "mean": 244,
+      "sd": 0.1
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - Фея",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/9bc/9bc8b36f41dce434285fb1bbc38e8f70.jpg",
+      "px": 1200,
+      "mean": 253.9,
+      "sd": 0.7
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - Neon K-pop",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/41f/47bjrkwj065ih1hlu27pxfke6a71gp3e.jpg",
+      "px": 1500,
+      "mean": 244,
+      "sd": 0
+    },
+    {
+      "name": "Рюкзак  \"Бильман\" - Razor black",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/430/q5nguaopdov30zsf1hr4qx9p9hpscead.jpg",
+      "px": 1500,
+      "mean": 244,
+      "sd": 0.1
+    },
+    {
+      "name": "Рюкзак \"Бильман\" - Joy",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/f4b/j1sjvvhzqn8iqhiefi1tqh8xkwg295dt.jpg",
+      "px": 1200,
+      "mean": 245,
+      "sd": 0.2
+    },
+    {
+      "name": "Рюкзак \"Бильман\" - Midair",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/80f/g1c0rynoo0nygm8lp3keum1mo566td6z.jpg",
+      "px": 1200,
+      "mean": 252.9,
+      "sd": 1.2
+    },
+    {
+      "name": "Рюкзак PS \"Бильман\" - Волк",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/a53/33ny4oq5j97ofrwzy83leera11r4uiy3.jpg",
+      "px": 1200,
+      "mean": 252.5,
+      "sd": 1.5
+    },
+    {
+      "name": "Рюкзак PS \"Бильман\" Bubble Gum",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/818/8183865c51bbf40f71445b99a19ee0ba.jpg",
+      "px": 1200,
+      "mean": 254.5,
+      "sd": 5.3
+    },
+    {
+      "name": "Рюкзак\"Аксель\" Спорт",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/c2e/hrd24y5sp1s59ckrxbm1cyt69d423s8b.jpg",
+      "px": 864,
+      "mean": 208.9,
+      "sd": 14.7
+    },
+    {
+      "name": "Рюкзак Фигурист \"Россия Мозаика\"",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/59c/0rwfb3xd9wbs498mecstcouq199wzq3f.jpg",
+      "px": 1200,
+      "mean": 243.6,
+      "sd": 14.5
+    },
+    {
+      "name": "Рюкзак ФИГУРИСТ \"Lion\"",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/0ed/0ed3d7a329926f70847017364f1f2aa0.jpg",
+      "px": 1200,
+      "mean": 227.3,
+      "sd": 9.5
+    },
+    {
+      "name": "Рюкзак «Флип» - Disco",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/887/1rju2u50x13mq2mgfrgkfdgy6wg9gi3h.jpg",
+      "px": 1200,
+      "mean": 219.3,
+      "sd": 11.9
+    },
+    {
+      "name": "Рюкзак Флип - Ice",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/2fb/2fb1da3c1671ddaa8a14ef7355069bca.jpg",
+      "px": 1200,
+      "mean": 216.5,
+      "sd": 10.7
+    },
+    {
+      "name": "«Cube» Капибара восхождение Сумка-рюкзак на колесиках",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/31d/z9h9f57lof0iht809fpmhaeb6fzw0efm.jpg",
+      "px": 1500,
+      "mean": 242,
+      "sd": 17.7
+    },
+    {
+      "name": "«Cube» Капибара и закат Сумка-рюкзак на колесиках.",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/ab6/udwia5g1ru84hfscjp85bac0abwlalus.jpg",
+      "px": 1500,
+      "mean": 243.7,
+      "sd": 9.2
+    },
+    {
+      "name": "«Cube» Котята Сумка-рюкзак на колесиках",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/483/k1omocz864snvt324v6p7yffsglzlu6u.jpg",
+      "px": 1500,
+      "mean": 242.4,
+      "sd": 9.7
+    },
+    {
+      "name": "«Cube» Avocado Сумка-рюкзак на колесиках",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/020/qfzdry4409yslhmamoezjinsi14yh36o.jpg",
+      "px": 1200,
+      "mean": 244.5,
+      "sd": 4
+    },
+    {
+      "name": "«Cube» Dream Fox Сумка-рюкзак на колесиках",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/cc2/cc215129d640a349357b90a6862e0f55.jpg",
+      "px": 1200,
+      "mean": 240.6,
+      "sd": 23.2
+    },
+    {
+      "name": "«Cube» Landscape Сумка-рюкзак на колесиках",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/069/069c513725eee3352dc7aaba3c6c5819.jpg",
+      "px": 1200,
+      "mean": 243.3,
+      "sd": 12.5
+    },
+    {
+      "name": "«Cube» Little princess Сумка-рюкзак на колесиках.",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/d25/jtvcarzvkcrbhr8wyqwhwiscgk7dgxuu.jpg",
+      "px": 1200,
+      "mean": 243.4,
+      "sd": 10.6
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» - Волк",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/14f/14f43391c6eda805d6718cd4514a3ad5.jpg",
+      "px": 1200,
+      "mean": 226.3,
+      "sd": 15.4
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Космокот.",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/b5d/gon6o58ij6xmtrqjfhpj3iq3hxrgdliy.jpg",
+      "px": 1500,
+      "mean": 241.4,
+      "sd": 15.4
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Котогоры",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/ea9/e853y35cevqu3f02ogarrz1wka9rgekc.jpg",
+      "px": 1500,
+      "mean": 239.9,
+      "sd": 22.1
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Лайки",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/274/ekni8dib2r5or08d6kt7gclbely47xcw.jpg",
+      "px": 1500,
+      "mean": 240.1,
+      "sd": 22.6
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Лёд",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/11f/ih5zgngoytanw4j0w6da02249daxkjys.jpg",
+      "px": 1500,
+      "mean": 243.7,
+      "sd": 1.9
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Angry Bear",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/f27/f2755af3725569447664d3d16b726bc7.jpg",
+      "px": 1200,
+      "mean": 228.8,
+      "sd": 11.1
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Enjoy",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/157/157b1703710b7d9024bcf73ac4a605a2.jpg",
+      "px": 1200,
+      "mean": 228.3,
+      "sd": 11.9
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Forma",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/715/715118c49dfb251fc6751d809b4ca3de.jpg",
+      "px": 1200,
+      "mean": 228.9,
+      "sd": 10.2
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Joy",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/e86/22qtesopjwpdfg400vruszp9ynki0k8f.jpg",
+      "px": 1200,
+      "mean": 244.4,
+      "sd": 0.8
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Neon Skates",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/c42/3rsztoafndee2489roz068b84y6akwe2.jpg",
+      "px": 1500,
+      "mean": 243.6,
+      "sd": 3
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Pony Dream",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/940/qgvhpu21q2b7o3gc23hazfunh1j1c9ks.jpg",
+      "px": 1500,
+      "mean": 240.5,
+      "sd": 21
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках «RUNA» Razor black",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/d74/j33r96wsxg1rc0p60wig6fk2w64lu2xo.jpg",
+      "px": 1500,
+      "mean": 239.7,
+      "sd": 23.4
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках«Cube» Драйв",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/8c0/8c0faf0d5387f8a43029ff8ec0d72bbf.jpg",
+      "px": 1200,
+      "mean": 243.1,
+      "sd": 13.3
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках«Cube» Сатурн",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/462/462ed31c2081d50babae60251b8247a2.jpg",
+      "px": 1200,
+      "mean": 242.6,
+      "sd": 16.5
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках«Cube» Ice Skating",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/d53/d53bf06d50623afbfc74daf89401215a.jpg",
+      "px": 1200,
+      "mean": 242.4,
+      "sd": 17.4
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках«RUNA» Милашка",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/56f/56f6af9899465f7575edc2eb370e7d99.jpg",
+      "px": 1200,
+      "mean": 244.8,
+      "sd": 2.3
+    },
+    {
+      "name": "Сумка-рюкзак на колесиках«RUNA» Unicorn princess 1",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/2a4/2a47ca32b959cfc50a713ee12b1c9813.jpg",
+      "px": 1200,
+      "mean": 244.9,
+      "sd": 0.6
+    },
+    {
+      "name": "Доска для отработки вращения \"Figure Skating\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/e2d/oio1l79ash742l0skyj2x1vdvfbn3j5p.jpg",
+      "px": 1200,
+      "mean": 251.6,
+      "sd": 12
+    },
+    {
+      "name": "Спиннер Плюс \"В лунном свете\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/7ad/1n1e6wq77pb4q4avpzwacbjkkqk52ysu.jpg",
+      "px": 1200,
+      "mean": 245,
+      "sd": 0
+    },
+    {
+      "name": "Диски Спиннер-диск \"Смайлики\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/512/hkzmie8dtfl4ja0ecnaiu5uo8y28k5dt.jpg",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0
+    },
+    {
+      "name": "Спиннер  \"Вафелька\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/b88/b887150c98a9f2dae179d91266968576.jpg",
+      "px": 1200,
+      "mean": 251.6,
+      "sd": 16.2
+    },
+    {
+      "name": "Спиннер  \"Winter Fantasy\"(Проскейтинг)1",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/61a/61a77240477a73f97ce9608cbe851cc3.jpg",
+      "px": 1200,
+      "mean": 248.1,
+      "sd": 25.9
+    },
+    {
+      "name": "Спиннер с рисунком \"Бабочки\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/f77/5lp30qc1gcpdn0ypr0990x11k46roitn.jpg",
+      "px": 1200,
+      "mean": 250.8,
+      "sd": 20.5
+    },
+    {
+      "name": "Спиннер с рисунком \"Лайки\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/039/r8f2pjksq4uv2f7ekp1esq5pq76te281.jpg",
+      "px": 1200,
+      "mean": 248,
+      "sd": 25
+    },
+    {
+      "name": "Спиннер с рисунком \"Шоколадка\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/710/rxu6wyxh94x7fodiknaedhb5vozch2x2.jpg",
+      "px": 1200,
+      "mean": 250.3,
+      "sd": 23
+    },
+    {
+      "name": "Спиннер с рисунком \"Dogs\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/795/7957ac3aaf4ec9bb8522acfe4234b497.jpg",
+      "px": 1200,
+      "mean": 252.9,
+      "sd": 12.6
+    },
+    {
+      "name": "Спиннер-диск \"В лунном свете\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/59b/3a3j5e22zprks359dubfqkfkbycu6a6v.jpg",
+      "px": 1200,
+      "mean": 216.7,
+      "sd": 2.5
+    },
+    {
+      "name": "Спиннер-диск \"Космокот\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/40f/yjtbzwmqo9k8gc2igljt97u0q6hu3888.jpg",
+      "px": 1200,
+      "mean": 217.7,
+      "sd": 2.5
+    },
+    {
+      "name": "Спиннер-диск \"Панда\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/9db/3dq7tvzdxy4fkztoigxzt1d4lex1ybcd.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 0.7
+    },
+    {
+      "name": "Спиннер-диск \"Angry-bear\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/afc/lhyehi9zz4n5g5fkor501dlj823be08c.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0.1
+    },
+    {
+      "name": "Спиннер-диск \"Back-Parther\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/34b/ek2thjc173b0ms8jw847nuwrvypyro9t.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0.1
+    },
+    {
+      "name": "Спиннер-диск \"Cute-Avocado\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/bb9/aadggt73lmo57i3y8di5xbhw367d7c1z.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0.1
+    },
+    {
+      "name": "Спиннер-диск \"Dogs\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/bef/q6xr7a014fngepr2zlkyjdk6t97w5jon.jpg",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0
+    },
+    {
+      "name": "Спиннер-диск \"Eagle\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/5d3/0lk6r34l00p1cx7es3mvscnvb0ri6s5f.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0
+    },
+    {
+      "name": "Спиннер-диск \"Pony Dream\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/366/4pr1xglykx3stfwod9gshbynzoq3h2qn.jpg",
+      "px": 1200,
+      "mean": 217.7,
+      "sd": 2.5
+    },
+    {
+      "name": "Спиннер-диск \"Princess\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/007/90nvwxm60hmyad7e8b1lo6knttjm8m1a.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0
+    },
+    {
+      "name": "Спиннер-диск \"Tiger\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/e27/huj6h9ip2edghxcmnllowocwmcsq5nj2.png",
+      "px": 1200,
+      "mean": 253.9,
+      "sd": 2.2
+    },
+    {
+      "name": "Спиннер-диск \"Unicorn princess\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/7e8/vo1ojk612edkayh71cl1e0hyvyz8m39l.jpg",
+      "px": 1200,
+      "mean": 217.7,
+      "sd": 2.5
+    },
+    {
+      "name": "Спиннер-диск \"Unicorn-blue\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/928/wwotrh0455j89a789muznob3wjjcipgv.png",
+      "px": 1200,
+      "mean": 254.1,
+      "sd": 0
+    },
+    {
+      "name": "Фигурные коньки Edea OVERTURE SET ROTATION",
+      "cat": "Фигурные коньки",
+      "img": "/upload/iblock/b8d/ouu9k43q2rn01n74i3v8sfeoqekbtcdu.jpg",
+      "px": 731,
+      "mean": 254.5,
+      "sd": 3.6
+    },
+    {
+      "name": "Фигурные коньки Edea TEMPO SET BALANCE",
+      "cat": "Фигурные коньки",
+      "img": "/upload/iblock/5dc/9d004a9n8agumaqte57vx6ks1fpqj1rs.jpg",
+      "px": 852,
+      "mean": 253.7,
+      "sd": 3.9
+    },
+    {
+      "name": "Коньки фигурные Jackson Elle",
+      "cat": "Фигурные коньки",
+      "img": "/upload/iblock/58f/nhozg47slz3uw2rljrbjf3auopip965g.jpg",
+      "px": 774,
+      "mean": 248.1,
+      "sd": 23.5
+    },
+    {
+      "name": "Коньки фигурные Runa Base",
+      "cat": "Фигурные коньки",
+      "img": "/upload/iblock/2e3/2e33e8a60f7b22ee75bc18b0bca45124.jpg",
+      "px": 900,
+      "mean": 249.6,
+      "sd": 14
+    },
+    {
+      "name": "Защита лезвий SkaterZ \"Краски\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/a42/3ayc398low78cl1kddi60mjnxy1wor3k.jpg",
+      "px": 1200,
+      "mean": 254.6,
+      "sd": 4.8
+    },
+    {
+      "name": "Защита лезвий SkaterZ \"Орнамент-неон\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/1f1/gubhy8pchle563kj2oij01m26ekdkw4j.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 1.7
+    },
+    {
+      "name": "Защита лезвий SkaterZ цветные",
+      "cat": "Хранение",
+      "img": "/upload/iblock/01b/tcilavn49ukktf2gfaoloruvpgyr2e8h.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 0.6
+    },
+    {
+      "name": "Чехлы  на лезвия SkaterZ \"Стрекоза\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/972/97283e45e6df2973c31ffe57c9e3be7f.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.2
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/ebd/68ckohdpw8tcis6tgkdtws4lvkcjqxeh.jpg",
+      "px": 900,
+      "mean": 247.8,
+      "sd": 18.7
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/87c/qyutx0a6x111niwr71pbhsiw4fjwkob3.jpg",
+      "px": 899,
+      "mean": 253.8,
+      "sd": 8.7
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/4f3/pucy09p9l3h479vcaw5z1sleze317sxi.jpg",
+      "px": 900,
+      "mean": 253.6,
+      "sd": 7.6
+    },
+    {
+      "name": "Чехлы на лезвия Edea E-Guards",
+      "cat": "Хранение",
+      "img": "/upload/iblock/828/itizxer2vpmq4lzvim35val1v05os4ig.jpg",
+      "px": 761,
+      "mean": 255,
+      "sd": 0.1
+    },
+    {
+      "name": "Чехлы на лезвия Edea E-Guards",
+      "cat": "Хранение",
+      "img": "/upload/iblock/e66/yme0eco2ft8lom1bt1mxnn6xcsqdc5b3.jpg",
+      "px": 761,
+      "mean": 255,
+      "sd": 0.1
+    },
+    {
+      "name": "Чехлы на лезвия SkaterZ \"Букашки\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/c5e/c5ec433d381592ae20c5f6d953a1dc86.jpg",
+      "px": 1200,
+      "mean": 254.5,
+      "sd": 5.9
+    },
+    {
+      "name": "Чехлы на лезвия SkaterZ \"Камуфляж\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/7a5/7a5b283f92c1c23607d1f995e778a229.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 1.6
+    },
+    {
+      "name": "Чехлы на лезвия SkaterZ \"Механика\"",
+      "cat": "Хранение",
+      "img": "/upload/iblock/f43/f43625190cb175c09e1367617adc7600.jpg",
+      "px": 1200,
+      "mean": 253.5,
+      "sd": 11.9
+    },
+    {
+      "name": "Сушилки «Китенок» Абстракция",
+      "cat": "Хранение",
+      "img": "/upload/iblock/389/z3ciydrz9hhszc0092cvu8bwtzn9g16c.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 0.4
+    },
+    {
+      "name": "Сушилки «Китенок» Лабиринт",
+      "cat": "Хранение",
+      "img": "/upload/iblock/455/1tku3zc3nvpcrjy0isfnzvn5ujvrzewz.jpg",
+      "px": 1200,
+      "mean": 254.9,
+      "sd": 0.8
+    },
+    {
+      "name": "Сушилки «Крокодильчик» Гавайи",
+      "cat": "Хранение",
+      "img": "/upload/iblock/445/irzhvjl7ixrdxxro7iqh0kykkrwafs7q.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.1
+    },
+    {
+      "name": "Сушилки «Крокодильчик» Полоска",
+      "cat": "Хранение",
+      "img": "/upload/iblock/c35/8iy36sf01k26bh10yth79vmwgkwcqe29.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.4
+    },
+    {
+      "name": "Сушки для обуви 010",
+      "cat": "Хранение",
+      "img": "/upload/iblock/6af/b3nryebfrieqigwxo6hq64bgpzwozxjg.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 011",
+      "cat": "Хранение",
+      "img": "/upload/iblock/4c1/4zogo16ayjoxiff5jte0090h54ywbsml.jpg",
+      "px": 1588,
+      "mean": 237.7,
+      "sd": 7.5
+    },
+    {
+      "name": "Сушки для обуви 012",
+      "cat": "Хранение",
+      "img": "/upload/iblock/cbd/lwublttwzzv52sfn3v7379pheuhqhvej.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 013",
+      "cat": "Хранение",
+      "img": "/upload/iblock/4f0/66ex3t7u0os7v8p0dwu6g218lbztjh9l.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 015",
+      "cat": "Хранение",
+      "img": "/upload/iblock/fe1/xufz4t3rnqvfku8fi8fsjbknm1u20ljv.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 016",
+      "cat": "Хранение",
+      "img": "/upload/iblock/2ac/ta6pqyh08yg65zwp476w3sngh35ui5k4.png",
+      "px": 993,
+      "mean": 253,
+      "sd": 0
+    },
+    {
+      "name": "Сушки для обуви 017",
+      "cat": "Хранение",
+      "img": "/upload/iblock/f3d/gbjmu9q1r69pl878t724t5be6s3o6qmu.jpg",
+      "px": 772,
+      "mean": 236.6,
+      "sd": 1.1
+    },
+    {
+      "name": "Сушки для обуви 018",
+      "cat": "Хранение",
+      "img": "/upload/iblock/371/w8s153rrxv92iyvsgs67qs4c29ozabku.png",
+      "px": 1588,
+      "mean": 242.5,
+      "sd": 3.1
+    },
+    {
+      "name": "Сушки для обуви 019",
+      "cat": "Хранение",
+      "img": "/upload/iblock/d1a/06gjpj6buw3plmgnczf85ecbuemcr40x.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 020",
+      "cat": "Хранение",
+      "img": "/upload/iblock/541/dt8i3amb3n8pqb1fycmbmp0e22rag38n.jpg",
+      "px": 1588,
+      "mean": 228.5,
+      "sd": 14.1
+    },
+    {
+      "name": "Сушки для обуви 021",
+      "cat": "Хранение",
+      "img": "/upload/iblock/fe1/rbwcqsxeweyq3g8qyks4af24fdtvu3xz.jpg",
+      "px": 864,
+      "mean": 255,
+      "sd": 0
+    },
+    {
+      "name": "Сушки для обуви 022",
+      "cat": "Хранение",
+      "img": "/upload/iblock/da6/rbnrjwvkmfg79z5o6b69dg0sgfsqogv9.jpg",
+      "px": 771,
+      "mean": 249.6,
+      "sd": 3.7
+    },
+    {
+      "name": "Сушки для обуви 023",
+      "cat": "Хранение",
+      "img": "/upload/iblock/430/z1u3ui1vmr715rsiofedm836b1dpt83t.png",
+      "px": 993,
+      "mean": 253,
+      "sd": 0.1
+    },
+    {
+      "name": "Сушки для обуви 024",
+      "cat": "Хранение",
+      "img": "/upload/iblock/180/lcj9pt1uncjpimyhy7rso3f4m75kgb2f.png",
+      "px": 993,
+      "mean": 253,
+      "sd": 0.1
+    },
+    {
+      "name": "Сушки для обуви 025",
+      "cat": "Хранение",
+      "img": "/upload/iblock/bcd/m2qzpydh3hh0vi9dt131wdvpz1f86xx0.jpg",
+      "px": 1599,
+      "mean": 235.4,
+      "sd": 8.6
+    },
+    {
+      "name": "Сушки для обуви 026",
+      "cat": "Хранение",
+      "img": "/upload/iblock/018/i6cw9f1kaklbum1q812czummnlnklkk3.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 09",
+      "cat": "Хранение",
+      "img": "/upload/iblock/88d/4b9tfb7h5wqzpjx9l7qov06jrhbj0oya.jpg",
+      "px": 1599,
+      "mean": 254.6,
+      "sd": 0.5
+    },
+    {
+      "name": "Сушки для обуви 8",
+      "cat": "Хранение",
+      "img": "/upload/iblock/fe6/fe6922c9976c2b7e5b985b25ef6a56af.jpg",
+      "px": 778,
+      "mean": 254,
+      "sd": 1.1
+    },
+    {
+      "name": "Защита на лезвия(сушка) пудель розовый",
+      "cat": "Хранение",
+      "img": "/upload/iblock/72f/72ffadb5072fe3f43728485dc45159f4.jpg",
+      "px": 900,
+      "mean": 250.5,
+      "sd": 6.5
+    },
+    {
+      "name": "Защита на лезвия(сушка)Дракон",
+      "cat": "Хранение",
+      "img": "/upload/iblock/4dc/4dc698f619229ebac2bda1858a12dfdf.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0
+    },
+    {
+      "name": "Защита на лезвия(сушка)енот",
+      "cat": "Хранение",
+      "img": "/upload/iblock/9e5/9e5e9c7528b157fee38510fd89b91d6b.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.2
+    },
+    {
+      "name": "Защита на лезвия(сушка)зайка",
+      "cat": "Хранение",
+      "img": "/upload/iblock/634/634c7c327288011859f0760dafe28a37.jpg",
+      "px": 900,
+      "mean": 250.9,
+      "sd": 8.1
+    },
+    {
+      "name": "Защита на лезвия(сушка)кот",
+      "cat": "Хранение",
+      "img": "/upload/iblock/9e5/9e5b70838d830e459899d4ee08e4d426.jpg",
+      "px": 900,
+      "mean": 250.7,
+      "sd": 9
+    },
+    {
+      "name": "Защита на лезвия(сушка)лис",
+      "cat": "Хранение",
+      "img": "/upload/iblock/9bd/9bd3b577ef3ee7c88f6c7fb2664507bc.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0
+    },
+    {
+      "name": "Защита на лезвия(сушка)лисичка",
+      "cat": "Хранение",
+      "img": "/upload/iblock/cb2/cb210e5efbf813d569112821235b51ed.jpg",
+      "px": 900,
+      "mean": 249.3,
+      "sd": 15.6
+    },
+    {
+      "name": "Защита на лезвия(сушка)пингвин",
+      "cat": "Хранение",
+      "img": "/upload/iblock/00e/00ed5c88f912ae0beeecf51a3da2deaf.jpg",
+      "px": 900,
+      "mean": 254.1,
+      "sd": 6.1
+    },
+    {
+      "name": "Защита на лезвия(сушка)такса",
+      "cat": "Хранение",
+      "img": "/upload/iblock/1f1/1f1a38328f2ecda2dd58bb5b083e1498.jpg",
+      "px": 900,
+      "mean": 250.8,
+      "sd": 5.6
+    },
+    {
+      "name": "Сушка на лезвия(сушка) котик",
+      "cat": "Хранение",
+      "img": "/upload/iblock/fcb/fcb6a0e19cab297481f0b6ee0996472e.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.3
+    },
+    {
+      "name": "Сушки «Два в одном» - Астроном - M",
+      "cat": "Хранение",
+      "img": "/upload/iblock/bae/li8jk48sg5xiroh1t6mwu1elqkopciwx.jpg",
+      "px": 1200,
+      "mean": 255,
+      "sd": 0.1
+    },
+    {
+      "name": "Сушки «Два в одном» - Песики - S",
+      "cat": "Хранение",
+      "img": "/upload/iblock/eb1/a5zzkelmxq3wt553zpt90ytefcl4h360.jpg",
+      "px": 1200,
+      "mean": 243.7,
+      "sd": 9.5
+    },
+    {
+      "name": "Сушки «Два в одном» - Dogs - S",
+      "cat": "Хранение",
+      "img": "/upload/iblock/434/2j8uj335bttg6gg3faoogc36erqaajxu.jpg",
+      "px": 1200,
+      "mean": 229.4,
+      "sd": 8.4
+    },
+    {
+      "name": "Сушки «Два в одном» - Summer Night - M",
+      "cat": "Хранение",
+      "img": "/upload/iblock/5f2/w38txprav0nanzjlskb4bu7x5b7s70ux.jpg",
+      "px": 1200,
+      "mean": 229.5,
+      "sd": 7.3
+    },
+    {
+      "name": "Сушки «Зверята» - Медвеженок",
+      "cat": "Хранение",
+      "img": "/upload/iblock/3c1/fcvve1tayhhgzojhcs3ss8vyjc098bks.jpg",
+      "px": 900,
+      "mean": 248.3,
+      "sd": 19.8
+    },
+    {
+      "name": "Чехлы на лезвия(сушки) «Два в одном» - Смайлики",
+      "cat": "Хранение",
+      "img": "/upload/iblock/0a4/0a41185b9352e033d8a747d2b41067dd.jpg",
+      "px": 1200,
+      "mean": 229.4,
+      "sd": 7.8
+    },
+    {
+      "name": "Чехлы на лезвия(сушки) «Два в одном» - Тигруля",
+      "cat": "Хранение",
+      "img": "/upload/iblock/812/8120258a071af7eae7177001674c1874.jpg",
+      "px": 1200,
+      "mean": 229.3,
+      "sd": 8.9
+    },
+    {
+      "name": "Чехлы на лезвия(сушки) «Два в одном» - Exotic - M",
+      "cat": "Хранение",
+      "img": "/upload/iblock/350/3500bef1c7f1444d5c83b524d22fd07f.jpg",
+      "px": 1200,
+      "mean": 228.8,
+      "sd": 8.4
+    }
+  ],
+  "mid": [
+    {
+      "name": "Повязка термо\"НОРИС\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/a16/fe22jwvaaiw1qt7pbgv7vbffd2w3rlaj.jpg",
+      "px": 1600,
+      "mean": 187.8,
+      "sd": 23.3
+    },
+    {
+      "name": "Повязка термо\"СИЕНА\"-1",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/d52/68qu06ys7hkc06c2vix3k6cngqbscq4k.jpg",
+      "px": 1600,
+      "mean": 184.6,
+      "sd": 26
+    },
+    {
+      "name": "Термоповязки",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/CNext/d6c/d6c4675f4532b8e931b26a3df1ad7ac8.jpg",
+      "px": 1157,
+      "mean": 249,
+      "sd": 27.4
+    },
+    {
+      "name": "Термоповязки комбинированные",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/CNext/d6c/d6c4675f4532b8e931b26a3df1ad7ac8.jpg",
+      "px": 1157,
+      "mean": 249,
+      "sd": 27.4
+    },
+    {
+      "name": "Шапка под хвост",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/CNext/d6c/d6c4675f4532b8e931b26a3df1ad7ac8.jpg",
+      "px": 1157,
+      "mean": 249,
+      "sd": 27.4
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-003",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/d51/d51b0850a2e0941b4d2b336d81b3e699.jpeg",
+      "px": 1080,
+      "mean": 244.6,
+      "sd": 26.3
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-004",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/4fb/4fb34f758a928e25e61f4969da682248.jpeg",
+      "px": 1080,
+      "mean": 236.2,
+      "sd": 41
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-014",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/de4/de4e0f69f15fc5cdd925da3815b98174.jpeg",
+      "px": 1080,
+      "mean": 241.1,
+      "sd": 32.3
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-018",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/5af/5af4244b9ff0f40a91c7f68e7931cfcd.jpeg",
+      "px": 1080,
+      "mean": 240.4,
+      "sd": 32.9
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-019",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/1ab/1ab9880021aad19e4aa5b455785664f7.jpeg",
+      "px": 1080,
+      "mean": 236.7,
+      "sd": 40.6
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-020",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/4fc/4fcee357763218af9c1f865db70fabfe.jpeg",
+      "px": 1080,
+      "mean": 242.5,
+      "sd": 33.1
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-022",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/de5/de50d6c13113ab611b990b76610766f7.jpeg",
+      "px": 1080,
+      "mean": 227.2,
+      "sd": 39.7
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-005",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/b48/b486d8952d733c434bf4494036c759b9.jpg",
+      "px": 810,
+      "mean": 179.4,
+      "sd": 15.6
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-009",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/9ac/1q4cqz4xu1n1lw7a23kvedy38oavt071.jpg",
+      "px": 1600,
+      "mean": 188.5,
+      "sd": 15.8
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-010",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/769/aic304srpr8so5vbb2gofyquokl1kj0u.jpg",
+      "px": 1600,
+      "mean": 175.9,
+      "sd": 21
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-017",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/6be/6be2579b3cc3ed0c8632003d10ad80c5.jpg",
+      "px": 1600,
+      "mean": 185.6,
+      "sd": 27.5
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-024",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/79b/79bab1d3a693aa485b17b49a42853828.jpg",
+      "px": 1599,
+      "mean": 206.4,
+      "sd": 27.2
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-025",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/50a/50ae0af7c7ad39f2b8f8f9711000d0c5.jpg",
+      "px": 1599,
+      "mean": 193.9,
+      "sd": 24.4
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-027",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/b43/b43d8b0f0d683f493b69ead197ecc4d8.jpg",
+      "px": 2000,
+      "mean": 176,
+      "sd": 30.2
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-032",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/199/199621ddb3d035a2c358ebe15d6b30ea.jpg",
+      "px": 1080,
+      "mean": 180.2,
+      "sd": 25.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-033",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/2b0/2b0c5601e76f4d6791c9eeaf1f165e89.jpeg",
+      "px": 2000,
+      "mean": 190.1,
+      "sd": 25.8
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-034",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/db7/db77d11009f30515dddb69c33aef30c3.jpeg",
+      "px": 2000,
+      "mean": 199.7,
+      "sd": 18.7
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-047",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/f3f/zh69s8igbfzeflr733d3w5ebxutdsm14.jpg",
+      "px": 1600,
+      "mean": 195.1,
+      "sd": 15.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-048",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/08c/138o9ljxzpo3998rpmwb6q16ybr290ly.jpg",
+      "px": 1600,
+      "mean": 191.7,
+      "sd": 13.9
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-049",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/721/3wx5w5cb771mqwo2flm7lqrb35b8ftts.jpg",
+      "px": 1600,
+      "mean": 192.9,
+      "sd": 13.5
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-050",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/a40/v50tfwdl2shcpkmcsj0mc1n6yb1tft4q.jpg",
+      "px": 1600,
+      "mean": 188.7,
+      "sd": 13.4
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-051",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/2c9/kvdrloss57f5foo36nswd16pf45qh3bm.jpg",
+      "px": 1599,
+      "mean": 198.4,
+      "sd": 12.1
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-052",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/929/hrzk36y455nk5zh4g0wwt0eye25fhphz.jpg",
+      "px": 1599,
+      "mean": 180.6,
+      "sd": 13.6
+    },
+    {
+      "name": "Термо перчатки",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/CNext/d6c/d6c4675f4532b8e931b26a3df1ad7ac8.jpg",
+      "px": 1157,
+      "mean": 249,
+      "sd": 27.4
+    },
+    {
+      "name": "Термо перчатки со стразами \"Лист\"*",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/bfd/iieyxt2hi1zpwboy8td0wvpkuc2kyw4k.jpg",
+      "px": 1501,
+      "mean": 183.3,
+      "sd": 30.9
+    },
+    {
+      "name": "Термоперчатки «Броня»",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/bcc/yigcotfrrmdliovt5kf9qkdye4flwcka.jpg",
+      "px": 1500,
+      "mean": 229,
+      "sd": 34.6
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-056",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/dd0/gdv0jtk0k21jwe14z7e966moadto1gtd.jpg",
+      "px": 1599,
+      "mean": 196,
+      "sd": 13.1
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-057",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/9b9/s5zx4b7xeauzv0s87e8nc6wgdt3bndsf.jpg",
+      "px": 1599,
+      "mean": 199.1,
+      "sd": 12.1
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-058",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/dae/lw7j9sy0dppkfpsybcib6clv8ep03kji.jpg",
+      "px": 1600,
+      "mean": 201.6,
+      "sd": 12.3
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-059",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/c35/elwfv0z2ccos2460s1veo1chm6tww2ui.jpg",
+      "px": 1600,
+      "mean": 184.1,
+      "sd": 14.7
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-060",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/4d0/689tplik7mywkuua4mhjbe6c9yjfbmov.jpg",
+      "px": 1599,
+      "mean": 192.9,
+      "sd": 13.1
+    },
+    {
+      "name": "салфетка для лезвий АРТ 09-061",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/548/zmfacv1oob7oq4p8l15pxmx4t892l1jy.jpg",
+      "px": 1600,
+      "mean": 193.7,
+      "sd": 14.6
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-009",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/48a/48ab7a735b0229b5a81c45dfabdeba70.jpg",
+      "px": 2000,
+      "mean": 180.9,
+      "sd": 34.5
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-013",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/58c/58c1419eb5ab35f30832594f2f1de789.jpg",
+      "px": 2000,
+      "mean": 184.1,
+      "sd": 34.7
+    },
+    {
+      "name": "Кофта RED с печатью",
+      "cat": "ЕДИНЫЙ КОМАНДНЫЙ СТИЛЬ",
+      "img": "/upload/iblock/a35/altv7fa6pd38d3sv34353v8vhy4z3djn.jpg",
+      "px": 1728,
+      "mean": 186.8,
+      "sd": 33
+    },
+    {
+      "name": "Защита таза unisex с молниями",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/240/2406b1adbef8ddc17a39c7c00bd04953.jpg",
+      "px": 1080,
+      "mean": 241.2,
+      "sd": 27.4
+    },
+    {
+      "name": "Защитные шорты «Форвард» на молнии",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/6ab/6abf684ad1f3d8c25e50c44de720fea4.jpg",
+      "px": 1200,
+      "mean": 222.6,
+      "sd": 37.5
+    },
+    {
+      "name": "Носок силиконовый",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/00e/00ef6620bb280ed7bfbce93f6a1c8ecf.jpg",
+      "px": 900,
+      "mean": 243.8,
+      "sd": 32.2
+    },
+    {
+      "name": "Мешок для обуви 10",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/c40/c40758579f7d6e12c2f8bc31da41b443.jpg",
+      "px": 864,
+      "mean": 178.4,
+      "sd": 17.8
+    },
+    {
+      "name": "Мешок для обуви 7",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/1ab/1abab8ace157935f84c6733d6fdb3696.jpg",
+      "px": 864,
+      "mean": 191,
+      "sd": 19.6
+    },
+    {
+      "name": "Мешок для обуви 9",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/4d1/4d19465b5077b46ca2260de23f038cbe.jpg",
+      "px": 864,
+      "mean": 200.1,
+      "sd": 14
+    },
+    {
+      "name": "Комплект \"Влада\" (майка+шорты)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/831/tclqv3eihtztzilb4vuhkw4afxpx6x7f.jpg",
+      "px": 1080,
+      "mean": 187.1,
+      "sd": 13.9
+    },
+    {
+      "name": "Топ \"Джени\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a36/hxsozgritfwd259a6bspl5zhy0y6d4g1.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 18.7
+    },
+    {
+      "name": "Шорты-двойка",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f4c/m26c0ft37l5lsz49mtn6jzbghm55k0pf.jpg",
+      "px": 1600,
+      "mean": 176.3,
+      "sd": 21
+    },
+    {
+      "name": "Шорты-двойка 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/14c/v0omepfxxvlb2qmsasgxjc26un1x6vou.jpg",
+      "px": 1600,
+      "mean": 181.3,
+      "sd": 18.7
+    },
+    {
+      "name": "Колготки для выступлений (на каблук) Prostyle",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3a0/3a047cd78ff02a9b01dc608fb35c2f8e.jpg",
+      "px": 900,
+      "mean": 248,
+      "sd": 28.2
+    },
+    {
+      "name": "Колготки на ботинок сетка беж",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b88/722jz15eb33a4val4u633oonj5jdm1m1.jpg",
+      "px": 1080,
+      "mean": 190.7,
+      "sd": 18.9
+    },
+    {
+      "name": "Колготки на каблук черные-сетка",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8bd/rmkt3gcesmz904ipeqzd3p591jd5k5of.jpg",
+      "px": 1080,
+      "mean": 181.5,
+      "sd": 37.2
+    },
+    {
+      "name": "Носки детские серии CLIMATE CONTROL, цвет серый",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e2f/gm8f0qxvmjo640xf9zdne166vsnxnubp.jpg",
+      "px": 1385,
+      "mean": 246.2,
+      "sd": 26.4
+    },
+    {
+      "name": "Термоноски Norveg",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e0c/2j2clxpecino9nj14cb9p50wiz536hq5.jpg",
+      "px": 1385,
+      "mean": 244,
+      "sd": 37.5
+    },
+    {
+      "name": "Термоноски Norveg сине-серый",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2a0/e9q69t33mibfotvnw7h0gleqerezhsbk.jpg",
+      "px": 1385,
+      "mean": 243.8,
+      "sd": 37.6
+    },
+    {
+      "name": "Термо комплект \"Арья\" красный1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f09/2wzvgpkn50p0535cw73djnqugzzrgk48.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 8
+    },
+    {
+      "name": "Термо комплект \"Арья\",Бали1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5e4/lng7c0qdjhub1b0fx5rm3adfrxzq1fgt.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 7.9
+    },
+    {
+      "name": "Термо комплект \"Арья\",фиолет1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/7d4/7g6ld76nba3bfus9c3bxqxca6emk5gyb.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 8
+    },
+    {
+      "name": "Термо брюки \"Трейси\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c7f/zqyf9i2etdbgeaflb09jyipcbry426u2.jpg",
+      "px": 1080,
+      "mean": 202.8,
+      "sd": 18.1
+    },
+    {
+      "name": "Термо комбинезон \"Ванесса\"1 Зебра",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c77/ne428s922oa0jyxj5djo074do2esz988.jpg",
+      "px": 1080,
+      "mean": 204.2,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комплект \"Джессика\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a60/u1c0rvr2tcligc5fa8fqz4t9bk3ct5f3.jpg",
+      "px": 1080,
+      "mean": 204,
+      "sd": 16.7
+    },
+    {
+      "name": "Термо комплект \"Трейси\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b72/7rkkyterrpqtb2jy0kjs617w6w6akxiy.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо платье \"Роуз\"Зебра1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/7cd/c200bl9iy0evbr9r0njnfndppu2ke7lf.jpg",
+      "px": 1080,
+      "mean": 204.9,
+      "sd": 15.8
+    },
+    {
+      "name": "Термо платье \"Роуз\"Лео1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d54/y3azq6yxy2fy13qbltses0pjt98cg60i.jpg",
+      "px": 1080,
+      "mean": 204.4,
+      "sd": 18
+    },
+    {
+      "name": "Термо платье \"Сэнди\"Зебра1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e47/zz796kfmx6f83ocumjh1xzxgljkfsbz9.jpg",
+      "px": 1080,
+      "mean": 203.9,
+      "sd": 17.1
+    },
+    {
+      "name": "Термо платье \"Сэнди\"Лео1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8e4/v86xveag3kmxlgme00tg5m1a4qn1sgj9.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо платье \"Спорт\" серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b1f/wc05akpyavg2h6piow12on3eye4jkrhq.jpg",
+      "px": 1080,
+      "mean": 185.9,
+      "sd": 12.5
+    },
+    {
+      "name": "Термо платье \"Спорт\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/843/t3m2k96ujmonyoygj4nk56o11tyssnvl.jpg",
+      "px": 1080,
+      "mean": 188.5,
+      "sd": 18.4
+    },
+    {
+      "name": "Термо комплект \"Токио\" 1(кофта + лосины на каблук)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8e0/z62iabudv7fdv0l581r14bucwqws37nl.jpg",
+      "px": 1080,
+      "mean": 204.8,
+      "sd": 13.7
+    },
+    {
+      "name": "Термо платье \"Токио\"Эшли",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b2e/0r6g7lxn6otrhvuj3ce660jylbn67e5k.jpg",
+      "px": 1080,
+      "mean": 203.9,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо комбинезон \"Блеск\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4f2/lfn7w1gcjaxpc1bb9o46kftic5ig3dd9.jpg",
+      "px": 1080,
+      "mean": 202.3,
+      "sd": 8.2
+    },
+    {
+      "name": "Термо комплект \"Блеск\" серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5b0/pp2750ss88z7s6ub5s1hqs5ddct0h1x8.jpg",
+      "px": 1080,
+      "mean": 204.5,
+      "sd": 7.2
+    },
+    {
+      "name": "Термо комплект \"Блеск\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/aae/6g92maecca8lm2i34lq0xkib5gitqpu6.jpg",
+      "px": 1080,
+      "mean": 204.7,
+      "sd": 7
+    },
+    {
+      "name": "Термо кофта \"Блеск\" серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/874/c8u4gymkdn29ac4kwqnblvhmq4rcjhrz.jpg",
+      "px": 1080,
+      "mean": 178.4,
+      "sd": 41.7
+    },
+    {
+      "name": "Термо платье \"Блеск\",серебро 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/841/5bwnf2by5sf3i331w0a2bdxn2ygoin8a.jpg",
+      "px": 1080,
+      "mean": 186.6,
+      "sd": 17.8
+    },
+    {
+      "name": "Термо платье \"Блеск\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/246/8z7t13y0pdgx181s6vg4yffj08b19p10.jpg",
+      "px": 1080,
+      "mean": 187,
+      "sd": 18.5
+    },
+    {
+      "name": "Термо комбинезон \"Барбара\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4b4/vbza3k24zpc079iyle35lsnfhwwtzpam.jpg",
+      "px": 1080,
+      "mean": 198.1,
+      "sd": 15.3
+    },
+    {
+      "name": "Термо комбинезон \"Иветта\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/82e/plgsv7h2srxd5go5o4ezoeabzaxzd16u.jpg",
+      "px": 1080,
+      "mean": 198.1,
+      "sd": 15.3
+    },
+    {
+      "name": "Термо водолазка-боди \"Виола\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/cf9/c4vrfsfct9q5h6mkml6vvg2kxz931kc1.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо водолазка-боди \"Виола\" 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4be/q30ut6ssm9zbgjuap66lfsg0sxk2141u.jpg",
+      "px": 1080,
+      "mean": 192,
+      "sd": 18.1
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\" бирюза",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b53/sk4pjdxyw6ah2rust8h79eg2bg2k4tw0.jpg",
+      "px": 1080,
+      "mean": 180.6,
+      "sd": 41.7
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\" розовый",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/781/owieeahmucqkoeh8hy74zdmpc3trjk1l.jpg",
+      "px": 1080,
+      "mean": 178.7,
+      "sd": 41.7
+    },
+    {
+      "name": "Термо лонгслив \"Вики black\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/49f/w8xwt60c2rwjmnziyiptavbn46ub35ja.jpg",
+      "px": 1080,
+      "mean": 181.3,
+      "sd": 41.9
+    },
+    {
+      "name": "Термо лонгслив \"Вики white\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e9e/d8u7kkx4l5kqpxl5uaruycc0qqvqa7yo.jpg",
+      "px": 1080,
+      "mean": 179.5,
+      "sd": 39.6
+    },
+    {
+      "name": "Термо майка \"Алиса\"3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/594/55omhtwgphad3mt4a2ty2y1rmf3ampeu.jpg",
+      "px": 1080,
+      "mean": 204.1,
+      "sd": 17.3
+    },
+    {
+      "name": "Термо майка \"Леся\" 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/400/qin28lobshvboitx6n34zqk5mkhncxrt.jpg",
+      "px": 1080,
+      "mean": 202.7,
+      "sd": 17.2
+    },
+    {
+      "name": "Термо футболка \"Ирэн\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/096/aju860wqcaud5gxaklza5acvgka6g85g.jpg",
+      "px": 1080,
+      "mean": 203.3,
+      "sd": 17.9
+    },
+    {
+      "name": "Термо футболка \"Кэтрин\" ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8b9/ach5o1sbo3er8ve3unhwcik8k7odtf1k.jpg",
+      "px": 1080,
+      "mean": 204.9,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо футболка \"Реглан\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/425/0emrvx4gy1xj5qtrndacdhjv7ugqy642.jpg",
+      "px": 1080,
+      "mean": 202,
+      "sd": 17.1
+    },
+    {
+      "name": "Термо футболка \"Реглан\" БИРЮЗА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e04/sldj4q4ubua74go6kpc6uslrd9i2owxk.jpg",
+      "px": 1080,
+      "mean": 203,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо футболка \"Реглан\" РОЗОВАЯ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/bc0/ejmxtkedac0guhp8c9u6t2xq29oigz92.jpg",
+      "px": 1080,
+      "mean": 202.5,
+      "sd": 17
+    },
+    {
+      "name": "Термо футболка \"Реглан\" ФИОЛЕТ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/592/p5ndv1t1f1k9uzyhmhf1h6rd5b30uqj6.jpg",
+      "px": 1080,
+      "mean": 201.9,
+      "sd": 16.9
+    },
+    {
+      "name": "Туника \"Магия Люкс\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ae5/84xet773gcv5uvu69m5mfge2adm95vol.jpg",
+      "px": 1080,
+      "mean": 204.8,
+      "sd": 15.7
+    },
+    {
+      "name": "Туника \"Магия\" 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/80f/kgnd069b772fff0xvfiljsu904jlzvlj.jpg",
+      "px": 1080,
+      "mean": 203.2,
+      "sd": 17.8
+    },
+    {
+      "name": "Туника \"Магия\" 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/1b5/rasuc8wan1mkygltznsfdj74nws70n19.jpg",
+      "px": 1080,
+      "mean": 204,
+      "sd": 17.6
+    },
+    {
+      "name": "Термо бельё (комбинезон) unisex с воротником,тем.тел",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/cb3/cb3b8d28c45a92777f6433e59a556ddd.jpg",
+      "px": 1080,
+      "mean": 204.9,
+      "sd": 14.6
+    },
+    {
+      "name": "Термо бельё (комбинезон) unisex черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2b7/o69rk0iveqw3mqr378i1adpw9m4daf3a.jpg",
+      "px": 1080,
+      "mean": 199.7,
+      "sd": 13.6
+    },
+    {
+      "name": "Термо бельё на девочку(ЦВЕТНОЕ) МОХ+БОРДО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/07a/c4e5b7j96uivxga9bjdc0rrt974gsfec.jpg",
+      "px": 1080,
+      "mean": 204.4,
+      "sd": 12.9
+    },
+    {
+      "name": "Термо боди с открытой спиной,св.тел.",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d73/kt1du95qswwcc69fmfxyz9ed5yj9d6rf.jpg",
+      "px": 1080,
+      "mean": 187.2,
+      "sd": 17.3
+    },
+    {
+      "name": "Термо боди с открытой спиной,тем.телесный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9c4/wg3cqfa01wzdszhpq3941lgt29peil8o.jpg",
+      "px": 1080,
+      "mean": 188.6,
+      "sd": 15.4
+    },
+    {
+      "name": "Термо брюки \"Бритни\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/171/fzdrz6msujfd2g9ueirfrnengi37t3m1.jpg",
+      "px": 1080,
+      "mean": 203.3,
+      "sd": 17.9
+    },
+    {
+      "name": "Термо брюки \"Джесика\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/628/s5giidkki5ptacxnr7m27bpkl9nhvw5z.jpg",
+      "px": 1080,
+      "mean": 204.4,
+      "sd": 18.2
+    },
+    {
+      "name": "Термо брюки \"Классика с кокеткой\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5fc/n18vclwni0t1ghk6tdp1n0nj8ou8vugy.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 18.7
+    },
+    {
+      "name": "Термо брюки \"Трейси\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d05/ftk9f3vvq3z1c80gp46csu8ug6fozutb.jpg",
+      "px": 1080,
+      "mean": 202.8,
+      "sd": 18.1
+    },
+    {
+      "name": "Термо шорты \"Бритни\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4d0/e44dt5yd8w4bjodjyr740nllefkguf2h.jpg",
+      "px": 1080,
+      "mean": 203.1,
+      "sd": 18
+    },
+    {
+      "name": "Термо брюки \"Берта\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/cc8/r63s9ylrzezxck2vxgxki8sjr015ldhc.jpg",
+      "px": 1080,
+      "mean": 187.5,
+      "sd": 40
+    },
+    {
+      "name": "Термо брюки \"Бьянка\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/998/forspevxgvwhz07ulze6iznpv7kaaica.jpg",
+      "px": 1080,
+      "mean": 190.9,
+      "sd": 41.2
+    },
+    {
+      "name": "Термо брюки \"Илона\" NEOматериал",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/139/3rg7soif8b4ux6gn5pa7uwj37ssjb3l3.jpg",
+      "px": 1080,
+      "mean": 188.4,
+      "sd": 41
+    },
+    {
+      "name": "Термо брюки \"Лада\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/158/tx7ho8tav2pc7i76zgnd0kf1fjzrg4g2.jpg",
+      "px": 1080,
+      "mean": 191.3,
+      "sd": 40.9
+    },
+    {
+      "name": "Термо брюки \"Симона\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/612/qdod1gq3pssfa4bw72dlqhmq775768dd.jpg",
+      "px": 1080,
+      "mean": 188.9,
+      "sd": 36.8
+    },
+    {
+      "name": "Термо жилет \"Мики\" стёганный (ромб) ЧЕРНЫЙ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4c0/la9lsjzklswjlrfjm5xg4pvuxx14prd1.jpg",
+      "px": 1662,
+      "mean": 202.6,
+      "sd": 11.6
+    },
+    {
+      "name": "Термо комбинезон \"Барбара\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f75/xtmea44qphh38aonl9ak56zg6v6vadr6.jpg",
+      "px": 1080,
+      "mean": 198.1,
+      "sd": 15.3
+    },
+    {
+      "name": "Термо комбинезон \"Ванесса\" ЗЕБРА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e40/7gisi1m6jz67kmptp883x9gxn8ve1pse.jpg",
+      "px": 1080,
+      "mean": 204.2,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комбинезон \"Жанет\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e5b/e5b4e2df4eeb1779ae571c24c0aab263.jpg",
+      "px": 1080,
+      "mean": 203.8,
+      "sd": 12.9
+    },
+    {
+      "name": "Термо комбинезон \"Иветта\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2e0/o3tc4t0a1ejh7yqj8qffooz0mbrye5xb.jpg",
+      "px": 1080,
+      "mean": 198.1,
+      "sd": 15.3
+    },
+    {
+      "name": "Термо комбинезон \"ИННА\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4b2/4b23ff9fe8e684f4076f4dbe0bfa5135.jpg",
+      "px": 1080,
+      "mean": 198.2,
+      "sd": 19.2
+    },
+    {
+      "name": "Термо комбинезон \"Лаура\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/368/c6q3u12569hdo2bw50xlux6ijjwrsqyn.jpg",
+      "px": 1080,
+      "mean": 202.7,
+      "sd": 9.1
+    },
+    {
+      "name": "Термо комбинезон \"ЛИЛИЯ\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/82e/82eef4d48e9ffa7ea4fa643f3a5761dc.jpg",
+      "px": 1080,
+      "mean": 201.3,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комбинезон \"Лилия\" РОЗОВЫЙ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e6c/badh3tc0waei4ftcrl93sgjw7e73zeu4.jpg",
+      "px": 1080,
+      "mean": 204.2,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо комбинезон \"Лилия\" ФИОЛЕТ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/280/93c5pez3niq61io5lvuraws3c76m451o.jpg",
+      "px": 1080,
+      "mean": 204.5,
+      "sd": 16.8
+    },
+    {
+      "name": "Термо комбинезон \"ЛУНА\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/001/00156fd1e529062d926aa4778d1542d3.jpg",
+      "px": 1080,
+      "mean": 196.4,
+      "sd": 19.7
+    },
+    {
+      "name": "Термо комбинезон \"Моника\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/0a0/051hblkl3felitcx7955vbli07fic723.jpg",
+      "px": 1080,
+      "mean": 202,
+      "sd": 17.1
+    },
+    {
+      "name": "Термо комбинезон \"Норис\" БАЛИ",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f59/55ydvh68296vwcq5cqdvztntbt2i9jm2.jpg",
+      "px": 1080,
+      "mean": 200.3,
+      "sd": 19.6
+    },
+    {
+      "name": "Термо комбинезон \"Пантера\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ba0/ba0a622c6a31c44ba89ff388a4677d25.jpg",
+      "px": 1080,
+      "mean": 202.8,
+      "sd": 14
+    },
+    {
+      "name": "Термо комбинезон\"Блеск\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9fa/wp5g4mbcywt9rtd3zntrhbrqtb6vn3dh.jpg",
+      "px": 1080,
+      "mean": 202.3,
+      "sd": 8.2
+    },
+    {
+      "name": "Термо комбинезон\"Камилла\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f5e/hwe90qdioeg4mpod9dga9qxchn1naye1.jpg",
+      "px": 1080,
+      "mean": 201.4,
+      "sd": 9.8
+    },
+    {
+      "name": "Термо комплект \"Аманда\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/153/qjv08m1rf1oebavoma6euy7c1nze04rs.jpg",
+      "px": 1080,
+      "mean": 203.8,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо комплект \"Амели\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/6eb/6eb96df51acd63319d86dff6f95aa9e2.jpg",
+      "px": 1080,
+      "mean": 199.4,
+      "sd": 20.6
+    },
+    {
+      "name": "Термо комплект \"Арья\" красный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/cef/1278v0r6zld7njusgv7ahrdzcr9s2q8m.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 8
+    },
+    {
+      "name": "Термо комплект \"Берта\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/825/5c5x93c4vyy05gxc1kd03e3a1sibqm74.jpg",
+      "px": 1080,
+      "mean": 198.1,
+      "sd": 16.3
+    },
+    {
+      "name": "Термо комплект \"Блеск\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d3a/you23y22avfln5012tdbi7p67mlefcyx.jpg",
+      "px": 1080,
+      "mean": 204.5,
+      "sd": 7.2
+    },
+    {
+      "name": "Термо комплект \"Брильянс с брюками\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/0b7/0b7ab22c425619efeb8d21a943cfc0e0.jpg",
+      "px": 1080,
+      "mean": 204.7,
+      "sd": 13.4
+    },
+    {
+      "name": "Термо комплект \"Бьянка\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/60e/58sasobz6igw1u1o7fv0rdo02nmv0360.jpg",
+      "px": 1080,
+      "mean": 203.2,
+      "sd": 15.5
+    },
+    {
+      "name": "Термо комплект \"Вики black\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4a4/glyi8hrsibbebhhmqvshew3qoqjmeb6h.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 7.9
+    },
+    {
+      "name": "Термо комплект \"Вики white\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/831/69ctiu4330o3hupf0ev8fa769ihfr30o.jpg",
+      "px": 1080,
+      "mean": 203.7,
+      "sd": 8.3
+    },
+    {
+      "name": "Термо комплект \"Джессика\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/cf5/dk66c3bpq1elq2m4fj9o417bpyg4z8xs.jpg",
+      "px": 1080,
+      "mean": 204,
+      "sd": 16.7
+    },
+    {
+      "name": "Термо комплект \"ДИАМАНТ\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/bec/3vby01pznu5yxp8mg8aph9305zunum2w.jpg",
+      "px": 1080,
+      "mean": 203,
+      "sd": 8.9
+    },
+    {
+      "name": "Термо комплект \"Катюша\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4bd/4bdabb92f545876ddc5bc77ed0bdef32.jpg",
+      "px": 1080,
+      "mean": 202,
+      "sd": 16.1
+    },
+    {
+      "name": "Термо комплект \"Классика Реглан\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/dbd/l4xatuumum1y7izqelthe4gja99jeram.jpg",
+      "px": 1080,
+      "mean": 204.6,
+      "sd": 16.3
+    },
+    {
+      "name": "Термо комплект \"Космос NEW\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/fa8/fa8cccb4c3ca676da1433a43a88395df.jpg",
+      "px": 1080,
+      "mean": 204.7,
+      "sd": 14.5
+    },
+    {
+      "name": "Термо комплект \"Лада\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a7b/f7uwsvq1p1exdxumdxfk9hugbx1hny71.jpg",
+      "px": 1080,
+      "mean": 203.1,
+      "sd": 15.4
+    },
+    {
+      "name": "Термо комплект \"Мишель\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/790/790c9d870fa7bf0addd56eddd8e0e07b.jpg",
+      "px": 1080,
+      "mean": 202,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комплект \"ОЛЛИ\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2a7/2a716d464faca31f2d8a6f7943b23398.jpg",
+      "px": 1080,
+      "mean": 199.4,
+      "sd": 18.1
+    },
+    {
+      "name": "Термо комплект \"Сиена\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8b1/8b10fd5b43335cce0b3a5749e4fa2b2f.jpg",
+      "px": 1080,
+      "mean": 198.9,
+      "sd": 16.7
+    },
+    {
+      "name": "Термо комплект \"Симона\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/237/b2eiztsvn3b0qj6uwp78k5nt6junt9kx.jpg",
+      "px": 1080,
+      "mean": 200.1,
+      "sd": 15.8
+    },
+    {
+      "name": "Термо комплект \"Симона\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a0a/dacjfqmiwr7roye9hsll9lys3ilxgbrg.jpg",
+      "px": 1080,
+      "mean": 198.7,
+      "sd": 17
+    },
+    {
+      "name": "Термо комплект \"Симона\"2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2ea/yg3w8gm0ub0u6fo9prpt51n4j7gktumb.jpg",
+      "px": 1080,
+      "mean": 202.4,
+      "sd": 15.1
+    },
+    {
+      "name": "Термо комплект \"СПОРТ\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/941/mymr0gang606tww0a39yh74itmwdtrqr.jpg",
+      "px": 1080,
+      "mean": 203.2,
+      "sd": 8.2
+    },
+    {
+      "name": "Термо комплект \"Спорт\" (лонгслив+брюки)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/17d/pxt6heylve16v4yfsii7y0pybbbvg4yh.jpg",
+      "px": 1080,
+      "mean": 203,
+      "sd": 8.2
+    },
+    {
+      "name": "Термо комплект \"Спорт\"серебро (лонгслив+брюки)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/214/7uetrd65zv3zjptk10bpklf8w1zjdl5r.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 8
+    },
+    {
+      "name": "Термо комплект \"Тедди\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4b5/fpdcsqg1cgoriqqr8rhgkwft3067o5oy.jpg",
+      "px": 1080,
+      "mean": 200,
+      "sd": 16.4
+    },
+    {
+      "name": "Термо комплект \"Тедди\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a55/jp1k7px1kvt04tlfk3novkinv9lz87yt.jpg",
+      "px": 1080,
+      "mean": 201.1,
+      "sd": 14.6
+    },
+    {
+      "name": "Термо комплект \"Токио\" (кофта + лосины на каблук)",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/147/1475c411442ee3ab8a21a81e866b50ba.jpg",
+      "px": 1080,
+      "mean": 204.8,
+      "sd": 13.7
+    },
+    {
+      "name": "Термо комплект \"Трейси\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a4f/7t5usbu7ii93d0jeqj0qbqjrowc731kj.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо комплект \"ЭТЕРИ\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2bb/jxbvp354o0cglrladv8d6m0k21u4ppbi.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 8.3
+    },
+    {
+      "name": "Термо комплект *\"Тедди\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c78/kxyvz9n15n1ayb011mgno311iwxdalm4.jpg",
+      "px": 1080,
+      "mean": 199.5,
+      "sd": 16
+    },
+    {
+      "name": "Термо комплект\"Арья\" бали",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/1ab/661ycsitpczf2b3lomcjus3ldgm66tgk.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 7.9
+    },
+    {
+      "name": "Термо комплект\"Арья\" фиолет",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/96e/cbys3o1ijwt9uh3jxsffi5i37azp3wd8.jpg",
+      "px": 1080,
+      "mean": 202.9,
+      "sd": 8
+    },
+    {
+      "name": "Термо комплект\"Блеск\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/bf4/txngqh7mvmmienlautr9rxvbfhulxscg.jpg",
+      "px": 1080,
+      "mean": 204.7,
+      "sd": 7
+    },
+    {
+      "name": "Термо комплект\"СПОРТ\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b92/9a8rvhfb87cm4c9clo50bj6l92ji7zeg.jpg",
+      "px": 1080,
+      "mean": 203.5,
+      "sd": 8.9
+    },
+    {
+      "name": "Термо кофта \"Блеск\",серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9b1/efc85iuk4u1z513jo81nddtxi904yi4p.jpg",
+      "px": 1080,
+      "mean": 178.4,
+      "sd": 41.7
+    },
+    {
+      "name": "Термо платье \"Аллегро\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/349/4c2hytx6osuqdl7l29h1834jbm4eg1v9.jpg",
+      "px": 1080,
+      "mean": 200,
+      "sd": 16.3
+    },
+    {
+      "name": "Термо платье \"Блеск\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/424/8dn4jcgqaekzf0elbsez6suxk2p6xd76.jpg",
+      "px": 1080,
+      "mean": 187,
+      "sd": 18.5
+    },
+    {
+      "name": "Термо платье \"Блеск\"серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f7a/jkp5ysie83jeljb4rlm01oqntf7h054x.jpg",
+      "px": 1080,
+      "mean": 186.6,
+      "sd": 17.8
+    },
+    {
+      "name": "Термо платье \"Джули\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/877/8770e36d0519d8e45441ae18fd1f3ba9.jpg",
+      "px": 1080,
+      "mean": 204.2,
+      "sd": 12.9
+    },
+    {
+      "name": "Термо платье \"Роуз\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/96f/dkezjn3l14hnpmm5ft1sl0x9sdei46uq.jpg",
+      "px": 1080,
+      "mean": 204.7,
+      "sd": 17.9
+    },
+    {
+      "name": "Термо платье \"Роуз\" ЗЕБРА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ae1/lvj3zcxupgmhek1ucbdmnwntk2xms0vz.jpg",
+      "px": 1080,
+      "mean": 203.7,
+      "sd": 18.8
+    },
+    {
+      "name": "Термо платье \"Роуз\" ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/982/1ylrpaq1i9eh90m5da4zpyit7qjpuis4.jpg",
+      "px": 1080,
+      "mean": 204.9,
+      "sd": 16.5
+    },
+    {
+      "name": "Термо платье \"Сигма\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8e7/k5ab72k4hb2bcjm5120a48oo1cssthhf.jpg",
+      "px": 1080,
+      "mean": 197.4,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо платье \"Софья\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e49/jv6j4lejlvv6r93ln8l93vvlf4sf1jfo.jpg",
+      "px": 1080,
+      "mean": 187.4,
+      "sd": 17.8
+    },
+    {
+      "name": "Термо платье \"Спорт\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/719/od6y1o36y13g32b0wcl2g5e6v430lz2e.jpg",
+      "px": 1080,
+      "mean": 188.5,
+      "sd": 18.4
+    },
+    {
+      "name": "Термо платье \"Сэнди\" ЗЕБРА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/209/qc9kc05ax1pcyfc0vcr7yv5817q5n10s.jpg",
+      "px": 1080,
+      "mean": 203.9,
+      "sd": 17.1
+    },
+    {
+      "name": "Термо платье \"Сэнди\" ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/fc5/z9xrlyoh8he56o10khd1kt31bqf3m2p7.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 17.4
+    },
+    {
+      "name": "Термо платье \"Хлоя\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/67e/wo8mvq5ldsnrky0xklckm701allb8krt.jpg",
+      "px": 1080,
+      "mean": 204,
+      "sd": 16.3
+    },
+    {
+      "name": "Термо платье \"Хлоя\" БИРЮЗОВАЯ ВСТАВКА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b5a/98kyv5pc361u0wkzwiqt02f0w0zq6uup.jpg",
+      "px": 1080,
+      "mean": 203.6,
+      "sd": 17
+    },
+    {
+      "name": "Термо платье \"Хлоя\" РОЗОВАЯ ВСТАВКА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8f6/70uzkctdmqctziegs5a6y4nh6g85npmb.jpg",
+      "px": 1080,
+      "mean": 203.4,
+      "sd": 16.9
+    },
+    {
+      "name": "Термо платье \"Эшли\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d5e/m9wkne2kb0bhagv2uwo2t71o03w65q39.jpg",
+      "px": 1080,
+      "mean": 203.9,
+      "sd": 17.5
+    },
+    {
+      "name": "Термо платье\"Софья\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/151/u1y9h13s2gtuvsrm8krouszm9psre51x.jpg",
+      "px": 1080,
+      "mean": 187.2,
+      "sd": 17.2
+    },
+    {
+      "name": "Термо платье\"Спорт\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e90/cceef754kzrci5b0gcq5jmy70aggp0ye.jpg",
+      "px": 1080,
+      "mean": 185.9,
+      "sd": 12.5
+    },
+    {
+      "name": "Термо платье \"Аллегро\"**",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d95/xpnal2y3km08bbvdd7r6wvmtisu21a7f.jpg",
+      "px": 1080,
+      "mean": 194.4,
+      "sd": 21
+    },
+    {
+      "name": "Термо платье \"Сигма\"**",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/251/e40y6y2ppdf68ujppt7qwhvi28b9uf4l.jpg",
+      "px": 1080,
+      "mean": 192.9,
+      "sd": 22.4
+    },
+    {
+      "name": "Брюки термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/aeb/aeb610de0cda7ecbdb69881b9892144a.jpg",
+      "px": 3000,
+      "mean": 214,
+      "sd": 30.4
+    },
+    {
+      "name": "Брюки термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/a8d/a8dfff71fd4882e8ac7b37814e58d78f.jpg",
+      "px": 3000,
+      "mean": 210.3,
+      "sd": 31.8
+    },
+    {
+      "name": "Брюки термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/42a/42a08ad23542851aaa1a741a2f32de18.jpg",
+      "px": 1334,
+      "mean": 218.9,
+      "sd": 38.5
+    },
+    {
+      "name": "Костюм термо \"Форсаж\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/0bd/0bd6c28a29df23e474283b611d85c7f1.jpg",
+      "px": 3000,
+      "mean": 209.4,
+      "sd": 27.4
+    },
+    {
+      "name": "Термо комплект \"Легион\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/1b1/1b14b09843b1117a983c3a9c739c10a2.jpg",
+      "px": 1080,
+      "mean": 197.4,
+      "sd": 21.5
+    },
+    {
+      "name": "Термо комплект \"Страйк\"",
+      "cat": "Одежда для мальчиков",
+      "img": "/upload/iblock/3bd/3bd1a77ce226f894f28139baabf79389.jpg",
+      "px": 1080,
+      "mean": 197.6,
+      "sd": 21.9
+    },
+    {
+      "name": "Думочка с пайетками 2",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/790/7905f3c3148428366ec645134cbbe468.JPG",
+      "px": 1440,
+      "mean": 205.7,
+      "sd": 32
+    },
+    {
+      "name": "Думочка с пайетками 4",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/aaf/aafcb9df99b1567a438eb7897b70ccf6.jpg",
+      "px": 2000,
+      "mean": 177.8,
+      "sd": 34.5
+    },
+    {
+      "name": "Игрушка \"Единорог с крыльями\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/9e2/gii957e4r7ae4otvc7anwi4hbupivt68.jpg",
+      "px": 2000,
+      "mean": 176.1,
+      "sd": 19
+    },
+    {
+      "name": "Игрушка зайка\"Танюшка\" 1",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/2f1/2f129024aa9755aff2c376b7aef1e336.JPG",
+      "px": 1771,
+      "mean": 179.7,
+      "sd": 29.8
+    },
+    {
+      "name": "Набор 023-018",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/1a3/drnt7bswl6gbw0lfv8ch17s4uu6okemd.jpg",
+      "px": 1624,
+      "mean": 182.7,
+      "sd": 26.3
+    },
+    {
+      "name": "Набор 023-019",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/6fa/ve4e0z4fap4e2xvhry5bljb8r2p5u1bq.jpg",
+      "px": 1280,
+      "mean": 178.8,
+      "sd": 23.5
+    },
+    {
+      "name": "Набор 023-02",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/93d/uyz3hwehc9c7z11nsngu383jcae76x2e.jpg",
+      "px": 1200,
+      "mean": 192.4,
+      "sd": 30.4
+    },
+    {
+      "name": "Набор 023-024",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/649/649a769e89b72e0ad39edb78860a09c6.jpg",
+      "px": 1080,
+      "mean": 175.7,
+      "sd": 35.9
+    },
+    {
+      "name": "Набор 023-025",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/654/6vf77jjgawf498l1s692gj3u0arb0ce2.jpg",
+      "px": 1280,
+      "mean": 177.7,
+      "sd": 21.8
+    },
+    {
+      "name": "Набор 023-03",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/849/8493d441355c41e9de32202ed1cc7701.jpg",
+      "px": 1080,
+      "mean": 190.4,
+      "sd": 32
+    },
+    {
+      "name": "Набор 023-030",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d44/ljad5zebgnl77yic01h000ezblntqx82.jpg",
+      "px": 1280,
+      "mean": 178.9,
+      "sd": 29.9
+    },
+    {
+      "name": "Набор 023-034",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/61c/c1zq5z325k3vp93yzimgoyijg9zoopks.jpg",
+      "px": 1280,
+      "mean": 175.7,
+      "sd": 14.7
+    },
+    {
+      "name": "Набор 023-036",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/01c/lhducrlz2jrotq5mk6byk0hh6709mbue.jpg",
+      "px": 2000,
+      "mean": 181.2,
+      "sd": 20.3
+    },
+    {
+      "name": "Набор 023-052",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d36/hmm50zkhtu5q6c5l56iyz9iwoo5dthls.jpg",
+      "px": 1576,
+      "mean": 188.8,
+      "sd": 29.1
+    },
+    {
+      "name": "Набор 023-053",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/04e/2zxit6frops0u7cl2w5qzzaqtn8tak7l.jpg",
+      "px": 2000,
+      "mean": 179.8,
+      "sd": 32
+    },
+    {
+      "name": "Набор 023-055",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/2b9/pex4d2ig0vf1y1ze7bjk0qr2h0qt99l7.jpg",
+      "px": 2000,
+      "mean": 177.8,
+      "sd": 40.7
+    },
+    {
+      "name": "Набор 023-056",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/ab0/yszqhjio621jw3wocgqf3xegj0lmvyhw.jpg",
+      "px": 2000,
+      "mean": 176.7,
+      "sd": 15.8
+    },
+    {
+      "name": "Набор 023-07",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/c2a/c2aed48f6f3bec0055c04ad3fe4241cc.jpg",
+      "px": 1080,
+      "mean": 183.4,
+      "sd": 34.6
+    },
+    {
+      "name": "Набор 023-08",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/6ba/6ba6020eb8f76e52a24795baeda20c69.jpg",
+      "px": 1080,
+      "mean": 187.7,
+      "sd": 26.2
+    },
+    {
+      "name": "Набор АРТ.032-05",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/91f/v1k8j9cw3pveqdj4m3ksio0br0dxddk9.jpg",
+      "px": 2000,
+      "mean": 182.6,
+      "sd": 21.4
+    },
+    {
+      "name": "Набор АРТ.032-06",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/c22/9abjaolpy0gifype358f4g5pjzfkn1ot.jpg",
+      "px": 2000,
+      "mean": 175.3,
+      "sd": 15.6
+    },
+    {
+      "name": "Набор АРТ.032-07",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/cdf/dicxduaw9noiep8rfbggt81wo3ucgkms.jpg",
+      "px": 2000,
+      "mean": 181,
+      "sd": 17.8
+    },
+    {
+      "name": "Набор АРТ.032-08",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/201/g7i5h00t15mpq7g4owuf9olhpht84iwh.jpg",
+      "px": 2000,
+      "mean": 188.6,
+      "sd": 17.4
+    },
+    {
+      "name": "Набор АРТ.032-09",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/6df/ht082ag4wdhayuu0yt6ka612eg582nh0.jpg",
+      "px": 2000,
+      "mean": 178.1,
+      "sd": 26
+    },
+    {
+      "name": "Подарочный набор для фигуристки(коврик для ног+сушки в обувь)",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/031/ihc5t6x2lns6porenj74e1ogjucd6lvy.jpg",
+      "px": 1440,
+      "mean": 194.6,
+      "sd": 23.5
+    },
+    {
+      "name": "Подарочный мешок",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/153/153f5eb5af276f7e7feb59506d19c947.jpg",
+      "px": 1080,
+      "mean": 192.1,
+      "sd": 35.9
+    },
+    {
+      "name": "Косметичка  АРТ.016-01",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/832/83253c422d170b6b88fca0478829a5d3.jpeg",
+      "px": 2000,
+      "mean": 191.4,
+      "sd": 35.9
+    },
+    {
+      "name": "Косметичка АРТ.010-10",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/523/523f9fe9b0da62346f73682ece116619.jpeg",
+      "px": 3024,
+      "mean": 189.8,
+      "sd": 31.3
+    },
+    {
+      "name": "Портплед большой с принтом .",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/808/763dedaimiy5ob7csz2rpvm95dn315iv.jpg",
+      "px": 1013,
+      "mean": 197.8,
+      "sd": 18
+    },
+    {
+      "name": "Портплед синий",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/efb/io0m8n0u7kfu89krsaks6okxmiahuwn4.jpg",
+      "px": 1334,
+      "mean": 211.6,
+      "sd": 35.2
+    },
+    {
+      "name": "Спиннер  \"Cute-Avocado\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/87f/87f7c7d1413250fcde1899dad675c6fe.jpg",
+      "px": 1200,
+      "mean": 244.4,
+      "sd": 36.7
+    },
+    {
+      "name": "Спиннер \"Avocado\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/f1c/f1c915787aca05c2265a151816b29a8b.jpg",
+      "px": 1200,
+      "mean": 248,
+      "sd": 26.7
+    },
+    {
+      "name": "Спиннер \"Ice Princess\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/555/555100bfaa68ba37f51fa0d14256e838.jpg",
+      "px": 1200,
+      "mean": 245.4,
+      "sd": 35.9
+    },
+    {
+      "name": "Спиннер с рисунком \"Unicorn princess\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/4c3/4c315e64b5d601c89af667aae763791a.jpg",
+      "px": 1200,
+      "mean": 245.1,
+      "sd": 31.8
+    },
+    {
+      "name": "Спиннер с рисунком \"Winter folk\"*",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/858/v2xmbksyd9alsqzop657ss6q6k5tabnr.jpg",
+      "px": 1200,
+      "mean": 243.4,
+      "sd": 34
+    },
+    {
+      "name": "Тренажер «Stertch Geier»",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/02a/s7pli4d9e3fts5ghzsjpflvhy1mpplpm.jpg",
+      "px": 900,
+      "mean": 244.8,
+      "sd": 41.3
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-003",
+      "cat": "Хранение",
+      "img": "/upload/iblock/780/a3njb8h70m8xuakre6dd6337xhzlnome.jpg",
+      "px": 1280,
+      "mean": 184.1,
+      "sd": 18.2
+    },
+    {
+      "name": "Термо чехлы на ботинки лайм",
+      "cat": "Хранение",
+      "img": "/upload/iblock/830/azj5zjtn110d3sj1z8mow629czpvm80w.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Термо чехлы на ботинки оранж",
+      "cat": "Хранение",
+      "img": "/upload/iblock/049/dv5hk38c92k83jst24t10nqnn2tuzhbx.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Термо чехлы на ботинки телесные",
+      "cat": "Хранение",
+      "img": "/upload/iblock/27e/ds38ijarqkdzreq238eh0zusnvm9jick.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Термо чехлы на ботинки темно синий",
+      "cat": "Хранение",
+      "img": "/upload/iblock/8c0/xtw95xwvezmxsh8v91q732i05pewixix.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Термо чехлы на ботинок черные",
+      "cat": "Хранение",
+      "img": "/upload/iblock/daf/o5feg1ktnctl9rv19yteca6xx0ktqe5v.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы для ботинок василек",
+      "cat": "Хранение",
+      "img": "/upload/iblock/58c/58cf869354d37d05cfa34e31a17d1373.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы на ботинок белые",
+      "cat": "Хранение",
+      "img": "/upload/iblock/234/234d06546f67a0d97e73edf70f523bc3.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы на ботинок бирюза",
+      "cat": "Хранение",
+      "img": "/upload/iblock/670/6709ccb81787a9f28ea2762cddacc2bf.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы на ботинок красные",
+      "cat": "Хранение",
+      "img": "/upload/iblock/31a/31a3ecdffb8f5eba024f648728eab0a6.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы на ботинок фиолет",
+      "cat": "Хранение",
+      "img": "/upload/iblock/600/600333df3d8703fb6db6fe1b02244099.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Чехлы термо на ботинки",
+      "cat": "Хранение",
+      "img": "/upload/iblock/561/5612371d0823ef733a060d756b714115.jpg",
+      "px": 764,
+      "mean": 195.6,
+      "sd": 20.2
+    },
+    {
+      "name": "Защита для лезвий (сушка) 10",
+      "cat": "Хранение",
+      "img": "/upload/iblock/467/4670c6cc4bb3534fae49fa886da1f38c.jpg",
+      "px": 1080,
+      "mean": 193.8,
+      "sd": 23.7
+    },
+    {
+      "name": "Защита для лезвий (сушка) 11",
+      "cat": "Хранение",
+      "img": "/upload/iblock/a88/a88df949a5e5d7db6e63c0b147dd8f2f.jpg",
+      "px": 1080,
+      "mean": 184,
+      "sd": 22.7
+    },
+    {
+      "name": "Защита для лезвий (сушка) 15",
+      "cat": "Хранение",
+      "img": "/upload/iblock/019/0197ccabc4cead02cdc22d8616101d45.JPG",
+      "px": 1080,
+      "mean": 185.3,
+      "sd": 31.8
+    },
+    {
+      "name": "Защита для лезвий (сушка) 6",
+      "cat": "Хранение",
+      "img": "/upload/iblock/fc5/fc5ad447dd2f82e1b7aa5ece4aaa1d29.jpg",
+      "px": 2000,
+      "mean": 191.1,
+      "sd": 20.6
+    },
+    {
+      "name": "Защита для лезвий (сушка) 7",
+      "cat": "Хранение",
+      "img": "/upload/iblock/8ec/8ec71f04591161205efa1c3d9f42cecc.jpg",
+      "px": 1104,
+      "mean": 192.1,
+      "sd": 21.4
+    },
+    {
+      "name": "Защита для лезвий (сушка) 8",
+      "cat": "Хранение",
+      "img": "/upload/iblock/151/151562c8c7d81ec1ef5d8dc0f2f5be51.jpg",
+      "px": 1012,
+      "mean": 185.2,
+      "sd": 24.5
+    },
+    {
+      "name": "Защита для лезвий (сушка) 9",
+      "cat": "Хранение",
+      "img": "/upload/iblock/f92/f927d05f03053cbb6d5967ed49b10f46.jpg",
+      "px": 1024,
+      "mean": 194.9,
+      "sd": 20.3
+    },
+    {
+      "name": "Защита для лезвий (сушка) с пайетками 1",
+      "cat": "Хранение",
+      "img": "/upload/iblock/c02/c0291202214d2674bbe0a5f6d531529d.jpg",
+      "px": 1080,
+      "mean": 193.7,
+      "sd": 33.7
+    },
+    {
+      "name": "Защита на лезвия(сушка)панда",
+      "cat": "Хранение",
+      "img": "/upload/iblock/5a6/5a611d3de861e9b17acae859a92b9aaa.jpg",
+      "px": 900,
+      "mean": 248.4,
+      "sd": 34.7
+    }
+  ],
+  "bad": [
+    {
+      "name": "Повязка термо\"БАРХАТ\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/952/w7789s7u6ucb30mh1vy00xpzbz8r413a.jpg",
+      "px": 1080,
+      "mean": 149,
+      "sd": 73.9
+    },
+    {
+      "name": "Повязка термо\"ВАНЕССА ЗЕБРА\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/55e/0ynl9y9fwpz8ehr7u4c4hko1kk2fq2y7.jpg",
+      "px": 1080,
+      "mean": 156,
+      "sd": 70.5
+    },
+    {
+      "name": "Повязка термо\"ВАНЕССА ЛЕО\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/fae/sgtpyjq2041k3oavs68x3hvk4o7m71kd.jpg",
+      "px": 1080,
+      "mean": 152.9,
+      "sd": 74.2
+    },
+    {
+      "name": "Повязка термо\"СЕТКА+СТРАЗЫ\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/cc0/m11qxk0pymgu23hdad5oshngehv36i5w.jpg",
+      "px": 1080,
+      "mean": 156.7,
+      "sd": 75.9
+    },
+    {
+      "name": "Повязка термо\"СЕТКА+СТРАЗЫ\"1",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/535/rwfri66qo2mftcx2uld9etycax7tlzz1.jpg",
+      "px": 1080,
+      "mean": 158.1,
+      "sd": 77.6
+    },
+    {
+      "name": "Повязка термо\"СЕТКА+СТРАЗЫ\"2",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/500/zo2g9ztqphpf4a9vgprjemfv1o93ggm6.jpg",
+      "px": 1080,
+      "mean": 153.2,
+      "sd": 75.2
+    },
+    {
+      "name": "Повязка термо\"СЕТКА+СТРАЗЫ\"3",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/2aa/8rykzu0emiunqwwfnfoq1zu1lx13o5ku.jpg",
+      "px": 1080,
+      "mean": 156.7,
+      "sd": 73.6
+    },
+    {
+      "name": "Повязка термо\"СИЕНА\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/546/xpeu7e008v77b5xhr6iy2110o3rcwcn7.jpg",
+      "px": 1600,
+      "mean": 181.6,
+      "sd": 61.4
+    },
+    {
+      "name": "Шапка термо под хвост+стразы",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/41d/g62nijm3ubomed4e7botw2h7jsarhga3.jpg",
+      "px": 1080,
+      "mean": 147.8,
+      "sd": 76.9
+    },
+    {
+      "name": "Шапка термо под хвост+стразы 1",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/eb7/x6f5tm7clx53g9uaktxckpw8remuy6qo.jpg",
+      "px": 1080,
+      "mean": 161.4,
+      "sd": 69
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-002",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/038/038c57b7c4c3138c40a9949da626a4b9.jpeg",
+      "px": 1080,
+      "mean": 236.3,
+      "sd": 42.9
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-005",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/924/9245a0b8fccc1982843bf43f5a4694a9.jpeg",
+      "px": 1080,
+      "mean": 232.3,
+      "sd": 52.1
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-006",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/f78/f78b70f6dda3980ee0b0f52ca64503cc.jpeg",
+      "px": 1080,
+      "mean": 227.3,
+      "sd": 64.4
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-007",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/8e5/8e5a062ddd6b5a5b1da42eb100ec2efc.jpg",
+      "px": 730,
+      "mean": 150.6,
+      "sd": 47.8
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-008",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/085/08515552b086531266505c7f50b1a30f.jpg",
+      "px": 810,
+      "mean": 123.4,
+      "sd": 44.6
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-009",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/72d/72dd5c98f70314dc743d44be9ab44ca3.jpeg",
+      "px": 1080,
+      "mean": 234,
+      "sd": 49.2
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-010",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/97d/97d59453238865dcc3af140795b369db.jpg",
+      "px": 810,
+      "mean": 157.9,
+      "sd": 53.6
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-013",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/068/0687e5a994374e55c36c7be2ce3c5cfd.jpeg",
+      "px": 1080,
+      "mean": 231.7,
+      "sd": 54.6
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-015",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/ca6/ca6c6dc5eb488a7a0271e10319d4c21a.jpeg",
+      "px": 1080,
+      "mean": 236.5,
+      "sd": 43.4
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-016",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/ee3/ee387d3c9643bc431d47c7da18beebf6.jpeg",
+      "px": 1080,
+      "mean": 229.3,
+      "sd": 63.6
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-017",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/b10/b10df00d6d369e86dda6ae131fa27969.jpeg",
+      "px": 1080,
+      "mean": 227,
+      "sd": 63.8
+    },
+    {
+      "name": "Коврик большой с принтом Арт. 15-021",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/9b4/9b4bc318126c9d30da0d73e22e5170c8.jpeg",
+      "px": 1080,
+      "mean": 220.2,
+      "sd": 59.6
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-001",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/532/5329908db320f888cc3f58c5a727e495.jpg",
+      "px": 771,
+      "mean": 171.7,
+      "sd": 15.8
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-002",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/6c1/6c1ea4a65f8359fd02da8bf8fbac01c7.jpg",
+      "px": 810,
+      "mean": 149.9,
+      "sd": 25.7
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-003",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/670/6701de4b4a9d11d176af1fdcc36a8820.jpg",
+      "px": 809,
+      "mean": 173.5,
+      "sd": 24
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-004",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/c8b/c8b9aae99db7874ae7cbd5a017cdf396.jpg",
+      "px": 810,
+      "mean": 148.7,
+      "sd": 19.7
+    },
+    {
+      "name": "Коврик Меховой с принтом АРТ. 34-007",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/140/6oeb9n44hppth26mkr2s0yjjnhxnjsgf.jpg",
+      "px": 1600,
+      "mean": 165.6,
+      "sd": 15.2
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-028",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/b6e/b6e323a540fafa6b4e2293fe4ebdbc96.jpg",
+      "px": 2000,
+      "mean": 163.1,
+      "sd": 25.5
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-029",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/860/8604c101fb976b9a5bdd34e9d9e85029.jpg",
+      "px": 2000,
+      "mean": 151.8,
+      "sd": 20.7
+    },
+    {
+      "name": "Коврик с принтом АРТ. 08-031",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/554/554ead87e575c7e34d48d7e14fa5b103.jpg",
+      "px": 2000,
+      "mean": 174.9,
+      "sd": 71.5
+    },
+    {
+      "name": "Термо носки Norveg Climate control",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/996/996f49df3d9d69d469941089f384e405.jpg",
+      "px": 832,
+      "mean": 131.7,
+      "sd": 14.5
+    },
+    {
+      "name": "Термо перчатки с защитой \"Емия\"",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/bed/bed1dacc0ebd6952b036db7118e6d8d7.jpg",
+      "px": 2445,
+      "mean": 171.2,
+      "sd": 20.3
+    },
+    {
+      "name": "Термоперчатки Power Stretch",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/3e7/szswluj8zr4llikar4nrkyzmptz1w2wz.jpg",
+      "px": 1200,
+      "mean": 228.5,
+      "sd": 43.5
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-003",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/e8b/e8b6d445b6d5ddee5b09e3df74326799.jpg",
+      "px": 1080,
+      "mean": 161.8,
+      "sd": 23.3
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-008",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/0f0/0f03112b07b14a3feec3c247733ddce8.jpg",
+      "px": 2000,
+      "mean": 151.4,
+      "sd": 56.3
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-010",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/bdb/bdba75cb7d35a4be0282347f135e3efe.jpg",
+      "px": 2000,
+      "mean": 152.9,
+      "sd": 60.9
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-011",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/bff/bffedb66133d92aa7f793c33863776d2.jpg",
+      "px": 2000,
+      "mean": 150.8,
+      "sd": 55.5
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-014",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/2ea/2eafa073b70c75ac5b71d3bbc32b01de.jpg",
+      "px": 2000,
+      "mean": 148.3,
+      "sd": 58.5
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-016",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/799/799c7fcd61b5a8358639dba8662f44a6.jpg",
+      "px": 2000,
+      "mean": 189,
+      "sd": 55.9
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-017",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/66a/66a2bce191f440cf74de0613f05d67a6.jpg",
+      "px": 2000,
+      "mean": 179.8,
+      "sd": 42.9
+    },
+    {
+      "name": "Салфетка для лезвий АРТ. 09-018",
+      "cat": "Аксессуары для льда",
+      "img": "/upload/iblock/973/973f45fbf79911a62f9e5834081e0d02.jpg",
+      "px": 2000,
+      "mean": 157.1,
+      "sd": 31.5
+    },
+    {
+      "name": "Термо кофта \"RED\" сублимация",
+      "cat": "ЕДИНЫЙ КОМАНДНЫЙ СТИЛЬ",
+      "img": "/upload/iblock/609/9dw69bze31z2nda2grdcizs3jfxliwg7.jpg",
+      "px": 1920,
+      "mean": 208.7,
+      "sd": 44.5
+    },
+    {
+      "name": "Термо кофта\"Классика\"сублимация",
+      "cat": "ЕДИНЫЙ КОМАНДНЫЙ СТИЛЬ",
+      "img": "/upload/iblock/fdc/ldzi1ifyi4iwa58zo3q5dy3m3n583axi.jpg",
+      "px": 2160,
+      "mean": 166,
+      "sd": 62.9
+    },
+    {
+      "name": "Защита коленей «Спринтер»",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/4bc/4bc4d3d25fff69aea3b79afa47e50ba9.jpg",
+      "px": 900,
+      "mean": 222,
+      "sd": 55.6
+    },
+    {
+      "name": "Налокотники «Спринтер»",
+      "cat": "Защита фигуриста",
+      "img": "/upload/iblock/fcc/fcc092753ef480582acf0a8462c65a1e.jpg",
+      "px": 1200,
+      "mean": 216.3,
+      "sd": 46.1
+    },
+    {
+      "name": "Мешок для обуви 3",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/536/53600e448667a98eb19b7c0790ac2626.jpg",
+      "px": 1280,
+      "mean": 161.6,
+      "sd": 17.7
+    },
+    {
+      "name": "Мешок для обуви 4",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/e34/e34901c7c7ef0118e0ab720d408628c2.jpg",
+      "px": 864,
+      "mean": 171.7,
+      "sd": 15.6
+    },
+    {
+      "name": "Мешок для обуви 5",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/592/592804051d4098faa060730395662ce5.jpg",
+      "px": 1079,
+      "mean": 170.7,
+      "sd": 19.7
+    },
+    {
+      "name": "Мешок для обуви 8",
+      "cat": "Мешки для обуви",
+      "img": "/upload/iblock/57c/57c600448f736bcbcff26e9eb7b229cf.jpg",
+      "px": 1079,
+      "mean": 164.7,
+      "sd": 18.8
+    },
+    {
+      "name": "Шорты-двойка 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/66c/nfd8zhi1zphyma23t5hjb6uv0xu5lbnq.jpg",
+      "px": 1600,
+      "mean": 169,
+      "sd": 17.4
+    },
+    {
+      "name": "Шорты-двойка 3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a73/9r3cvx3uha32wvmbdsz8dh1x8pwxhxh2.jpg",
+      "px": 1728,
+      "mean": 155.6,
+      "sd": 44.3
+    },
+    {
+      "name": "Термо кофта \"Арья\",Бали1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e2a/6y99z2dc72x585ebppwejh90s130pyyq.jpg",
+      "px": 1080,
+      "mean": 176.6,
+      "sd": 50.1
+    },
+    {
+      "name": "Термо кофта \"Арья\",красная1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2eb/hqciipsopaeu3zmsg5sgjvpcfr2ds0so.jpg",
+      "px": 1080,
+      "mean": 176.1,
+      "sd": 46.2
+    },
+    {
+      "name": "Термо кофта \"Арья\",фиолет 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/6cc/lotve6s0q335f5d4sx9emygroq11pxr5.jpg",
+      "px": 1080,
+      "mean": 176.7,
+      "sd": 46.5
+    },
+    {
+      "name": "Термо лонгслив \"Арья-1\"черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b15/f6b51vehs7zsy86oujswi6nznfr8czdt.jpg",
+      "px": 1080,
+      "mean": 127.3,
+      "sd": 80.7
+    },
+    {
+      "name": "Термо лонгслив \"Арья-2\",черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3e1/gyvcubmbrjghqdgn652zaxflu4enajsp.jpg",
+      "px": 1080,
+      "mean": 177.9,
+      "sd": 42.7
+    },
+    {
+      "name": "Термо лонгслив \"Арья-3\",черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/1c7/31kmwfqul4k6t1pa1xnrm2lmvuql3syh.jpg",
+      "px": 1080,
+      "mean": 157.5,
+      "sd": 69.1
+    },
+    {
+      "name": "Термо юбка \"Арья\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a0e/1i8789z0qcw371qkqw6ijh8vtyipe700.jpg",
+      "px": 1080,
+      "mean": 141.3,
+      "sd": 74.8
+    },
+    {
+      "name": "Термо брюки \"Джессика\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/0e4/11edl63lm5b6mhdjlraxu7q1ybv8rswm.jpg",
+      "px": 1080,
+      "mean": 181.4,
+      "sd": 43.6
+    },
+    {
+      "name": "Термо лонгслив \"Кэтрин\"Зебра1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b6d/eaovft39jjq4bw89jfpo3r2til7y5tgk.jpg",
+      "px": 1080,
+      "mean": 177.3,
+      "sd": 46.1
+    },
+    {
+      "name": "Термо лонгслив \"Кэтрин\"Лео1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/7b9/hx4xd84f6l8jl88qmrvj722n9a8ibsou.jpg",
+      "px": 1080,
+      "mean": 176.8,
+      "sd": 50
+    },
+    {
+      "name": "Термо повязка с сеткой Зебра1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a78/3icvdifakhtug2e8519cblzrdwvmldks.jpg",
+      "px": 1080,
+      "mean": 156,
+      "sd": 70.5
+    },
+    {
+      "name": "Термо повязка с сеткой ЛЕО и стразами1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3e9/ds7xpl0i9a6m1f6e3a45ricc3vmxaoeg.jpg",
+      "px": 1080,
+      "mean": 152.9,
+      "sd": 74.2
+    },
+    {
+      "name": "Термо футболка \"Кэтрин\" Лео1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5fd/hnotdrrpglbgdfhzfo95lkk5mg88k67v.jpg",
+      "px": 1080,
+      "mean": 160.2,
+      "sd": 49.3
+    },
+    {
+      "name": "Термо футболка \"Кэтрин\"Зебра1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a43/jcp95cfyolgdtj8r5ta96bj35410zgcl.jpg",
+      "px": 1080,
+      "mean": 161.6,
+      "sd": 49.3
+    },
+    {
+      "name": "Термо брюки \"Спорт\",серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/672/ejtc34xn59byvuanazevllxyyujk4787.jpg",
+      "px": 1080,
+      "mean": 177.5,
+      "sd": 49.9
+    },
+    {
+      "name": "Термо брюки \"Спорт\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/398/olz8anspgpycal8af5o02l8yjpv2htbs.jpg",
+      "px": 1080,
+      "mean": 173.6,
+      "sd": 59.1
+    },
+    {
+      "name": "Термо комплект \"Спорт\",серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/8e2/wbquh93gvgfgfji1qqkpvma0v8m0ms5h.jpg",
+      "px": 1080,
+      "mean": 185.1,
+      "sd": 52.6
+    },
+    {
+      "name": "Термо комплект \"Спорт\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/844/00344jzo50n05k0ro4kb5xe3h4op4i95.jpg",
+      "px": 1080,
+      "mean": 184.1,
+      "sd": 54.2
+    },
+    {
+      "name": "Термо кофта \"Спорт\" серебро 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2a7/ns9p4f54d1x0ilgt7s2xwc7q2kura05d.jpg",
+      "px": 1080,
+      "mean": 185.1,
+      "sd": 52.6
+    },
+    {
+      "name": "Термо кофта \"Спорт\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/dd0/ij0limmvdk50dye56vwqj5j59eznct6s.jpg",
+      "px": 1080,
+      "mean": 184.1,
+      "sd": 54.2
+    },
+    {
+      "name": "Термо лонгслив \"Спорт\",серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/1a3/hokjuqpe0ho8gk4a1ozj6veidyns0fut.jpg",
+      "px": 1080,
+      "mean": 172.8,
+      "sd": 51.6
+    },
+    {
+      "name": "Термо лонгслив \"Спорт\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/053/prwmgs1c77w50x3bmfl4182sipi4if6l.jpg",
+      "px": 1080,
+      "mean": 172,
+      "sd": 48.4
+    },
+    {
+      "name": "Термо лосины \"Токио\"1 на каблук",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/778/t9jg4p26v181onkox9mi31qov13x9ir2.jpg",
+      "px": 1080,
+      "mean": 173,
+      "sd": 53
+    },
+    {
+      "name": "Термо брюки \"Блеск\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/6ea/44ecx62z28h8ovx3x1ch1tfsoosejnvb.jpg",
+      "px": 1080,
+      "mean": 178.6,
+      "sd": 45.7
+    },
+    {
+      "name": "Термо брюки \"Блеск\",серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/765/nuqiiwrpajyli4mc00fp8ajk5zrhbyhj.jpg",
+      "px": 1080,
+      "mean": 178.8,
+      "sd": 45.4
+    },
+    {
+      "name": "Термо кофта \"Блеск\"*",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ba0/3uv30fyzx2b1rjur09f0sq3uilcx81ha.jpg",
+      "px": 1080,
+      "mean": 178.4,
+      "sd": 44.2
+    },
+    {
+      "name": "Термо лонгслив \"Арья-1\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2e7/fv7w3rm02c05uut6utus620rlruaai7p.jpg",
+      "px": 1080,
+      "mean": 127.3,
+      "sd": 80.7
+    },
+    {
+      "name": "Термо лонгслив \"Арья-2\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f06/9y4qkhdfwppygpkexdxf56hy8jto4cnz.jpg",
+      "px": 1080,
+      "mean": 177.9,
+      "sd": 42.7
+    },
+    {
+      "name": "Термо лонгслив \"Арья-3\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/07d/vnoc7w179e00md6enhwn768wndneoiet.jpg",
+      "px": 1080,
+      "mean": 157.5,
+      "sd": 69.1
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\" лимон",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/545/59q6fzjbcbmutw1itdhfl9up99nm4xbq.jpg",
+      "px": 1080,
+      "mean": 176.1,
+      "sd": 46.6
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\" фиолет",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/fb6/u39ncj1xnpg9pkigu6gngfhsolm89neb.jpg",
+      "px": 1080,
+      "mean": 177.3,
+      "sd": 45.7
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\",красный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/35a/11exivzesbvlfvu4ac0jn52sxaa0bhc3.jpg",
+      "px": 1080,
+      "mean": 175.9,
+      "sd": 48.6
+    },
+    {
+      "name": "Термо лонгслив \"Бриз\",черный",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/251/1iye1srxg3h62u5o7rsttlz26kl7ti1k.jpg",
+      "px": 1080,
+      "mean": 175.1,
+      "sd": 46.9
+    },
+    {
+      "name": "Термо лонгслив \"Кэтрин\" ЗЕБРА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2c3/wps14cvap1mw9raregx5ua20bkds2bvo.jpg",
+      "px": 1080,
+      "mean": 177.3,
+      "sd": 46.1
+    },
+    {
+      "name": "Термо лонгслив \"Кэтрин\",горох",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a7a/a9b2nidhyfho52300dadu2iclrgv4yxw.jpg",
+      "px": 1080,
+      "mean": 176.1,
+      "sd": 48.4
+    },
+    {
+      "name": "Термо лонгслив \"Кэтрин\",ЛЕО",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/5a5/b706ylxy2ipcpjy9cqoi6rvyj21dthjf.jpg",
+      "px": 1080,
+      "mean": 176.8,
+      "sd": 50
+    },
+    {
+      "name": "Термо лонгслив \"Леся\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/27d/adkj48x5x28ccm6yy4wtzjmqsywnv3vj.jpg",
+      "px": 1080,
+      "mean": 175.6,
+      "sd": 48.8
+    },
+    {
+      "name": "Термо лонгслив \"Леся\" белый",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/53e/vn7ldliqp25o10gfdeukhfaw63gsm6pw.jpg",
+      "px": 1080,
+      "mean": 176.1,
+      "sd": 47.9
+    },
+    {
+      "name": "Термо лонгслив \"Леся\",бирюза",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c44/mt76bul2w22jww9zvkl29s3ic0rtntza.jpg",
+      "px": 1080,
+      "mean": 176,
+      "sd": 50.8
+    },
+    {
+      "name": "Термо лонгслив \"Леся\",фиолет",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/6e8/obfe4f0aqw2ful3e0lt7rxljf9zr75ek.jpg",
+      "px": 1080,
+      "mean": 175.9,
+      "sd": 49.5
+    },
+    {
+      "name": "Термо лонгслив \"Спорт\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/31b/kflv4ckdvx0fwnfzkzuwrd2hj1q2dq9v.jpg",
+      "px": 1080,
+      "mean": 172,
+      "sd": 48.4
+    },
+    {
+      "name": "Термо лонгслив \"Спорт\",серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e7e/zxw3quzxwwzctbf8rlx9w51m0jtor29t.jpg",
+      "px": 1080,
+      "mean": 172.8,
+      "sd": 51.6
+    },
+    {
+      "name": "Термо майка \"Алиса\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3fc/2wlxn59prlktnwz1rnu8u5gbcmnic8rm.jpg",
+      "px": 1080,
+      "mean": 158.6,
+      "sd": 49.6
+    },
+    {
+      "name": "Термо майка \"Алиса\" 1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/657/a16c87mbp1j3yzvmqmy1t8oln2z7gogm.jpg",
+      "px": 1080,
+      "mean": 159.2,
+      "sd": 50.8
+    },
+    {
+      "name": "Термо майка \"Алиса\" 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a6a/cab1pe5zoa82h5p37s6v1b1x9xxt822t.jpg",
+      "px": 1080,
+      "mean": 156.2,
+      "sd": 50.4
+    },
+    {
+      "name": "Термо майка \"Алиса\" 4",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/be9/nj8y5hwflzyruk3vbjmatqm6ki6n2kvd.jpg",
+      "px": 1080,
+      "mean": 158.2,
+      "sd": 51.6
+    },
+    {
+      "name": "Термо майка \"Леся\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/959/v9he03hf11ths0ogxhel6zyghmqrj1jq.jpg",
+      "px": 1080,
+      "mean": 157.2,
+      "sd": 51.2
+    },
+    {
+      "name": "Термо майка \"Леся\" 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/557/fcayy52vi5t6y0njo1h3h9hur82ekj6i.jpg",
+      "px": 1080,
+      "mean": 151.6,
+      "sd": 51.9
+    },
+    {
+      "name": "Термо майка \"Леся\" 3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4e0/yo6lzykocnedexho5bbr3ahv8b8whfn5.jpg",
+      "px": 1080,
+      "mean": 153.9,
+      "sd": 50.2
+    },
+    {
+      "name": "Термо майка \"Леся\"4",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c36/ds5mxgpg186qc7r16exuch7324f7j34e.jpg",
+      "px": 1080,
+      "mean": 149.7,
+      "sd": 50.7
+    },
+    {
+      "name": "Термо футболка \"Вики\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/736/pebnalzip36qwag6f8pmgr6okbefxh81.jpg",
+      "px": 1080,
+      "mean": 156.7,
+      "sd": 54.6
+    },
+    {
+      "name": "Термо футболка \"Вики\" 2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/1a3/rdgi3qmnia39fnk8v95xbo4uq15darn5.jpg",
+      "px": 1080,
+      "mean": 158.1,
+      "sd": 51.8
+    },
+    {
+      "name": "Термо футболка \"Вики\" 3",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c00/v4pad0ejiqp96tb9oy3isl9r1h7s1yhw.jpg",
+      "px": 1080,
+      "mean": 160.2,
+      "sd": 51.1
+    },
+    {
+      "name": "Термо футболка \"Вики\" 4",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a76/rg6blbkkpsb12y9qzwgcfqqehp6co2tb.jpg",
+      "px": 1080,
+      "mean": 162,
+      "sd": 49
+    },
+    {
+      "name": "Термо футболка \"Кэтрин\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e3e/ju2y3kvcm98ciy9deyx61ocyfomoycq9.jpg",
+      "px": 1080,
+      "mean": 162.1,
+      "sd": 50.8
+    },
+    {
+      "name": "Термо футболка \"Кэтрин\" ЗЕБРА",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e48/qj412chqm2hhtdp9xdwc30bbs1a1x71w.jpg",
+      "px": 1080,
+      "mean": 161.6,
+      "sd": 49.3
+    },
+    {
+      "name": "Термо футболка \"Реглан\" с фигуристкой",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/96b/6feqxumh4pf7ybuieolvp4lfs4j6xi02.jpg",
+      "px": 1080,
+      "mean": 181,
+      "sd": 57.8
+    },
+    {
+      "name": "Термо футболка \"Реглан\" с фигуристкой**",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/208/7m30mcjp3b3ta1z4r85c48w1bwo91jbo.jpg",
+      "px": 1080,
+      "mean": 182.1,
+      "sd": 58.5
+    },
+    {
+      "name": "Футболка термо \"Экзотика\" S+S",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/626/626d45223ab1037c2ee9b40fc19e045b.jpg",
+      "px": 900,
+      "mean": 143.1,
+      "sd": 58.4
+    },
+    {
+      "name": "Футболкка термо \"Стрекоза\" S+S",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/7ab/7ab95580c3469fb7f4e03e3869cebf5d.jpg",
+      "px": 900,
+      "mean": 144.8,
+      "sd": 49.7
+    },
+    {
+      "name": "Термо водолазка \"Вита\" с фигуристкой",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/768/6mbibd7w2dvpv7sac8fbne6m257y5rme.jpg",
+      "px": 1080,
+      "mean": 181.3,
+      "sd": 57.7
+    },
+    {
+      "name": "Термо водолазка \"Вита\" с фигуристкой**",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ab3/lhtltcdvrjxjcukjw5mmc0qwqm02hwp6.jpg",
+      "px": 1080,
+      "mean": 184.2,
+      "sd": 53.6
+    },
+    {
+      "name": "Термо лонгслив \"Агния\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/b29/1gbvple5shzz3e0k2nb50j1ovt81rvkp.jpg",
+      "px": 1080,
+      "mean": 177.8,
+      "sd": 57.9
+    },
+    {
+      "name": "Термо лонгслив \"Инга\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/52f/xl1tptf7lq0dub8332jm67l8i0fqrjwn.jpg",
+      "px": 1080,
+      "mean": 179.9,
+      "sd": 53.8
+    },
+    {
+      "name": "Термо лонгслив \"Ирма\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/09b/a5spkaffd3b12t7bbgnd62do4aer1pzu.jpg",
+      "px": 1080,
+      "mean": 169.3,
+      "sd": 65
+    },
+    {
+      "name": "Термо лонгслив \"Мирель\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/f34/liplex7f4gfp7lssyy1j1z2ccqfioe7p.jpg",
+      "px": 1080,
+      "mean": 179.6,
+      "sd": 56.8
+    },
+    {
+      "name": "Термо брюки \"Аманда\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c59/z7qzeghg8mx3r0f9o12za4bikk3qrw02.jpg",
+      "px": 1080,
+      "mean": 149.7,
+      "sd": 67.8
+    },
+    {
+      "name": "Термо брюки \"Блеск\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/bc7/68lu8vvtu30edsf19ps1gphsc4as85yn.jpg",
+      "px": 1080,
+      "mean": 178.6,
+      "sd": 45.7
+    },
+    {
+      "name": "Термо брюки \"Блеск\"1,серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/224/erouqyiw2o8rrvn5qgnq4rzq61ol7hfd.jpg",
+      "px": 1080,
+      "mean": 178.8,
+      "sd": 45.4
+    },
+    {
+      "name": "Термо брюки \"Диамант\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/400/38lzgtzeuk82rxdr1gerzrllcqytibd0.jpg",
+      "px": 1080,
+      "mean": 180.4,
+      "sd": 42.7
+    },
+    {
+      "name": "Термо брюки \"Спорт\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/662/vbs1zb1gf9t2rdjtugfz61uvbkt0zjtm.jpg",
+      "px": 1080,
+      "mean": 173.6,
+      "sd": 59.1
+    },
+    {
+      "name": "Термо брюки \"Спорт\"1,серебро1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/c9e/woxdrcsv300xowwk7fgsgsrqr12d3aox.jpg",
+      "px": 1080,
+      "mean": 177.5,
+      "sd": 49.9
+    },
+    {
+      "name": "Термо юбка \"Арья\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a02/okwmk83c1w66vi3llfjbutokxf2jxzm8.jpg",
+      "px": 1080,
+      "mean": 141.3,
+      "sd": 74.8
+    },
+    {
+      "name": "Термо юбка \"Вики\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e27/ppgfmcx0ciynkmewslj9n7hf207ah4mp.jpg",
+      "px": 1080,
+      "mean": 154.8,
+      "sd": 69.7
+    },
+    {
+      "name": "Термо брюки \"Тедди\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/93b/21vym31vswtf1gcwtbde9e5dx8tdkp65.jpg",
+      "px": 1080,
+      "mean": 186.5,
+      "sd": 42.7
+    },
+    {
+      "name": "Жилет двусторонний \"Натали\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2b1/rzapuxm8x8rctsq943kk0ckrffabsp0b.jpg",
+      "px": 720,
+      "mean": 140.1,
+      "sd": 43
+    },
+    {
+      "name": "Комбинезон термо \"Соблазн\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3b8/3b8e6ddc0f87f65310fdd9092eac1ff1.jpg",
+      "px": 900,
+      "mean": 160.7,
+      "sd": 55.4
+    },
+    {
+      "name": "Комплект термо \"Версаль S+S\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/e17/e17c656140fdaa7977114777418a8b67.jpg",
+      "px": 900,
+      "mean": 145.8,
+      "sd": 59
+    },
+    {
+      "name": "Термо кофта \"Арья\",Бали",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/41a/e8s9l485qtloit2lh15n0iguaqapvsvi.jpg",
+      "px": 1080,
+      "mean": 176.6,
+      "sd": 50.1
+    },
+    {
+      "name": "Термо кофта \"Арья\",красная",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/0c2/mzxlhsnd852n8hxl8b8k3gctr0lnhm2p.jpg",
+      "px": 1080,
+      "mean": 176.1,
+      "sd": 46.2
+    },
+    {
+      "name": "Термо кофта \"Арья\",фиолет",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/562/ozd3a4t69zk0bleykx04hv1bxqd1boo6.jpg",
+      "px": 1080,
+      "mean": 176.7,
+      "sd": 46.5
+    },
+    {
+      "name": "Термо кофта \"Блеск\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9e2/1yoh68bm9tb41cmtlj92xwugfbf5ik0g.jpg",
+      "px": 1080,
+      "mean": 178.4,
+      "sd": 44.2
+    },
+    {
+      "name": "Термо кофта \"Диамант\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d8a/v103cvt3ygj2tmf4zdsw1wc8q8gjgz8n.jpg",
+      "px": 1080,
+      "mean": 176.2,
+      "sd": 50.5
+    },
+    {
+      "name": "Термо кофта \"Спорт\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/2cf/bror6dd0d7asn7u7izcy0j3fgfx721zv.jpg",
+      "px": 1080,
+      "mean": 184.1,
+      "sd": 54.2
+    },
+    {
+      "name": "Термо кофта \"Спорт\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/ad9/r5qgd3o403vptvr6b0qgodsgjy83so6h.jpg",
+      "px": 1080,
+      "mean": 185.1,
+      "sd": 52.6
+    },
+    {
+      "name": "Термо кофта\"Мики\" серебро",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/40b/dz8ono05e6g8p56a1yth42mwbcg627fq.jpg",
+      "px": 1080,
+      "mean": 180.7,
+      "sd": 43.7
+    },
+    {
+      "name": "Термо кофта\"Мики\"черная",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/9db/pq7hzy5jnfby4skdophkn50fqaflf152.jpg",
+      "px": 1080,
+      "mean": 175.6,
+      "sd": 48.8
+    },
+    {
+      "name": "Термо кофта \"Астрид\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/4d7/mjd21qluaifyd1awxcda8q4pt71205ch.jpg",
+      "px": 1080,
+      "mean": 178.4,
+      "sd": 58.2
+    },
+    {
+      "name": "Термо кофта \"Берта\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/97e/320pn748puphz1mtzexs9x21kkoithfs.jpg",
+      "px": 1080,
+      "mean": 177.2,
+      "sd": 59.1
+    },
+    {
+      "name": "Термо кофта \"Бьянка\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/01c/fyrb4g41uv4bbilt446v2gvfczw3hgjq.jpg",
+      "px": 1080,
+      "mean": 186.2,
+      "sd": 53.8
+    },
+    {
+      "name": "Термо кофта \"Гретта\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/d98/pxrsidsnuovm04qjbfi4mqsbfwl34t9u.jpg",
+      "px": 1080,
+      "mean": 173.9,
+      "sd": 60.3
+    },
+    {
+      "name": "Термо кофта \"Лада\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/70b/1fsb9508oi645se9oo3og38lwyas11kt.jpg",
+      "px": 1080,
+      "mean": 185.2,
+      "sd": 51.5
+    },
+    {
+      "name": "Термо кофта \"Симона\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/a57/jh0hair77ny0val8hz6xrx5mimne7jeb.jpg",
+      "px": 1080,
+      "mean": 181.3,
+      "sd": 56.2
+    },
+    {
+      "name": "Термо кофта \"Симона\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/092/dlz7vwd3qvk1n94nmhg7hmav6lmp765i.jpg",
+      "px": 1080,
+      "mean": 178,
+      "sd": 57.1
+    },
+    {
+      "name": "Термо кофта \"Симона\"2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/3cc/mfb6obdjfwhbcek4ur2p59q7u61ggd8w.jpg",
+      "px": 1080,
+      "mean": 178.2,
+      "sd": 57.8
+    },
+    {
+      "name": "Термо кофта \"Тедди\"",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/213/ktlhzohcg6kblie6hsnxj7ux6k85lx8c.jpg",
+      "px": 1080,
+      "mean": 174.7,
+      "sd": 62.5
+    },
+    {
+      "name": "Термо кофта \"Тедди\"1",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/332/ep6badbkcoixef0xblscf2hchutw71bl.jpg",
+      "px": 1080,
+      "mean": 172.4,
+      "sd": 64.1
+    },
+    {
+      "name": "Термо кофта \"Тедди\"2",
+      "cat": "Одежда для девочек",
+      "img": "/upload/iblock/679/tu36zqma97pius6qfnqiuzyuijxruzzm.jpg",
+      "px": 1080,
+      "mean": 173.7,
+      "sd": 62.9
+    },
+    {
+      "name": "Футболка 32",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/9b4/9b46374ad414692b1ecb56bc387859e4.jpg",
+      "px": 2000,
+      "mean": 141.6,
+      "sd": 18.6
+    },
+    {
+      "name": "Футболка 33",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/813/8132c4a1bd9428b20ce4fa2aae6aa13a.jpg",
+      "px": 2000,
+      "mean": 141.1,
+      "sd": 19.2
+    },
+    {
+      "name": "Футболка 34",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/86b/86bb3381cffb81ea8fc2082fe4876fdc.jpg",
+      "px": 2000,
+      "mean": 152.1,
+      "sd": 12.3
+    },
+    {
+      "name": "Футболка 35",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/9fe/9fef27267fcda348847bf50abe513f3b.jpg",
+      "px": 2000,
+      "mean": 141.8,
+      "sd": 18.8
+    },
+    {
+      "name": "Футболка 36",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/bd2/bd2adc34412c7a4842f044a9e1b77dbf.jpg",
+      "px": 2000,
+      "mean": 141.3,
+      "sd": 19.1
+    },
+    {
+      "name": "Футболка 37",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/b57/b5747c277e0af0cd9c4d44d716008d90.jpg",
+      "px": 2000,
+      "mean": 141.3,
+      "sd": 19.1
+    },
+    {
+      "name": "Футболка 38",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/f1b/f1b869f541b978575a29d2e673d897e5.jpg",
+      "px": 2000,
+      "mean": 141.5,
+      "sd": 19
+    },
+    {
+      "name": "Футболка 39",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/17e/17e09b4fd7a3dfc8ca98a02658f8e402.jpg",
+      "px": 2000,
+      "mean": 141,
+      "sd": 19.2
+    },
+    {
+      "name": "Футболка 40",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/274/274a3b1c9b1b07868822c94d3720c47a.jpg",
+      "px": 2000,
+      "mean": 141,
+      "sd": 19.2
+    },
+    {
+      "name": "Футболка 41",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/ca1/ca160729b1a4ecda545dcfa84c61dd58.jpg",
+      "px": 2000,
+      "mean": 141,
+      "sd": 19.2
+    },
+    {
+      "name": "Шапка",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/f0e/f0ed6388514456c5bc25e4495d551a5f.jpg",
+      "px": 1333,
+      "mean": 215,
+      "sd": 53.9
+    },
+    {
+      "name": "Шапка",
+      "cat": "Одежда MSK",
+      "img": "/upload/iblock/259/2599aed47c5aabe8af7bf522b48a927f.jpg",
+      "px": 1333,
+      "mean": 193.1,
+      "sd": 82.6
+    },
+    {
+      "name": "Игрушка зайка\"Танюшка\" 2",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/bf7/bf780a956888c4d86c44972d0b3d428e.JPG",
+      "px": 1771,
+      "mean": 170,
+      "sd": 35.1
+    },
+    {
+      "name": "Кукла на коньках от дизайнера",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/153/fp6f1havep9fy7vg1az2jw3ui0a4drn1.JPG",
+      "px": 2926,
+      "mean": 171.3,
+      "sd": 28
+    },
+    {
+      "name": "Набор 023-012",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/3af/oi5nce438bu7lhufhmeu1qv8pg4ewk81.jpg",
+      "px": 1080,
+      "mean": 154.1,
+      "sd": 53.2
+    },
+    {
+      "name": "Набор 023-013",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/0d1/yftf3yd99kwi9btunpwgnshsli22ugut.jpg",
+      "px": 1126,
+      "mean": 160.7,
+      "sd": 42.4
+    },
+    {
+      "name": "Набор 023-014",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d59/f7ruep7d98sh26ytbpltkhcdg89svqow.jpg",
+      "px": 1208,
+      "mean": 150.6,
+      "sd": 44.3
+    },
+    {
+      "name": "Набор 023-015",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/6b8/n6d31fma035puw3l4bosa2j4xrq00gt2.jpg",
+      "px": 1280,
+      "mean": 174.7,
+      "sd": 17.9
+    },
+    {
+      "name": "Набор 023-016",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/a4d/ssgipa9rovxpy7xdu42k0gmdjpf2owdl.jpg",
+      "px": 1280,
+      "mean": 168.9,
+      "sd": 24.9
+    },
+    {
+      "name": "Набор 023-017",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/a93/yzsy581n4emm21h6a3z7ic5z1r9k2e4s.jpg",
+      "px": 1256,
+      "mean": 141.1,
+      "sd": 21.8
+    },
+    {
+      "name": "Набор 023-020",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/d46/63u56yc46rf7i7sn64h1rpv6hcrlsk8c.jpg",
+      "px": 1237,
+      "mean": 150.7,
+      "sd": 53.9
+    },
+    {
+      "name": "Набор 023-021",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/38f/tbdz9mnnmlq4qneiyqnqvzbztwb2uy3q.jpg",
+      "px": 1080,
+      "mean": 158.1,
+      "sd": 45.9
+    },
+    {
+      "name": "Набор 023-022",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/eb9/gd2jhps18hbq5nzqlggqnq3eicuf6zp7.jpg",
+      "px": 1280,
+      "mean": 170.2,
+      "sd": 31.6
+    },
+    {
+      "name": "Набор 023-026",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/8a9/xntm6wpwymc1vuej21je2sp1ih6qc46s.jpg",
+      "px": 1280,
+      "mean": 163.7,
+      "sd": 23.3
+    },
+    {
+      "name": "Набор 023-029",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/bb0/wil2r2jcqdv4sp3ms88zcpxo33kvwbvt.jpg",
+      "px": 1280,
+      "mean": 174.6,
+      "sd": 19.1
+    },
+    {
+      "name": "Набор 023-032",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/1cd/0r9hkto2it2e37gjvqq2nv4lylqsbkh5.jpg",
+      "px": 1280,
+      "mean": 157.1,
+      "sd": 45.7
+    },
+    {
+      "name": "Набор 023-033",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/cc8/cxrkmjz8pw9415qs1173lmy2bq8x3btv.jpg",
+      "px": 1280,
+      "mean": 171.9,
+      "sd": 23.3
+    },
+    {
+      "name": "Набор 023-038",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/845/84545cb3545d1979ef10619bf13d8d69.jpg",
+      "px": 1080,
+      "mean": 192.7,
+      "sd": 52.2
+    },
+    {
+      "name": "Набор 023-040",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/49e/v7pt5f77vpixd0ne714thy7mygzvi5ts.jpg",
+      "px": 1280,
+      "mean": 169.1,
+      "sd": 23.7
+    },
+    {
+      "name": "Набор 023-05",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/95a/fl3gcim1t9cjkj09nnte4jvy9lrc5fp2.jpg",
+      "px": 1871,
+      "mean": 157.2,
+      "sd": 69.1
+    },
+    {
+      "name": "Набор 023-051",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/7db/yd511ces71bdoy7hu6uancum6rbq6chx.jpg",
+      "px": 1280,
+      "mean": 168.3,
+      "sd": 26.2
+    },
+    {
+      "name": "Набор 023-054",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/8b4/syzdmnpr6ap8pol3w85qslhkgl2t5ch2.jpg",
+      "px": 2000,
+      "mean": 175.1,
+      "sd": 55.3
+    },
+    {
+      "name": "Набор 023-06",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/559/zd1jbttgpre1kyjsyw8i2kkpgqrthufd.jpg",
+      "px": 2000,
+      "mean": 160.7,
+      "sd": 55.1
+    },
+    {
+      "name": "Подарочный набор для фигуристки",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/fba/q6cc5fw4swebddk37plit5rxmvfkd55f.jpg",
+      "px": 1440,
+      "mean": 138.9,
+      "sd": 19.7
+    },
+    {
+      "name": "Подарочный набор для фигуристки(расческа+зеркало)",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/021/d8xhryhdmb6ch0bomvfsw6qbi038hzlj.jpg",
+      "px": 1440,
+      "mean": 146.5,
+      "sd": 32.1
+    },
+    {
+      "name": "Подарочный набор(повязка+полотенце)",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/27e/71x2hf5os38ht1omej57d5dt3lmm5rx0.jpg",
+      "px": 1440,
+      "mean": 135.2,
+      "sd": 27.6
+    },
+    {
+      "name": "Подарочный мешок",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/37a/37ad8183e5c746064fe6f149271a4569.jpg",
+      "px": 1080,
+      "mean": 164.5,
+      "sd": 23
+    },
+    {
+      "name": "Подарочный мешок",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/4d1/4d1a17c7dd1a05807722c8810a3f47c4.jpg",
+      "px": 1280,
+      "mean": 147.7,
+      "sd": 28.1
+    },
+    {
+      "name": "Салфетница-игрушка \"Единорог белый\"*",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/017/01733d675d593d8fe0d18462e8948bbc.jpg",
+      "px": 1046,
+      "mean": 165.1,
+      "sd": 36.9
+    },
+    {
+      "name": "Футболка \"Покатаемся?\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/db2/660qny873daimwkkihh6o3pco4ef0ngu.jpg",
+      "px": 864,
+      "mean": 177.9,
+      "sd": 71.5
+    },
+    {
+      "name": "Футболка \"Тренируюсь сутками\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/989/bcizu8geal6ny4cb1hc52h4wwd3o9kzb.jpg",
+      "px": 864,
+      "mean": 184.2,
+      "sd": 83.1
+    },
+    {
+      "name": "Футболка \"Фигуристка всея Руси\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/2eb/4lpyjkn28udg0bwbkf3bgkhw8v9v6m0a.jpg",
+      "px": 864,
+      "mean": 178.4,
+      "sd": 71.2
+    },
+    {
+      "name": "Футболка х\\б \"Маруся\" белая",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/4a9/r7lyvguqshxealhfqdv8j5ni8apb00vt.jpeg",
+      "px": 896,
+      "mean": 144.6,
+      "sd": 3
+    },
+    {
+      "name": "Футболка\" Я выбираю фигурное катание\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/f63/8gsqbicq06vrr67fs89sf4ktdxp5ax3m.jpg",
+      "px": 864,
+      "mean": 190.5,
+      "sd": 79.1
+    },
+    {
+      "name": "Футболка\"Аксель\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/e05/k8ypbzo3zav88n79scxfe96yqrfou42p.jpg",
+      "px": 1220,
+      "mean": 180.5,
+      "sd": 71.3
+    },
+    {
+      "name": "Футболка\"Катай\"",
+      "cat": "Сувениры",
+      "img": "/upload/iblock/47e/r62xkynxg7392l6kyjiqs1r2nk5fbk64.jpg",
+      "px": 864,
+      "mean": 187.1,
+      "sd": 81
+    },
+    {
+      "name": "Портплед с принтом АРТ. 13-018",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/a60/a60b17f65c7b6ceaebe13c12e22b87fd.jpg",
+      "px": 1280,
+      "mean": 162.1,
+      "sd": 32.4
+    },
+    {
+      "name": "Сумка-переноска для коньков \"Ёлочки\"",
+      "cat": "Сумки,рюкзаки",
+      "img": "/upload/iblock/bb6/bb63294d1e4e3dde2be9328eef284e10.jpg",
+      "px": 1200,
+      "mean": 236.7,
+      "sd": 56.9
+    },
+    {
+      "name": "Спиннер  \"Tiger\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/466/46682c0a3874d8b33f8ff78244e3ebe4.jpg",
+      "px": 1200,
+      "mean": 238.1,
+      "sd": 54.9
+    },
+    {
+      "name": "Спиннер \"Lion\"(Проскейтинг)",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/51c/51c0a3f0e4ab19ff323dd7221522b28d.jpg",
+      "px": 1200,
+      "mean": 237.1,
+      "sd": 57.7
+    },
+    {
+      "name": "Спиннер с рисунком \"Космокот\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/8f2/zglij2n912q6gvmq4gkqn1ezqfmswao6.jpg",
+      "px": 1200,
+      "mean": 241.1,
+      "sd": 42.9
+    },
+    {
+      "name": "Спиннер с рисунком \"Back-Panther\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/e71/e710347fdf414d1f2318edadfd508b20.jpg",
+      "px": 1200,
+      "mean": 237.2,
+      "sd": 57.6
+    },
+    {
+      "name": "Спиннер с рисунком \"Wolf\"",
+      "cat": "Тренажеры",
+      "img": "/upload/iblock/131/1314254b440e5a2f1d6efa30ca2456d5.jpg",
+      "px": 1200,
+      "mean": 240,
+      "sd": 49.2
+    },
+    {
+      "name": "Коньки фигурные Riedell 23",
+      "cat": "Фигурные коньки",
+      "img": "/upload/iblock/2cf/2cf2a0f64e96ff8b667b0a10d7898570.jpg",
+      "px": 3024,
+      "mean": 151.4,
+      "sd": 39.5
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/027/0279a5fbebd42858c23eec335db08517.jpg",
+      "px": 862,
+      "mean": 4.8,
+      "sd": 14.7
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/2f3/2f38c2e716325568a811f33227f1ddd1.jpg",
+      "px": 862,
+      "mean": 10.8,
+      "sd": 37.6
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/ba1/ba1f9a20de811bebcffaf4af1340c769.jpg",
+      "px": 862,
+      "mean": 5.1,
+      "sd": 16.1
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/d27/d2727be8e7614d12159a60d118b71b80.jpg",
+      "px": 862,
+      "mean": 8,
+      "sd": 26.9
+    },
+    {
+      "name": "Чехлы на лезвия Edea",
+      "cat": "Хранение",
+      "img": "/upload/iblock/819/8199a118f00dc98170db7ec3d6b9ca0c.jpg",
+      "px": 862,
+      "mean": 14.4,
+      "sd": 43.1
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-001",
+      "cat": "Хранение",
+      "img": "/upload/iblock/6fa/qvl2jk5bg5oxcfr8beil2y94ffgkfo7k.jpg",
+      "px": 1079,
+      "mean": 167.3,
+      "sd": 16.9
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-002",
+      "cat": "Хранение",
+      "img": "/upload/iblock/05d/03dfrktqfm0t76skqpkfe6p0wjxslvzj.jpg",
+      "px": 1079,
+      "mean": 172.5,
+      "sd": 22.4
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-004",
+      "cat": "Хранение",
+      "img": "/upload/iblock/0be/c230cou6rh4hmzlm57x4fxpinvhbb01e.jpg",
+      "px": 1079,
+      "mean": 172,
+      "sd": 17.6
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-005",
+      "cat": "Хранение",
+      "img": "/upload/iblock/8e6/3yy5vugd1zn0bsxucr009e97qklyixzf.jpg",
+      "px": 1079,
+      "mean": 171,
+      "sd": 19.7
+    },
+    {
+      "name": "Мешок-чехол для коньков (2 шт.) АРТ. 19-006",
+      "cat": "Хранение",
+      "img": "/upload/iblock/723/4moddnoqayipmk3m1fpj37xgj8o9cg7p.jpg",
+      "px": 1346,
+      "mean": 174.1,
+      "sd": 48.3
+    },
+    {
+      "name": "Защита для лезвий (сушка) 1",
+      "cat": "Хранение",
+      "img": "/upload/iblock/98c/98ccf7bd0803fa2dbb08dcee3cde99a6.jpg",
+      "px": 2000,
+      "mean": 158.7,
+      "sd": 20.1
+    },
+    {
+      "name": "Защита для лезвий (сушка) 2",
+      "cat": "Хранение",
+      "img": "/upload/iblock/af2/af24ab491ec2f0dd7d2111e6e87fe94f.jpg",
+      "px": 2000,
+      "mean": 169.4,
+      "sd": 22.9
+    },
+    {
+      "name": "Защита для лезвий (сушка) 5",
+      "cat": "Хранение",
+      "img": "/upload/iblock/1d8/1d8028476053d3a4a4e3e56a2f45f13d.jpg",
+      "px": 1624,
+      "mean": 157.6,
+      "sd": 20.6
+    },
+    {
+      "name": "Чехлы-игрушки на лезвия \"Единорожки\" белые",
+      "cat": "Хранение",
+      "img": "/upload/iblock/974/974723cfce167e08897efc11fb03c2a6.jpg",
+      "px": 1080,
+      "mean": 144.1,
+      "sd": 22.5
+    }
+  ]
+}

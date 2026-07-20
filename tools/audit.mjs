@@ -48,10 +48,15 @@ function collect() {
   const parse = (c) => (c.match(/[\d.]+/g) || []).slice(0, 3).map(Number);
   const alpha = (c) => { const p = (c.match(/[\d.]+/g) || []); return p.length > 3 ? Number(p[3]) : 1; };
 
+  // Возвращает null, если под текстом фотография или градиент: тогда контраст
+  // вычислить нельзя, и предупреждать не о чем — это работа для глаз, а не для формулы.
   function bgOf(el) {
     for (let n = el; n && n !== document.documentElement; n = n.parentElement) {
-      const bg = getComputedStyle(n).backgroundColor;
-      if (bg && alpha(bg) > 0.5) return parse(bg);
+      const cs = getComputedStyle(n);
+      if (cs.backgroundImage && cs.backgroundImage !== 'none') return null;
+      // текст поверх абсолютно позиционированного слоя с картинкой-соседом
+      if (cs.position === 'absolute' && n.parentElement?.querySelector('img')) return null;
+      if (cs.backgroundColor && alpha(cs.backgroundColor) > 0.5) return parse(cs.backgroundColor);
     }
     return [255, 255, 255];
   }
@@ -67,6 +72,7 @@ function collect() {
 
     const fg = parse(cs.color);
     const bg = bgOf(el);
+    if (!bg) continue;                 // текст лежит на фото — формулой не проверить
     const L1 = lum(fg), L2 = lum(bg);
     const ratio = (Math.max(L1, L2) + 0.05) / (Math.min(L1, L2) + 0.05);
     const size = parseFloat(cs.fontSize);
@@ -94,7 +100,8 @@ function collect() {
       R.blurry.push({ src: img.currentSrc.split('/').pop(), natural: img.naturalWidth, rendered: need });
     }
     const miss = [];
-    if (!img.getAttribute('alt')) miss.push('alt');
+    // alt="" — законная пометка «картинка декоративная», а не пропуск
+    if (img.getAttribute('alt') === null) miss.push('alt');
     if (!img.getAttribute('width')) miss.push('width');
     if (!img.getAttribute('height')) miss.push('height');
     if (miss.length) R.imgMeta.push({ src: img.currentSrc.split('/').pop(), miss });
