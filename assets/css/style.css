@@ -127,12 +127,23 @@ button { font: inherit; }
   align-items: center;
   justify-content: space-between;
   gap: clamp(16px, 2vw, 32px);
-  padding-block: clamp(18px, 2.2vw, 26px);
+  /* Единственный блок страницы во всю ширину окна: у остальных секций контейнер
+     с max-width, а шапку он на широком мониторе поджимал бы к центру, оставляя
+     по краям пустоту. Логотип и корзину ищут в углах экрана — там их и держим. */
+  padding-block: clamp(9px, 1vw, 13px);
+  padding-inline: var(--gutter);
 }
 
 .header__logo {
   flex: 0 0 auto;
-  font-size: clamp(22px, 2vw, 28px);
+  display: block;
+}
+
+/* Высотой логотипа задаётся высота всей шапки: у него пропорция 4.46:1,
+   и ограничивать его по ширине значило бы ловить высоту вслепую. */
+.header__logo img {
+  height: clamp(26px, 2.5vw, 34px);
+  width: auto;
 }
 
 .header__nav {
@@ -168,6 +179,118 @@ button { font: inherit; }
 
 .navlink:hover { color: var(--teal-deep); }
 .navlink:hover::after { transform: scaleX(1); }
+
+/* --- Выпадающий каталог -------------------------------------------------
+   Панель лежит внутри пункта «Каталог», а не рядом с ним: только так наведение
+   на саму панель считается наведением на пункт и меню не захлопывается, пока
+   ведёшь мышь вниз. Раскладку задаёт tools/build-catalog.mjs.
+   ---------------------------------------------------------------------- */
+.navitem--drop {
+  /* static, чтобы .megamenu отсчитывался от шапки и растянулся во всю ширину,
+     а не от узкого пункта меню */
+  position: static;
+  display: flex;
+  align-items: center;
+}
+
+.navlink--drop {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navlink__chev {
+  transition: transform .25s ease;
+}
+
+.navitem--drop:hover .navlink__chev,
+.navitem--drop:focus-within .navlink__chev { transform: rotate(180deg); }
+
+.megamenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 40;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 44px -30px rgba(30, 42, 44, .4);
+  padding: clamp(24px, 3vw, 40px) var(--gutter);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .22s ease, transform .22s ease, visibility .22s;
+}
+
+.navitem--drop:hover .megamenu,
+.navitem--drop:focus-within .megamenu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* Колонки, а не грид: у разделов от нуля до семи подразделов, и грид оставлял
+   бы под короткими зияющие дыры. Поток колонок укладывает их плотно,
+   break-inside держит раздел целиком в одной колонке. */
+.megamenu__inner {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  columns: 5 230px;
+  column-gap: clamp(20px, 2.4vw, 38px);
+}
+
+.megamenu__group {
+  break-inside: avoid;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: clamp(20px, 2vw, 30px);
+}
+
+.megamenu__title {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.megamenu__title:hover { color: var(--teal-deep); }
+
+.megamenu__link {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+  padding-block: 5px;
+}
+
+.megamenu__link:hover { color: var(--teal-deep); }
+
+/* min-width: 0 обязателен: без него flex-элемент не даёт себя сжать уже
+   содержимого, и длинное название выдавливало счётчик в соседнюю колонку. */
+.megamenu__name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.megamenu__count {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--pill);
+}
+
+.megamenu__link--more {
+  color: var(--teal-deep);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
 
 .header__tools {
   flex: 0 0 auto;
@@ -221,11 +344,10 @@ button { font: inherit; }
    ========================================================================== */
 .hero {
   position: relative;
-  /* Пропорция ровно по исходнику 2752×1536 и во всю ширину экрана: при точном
-     совпадении пропорций cover не обрезает вообще ничего — ни голову сверху,
-     ни термокуртку снизу. Ограничения по высоте здесь быть не должно, иначе
-     оно снова начнёт срезать кадр. */
-  aspect-ratio: 2752 / 1536;
+  /* Кадр 2752×1536 во всю ширину давал почти 1100px высоты на большом мониторе —
+     герой занимал весь первый экран. Поджимаем высоту и режем только снизу
+     (см. object-position у .hero__media): вверху остаётся весь запас над головой. */
+  height: clamp(340px, 50vw, 820px);
   background: #F7F8F8;
   overflow: hidden;
 }
@@ -234,7 +356,10 @@ button { font: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 50%;
+  /* Верх кадра приколочен к верху блока: что бы ни случилось с высотой,
+     обрезается низ (куртка), а голова не трогается никогда.
+     По горизонтали 68% — на узких экранах в кадре остаётся сама фигуристка. */
+  object-position: 68% 0;
 }
 
 .hero__inner {
@@ -296,41 +421,57 @@ button { font: inherit; }
 .hero__cta:hover { background: var(--teal); }
 
 /* ==========================================================================
-   Полоса доверия — чем магазин отличается от маркетплейса
+   Полоса доверия — бирюзовая бегущая строка под героем
    ========================================================================== */
-.trust {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: clamp(18px, 2.4vw, 36px);
-  padding-block: clamp(32px, 3.8vw, 56px);
-  border-bottom: 1px solid var(--line);
+.marquee {
+  background: var(--teal-deep);
+  color: #fff;
+  overflow: hidden;
+  padding-block: clamp(9px, 1vw, 13px);
 }
 
-.trust__item {
+/* Внутри две одинаковые ленты подряд. Прокрутка ровно на половину дорожки —
+   к концу анимации вторая лента стоит там же, где стартовала первая, поэтому
+   склейка не видна и строка бежит бесконечно. */
+.marquee__track {
   display: flex;
-  gap: 14px;
-  align-items: flex-start;
+  width: max-content;
+  animation: marquee-run 38s linear infinite;
 }
 
-.trust__icon {
+.marquee:hover .marquee__track { animation-play-state: paused; }
+
+.marquee__row {
   flex: 0 0 auto;
-  color: var(--teal-deep);
-  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 3.2vw, 52px);
+  /* Такой же отступ после последнего пункта, иначе на стыке лент пропадает пробел */
+  padding-right: clamp(24px, 3.2vw, 52px);
 }
 
-.trust__title {
-  display: block;
-  font-size: 13px;
-  letter-spacing: .08em;
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  font-size: clamp(9px, .78vw, 11px);
+  letter-spacing: .16em;
   text-transform: uppercase;
-  margin-bottom: 5px;
 }
 
-.trust__text {
-  display: block;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #4A5456;
+.marquee__item svg {
+  flex: 0 0 auto;
+  opacity: .65;
+}
+
+@keyframes marquee-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track { animation: none; }
 }
 
 /* ==========================================================================
@@ -444,6 +585,15 @@ button { font: inherit; }
 
 .card:hover .card__media { border-color: var(--pill); }
 
+/* Кадры, где предплечье срезано рамкой съёмки (перчатка, защита запястья).
+   По центру такой срез висит в воздухе и читается как брак — уводим его
+   за левый край. Паддинг и object-fit остаются как у всех карточек, поэтому
+   масштаб предмета в ряду не меняется: двигается только положение.
+   Сдвиг = паддинг контейнера + белое поле слева от среза внутри самого кадра. */
+.card__media--bleed .ph {
+  transform: translateX(calc(-1 * clamp(14px, 1.6vw, 26px) - 5%));
+}
+
 .card__badge {
   position: absolute;
   top: 12px;
@@ -497,24 +647,120 @@ button { font: inherit; }
 /* Две колонки, а не текст поверх фото. Кадры в фонде вертикальные: любая попытка
    растянуть их в полосу 21:9 срезает модели голову. Рядом — не срезает ничего,
    и текст читается без градиента-подложки. */
+/* Карусель промо. Листается нативным горизонтальным скроллом со snap, а не
+   transform'ом трека: так работает свайп на телефоне и трекпаде без единой
+   строчки JS, а скрипту остаются только автоплей, стрелки и точки. */
+.promo-slider {
+  position: relative;
+}
+
+/* scroll-behavior здесь намеренно не задан: он подменил бы и мгновенные
+   перестановки после ресайза, и слайд бы уезжал с анимацией на каждый пиксель
+   изменения ширины окна. Плавность включает JS, точечно — behavior: 'smooth'. */
+.promo-slider__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+/* Слайд ровно во всю ширину трека — половинки соседнего кадра здесь были бы
+   шумом: у промо крупный заголовок, и рядом с ним обрезанная картинка читается
+   как сбитая вёрстка, а не как подсказка «дальше есть ещё». */
+.promo-slider__track > .promo {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+/* Стрелки поверх кадра. Полупрозрачная заливка нужна из-за того, что фон под
+   ними меняется от слайда к слайду: на белом поле ботинка и на тёмном рюкзаке
+   один и тот же сплошной цвет выглядел бы то грязью, то дырой. */
+.promo-slider__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  /* До 760px слайд разворачивается в колонку — фото сверху, текст снизу, —
+     и вертикальная середина приходится ровно на заголовок. Стрелки там не
+     сдвинуть, не задев текст, поэтому их просто нет: листается свайпом,
+     а положение показывают точки. */
+  display: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .82);
+  backdrop-filter: blur(6px);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+.promo-slider__nav:hover {
+  background: #fff;
+  border-color: var(--pill);
+}
+
+.promo-slider__prev { left: clamp(8px, 1.4vw, 20px); }
+.promo-slider__next { right: clamp(8px, 1.4vw, 20px); }
+
+/* Точки — единственный указатель, сколько всего слайдов и где мы сейчас.
+   Полосы прогресса, как у товарных каруселей, тут нет: слайд один на экран,
+   и доля видимого всегда одинаковая, показывать нечего. */
+.promo-slider__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: clamp(18px, 2vw, 28px);
+}
+
+.promo-slider__dot {
+  width: 32px;
+  height: 2px;
+  padding: 10px 0;          /* до 44px по высоте — зона нажатия, сама черта тонкая */
+  background: none;
+  border: 0;
+  cursor: pointer;
+  box-sizing: content-box;
+}
+
+.promo-slider__dot::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--pill);
+  transition: background-color .25s ease;
+}
+
+.promo-slider__dot[aria-current="true"]::before { background: var(--teal-deep); }
+.promo-slider__dot:hover::before { background: var(--muted); }
+
+/* Рамка та же, что у .card__media в товарных каруселях. Без неё слайд — белое
+   поле на белом фоне страницы: не видно ни где он начинается, ни что кадр
+   и текст рядом с ним это один блок, а не два соседних. */
 .promo {
   display: grid;
   grid-template-columns: 1fr;
   background: #fff;
+  border: 1px solid var(--line);
   overflow: hidden;
 }
 
+/* Кадр вырезан по предмету и лежит на прозрачном квадрате. cover обрезал бы
+   этот квадрат по краям 4/3 и раздул ботинок; contain с полем показывает его
+   целиком и держит тот же масштаб, что в карточках. */
 .promo__media {
   background: #fff;
   border-bottom: 1px solid var(--line);
   width: 100%;
   height: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
-  object-position: 50% 22%;
+  object-fit: contain;
+  padding: clamp(20px, 3vw, 52px);
   transition: opacity .3s ease;
 }
 
+.promo:hover { border-color: var(--pill); }
 .promo:hover .promo__media { opacity: .94; }
 
 .promo__inner {
@@ -568,6 +814,7 @@ button { font: inherit; }
 .promo__cta:hover { background: var(--teal); }
 
 @media (min-width: 760px) {
+  .promo-slider__nav { display: grid; }
   .promo { grid-template-columns: 1fr 1fr; }
   .promo__media {
     aspect-ratio: auto;
@@ -611,6 +858,21 @@ button { font: inherit; }
 
 .category:hover .category__media { background: var(--tint); }
 
+/* То же, что .card__media--bleed, но паддинг здесь 14% ширины круга,
+   а не пиксельный: 14% / 72% содержимого = 19.4% ширины самой картинки. */
+.category__media--bleed .ph {
+  transform: translateX(calc(-19.4% - 5%));
+}
+
+/* Тот же приём для среза сверху, а не сбоку. Одежду в доноре снимали только
+   на моделях: единственный предметный кадр раздела — ноги в колготках и коньках,
+   обрезанные по бедру. По центру круга такой срез читается как брак, поэтому
+   кадр увеличен и поднят, чтобы линия среза ушла под верхний край. Масштаб
+   компенсирует подъём: иначе коньки уехали бы вверх и низ круга опустел. */
+.category__media--bleed-top .ph {
+  transform: scale(1.62) translateY(-11%);
+}
+
 .category__name {
   margin-top: 12px;
   text-align: center;
@@ -638,10 +900,16 @@ button { font: inherit; }
   align-items: start;
 }
 
+/* Крупнее, чем в шапке: подвал не липкий, экономить высоту здесь не на чем,
+   а знак — единственная картинка в блоке сплошного текста. */
 .footer__logo {
-  font-size: 24px;
   display: inline-block;
   margin-bottom: 18px;
+}
+
+.footer__logo img {
+  height: 44px;
+  width: auto;
 }
 
 .footer__col-title {
@@ -716,6 +984,639 @@ button { font: inherit; }
 .footer__bottom a:hover { color: var(--teal-deep); }
 
 /* ==========================================================================
+   Внутренняя страница
+   Общий каркас для всех информационных разделов: шапка с крошками,
+   боковое меню раздела и колонка текста.
+   ========================================================================== */
+
+/* Шапка страницы: светлая плашка во всю ширину, чтобы заголовок не висел
+   встык под навигацией и раздел читался как отдельный экран. */
+.page-head {
+  background: var(--canvas);
+  border-bottom: 1px solid var(--line);
+  padding-block: clamp(28px, 4vw, 56px);
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: clamp(14px, 1.8vw, 22px);
+}
+
+.crumbs a:hover { color: var(--teal-deep); }
+
+.crumbs__sep { opacity: .5; }
+
+/* Текущая страница в крошках — не ссылка, поэтому и цвет обычный текстовый */
+.crumbs__current { color: var(--ink); }
+
+/* ==========================================================================
+   Каталог: сетка разделов
+   ========================================================================== */
+.section__note {
+  font-size: 12px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 22vw, 280px), 1fr));
+  gap: clamp(16px, 1.8vw, 28px);
+}
+
+.section-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  background: #fff;
+  transition: border-color .25s ease;
+}
+
+.section-card:hover { border-color: var(--pill); }
+
+/* Те же 4/5 и contain, что у карточки товара: кадры разделов приходят из
+   одного пула, и любой другой кроп ломал бы единый масштаб предмета. */
+.section-card__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: #fff;
+  overflow: hidden;
+  padding: clamp(14px, 1.6vw, 26px);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-card__media .ph {
+  object-fit: contain;
+  background: transparent;
+}
+
+.section-card:hover .ph { opacity: .9; }
+
+.section-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: clamp(12px, 1.4vw, 18px);
+}
+
+.section-card__name {
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.section-card__count {
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Страница раздела: чипы подразделов и сетка товаров
+   ========================================================================== */
+
+/* Подразделы — якоря внутри страницы, а не отдельные страницы: в половине
+   из них меньше десятка товаров. Чипы работают как оглавление. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  font-size: 12px;
+  color: var(--ink);
+  transition: border-color .2s ease, background-color .2s ease;
+}
+
+.chip:hover {
+  border-color: var(--teal-deep);
+  background: var(--tint);
+}
+
+.chip__count {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.subsection {
+  /* Шапка липкая, поэтому якорь без отступа прячет заголовок под неё */
+  scroll-margin-top: 90px;
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.subsection__title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.2;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  text-transform: uppercase;
+}
+
+.subsection__count {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Тот же минимум колонки, что у карусели на главной: карточка товара везде
+   одного размера, иначе один и тот же ботинок выглядит по-разному. */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 17vw, 230px), 1fr));
+  gap: clamp(14px, 1.6vw, 26px);
+  margin-bottom: clamp(32px, 4vw, 56px);
+}
+
+.cards-grid .card { width: auto; }
+
+.card__price--none {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4.4vw, 56px);
+  line-height: 1.08;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+/* Подзаголовок-лид под H1: одна фраза о чём раздел */
+.page-lead {
+  max-width: 62ch;
+  margin: clamp(12px, 1.4vw, 18px) 0 0;
+  font-size: clamp(14px, 1.2vw, 17px);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Раскладка: меню раздела слева, текст справа. До 900px (см. брейкпоинты)
+   схлопывается в одну колонку и меню уезжает наверх. */
+.page-body {
+  padding-block: clamp(36px, 5vw, 72px);
+  display: grid;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: start;
+}
+
+/* min-width: 0 обязателен: по умолчанию грид-элемент не даёт себя сжать уже
+   своего содержимого, и таблица сроков доставки (min-width: 520px) распирала
+   не свою обёртку со скроллом, а всю страницу — на 390px текст уезжал за край. */
+.page-body > * { min-width: 0; }
+
+/* Страница без соседей по разделу (услуги, производители): меню из одного
+   пункта не навигация, а пустая колонка. Уводить в чужие разделы такое меню
+   тоже нельзя — оно меняется под ногами. Просто убираем колонку.
+   Двойной класс — чтобы правило пережило медиазапрос с двумя колонками:
+   тот объявлен ниже по файлу и при равной специфичности выигрывал бы. */
+.page-body.page-body--solo { grid-template-columns: 1fr; }
+
+/* --- Меню раздела ------------------------------------------------------- */
+.sidenav { position: sticky; top: clamp(80px, 9vw, 116px); }
+
+.sidenav__title {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.sidenav__list { display: flex; flex-direction: column; }
+
+.sidenav__list a {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.sidenav__list a:hover { color: var(--teal-deep); }
+
+/* Текущий пункт — засечка фирменным цветом слева: подчёркивание тут спорит
+   с разделителями списка, а заливка утяжеляет колонку. */
+.sidenav__list a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 500;
+  padding-left: 14px;
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
+/* --- Текст -------------------------------------------------------------- */
+.prose {
+  max-width: 74ch;
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.prose > *:first-child { margin-top: 0; }
+.prose > *:last-child { margin-bottom: 0; }
+
+.prose p { margin: 0 0 1.1em; }
+
+.prose h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(21px, 2.4vw, 30px);
+  line-height: 1.2;
+  margin: 2em 0 .7em;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+
+.prose h3 {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 1.9em 0 .6em;
+  letter-spacing: .01em;
+}
+
+.prose a {
+  color: var(--teal-deep);
+  border-bottom: 1px solid var(--tint);
+}
+
+.prose a:hover { border-color: var(--teal-deep); }
+
+.prose ul, .prose ol { margin: 0 0 1.1em; padding-left: 0; }
+
+.prose li {
+  position: relative;
+  list-style: none;
+  padding-left: 26px;
+  margin-bottom: .55em;
+}
+
+/* Маркер — короткая бирюзовая черта вместо точки: перекликается с засечкой
+   активного пункта меню и с линиями в карточках на главной. */
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .78em;
+  width: 12px;
+  height: 1px;
+  background: var(--teal);
+}
+
+/* Пункт-шаг: заголовок и абзацы внутри li. Родные отступы h3/p здесь рвут
+   список, поэтому внутри пункта ритм задаём заново. */
+.prose li > h3:first-child { margin-top: 0; margin-bottom: .35em; }
+.prose li > p:last-child { margin-bottom: 0; }
+.prose li > p { margin-bottom: .6em; }
+.prose ol > li { margin-bottom: 1.5em; }
+
+.prose ol { counter-reset: n; }
+
+.prose ol > li::before {
+  counter-increment: n;
+  content: counter(n) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 13px;
+  color: var(--teal-deep);
+}
+
+/* --- Таблица ------------------------------------------------------------
+   Обёртка со скроллом обязательна: таблица сроков доставки в пять колонок
+   на телефоне иначе распирает страницу по горизонтали. */
+.prose__table {
+  overflow-x: auto;
+  margin: 0 0 1.4em;
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose table {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.prose th, .prose td {
+  padding: 13px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.prose th {
+  background: var(--grey);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.prose tbody tr:hover td { background: #FAFBFB; }
+
+/* --- Выноска ------------------------------------------------------------
+   Для одиночного важного факта в потоке текста (бесплатная доставка,
+   срок возврата) — то, ради чего страницу и открывают. */
+.note {
+  margin: 0 0 1.4em;
+  padding: clamp(16px, 2vw, 22px) clamp(18px, 2.2vw, 26px);
+  background: var(--tint);
+  border-left: 3px solid var(--teal);
+  font-size: clamp(14px, 1.15vw, 16px);
+  line-height: 1.6;
+}
+
+.note p { margin: 0; }
+.note p + p { margin-top: .7em; }
+
+/* --- Карточки фактов ----------------------------------------------------
+   Контакты, реквизиты, способы доставки: пары «подпись — значение»,
+   которые в сплошном абзаце не сканируются глазом. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: clamp(14px, 1.6vw, 20px);
+  margin: 0 0 1.6em;
+}
+
+.fact {
+  padding: clamp(18px, 2vw, 24px);
+  border: 1px solid var(--line);
+  background: #fff;
+}
+
+.fact__label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.fact__value {
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.5;
+}
+
+.fact__value a:hover { color: var(--teal-deep); }
+
+/* Мелкая приписка под значением — режим работы, комментарий к адресу */
+.fact__note {
+  display: block;
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* --- Кнопка ------------------------------------------------------------- */
+.btn {
+  display: inline-block;
+  padding: 15px 30px;
+  background: var(--teal-deep);
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  border: 1px solid var(--teal-deep);
+}
+
+.btn:hover { background: var(--teal); border-color: var(--teal); }
+
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--pill); }
+.btn--ghost:hover { background: transparent; color: var(--teal-deep); border-color: var(--teal-deep); }
+
+/* --- Услуги -------------------------------------------------------------
+   Фото + описание. Кадры у поставщика разного формата (печка 3:4, веер
+   чехлов 1:1), поэтому высоту задаём мы, а не картинка. */
+.svc {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 32px);
+  align-items: center;
+  padding: clamp(20px, 2.4vw, 30px);
+  border: 1px solid var(--line);
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+
+.svc__media {
+  aspect-ratio: 4 / 3;
+  background: var(--grey);
+  overflow: hidden;
+}
+
+.svc__media img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Заголовки карточек — h2 ради структуры документа, но выглядеть должны
+   как подписи внутри блока, а не как разделы страницы. Селектор с .prose,
+   иначе .prose h2 перебивает их своим Playfair в капсе. */
+.prose .svc__title,
+.svc__title {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: clamp(16px, 1.5vw, 20px);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0 0 .6em;
+}
+
+.svc__text { margin: 0; font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+/* --- Отзывы -------------------------------------------------------------- */
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: clamp(16px, 2vw, 24px);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(20px, 2.2vw, 28px);
+  background: var(--grey);
+}
+
+.review__text { margin: 0; font-size: 14px; line-height: 1.7; }
+
+.review__meta {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--pill);
+}
+
+.review__name { display: block; font-size: 14px; font-weight: 500; }
+
+.review__date {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* --- Партнёры ------------------------------------------------------------
+   Магазины, которые принимают наши заказы. Логотипы у них разной плотности
+   и с разным фоном — сажаем на светлую подложку и вписываем целиком. */
+.partners {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.partner {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+}
+
+/* Логотипов у партнёров нет: в фонде донора лежат картинки 100×44 и фото
+   витрины 51×69 — на карточке они читаются как брак. Карточка текстовая. */
+.partner__body { padding: clamp(20px, 2.2vw, 26px); }
+
+.prose .partner__name,
+.partner__name {
+  font-family: 'Montserrat', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  margin: 0 0 1em;
+}
+
+.partner__rows { display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 1.55; }
+
+.partner__row { display: flex; gap: 10px; color: var(--muted); }
+
+.partner__row b { flex: 0 0 74px; font-weight: 400; color: var(--muted); opacity: .75; }
+
+.partner__row span, .partner__row a { color: var(--ink); }
+.partner__row a:hover { color: var(--teal-deep); }
+
+/* --- Бренды --------------------------------------------------------------
+   Логотипов марок в фонде нет, поэтому плитка текстовая: имя набрано
+   заголовочным шрифтом, чтобы ряд не выглядел списком тегов. */
+/* Поток, а не грид: у «Аксессуаров» марка одна, и в гриде пустые треки
+   светились фоном контейнера на всю ширину строки. Плитки по содержимому
+   заполняют ряд слева направо, короткий ряд просто короче. */
+.brands {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1vw, 12px);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.brand {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  min-width: 148px;
+  min-height: 76px;
+  padding: 16px 26px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(15px, 1.4vw, 19px);
+  letter-spacing: .02em;
+  text-align: center;
+}
+
+/* Марка со своим разделом в каталоге — ссылка, но в общем ряду она должна
+   читаться как такая же плитка: цвет и подчёркивание от .prose a убираем. */
+.prose a.brand { color: var(--ink); border-bottom: 1px solid var(--line); }
+.prose a.brand:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
+
+/* Подсветка только у кликабельных плиток: марки без своего раздела в каталоге
+   остаются обычными ячейками, и hover на них обманывал бы. */
+a.brand:hover { background: var(--tint); }
+
+/* --- Документ ------------------------------------------------------------ */
+.doc {
+  display: inline-block;
+  max-width: 340px;
+  border: 1px solid var(--line);
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+}
+
+.doc img { width: 100%; height: auto; }
+
+.doc__caption {
+  display: block;
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: .04em;
+  color: var(--muted);
+}
+
+.doc:hover { border-color: var(--pill); }
+
+/* --- Вакансия ------------------------------------------------------------ */
+.vacancy {
+  border: 1px solid var(--line);
+  padding: clamp(20px, 2.6vw, 32px);
+  margin-bottom: clamp(20px, 2.4vw, 30px);
+}
+
+.vacancy__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding-bottom: 18px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.vacancy__title { font-size: clamp(17px, 1.7vw, 22px); font-weight: 500; margin: 0; }
+
+.vacancy__salary {
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--teal-deep);
+  white-space: nowrap;
+}
+
+/* Кнопка внутри текста: .prose a специфичнее .btn и красит подпись в цвет
+   ссылки — на бирюзовой заливке она пропадает. Возвращаем свои цвета. */
+.prose a.btn { color: #fff; border-bottom-color: transparent; }
+.prose a.btn:hover { color: #fff; }
+.prose a.btn--ghost { color: var(--ink); }
+.prose a.btn--ghost:hover { color: var(--teal-deep); }
+
+/* ==========================================================================
    Брейкпоинты
    Основа макета — clamp() и сетка. Медиазапросы только там, где нужна
    смена раскладки: её текучей типографикой не сделать.
@@ -729,6 +1630,18 @@ button { font: inherit; }
 /* --- от 1024px: категории в 6 колонок, подвал в 4 --- */
 @media (min-width: 1024px) {
   .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
+}
+
+/* --- от 900px: внутренняя страница в две колонки ---
+   Уже 900px меню раздела в узкой колонке ломает строки пунктов, поэтому
+   до этой ширины оно едет наверх обычным списком. */
+@media (min-width: 900px) {
+  .page-body { grid-template-columns: minmax(200px, 1fr) 3fr; }
+}
+
+/* --- от 700px: у карточки услуги фото уходит влево --- */
+@media (min-width: 700px) {
+  .svc { grid-template-columns: minmax(180px, 260px) 1fr; align-items: start; }
 }
 
 /* --- до 900px: меню уходит в бургер --- */
@@ -765,6 +1678,38 @@ button { font: inherit; }
   }
 
   .navlink::after { display: none; }
+
+  /* В бургере наведения нет, поэтому панель просто раскрыта в потоке. Подразделы
+     здесь скрыты: двенадцать разделов с вложениями дают полсотни строк, и до
+     «Контактов» пришлось бы листать. Разделы ведут на свои страницы. */
+  .navitem--drop { display: block; }
+
+  .navlink__chev { display: none; }
+
+  .megamenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .megamenu__inner { columns: 1; }
+
+  .megamenu__group { margin-bottom: 0; }
+
+  .megamenu__link { display: none; }
+
+  .megamenu__title {
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: .02em;
+    color: var(--muted);
+    padding: 14px 0 14px 16px;
+    margin-bottom: 0;
+  }
 
   .nav__phone {
     margin-top: 26px;

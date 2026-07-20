@@ -28,6 +28,10 @@ const FILE = arg('--file', null);
 const MODEL_KEY = arg('--model', 'rmbg');
 const SIZE = Number(arg('--size', 1000));   // сторона итогового квадрата
 const PAD = Number(arg('--pad', 0.06));     // поля вокруг предмета, доля стороны
+// PNG с альфой на таком размере весит под мегабайт — 336 карточек дают 300 МБ.
+// WebP держит прозрачность и жмёт то же самое примерно в десять раз.
+const FORMAT = arg('--format', 'webp');
+const QUALITY = Number(arg('--quality', 86));
 
 // Маску все три отдают одним каналом, но входной тензор у каждой зовётся по-своему:
 // подашь под чужим именем — onnxruntime ответит «Missing the following inputs».
@@ -44,9 +48,12 @@ let items;
 if (FILE) {
   items = [{ name: basename(FILE), cat: '—', img: FILE }];
 } else {
-  const q = JSON.parse(readFileSync(join(ROOT, 'old_version', '_image-quality.json'), 'utf8'));
+  // objects — отбор из pick-objects.mjs: только предметные разделы и без людей в кадре.
+  // Остальные группы (bad/mid/studio) — сырая разбивка по однородности фона.
+  const file = FROM === 'objects' ? '_objects.json' : '_image-quality.json';
+  const q = JSON.parse(readFileSync(join(ROOT, 'old_version', file), 'utf8'));
   const pool = q[FROM];
-  if (!pool) { console.error(`Нет группы "${FROM}" в _image-quality.json. Есть: ${Object.keys(q).join(', ')}`); process.exit(1); }
+  if (!pool) { console.error(`Нет группы "${FROM}" в ${file}. Есть: ${Object.keys(q).join(', ')}`); process.exit(1); }
 
   // Берём вперемешку по разделам, иначе вся выборка окажется из одной категории
   // (в bad сотня «Одежды для девочек») и мы не увидим, как модель ведёт себя
@@ -100,9 +107,20 @@ for (const [i, it] of items.entries()) {
     // Выход у разных моделей лежит под разными именами — берём первый тензор.
     // Модель отдаёт маску с batch-измерением ([1,1,H,W]), а fromTensor ждёт [C,H,W],
     // поэтому снимаем лишние оси, пока не останется три.
-    let t = out.output ?? out.alphas ?? Object.values(out)[0];
+    let t = out.output ?? out.output_image ?? out.alphas ?? Object.values(out)[0];
     if (Array.isArray(t)) t = t[0];
     while (t.dims && t.dims.length > 3) t = t[0];
+
+    // RMBG отдаёт готовые 0..1, BiRefNet — сырые логиты (примерно -25..23).
+    // Логиты нельзя гнать в uint8 напрямую: отрицательные уходят в переполнение
+    // и картинка получается «протравленной». Определяем по диапазону и сжимаем сигмоидой.
+    const md = t.data;
+    let mn = Infinity, mx = -Infinity;
+    for (let i = 0; i < md.length; i++) { if (md[i] < mn) mn = md[i]; if (md[i] > mx) mx = md[i]; }
+    if (mn < -0.01 || mx > 1.01) {
+      for (let i = 0; i < md.length; i++) md[i] = 1 / (1 + Math.exp(-md[i]));
+    }
+
     const maskImg = await RawImage.fromTensor(t.mul(255).to('uint8')).resize(image.width, image.height);
 
     // Склеиваем RGBA вручную. Оба «библиотечных» пути молча дают неверный результат:
@@ -133,14 +151,15 @@ for (const [i, it] of items.entries()) {
       })
       .toBuffer();
     const meta = await sharp(final).metadata();
-    const canvas = await sharp({
+    const centered = sharp({
       create: { width: SIZE, height: SIZE, channels: 4, background: { r: 0, g: 0, b: 0, alpha: 0 } },
     })
-      .composite([{ input: final, left: Math.round((SIZE - meta.width) / 2), top: Math.round((SIZE - meta.height) / 2) }])
-      .png({ compressionLevel: 9 })
-      .toBuffer();
+      .composite([{ input: final, left: Math.round((SIZE - meta.width) / 2), top: Math.round((SIZE - meta.height) / 2) }]);
+    const canvas = await (FORMAT === 'png'
+      ? centered.png({ compressionLevel: 9 })
+      : centered.webp({ quality: QUALITY, alphaQuality: 100 })).toBuffer();
 
-    const name = `${String(i + 1).padStart(2, '0')}_${basename(it.img).replace(/\.[^.]+$/, '')}.png`;
+    const name = `${String(i + 1).padStart(2, '0')}_${basename(it.img).replace(/\.[^.]+$/, '')}.${FORMAT}`;
     writeFileSync(join(OUT, name), canvas);
 
     const secs = (Date.now() - started) / 1000;
