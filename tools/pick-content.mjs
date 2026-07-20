@@ -48,11 +48,29 @@ const { products } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'products
 
 // Отчёт image-audit.mjs: какие кадры сняты на ровном светлом фоне. Разрешения мало —
 // снимок 3024×3024 на асфальте в круглой плитке рядом со студийным выглядит чужим.
-let studio = new Set();
+// Кадры с зашитым в саму фотографию текстом. Отсмотрены глазами через
+// contact-sheet.mjs: программно надпись внутри JPEG от узора на товаре не отличить.
+const BLOCK = new Set([
+  '/upload/iblock/332/x40qsw59cihyqytccdbmqg0hxnjspf7s.jpg', // «Ботинки Risport RF3 Pro» напечатано в кадре
+  '/upload/iblock/4f6/asjbxkvuv1wvruh3i04ywgjopo6nerk0.jpg', // логотип ULTIMA и подпись
+  '/upload/iblock/9fe/9fec2e62079edca67bebfca80be7b9db.JPG', // снято сверху на полу
+  '/upload/iblock/486/486088591696df212b18b12d40ac59d1.jpg', // деревянный пол в кадре
+  '/upload/iblock/0ee/3zl2osu6wp08fyg28wwfrx4z1s1c5b2l.jpg', // «ЛЕЗВИЕ Ultima Mark 4» напечатано в кадре
+  '/upload/iblock/95c/mact09q38udyyzqou2ig26uvi74f8oas.jpg', // пакет с логотипом вместо товара
+  '/upload/iblock/d7a/d7a3cebbb7910f18944f0570bcb518b2.JPG', // клетчатый коврик, снят на полу
+]);
+
+// Порог по белизне фона решает две задачи разом. Он отсекает съёмку на асфальте
+// И водяной знак поставщика: знак «Studio Sports» стоит только на кадрах с моделью
+// на сером фоне (яркость 205-209), а чистая предметная съёмка идёт на белом (245+).
+const WHITE = 235, FLAT = 22;
+let clean = new Set();
 try {
   const q = JSON.parse(readFileSync(join(ROOT, 'old_version', '_image-quality.json'), 'utf8'));
-  studio = new Set(q.studio.map((i) => i.img));
-  console.log(`Студийных кадров в отчёте: ${studio.size}`);
+  clean = new Set([...q.studio, ...q.mid, ...q.bad]
+    .filter((i) => i.mean >= WHITE && i.sd <= FLAT && !BLOCK.has(i.img))
+    .map((i) => i.img));
+  console.log(`Чистых предметных кадров: ${clean.size}`);
 } catch {
   console.log('Нет _image-quality.json — сначала прогони tools/image-audit.mjs');
 }
@@ -60,36 +78,52 @@ try {
 const pool = [];
 for (const p of products) {
   if (!p.price || !p.available) continue;
-  const b = bestPhoto(p);
-  if (b.px < 700) continue;
-  if (studio.size && !studio.has(b.path)) continue;
+  // Ищем лучший ЧИСТЫЙ кадр, а не просто самый крупный: у товара часто есть и
+  // студийная предметка, и снимок с моделью под водяным знаком.
+  let px = 0, path = null, size = null;
+  for (const im of p.images || []) {
+    if (clean.size && !clean.has(im)) continue;
+    const d = dim(im);
+    if (!d) continue;
+    const m = Math.min(d[0], d[1]);
+    if (m > px) { px = m; path = im; size = d; }
+  }
+  if (px < 700) continue;
   pool.push({
     name: p.name.trim(), price: p.price, url: p.url.replace('https://axelnn.ru', ''),
-    cat: p.category || '', img: b.path, px: b.px, size: b.size.join('×'),
+    cat: p.category || '', img: path, px, size: size.join('×'),
   });
 }
-console.log(`Товаров с пригодным фото (>=700px): ${pool.length} из ${products.length}`);
+console.log(`Товаров с чистым фото >=700px: ${pool.length} из ${products.length}`);
 
 const l1 = (c) => c.split('/')[0].trim();
 const byCat = {};
 for (const p of pool) (byCat[l1(p.cat)] ||= []).push(p);
 
-// --- витрина: разные разделы, дорогое и заметное ---
+// Разные названия у почти одинаковых товаров («Клер»1, «Клер»7, «Клер»8) —
+// в ленте это выглядит как повтор, берём по одному из семейства.
+const dedupe = (list) => list.filter((p, i, arr) =>
+  arr.findIndex((x) => x.name.replace(/[^а-яa-z]/gi, '').slice(0, 14) === p.name.replace(/[^а-яa-z]/gi, '').slice(0, 14)) === i);
+
+// --- витрина: ядро ассортимента, по одному дорогому товару из раздела ---
 const want = [
-  'Ботинки для фигурного катания', 'Фигурные коньки', 'Лезвия',
+  'Фигурные коньки', 'Ботинки для фигурного катания', 'Лезвия',
   'Сумки,рюкзаки', 'Защита фигуриста', 'Аксессуары для льда',
 ];
 const showcase = [];
 for (const c of want) {
-  const best = (byCat[c] || []).sort((a, b) => b.price - a.price)[0];
+  const best = dedupe(byCat[c] || []).sort((a, b) => b.price - a.price)[0];
   if (best) showcase.push(best);
 }
 
-// --- вторая лента: одежда, самая полно отснятая группа ---
-const clothes = (byCat['Одежда для девочек'] || [])
-  .sort((a, b) => b.price - a.price)
-  .filter((p, i, arr) => arr.findIndex((x) => x.name.slice(0, 18) === p.name.slice(0, 18)) === i)
-  .slice(0, 8);
+// --- вторая лента: уход и экипировка ---
+// Одежда сюда не годится: её снимали на моделях под водяным знаком поставщика,
+// чистых предметных кадров во всём разделе шесть. Берём то, что отснято нормально.
+const care = dedupe([
+  ...(byCat['Хранение'] || []),
+  ...(byCat['Аксессуары для льда'] || []),
+  ...(byCat['Тренажеры'] || []),
+]).sort((a, b) => b.price - a.price).slice(0, 8);
 
 // --- по одному кадру на категорию ---
 const catImages = {};
@@ -104,7 +138,7 @@ function emit(title, list) {
   }
 }
 emit('Витрина', showcase);
-emit('Одежда', clothes);
+emit('Уход и экипировка', care);
 console.log(`\n=== Категории (${Object.keys(catImages).length}) ===`);
 for (const [c, p] of Object.entries(catImages)) console.log(`  ${c.padEnd(34)} ${p.size.padStart(10)}  ${p.name.slice(0, 34)}`);
 
@@ -130,7 +164,7 @@ const attach = (p, prefix) => {
 
 const data = {
   showcase: showcase.map((p) => attach(p, 'item')),
-  clothes: clothes.map((p) => attach(p, 'item')),
+  care: care.map((p) => attach(p, 'item')),
   categories: Object.fromEntries(Object.entries(catImages).map(([c, p]) => [c, attach(p, 'cat')])),
 };
 

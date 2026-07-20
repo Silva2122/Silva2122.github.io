@@ -216,11 +216,11 @@ button { font: inherit; }
    ========================================================================== */
 .hero {
   position: relative;
-  /* Пропорция исходного кадра 2752×1536 — показываем его целиком.
-     Раньше высота задавалась через vh и на 1920 срезало 39% снизу
-     вместе с термокурткой, единственным реальным товаром на фото. */
+  /* Пропорция ровно по исходнику 2752×1536 и во всю ширину экрана: при точном
+     совпадении пропорций cover не обрезает вообще ничего — ни голову сверху,
+     ни термокуртку снизу. Ограничения по высоте здесь быть не должно, иначе
+     оно снова начнёт срезать кадр. */
   aspect-ratio: 2752 / 1536;
-  max-height: 82vh;
   background: #F7F8F8;
   overflow: hidden;
 }
@@ -229,7 +229,7 @@ button { font: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 0;
+  object-position: 50% 50%;
 }
 
 .hero__inner {
@@ -409,13 +409,25 @@ button { font: inherit; }
 
 .card:hover .card__media { opacity: .88; }
 
+/* Фон белый и object-fit: contain, а не cover. Товары сняты с разным запасом
+   по краям: cover обрезал бы лезвие и раздувал ботинок. contain с одинаковым
+   полем показывает предмет целиком и выравнивает видимый масштаб по ряду. */
 .card__media {
   position: relative;
   aspect-ratio: 4 / 5;
-  background: var(--grey);
+  background: #fff;
+  border: 1px solid var(--line);
   overflow: hidden;
-  transition: opacity .25s ease;
+  transition: opacity .25s ease, border-color .25s ease;
+  padding: clamp(14px, 1.6vw, 26px);
 }
+
+.card__media .ph {
+  object-fit: contain;
+  background: transparent;   /* иначе серый фон плейсхолдера торчит полосами */
+}
+
+.card:hover .card__media { border-color: var(--pill); }
 
 .card__badge {
   position: absolute;
@@ -464,56 +476,63 @@ button { font: inherit; }
 /* ==========================================================================
    Промо-баннер
    ========================================================================== */
+/* Две колонки, а не текст поверх фото. Кадры в фонде вертикальные: любая попытка
+   растянуть их в полосу 21:9 срезает модели голову. Рядом — не срезает ничего,
+   и текст читается без градиента-подложки. */
 .promo {
-  position: relative;
-  display: block;
-  aspect-ratio: 21 / 9;
-  max-height: 460px;
+  display: grid;
+  grid-template-columns: 1fr;
+  background: #fff;
+  border: 1px solid var(--line);
   overflow: hidden;
-  background: var(--grey);
 }
-
-.promo:hover .promo__media { opacity: .95; }
 
 .promo__media {
-  position: absolute;
-  inset: 0;
+  background: var(--grey);
   width: 100%;
   height: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: opacity .25s ease;
+  object-position: 50% 22%;
+  transition: opacity .3s ease;
 }
 
+.promo:hover .promo__media { opacity: .94; }
+
 .promo__inner {
-  position: absolute;
-  inset: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  gap: clamp(14px, 1.8vw, 22px);
-  padding: clamp(24px, 4vw, 64px);
-  background: linear-gradient(96deg, rgba(20, 30, 32, .72), rgba(20, 30, 32, .34) 52%, rgba(20, 30, 32, 0) 78%);
-  pointer-events: none;
+  gap: clamp(16px, 1.8vw, 24px);
+  padding: clamp(28px, 4vw, 68px);
 }
 
 .promo__eyebrow {
   font-size: clamp(10px, 1vw, 12px);
   letter-spacing: .26em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--teal-deep);
 }
 
 .promo__title {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
-  font-size: clamp(26px, 4vw, 58px);
-  line-height: 1.05;
+  font-size: clamp(26px, 3.4vw, 52px);
+  line-height: 1.06;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: .01em;
-  color: #fff;
-  max-width: 18ch;
+  color: var(--ink);
+  max-width: 16ch;
+}
+
+.promo__text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted);
+  max-width: 40ch;
+  margin: 0;
 }
 
 .promo__cta {
@@ -524,12 +543,16 @@ button { font: inherit; }
   letter-spacing: .16em;
   text-transform: uppercase;
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, .7);
-  padding: 14px 26px;
-  pointer-events: auto;
+  background: var(--teal-deep);
+  padding: 16px 30px;
 }
 
-.promo__cta:hover { background: rgba(255, 255, 255, .14); }
+.promo__cta:hover { background: var(--teal); }
+
+@media (min-width: 760px) {
+  .promo { grid-template-columns: 1fr 1fr; }
+  .promo__media { aspect-ratio: auto; min-height: 440px; object-fit: contain; padding: clamp(20px, 3vw, 48px); }
+}
 
 /* ==========================================================================
    Категории
@@ -658,13 +681,12 @@ button { font: inherit; }
    ========================================================================== */
 
 /* --- от 600px: категории в 4 колонки --- */
-@media (min-width: 600px) {
+@media (min-width: 620px) {
   .categories__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* --- от 1024px: категории в 6 колонок, подвал в 4 --- */
 @media (min-width: 1024px) {
-  .categories__grid { grid-template-columns: repeat(6, 1fr); }
   .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
 }
 
