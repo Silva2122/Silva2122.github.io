@@ -29,15 +29,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Команды
 
 ```bash
-# Новый сайт — пути относительные, достаточно открыть файл
-start index.html
-# либо с сервером, если нужен корректный CORS для шрифтов
-python -m http.server 8080
+# Новый сайт
+node tools/serve.mjs                 # http://127.0.0.1:4173
 
 # Копия старого сайта — пути внутри HTML абсолютные (/upload/, /bitrix/),
 # поэтому нужен сервер с корнем именно в site/
-cd old_version/site && python -m http.server 8080
+node tools/serve.mjs --root old_version/site --port 8080
 ```
+
+**Python в системе не установлен** — `python -m http.server` не сработает.
+`serve.mjs` написан на голом `node:http` и заодно экспортирует `startServer()`,
+которым пользуются `shot.mjs` и `audit.mjs`.
 
 ### Конвейер выгрузки (`tools/`)
 

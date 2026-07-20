@@ -1,0 +1,16 @@
+{
+  "name": "axelnn",
+  "version": "0.1.0",
+  "scripts": {
+    "serve": "node tools/serve.mjs",
+    "shot": "node tools/shot.mjs",
+    "audit": "node tools/audit.mjs",
+    "build": "node tools/build.mjs"
+  },
+  "license": "ISC",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "playwright-core": "^1.61.1"
+  }
+}
