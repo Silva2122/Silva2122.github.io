@@ -58,6 +58,9 @@ const BLOCK = new Set([
   '/upload/iblock/0ee/3zl2osu6wp08fyg28wwfrx4z1s1c5b2l.jpg', // «ЛЕЗВИЕ Ultima Mark 4» напечатано в кадре
   '/upload/iblock/95c/mact09q38udyyzqou2ig26uvi74f8oas.jpg', // пакет с логотипом вместо товара
   '/upload/iblock/d7a/d7a3cebbb7910f18944f0570bcb518b2.JPG', // клетчатый коврик, снят на полу
+  '/upload/iblock/27e/p125axfef5e3k1lhnstfmoc000v6yyn7.jpg', // рекламный баннер Eclipse Astra с чужим логотипом
+  '/upload/iblock/ed9/ed92d8be5b77a13e7cdc1951604afa8d.jpg', // водяной знак Studio Sports читается
+  '/upload/iblock/6af/b3nryebfrieqigwxo6hq64bgpzwozxjg.jpg', // водяной знак Studio Sports читается
 ]);
 
 // Порог по белизне фона решает две задачи разом. Он отсекает съёмку на асфальте

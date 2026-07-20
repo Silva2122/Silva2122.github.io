@@ -118,6 +118,11 @@ button { font: inherit; }
    Шапка
    ========================================================================== */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -235,15 +240,25 @@ button { font: inherit; }
 .hero__inner {
   position: absolute;
   inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  /* Тот же контейнер, что у секций: иначе заголовок героя не совпадает
+     по левому краю ни с «Витриной», ни с чем-либо ещё на странице. */
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  pointer-events: none;
+}
+
+.hero__stack {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   gap: clamp(16px, 2vw, 28px);
-  /* Текст живёт в левой трети — там, где в кадре пустое поле */
-  padding: clamp(24px, 4vw, 64px);
-  width: min(52%, 640px);
-  pointer-events: none;
+  /* Текст живёт в левой части — там, где в кадре пустое поле */
+  max-width: min(52%, 620px);
 }
 
 .hero__eyebrow {
@@ -258,7 +273,7 @@ button { font: inherit; }
   font-weight: 400;
   font-size: clamp(30px, 5vw, 84px);
   line-height: 1.06;
-  letter-spacing: .01em;
+  letter-spacing: -.005em;
   margin: 0;
   text-transform: uppercase;
   color: var(--ink);
@@ -287,7 +302,7 @@ button { font: inherit; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: clamp(18px, 2.4vw, 36px);
-  padding-block: clamp(28px, 3.4vw, 44px);
+  padding-block: clamp(32px, 3.8vw, 56px);
   border-bottom: 1px solid var(--line);
 }
 
@@ -305,17 +320,17 @@ button { font: inherit; }
 
 .trust__title {
   display: block;
-  font-size: 12px;
-  letter-spacing: .06em;
+  font-size: 13px;
+  letter-spacing: .08em;
   text-transform: uppercase;
   margin-bottom: 5px;
 }
 
 .trust__text {
   display: block;
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #4A5456;
 }
 
 /* ==========================================================================
@@ -352,13 +367,13 @@ button { font: inherit; }
   display: flex;
   gap: clamp(14px, 1.6vw, 26px);
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   padding-bottom: 4px;
 }
 
 .carousel__nav {
   position: absolute;
-  top: clamp(110px, 15vw, 200px);
+  top: clamp(104px, 13.5vw, 190px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -385,7 +400,7 @@ button { font: inherit; }
 .progress {
   height: 2px;
   background: var(--line);
-  margin-top: var(--space-head);
+  margin-top: 20px;
   position: relative;
   overflow: hidden;
 }
@@ -443,9 +458,12 @@ button { font: inherit; }
 /* Единая структура для обеих каруселей: медиа -> название -> цена.
    Раньше «Новинки» и «Товары недели» верстались по-разному, и низ лент был рваный. */
 .card__name {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin-top: 16px;
-  min-height: 2.8em;       /* две строки — цены выравниваются по одной линии */
+  height: 2.8em;           /* ровно две строки: цены стоят на одной линии по всему ряду */
   font-size: 14px;
   line-height: 1.4;
   color: var(--ink);
@@ -483,12 +501,12 @@ button { font: inherit; }
   display: grid;
   grid-template-columns: 1fr;
   background: #fff;
-  border: 1px solid var(--line);
   overflow: hidden;
 }
 
 .promo__media {
-  background: var(--grey);
+  background: #fff;
+  border-bottom: 1px solid var(--line);
   width: 100%;
   height: 100%;
   aspect-ratio: 4 / 3;
@@ -551,7 +569,16 @@ button { font: inherit; }
 
 @media (min-width: 760px) {
   .promo { grid-template-columns: 1fr 1fr; }
-  .promo__media { aspect-ratio: auto; min-height: 440px; object-fit: contain; padding: clamp(20px, 3vw, 48px); }
+  .promo__media {
+    aspect-ratio: auto;
+    min-height: 400px;
+    max-height: 520px;
+    object-fit: contain;
+    object-position: 50% 50%;
+    padding: clamp(20px, 3vw, 48px);
+    border-bottom: 0;
+    border-right: 1px solid var(--line);
+  }
 }
 
 /* ==========================================================================
@@ -561,7 +588,7 @@ button { font: inherit; }
   display: grid;
   /* Фиксированное число колонок вместо auto-fill: последний ряд всегда полный */
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(18px, 2vw, 30px) clamp(14px, 1.4vw, 22px);
+  gap: clamp(34px, 3.6vw, 56px) clamp(14px, 1.4vw, 22px);
 }
 
 .category { display: block; }
@@ -570,11 +597,19 @@ button { font: inherit; }
 
 .category__media {
   aspect-ratio: 1 / 1;
-  background: var(--grey);
+  background: #F5F6F6;
   border-radius: 50%;
   overflow: hidden;
-  transition: opacity .25s ease;
+  padding: 14%;
+  transition: opacity .25s ease, background-color .25s ease;
 }
+
+.category__media .ph {
+  object-fit: contain;
+  background: transparent;
+}
+
+.category:hover .category__media { background: var(--tint); }
 
 .category__name {
   margin-top: 12px;
@@ -588,7 +623,13 @@ button { font: inherit; }
 /* ==========================================================================
    Подвал
    ========================================================================== */
-.footer { padding-block: clamp(44px, 5vw, 72px) clamp(24px, 3vw, 36px); }
+.footer-wrap {
+  background: #F7F8F8;
+  border-top: 1px solid var(--line);
+  margin-top: clamp(40px, 5vw, 80px);
+}
+
+.footer { padding-block: clamp(48px, 5vw, 76px) clamp(24px, 3vw, 36px); }
 
 .footer__top {
   display: grid;
@@ -692,6 +733,8 @@ button { font: inherit; }
 
 /* --- до 900px: меню уходит в бургер --- */
 @media (max-width: 900px) {
+  .trust { grid-template-columns: repeat(2, 1fr); }
+
   .burger { display: inline-flex; }
 
   .header { padding-block: 14px; }

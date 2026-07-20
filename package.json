@@ -11,6 +11,8 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "playwright-core": "^1.61.1"
+    "@huggingface/transformers": "^4.2.0",
+    "playwright-core": "^1.61.1",
+    "sharp": "^0.34.5"
   }
 }
