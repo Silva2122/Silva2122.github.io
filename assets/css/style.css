@@ -280,10 +280,11 @@ button { font: inherit; }
   overflow-wrap: anywhere;
 }
 
+/* Тот же случай, что у .filter__count: --pill не проходит по контрасту */
 .megamenu__count {
   flex: 0 0 auto;
   font-size: 11px;
-  color: var(--pill);
+  color: var(--muted);
 }
 
 .megamenu__link--more {
@@ -1140,14 +1141,186 @@ button { font: inherit; }
   color: var(--muted);
 }
 
-/* Тот же минимум колонки, что у карусели на главной: карточка товара везде
-   одного размера, иначе один и тот же ботинок выглядит по-разному. */
+/* Фильтры слева, товары справа. Колонка фильтров фиксированной ширины:
+   резиновая на широком экране растягивала бы названия подразделов в строку
+   на пол-экрана, а сетке товаров ширина нужнее. */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(20px, 2.4vw, 40px);
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .catalog-layout { grid-template-columns: 250px 1fr; }
+}
+
+.catalog-main { min-width: 0; }
+
+/* Три в ряд — как просили. auto-fill здесь не годится: он подстраивает число
+   колонок под ширину, и на 1920 их становилось шесть. */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 17vw, 230px), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(14px, 1.6vw, 26px);
   margin-bottom: clamp(32px, 4vw, 56px);
 }
+
+@media (min-width: 700px) {
+  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.catalog-empty {
+  color: var(--muted);
+  font-size: 14px;
+  padding: clamp(28px, 4vw, 56px) 0;
+}
+
+/* --- Панель фильтров --- */
+.filters {
+  display: grid;
+  gap: clamp(18px, 2vw, 26px);
+}
+
+/* У .card собственный display, поэтому атрибут hidden сам по себе его не прячет —
+   без этого правила фильтр «скрывал» карточки, а они оставались на месте. */
+[hidden] { display: none !important; }
+
+/* До 900px панель свёрнута и раскрывается кнопкой: развёрнутый список из двух
+   десятков подразделов оттеснил бы товары на второй экран. */
+@media (max-width: 899px) {
+  .filters { display: none; }
+  .filters[data-open="true"] { display: grid; }
+}
+
+@media (min-width: 900px) {
+  .filters {
+    position: sticky;
+    /* Шапка липкая: без отступа верх панели уезжает под неё */
+    top: 78px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+}
+
+.filters__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.filters__title {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.filters__reset {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: var(--teal-deep);
+  font-size: 11px;
+  letter-spacing: .04em;
+}
+
+.filters__reset:hover { color: var(--teal); }
+
+/* Кнопка нужна только там, где панель схлопывается, — на узком экране */
+.filters__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 11px 16px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  justify-self: start;
+}
+
+@media (min-width: 900px) {
+  .filters__toggle { display: none; }
+}
+
+.filter__title {
+  font-size: 12px;
+  letter-spacing: .06em;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+/* Длинные списки (у одежды под два десятка подразделов) прокручиваем внутри,
+   иначе панель фильтров вытягивается вдвое длиннее сетки товаров. */
+.filter__list {
+  display: grid;
+  gap: 2px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.filter__row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 5px 0;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.filter__row:hover { color: var(--ink); }
+
+.filter__row input {
+  flex: 0 0 auto;
+  accent-color: var(--teal-deep);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+.filter__label {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* --pill (#D8DDDD) — цвет линий, а не текста: на белом он даёт 1.37:1 при
+   норме 4.5. От названия счётчик отличается размером, а не блёклостью. */
+.filter__count {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.filter__price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter__num {
+  min-width: 0;
+  flex: 1 1 0;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.filter__num:focus-visible { border-color: var(--teal-deep); }
+
+.filter__dash { color: var(--muted); }
 
 .cards-grid .card { width: auto; }
 

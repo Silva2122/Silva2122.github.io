@@ -178,61 +178,104 @@
 
   <div class="section__head">
     <h1 class="section-title">Лезвия</h1>
-    <span class="section__note">10&nbsp;товаров</span>
+    <span class="section__note" id="found" data-total="10">10&nbsp;товаров</span>
   </div>
 
-    <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/blades/22436/" class="card">
+  <div class="catalog-layout">
+    <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
+      Фильтры
+      <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
+
+      <aside class="filters" id="filters">
+        <div class="filters__head">
+          <span class="filters__title">Фильтры</span>
+          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Цена, ₽</div>
+          <div class="filter__price">
+            <input type="number" class="filter__num" id="price-min" inputmode="numeric" placeholder="6000" min="6000" max="70000" aria-label="Цена от">
+            <span class="filter__dash">—</span>
+            <input type="number" class="filter__num" id="price-max" inputmode="numeric" placeholder="70000" min="6000" max="70000" aria-label="Цена до">
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Размер</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="size" value="7 1/2"><span class="filter__label">7 1/2</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="7 1/4"><span class="filter__label">7 1/4</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="7 3/4"><span class="filter__label">7 3/4</span><span class="filter__count">3</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="7"><span class="filter__label">7</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="8"><span class="filter__label">8</span><span class="filter__count">3</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="8 1/2"><span class="filter__label">8 1/2</span><span class="filter__count">3</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="8 3/4"><span class="filter__label">8 3/4</span><span class="filter__count">2</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="8 1/4"><span class="filter__label">8 1/4</span><span class="filter__count">2</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="9"><span class="filter__label">9</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="9 3/4"><span class="filter__label">9 3/4</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="9 1/4"><span class="filter__label">9 1/4</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="10 1/4"><span class="filter__label">10 1/4</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="10"><span class="filter__label">10</span><span class="filter__count">2</span></label>
+          </div>
+        </div>
+      </aside>
+
+    <div class="catalog-main">
+      <div class="cards-grid" id="grid">
+        <a href="https://axelnn.ru/catalog/blades/22436/" class="card" data-sub="" data-price="6000" data-sizes="9">
           <div class="card__media"><img class="ph" src="../../assets/img/products/22436.webp" width="600" height="600" loading="lazy" alt="ЛЕЗВИЕ  Ultima Mark 4"></div>
           <span class="card__name">ЛЕЗВИЕ Ultima Mark 4</span>
           <div class="card__prices"><span class="card__price">6 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/22438/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/22438/" class="card" data-sub="" data-price="6500" data-sizes="7 1/2">
           <div class="card__media"><img class="ph" src="../../assets/img/products/22438.webp" width="600" height="600" loading="lazy" alt="Лезвие Astra Эклипс"></div>
           <span class="card__name">Лезвие Astra Эклипс</span>
           <div class="card__prices"><span class="card__price">6 500&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/7398/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/7398/" class="card" data-sub="" data-price="27000" data-brand="MK" data-sizes="7 1/4|7 1/2|7 3/4|8|8 1/2|8 3/4">
           <div class="card__media"><img class="ph" src="../../assets/img/products/7398.webp" width="600" height="600" loading="lazy" alt="Лезвия для конков MK Professional"></div>
           <span class="card__name">Лезвия для конков MK Professional</span>
           <div class="card__prices"><span class="card__price">27 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/11155/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/11155/" class="card" data-sub="" data-price="55000" data-sizes="9 3/4">
           <div class="card__media"><img class="ph" src="../../assets/img/products/11155.webp" width="600" height="600" loading="lazy" alt="Лезвия Matrix Legacy"></div>
           <span class="card__name">Лезвия Matrix Legacy</span>
           <div class="card__prices"><span class="card__price">55 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/19297/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/19297/" class="card" data-sub="" data-price="53000" data-brand="MK" data-sizes="8 3/4|10 1/4">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Лезвия MK Dance</span>
           <div class="card__prices"><span class="card__price">53 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/11164/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/11164/" class="card" data-sub="" data-price="15990" data-brand="MK" data-sizes="7|7 1/2|7 3/4|8|8 1/4|8 1/2|9 1/4">
           <div class="card__media"><img class="ph" src="../../assets/img/products/11164.webp" width="600" height="600" loading="lazy" alt="Лезвия MK Galaxy"></div>
           <span class="card__name">Лезвия MK Galaxy</span>
           <div class="card__prices"><span class="card__price">15 990&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/22434/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/22434/" class="card" data-sub="" data-price="10000" data-sizes="8 1/4">
           <div class="card__media"><img class="ph" src="../../assets/img/products/22434.webp" width="600" height="600" loading="lazy" alt="Лезвия Ultima Aspire , UB20"></div>
           <span class="card__name">Лезвия Ultima Aspire , UB20</span>
           <div class="card__prices"><span class="card__price">10 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/11144/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/11144/" class="card" data-sub="" data-price="39990" data-sizes="10">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Лезвия Ultima Supreme</span>
           <div class="card__prices"><span class="card__price">39 990&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/8437/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/8437/" class="card" data-sub="" data-price="25000" data-sizes="7 1/2|7 3/4|8 1/2">
           <div class="card__media"><img class="ph" src="../../assets/img/products/8437.webp" width="600" height="600" loading="lazy" alt="Лезвия Wilson Coronation Ace"></div>
           <span class="card__name">Лезвия Wilson Coronation Ace</span>
           <div class="card__prices"><span class="card__price">25 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/blades/8457/" class="card">
+        <a href="https://axelnn.ru/catalog/blades/8457/" class="card" data-sub="" data-price="70000" data-sizes="8|10">
           <div class="card__media"><img class="ph" src="../../assets/img/products/8457.webp" width="600" height="600" loading="lazy" alt="Лезвия Wilson Gold Seal"></div>
           <span class="card__name">Лезвия Wilson Gold Seal</span>
           <div class="card__prices"><span class="card__price">70 000&nbsp;₽</span></div>
         </a>
+      </div>
+      <p class="catalog-empty" id="empty" hidden>Под фильтры ничего не подошло. Ослабьте условия или сбросьте их.</p>
     </div>
+  </div>
 </section>
 
 <div class="footer-wrap">
@@ -308,6 +351,103 @@
         document.body.style.overflow = '';
       }
     });
+  })();
+
+  // Фильтры каталога. Все товары раздела уже в разметке, поэтому отбор —
+  // это переключение hidden у карточек, без запросов и перерисовки сетки.
+  (function () {
+    var grid = document.getElementById('grid');
+    var panel = document.getElementById('filters');
+    if (!grid || !panel) return;
+
+    var cards = [].slice.call(grid.querySelectorAll('.card'));
+    var found = document.getElementById('found');
+    var empty = document.getElementById('empty');
+    var reset = document.getElementById('filters-reset');
+    var toggle = document.getElementById('filters-toggle');
+    var minEl = document.getElementById('price-min');
+    var maxEl = document.getElementById('price-max');
+
+    function plural(n) {
+      var d = n % 10, h = n % 100;
+      if (d === 1 && h !== 11) return 'товар';
+      if (d >= 2 && d <= 4 && (h < 10 || h > 20)) return 'товара';
+      return 'товаров';
+    }
+
+    function checked(name) {
+      return [].slice.call(panel.querySelectorAll('input[name="' + name + '"]:checked'))
+        .map(function (i) { return i.value; });
+    }
+
+    function apply() {
+      var subs = checked('sub'), brands = checked('brand'), sizes = checked('size');
+      var lo = minEl ? parseFloat(minEl.value) : NaN;
+      var hi = maxEl ? parseFloat(maxEl.value) : NaN;
+      var n = 0;
+
+      cards.forEach(function (c) {
+        var ok = true;
+        // Внутри одной группы условия через ИЛИ, между группами — И:
+        // «Edea или Risport» и при этом «размер 230».
+        if (subs.length && subs.indexOf(c.dataset.sub || '') === -1) ok = false;
+        if (ok && brands.length && brands.indexOf(c.dataset.brand || '') === -1) ok = false;
+        if (ok && sizes.length) {
+          var own = (c.dataset.sizes || '').split('|');
+          ok = sizes.some(function (s) { return own.indexOf(s) !== -1; });
+        }
+        var price = Number(c.dataset.price);
+        if (ok && !isNaN(lo) && price < lo) ok = false;
+        if (ok && !isNaN(hi) && price > hi) ok = false;
+
+        c.hidden = !ok;
+        if (ok) n++;
+      });
+
+      if (found) found.innerHTML = n + '&nbsp;' + plural(n);
+      if (empty) empty.hidden = n > 0;
+      var active = subs.length || brands.length || sizes.length ||
+        (minEl && minEl.value) || (maxEl && maxEl.value);
+      if (reset) reset.hidden = !active;
+    }
+
+    panel.addEventListener('change', apply);
+    // Цену пересчитываем на ввод, а не на change: иначе счётчик обновляется
+    // только когда поле теряет фокус, и правка выглядит как «не сработало».
+    panel.addEventListener('input', function (e) {
+      if (e.target === minEl || e.target === maxEl) apply();
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
+      if (minEl) minEl.value = '';
+      if (maxEl) maxEl.value = '';
+      apply();
+    });
+
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = panel.dataset.open === 'true';
+      panel.dataset.open = String(!open);
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
+    // включаем соответствующий фильтр вместо прокрутки к несуществующему блоку.
+    function fromHash() {
+      if (!location.hash) return;
+      var want = decodeURIComponent(location.hash.slice(1));
+      var box = panel.querySelector('input[name="sub"][value="' + want.replace(/"/g, '\\"') + '"]');
+      if (!box) return;
+      panel.querySelectorAll('input[name="sub"]').forEach(function (i) { i.checked = false; });
+      box.checked = true;
+      apply();
+    }
+
+    // hashchange обязателен: если уже стоишь на странице раздела и выбираешь
+    // в меню другой подраздел, меняется только якорь — браузер страницу
+    // не перезагружает, и без этого обработчика фильтр остался бы прежним.
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

@@ -178,427 +178,426 @@
 
   <div class="section__head">
     <h1 class="section-title">Одежда для мальчиков</h1>
-    <span class="section__note">72&nbsp;товара</span>
+    <span class="section__note" id="found" data-total="72">72&nbsp;товара</span>
   </div>
 
-    <div class="chips">
-      <a class="chip" href="#termokomplekty">Термокостюмы<span class="chip__count">37</span></a>
-      <a class="chip" href="#termobryuki">Термобрюки<span class="chip__count">16</span></a>
-      <a class="chip" href="#termovodolazki 1">Термо водолазки, термо футболки<span class="chip__count">7</span></a>
-      <a class="chip" href="#terkombinezony">Теркомбинезоны<span class="chip__count">4</span></a>
-      <a class="chip" href="#rubashka_bodi">Рубашка-боди<span class="chip__count">3</span></a>
-      <a class="chip" href="#termobele_">Термобелье<span class="chip__count">3</span></a>
-      <a class="chip" href="#termobodi_">Термободи<span class="chip__count">1</span></a>
-      <a class="chip" href="#termozhilety 1">Терможилеты<span class="chip__count">1</span></a>
-    </div>
+  <div class="catalog-layout">
+    <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
+      Фильтры
+      <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
 
-    <div class="subsection" id="termokomplekty">
-      <h2 class="subsection__title">Термокостюмы<span class="subsection__count">37</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11436/" class="card">
+      <aside class="filters" id="filters">
+        <div class="filters__head">
+          <span class="filters__title">Фильтры</span>
+          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Цена, ₽</div>
+          <div class="filter__price">
+            <input type="number" class="filter__num" id="price-min" inputmode="numeric" placeholder="2170" min="2170" max="7835" aria-label="Цена от">
+            <span class="filter__dash">—</span>
+            <input type="number" class="filter__num" id="price-max" inputmode="numeric" placeholder="7835" min="2170" max="7835" aria-label="Цена до">
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Подраздел</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="sub" value="termokomplekty"><span class="filter__label">Термокостюмы</span><span class="filter__count">37</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termobryuki"><span class="filter__label">Термобрюки</span><span class="filter__count">16</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termovodolazki 1"><span class="filter__label">Термо водолазки, термо футболки</span><span class="filter__count">7</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="terkombinezony"><span class="filter__label">Теркомбинезоны</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="rubashka_bodi"><span class="filter__label">Рубашка-боди</span><span class="filter__count">3</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termobele_"><span class="filter__label">Термобелье</span><span class="filter__count">3</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termobodi_"><span class="filter__label">Термободи</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termozhilety 1"><span class="filter__label">Терможилеты</span><span class="filter__count">1</span></label>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Размер</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="size" value="104"><span class="filter__label">104</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="110"><span class="filter__label">110</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="116"><span class="filter__label">116</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="122"><span class="filter__label">122</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="128"><span class="filter__label">128</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="134"><span class="filter__label">134</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="140"><span class="filter__label">140</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="146"><span class="filter__label">146</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="152"><span class="filter__label">152</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="158"><span class="filter__label">158</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="164"><span class="filter__label">164</span><span class="filter__count">72</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="170"><span class="filter__label">170</span><span class="filter__count">72</span></label>
+          </div>
+        </div>
+      </aside>
+
+    <div class="catalog-main">
+      <div class="cards-grid" id="grid">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/9013/" class="card" data-sub="rubashka_bodi" data-price="4285" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/9013.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди"></div>
+          <span class="card__name">Рубашка-боди</span>
+          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/9023/" class="card" data-sub="rubashka_bodi" data-price="4285" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/9023.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди"></div>
+          <span class="card__name">Рубашка-боди</span>
+          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/20982/" class="card" data-sub="rubashka_bodi" data-price="4285" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20982.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди черная"></div>
+          <span class="card__name">Рубашка-боди черная</span>
+          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8967/" class="card" data-sub="terkombinezony" data-price="5965" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/8967.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
+          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
+          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8979/" class="card" data-sub="terkombinezony" data-price="5965" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/8979.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
+          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
+          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8991/" class="card" data-sub="terkombinezony" data-price="5965" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/8991.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
+          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
+          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/9003/" class="card" data-sub="terkombinezony" data-price="5965" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/9003.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
+          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
+          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/14977/" class="card" data-sub="termovodolazki 1" data-price="2715" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/14977.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
+          <span class="card__name">Водолазка термо</span>
+          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/14990/" class="card" data-sub="termovodolazki 1" data-price="2715" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Водолазка термо</span>
+          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/15003/" class="card" data-sub="termovodolazki 1" data-price="2715" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/15003.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
+          <span class="card__name">Водолазка термо</span>
+          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/15016/" class="card" data-sub="termovodolazki 1" data-price="2715" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/15016.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
+          <span class="card__name">Водолазка термо</span>
+          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24356/" class="card" data-sub="termovodolazki 1" data-price="2170" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/24356.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика"></div>
+          <span class="card__name">Термо футболка для мальчика</span>
+          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24382/" class="card" data-sub="termovodolazki 1" data-price="2170" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/24382.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика,голубая"></div>
+          <span class="card__name">Термо футболка для мальчика, голубая</span>
+          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24369/" class="card" data-sub="termovodolazki 1" data-price="2170" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/24369.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика,черная"></div>
+          <span class="card__name">Термо футболка для мальчика, черная</span>
+          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/9221/" class="card" data-sub="termobele_" data-price="4270" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/9221.webp" width="600" height="600" loading="lazy" alt="Термо бельё (комбинезон) unisex"></div>
+          <span class="card__name">Термо бельё (комбинезон) unisex</span>
+          <div class="card__prices"><span class="card__price">4 270&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/20918/" class="card" data-sub="termobele_" data-price="5170" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20918.webp" width="600" height="600" loading="lazy" alt="Термо бельё на мальчика"></div>
+          <span class="card__name">Термо бельё на мальчика</span>
+          <div class="card__prices"><span class="card__price">5 170&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/23706/" class="card" data-sub="termobele_" data-price="5170" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/23706.webp" width="600" height="600" loading="lazy" alt="Термо белье на мальчика черное"></div>
+          <span class="card__name">Термо белье на мальчика черное</span>
+          <div class="card__prices"><span class="card__price">5 170&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobodi_/9206/" class="card" data-sub="termobodi_" data-price="2800" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/9206.webp" width="600" height="600" loading="lazy" alt="Термободи"></div>
+          <span class="card__name">Термободи</span>
+          <div class="card__prices"><span class="card__price">2 800&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11837/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11837.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11850/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11850.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11863/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11863.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11876/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11876.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11890/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11890.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11903/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11903.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11916/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/11916.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17904/" class="card" data-sub="termobryuki" data-price="3150" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Брюки термо &quot;Патриот&quot;</span>
+          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11811/" class="card" data-sub="termobryuki" data-price="3150" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
+          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11824/" class="card" data-sub="termobryuki" data-price="3150" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
+          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/9336/" class="card" data-sub="termobryuki" data-price="3150" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
+          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17917/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17917.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17930/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17930.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17943/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17943.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17957/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17957.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17970/" class="card" data-sub="termobryuki" data-price="3530" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17970.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
+          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
+          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termozhilety 1/23719/" class="card" data-sub="termozhilety 1" data-price="3700" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/23719.webp" width="600" height="600" loading="lazy" alt="Термо жилеты для мальчиков"></div>
+          <span class="card__name">Термо жилеты для мальчиков</span>
+          <div class="card__prices"><span class="card__price">3 700&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11436/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/11436.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Аксель&quot;"></div>
           <span class="card__name">Костюм термо &quot;Аксель&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11449/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11449/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/11449.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Аксель&quot;"></div>
           <span class="card__name">Костюм термо &quot;Аксель&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11462/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/11462/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/11462.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Аксель&quot;"></div>
           <span class="card__name">Костюм термо &quot;Аксель&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12523/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12523/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12523.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Аксель&quot;"></div>
           <span class="card__name">Костюм термо &quot;Аксель&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12536/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12536/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12536.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Аксель&quot;"></div>
           <span class="card__name">Костюм термо &quot;Аксель&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12334/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12334/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12334.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Вектор&quot;"></div>
           <span class="card__name">Костюм термо &quot;Вектор&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12432/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12432/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12432.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Вектор&quot;"></div>
           <span class="card__name">Костюм термо &quot;Вектор&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12445/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12445/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12445.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Вектор&quot;"></div>
           <span class="card__name">Костюм термо &quot;Вектор&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12458/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12458/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12458.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Вектор&quot;"></div>
           <span class="card__name">Костюм термо &quot;Вектор&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/9323/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/9323/" class="card" data-sub="termokomplekty" data-price="7835" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/9323.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Вектор&quot;"></div>
           <span class="card__name">Костюм термо &quot;Вектор&quot;</span>
           <div class="card__prices"><span class="card__price">7 835&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12419/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12419/" class="card" data-sub="termokomplekty" data-price="6160" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12419.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Классика&quot;"></div>
           <span class="card__name">Костюм термо &quot;Классика&quot;</span>
           <div class="card__prices"><span class="card__price">6 160&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12275/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12275/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12275.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Меркурий&quot;"></div>
           <span class="card__name">Костюм термо &quot;Меркурий&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12286/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12286/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12286.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Меркурий&quot;"></div>
           <span class="card__name">Костюм термо &quot;Меркурий&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12297/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12297/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12297.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Меркурий&quot;"></div>
           <span class="card__name">Костюм термо &quot;Меркурий&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12308/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12308/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12308.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Меркурий&quot;"></div>
           <span class="card__name">Костюм термо &quot;Меркурий&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12935/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12935/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12935.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Октант&quot;"></div>
           <span class="card__name">Костюм термо &quot;Октант&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12946/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12946/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12946.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Октант&quot;"></div>
           <span class="card__name">Костюм термо &quot;Октант&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12957/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12957/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12957.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Октант&quot;"></div>
           <span class="card__name">Костюм термо &quot;Октант&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12968/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12968/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12968.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Октант&quot;"></div>
           <span class="card__name">Костюм термо &quot;Октант&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12358/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12358/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12358.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Орион&quot;"></div>
           <span class="card__name">Костюм термо &quot;Орион&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12369/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12369/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12369.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Орион&quot;"></div>
           <span class="card__name">Костюм термо &quot;Орион&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12380/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12380/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12380.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Орион&quot;"></div>
           <span class="card__name">Костюм термо &quot;Орион&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12393/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12393/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12393.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Орион&quot;"></div>
           <span class="card__name">Костюм термо &quot;Орион&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12471/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12471/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12471.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Патриот&quot;"></div>
           <span class="card__name">Костюм термо &quot;Патриот&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12347/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12347/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12347.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Формула&quot;"></div>
           <span class="card__name">Костюм термо &quot;Формула&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12406/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12406/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12406.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Формула&quot;"></div>
           <span class="card__name">Костюм термо &quot;Формула&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12484/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12484/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12484.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Формула&quot;"></div>
           <span class="card__name">Костюм термо &quot;Формула&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12497/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12497/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12497.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Формула&quot;"></div>
           <span class="card__name">Костюм термо &quot;Формула&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12510/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12510/" class="card" data-sub="termokomplekty" data-price="7455" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12510.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Формула&quot;"></div>
           <span class="card__name">Костюм термо &quot;Формула&quot;</span>
           <div class="card__prices"><span class="card__price">7 455&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12992/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/12992/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/12992.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13005/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13005/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13005.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13018/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13018/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13018.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13031/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13031/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13031.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13044/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13044/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13044.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13057/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/13057/" class="card" data-sub="termokomplekty" data-price="6895" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13057.webp" width="600" height="600" loading="lazy" alt="Костюм термо &quot;Форсаж&quot;"></div>
           <span class="card__name">Костюм термо &quot;Форсаж&quot;</span>
           <div class="card__prices"><span class="card__price">6 895&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/19572/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/19572/" class="card" data-sub="termokomplekty" data-price="7090" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19572.webp" width="600" height="600" loading="lazy" alt="Термо комплект &quot;Легион&quot;"></div>
           <span class="card__name">Термо комплект &quot;Легион&quot;</span>
           <div class="card__prices"><span class="card__price">7 090&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/19546/" class="card">
+        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termokomplekty/19546/" class="card" data-sub="termokomplekty" data-price="6650" data-sizes="104|110|116|122|128|134|140|146|152|158|164|170">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19546.webp" width="600" height="600" loading="lazy" alt="Термо комплект &quot;Страйк&quot;"></div>
           <span class="card__name">Термо комплект &quot;Страйк&quot;</span>
           <div class="card__prices"><span class="card__price">6 650&nbsp;₽</span></div>
         </a>
       </div>
+      <p class="catalog-empty" id="empty" hidden>Под фильтры ничего не подошло. Ослабьте условия или сбросьте их.</p>
     </div>
-
-    <div class="subsection" id="termobryuki">
-      <h2 class="subsection__title">Термобрюки<span class="subsection__count">16</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11837/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11837.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11850/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11850.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11863/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11863.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11876/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11876.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11890/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11890.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11903/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11903.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11916/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/11916.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Аксель&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Аксель&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17904/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Брюки термо &quot;Патриот&quot;</span>
-          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11811/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
-          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/11824/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
-          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/9336/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Брюки термо &quot;Формула&quot;</span>
-          <div class="card__prices"><span class="card__price">3 150&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17917/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17917.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17930/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17930.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17943/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17943.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17957/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17957.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobryuki/17970/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17970.webp" width="600" height="600" loading="lazy" alt="Брюки термо &quot;Форсаж&quot;"></div>
-          <span class="card__name">Брюки термо &quot;Форсаж&quot;</span>
-          <div class="card__prices"><span class="card__price">3 530&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="termovodolazki 1">
-      <h2 class="subsection__title">Термо водолазки, термо футболки<span class="subsection__count">7</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/14977/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/14977.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
-          <span class="card__name">Водолазка термо</span>
-          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/14990/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Водолазка термо</span>
-          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/15003/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/15003.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
-          <span class="card__name">Водолазка термо</span>
-          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/15016/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/15016.webp" width="600" height="600" loading="lazy" alt="Водолазка термо"></div>
-          <span class="card__name">Водолазка термо</span>
-          <div class="card__prices"><span class="card__price">2 715&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24356/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/24356.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика"></div>
-          <span class="card__name">Термо футболка для мальчика</span>
-          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24382/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/24382.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика,голубая"></div>
-          <span class="card__name">Термо футболка для мальчика, голубая</span>
-          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termovodolazki 1/24369/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/24369.webp" width="600" height="600" loading="lazy" alt="Термо футболка для мальчика,черная"></div>
-          <span class="card__name">Термо футболка для мальчика, черная</span>
-          <div class="card__prices"><span class="card__price">2 170&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="terkombinezony">
-      <h2 class="subsection__title">Теркомбинезоны<span class="subsection__count">4</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8967/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/8967.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
-          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
-          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8979/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/8979.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
-          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
-          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/8991/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/8991.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
-          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
-          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/terkombinezony/9003/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/9003.webp" width="600" height="600" loading="lazy" alt="Комбинезон термо &quot;Фаворит&quot;"></div>
-          <span class="card__name">Комбинезон термо &quot;Фаворит&quot;</span>
-          <div class="card__prices"><span class="card__price">5 965&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="rubashka_bodi">
-      <h2 class="subsection__title">Рубашка-боди<span class="subsection__count">3</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/9013/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/9013.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди"></div>
-          <span class="card__name">Рубашка-боди</span>
-          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/9023/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/9023.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди"></div>
-          <span class="card__name">Рубашка-боди</span>
-          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/rubashka_bodi/20982/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20982.webp" width="600" height="600" loading="lazy" alt="Рубашка-боди черная"></div>
-          <span class="card__name">Рубашка-боди черная</span>
-          <div class="card__prices"><span class="card__price">4 285&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="termobele_">
-      <h2 class="subsection__title">Термобелье<span class="subsection__count">3</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/9221/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/9221.webp" width="600" height="600" loading="lazy" alt="Термо бельё (комбинезон) unisex"></div>
-          <span class="card__name">Термо бельё (комбинезон) unisex</span>
-          <div class="card__prices"><span class="card__price">4 270&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/20918/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20918.webp" width="600" height="600" loading="lazy" alt="Термо бельё на мальчика"></div>
-          <span class="card__name">Термо бельё на мальчика</span>
-          <div class="card__prices"><span class="card__price">5 170&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobele_/23706/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/23706.webp" width="600" height="600" loading="lazy" alt="Термо белье на мальчика черное"></div>
-          <span class="card__name">Термо белье на мальчика черное</span>
-          <div class="card__prices"><span class="card__price">5 170&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="termobodi_">
-      <h2 class="subsection__title">Термободи<span class="subsection__count">1</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termobodi_/9206/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/9206.webp" width="600" height="600" loading="lazy" alt="Термободи"></div>
-          <span class="card__name">Термободи</span>
-          <div class="card__prices"><span class="card__price">2 800&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="termozhilety 1">
-      <h2 class="subsection__title">Терможилеты<span class="subsection__count">1</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_malchikov/termozhilety 1/23719/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/23719.webp" width="600" height="600" loading="lazy" alt="Термо жилеты для мальчиков"></div>
-          <span class="card__name">Термо жилеты для мальчиков</span>
-          <div class="card__prices"><span class="card__price">3 700&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
+  </div>
 </section>
 
 <div class="footer-wrap">
@@ -674,6 +673,103 @@
         document.body.style.overflow = '';
       }
     });
+  })();
+
+  // Фильтры каталога. Все товары раздела уже в разметке, поэтому отбор —
+  // это переключение hidden у карточек, без запросов и перерисовки сетки.
+  (function () {
+    var grid = document.getElementById('grid');
+    var panel = document.getElementById('filters');
+    if (!grid || !panel) return;
+
+    var cards = [].slice.call(grid.querySelectorAll('.card'));
+    var found = document.getElementById('found');
+    var empty = document.getElementById('empty');
+    var reset = document.getElementById('filters-reset');
+    var toggle = document.getElementById('filters-toggle');
+    var minEl = document.getElementById('price-min');
+    var maxEl = document.getElementById('price-max');
+
+    function plural(n) {
+      var d = n % 10, h = n % 100;
+      if (d === 1 && h !== 11) return 'товар';
+      if (d >= 2 && d <= 4 && (h < 10 || h > 20)) return 'товара';
+      return 'товаров';
+    }
+
+    function checked(name) {
+      return [].slice.call(panel.querySelectorAll('input[name="' + name + '"]:checked'))
+        .map(function (i) { return i.value; });
+    }
+
+    function apply() {
+      var subs = checked('sub'), brands = checked('brand'), sizes = checked('size');
+      var lo = minEl ? parseFloat(minEl.value) : NaN;
+      var hi = maxEl ? parseFloat(maxEl.value) : NaN;
+      var n = 0;
+
+      cards.forEach(function (c) {
+        var ok = true;
+        // Внутри одной группы условия через ИЛИ, между группами — И:
+        // «Edea или Risport» и при этом «размер 230».
+        if (subs.length && subs.indexOf(c.dataset.sub || '') === -1) ok = false;
+        if (ok && brands.length && brands.indexOf(c.dataset.brand || '') === -1) ok = false;
+        if (ok && sizes.length) {
+          var own = (c.dataset.sizes || '').split('|');
+          ok = sizes.some(function (s) { return own.indexOf(s) !== -1; });
+        }
+        var price = Number(c.dataset.price);
+        if (ok && !isNaN(lo) && price < lo) ok = false;
+        if (ok && !isNaN(hi) && price > hi) ok = false;
+
+        c.hidden = !ok;
+        if (ok) n++;
+      });
+
+      if (found) found.innerHTML = n + '&nbsp;' + plural(n);
+      if (empty) empty.hidden = n > 0;
+      var active = subs.length || brands.length || sizes.length ||
+        (minEl && minEl.value) || (maxEl && maxEl.value);
+      if (reset) reset.hidden = !active;
+    }
+
+    panel.addEventListener('change', apply);
+    // Цену пересчитываем на ввод, а не на change: иначе счётчик обновляется
+    // только когда поле теряет фокус, и правка выглядит как «не сработало».
+    panel.addEventListener('input', function (e) {
+      if (e.target === minEl || e.target === maxEl) apply();
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
+      if (minEl) minEl.value = '';
+      if (maxEl) maxEl.value = '';
+      apply();
+    });
+
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = panel.dataset.open === 'true';
+      panel.dataset.open = String(!open);
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
+    // включаем соответствующий фильтр вместо прокрутки к несуществующему блоку.
+    function fromHash() {
+      if (!location.hash) return;
+      var want = decodeURIComponent(location.hash.slice(1));
+      var box = panel.querySelector('input[name="sub"][value="' + want.replace(/"/g, '\\"') + '"]');
+      if (!box) return;
+      panel.querySelectorAll('input[name="sub"]').forEach(function (i) { i.checked = false; });
+      box.checked = true;
+      apply();
+    }
+
+    // hashchange обязателен: если уже стоишь на странице раздела и выбираешь
+    // в меню другой подраздел, меняется только якорь — браузер страницу
+    // не перезагружает, и без этого обработчика фильтр остался бы прежним.
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

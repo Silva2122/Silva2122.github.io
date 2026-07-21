@@ -70,6 +70,28 @@ function dim(rel) {
   return null;
 }
 
+// «RUNA», «Runa», «EDEA», «Edea», «JACKSON» — одна марка в четырёх написаниях.
+// Приводим к одному виду, аббревиатуры оставляем как есть.
+const KEEP_CAPS = new Set(['MK']);
+function brandName(b) {
+  const s = (b || '').trim();
+  if (!s) return null;
+  if (KEEP_CAPS.has(s.toUpperCase())) return s.toUpperCase();
+  return s[0].toUpperCase() + s.slice(1).toLowerCase();
+}
+
+// В размерах донора попадается мусор: прочерк вместо значения и пустые строки.
+// Такой «размер» в фильтре — пункт, который ничего не отбирает.
+function cleanSizes(list) {
+  const out = [];
+  for (const s of list || []) {
+    const v = String(s).trim();
+    if (!v || v === '-' || v === '—') continue;
+    if (!out.includes(v)) out.push(v);
+  }
+  return out;
+}
+
 mkdirSync(OUT, { recursive: true });
 
 const list = LIMIT ? products.slice(0, LIMIT) : products;
@@ -131,6 +153,11 @@ for (const [i, p] of list.entries()) {
     url: (p.url || '').replace('https://axelnn.ru', ''),
     img: src ? `assets/img/products/${name}` : null,
     cut: kind === 'cut',
+    // Для фильтров на странице раздела. Бренд в доноре набран как придётся
+    // (RUNA, Runa, EDEA, Edea) — сводим регистр, иначе одна марка даёт
+    // четыре разных пункта в фильтре.
+    brand: brandName(p.brand),
+    sizes: cleanSizes(p.sizes),
   });
 
   if ((i + 1) % 200 === 0) console.log(`  ${i + 1}/${list.length}…`);

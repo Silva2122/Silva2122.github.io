@@ -178,111 +178,126 @@
 
   <div class="section__head">
     <h1 class="section-title">Подарочные наборы тренерам</h1>
-    <span class="section__note">13&nbsp;товаров</span>
+    <span class="section__note" id="found" data-total="13">13&nbsp;товаров</span>
   </div>
 
-    <div class="chips">
-      <a class="chip" href="#nabor_gimnastika">Набор &quot;Гимнастика&quot;<span class="chip__count">5</span></a>
-      <a class="chip" href="#nabor_tennis">Набор &quot;Теннис&quot;<span class="chip__count">4</span></a>
-      <a class="chip" href="#nabor_figurnoe_katanie">Набор &quot;Фигурное катание&quot;<span class="chip__count">2</span></a>
-      <a class="chip" href="#nabor_basketbol">Набор &quot;Баскетбол&quot;<span class="chip__count">1</span></a>
-      <a class="chip" href="#nabor_khoreografiya">Набор &quot;Хореография&quot;<span class="chip__count">1</span></a>
-    </div>
+  <div class="catalog-layout">
+    <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
+      Фильтры
+      <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
 
-    <div class="subsection" id="nabor_gimnastika">
-      <h2 class="subsection__title">Набор &quot;Гимнастика&quot;<span class="subsection__count">5</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10046/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Думочка &quot;Гимнастика&quot;1</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/11137/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Думочка &quot;Гимнастика&quot;2</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10326/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Кружка &quot;Гимнастика&quot;1</span>
-          <div class="card__prices"><span class="card__price">420&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10057/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Свитшот &quot;Гимнастика&quot;1</span>
-          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10969/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Футболка &quot;Гимнастика&quot;1</span>
-          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
+      <aside class="filters" id="filters">
+        <div class="filters__head">
+          <span class="filters__title">Фильтры</span>
+          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Цена, ₽</div>
+          <div class="filter__price">
+            <input type="number" class="filter__num" id="price-min" inputmode="numeric" placeholder="420" min="420" max="1690" aria-label="Цена от">
+            <span class="filter__dash">—</span>
+            <input type="number" class="filter__num" id="price-max" inputmode="numeric" placeholder="1690" min="420" max="1690" aria-label="Цена до">
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Подраздел</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="sub" value="nabor_gimnastika"><span class="filter__label">Набор &quot;Гимнастика&quot;</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="nabor_tennis"><span class="filter__label">Набор &quot;Теннис&quot;</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="nabor_figurnoe_katanie"><span class="filter__label">Набор &quot;Фигурное катание&quot;</span><span class="filter__count">2</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="nabor_basketbol"><span class="filter__label">Набор &quot;Баскетбол&quot;</span><span class="filter__count">1</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="nabor_khoreografiya"><span class="filter__label">Набор &quot;Хореография&quot;</span><span class="filter__count">1</span></label>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Размер</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="size" value="104-110"><span class="filter__label">104-110</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="116-122"><span class="filter__label">116-122</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="128-134"><span class="filter__label">128-134</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="140-146"><span class="filter__label">140-146</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="152-158 (XS)"><span class="filter__label">152-158 (XS)</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="164-170 (S)"><span class="filter__label">164-170 (S)</span><span class="filter__count">5</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="L"><span class="filter__label">L</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="M"><span class="filter__label">M</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="XL"><span class="filter__label">XL</span><span class="filter__count">4</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="XXL"><span class="filter__label">XXL</span><span class="filter__count">4</span></label>
+          </div>
+        </div>
+      </aside>
 
-    <div class="subsection" id="nabor_tennis">
-      <h2 class="subsection__title">Набор &quot;Теннис&quot;<span class="subsection__count">4</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10058/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Думочка &quot;Теннис&quot;1</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10143/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Кружка &quot;Теннис&quot;1</span>
-          <div class="card__prices"><span class="card__price">420&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10144/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Термос &quot;Теннис&quot;1</span>
-          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10967/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Футболка &quot;Теннис&quot;1</span>
-          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="nabor_figurnoe_katanie">
-      <h2 class="subsection__title">Набор &quot;Фигурное катание&quot;<span class="subsection__count">2</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_figurnoe_katanie/10991/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Свитшот &quot;Фигуристка&quot;1</span>
-          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_figurnoe_katanie/10989/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Футболка &quot;Фигуристка&quot;1</span>
-          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="nabor_basketbol">
-      <h2 class="subsection__title">Набор &quot;Баскетбол&quot;<span class="subsection__count">1</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_basketbol/10149/" class="card">
+    <div class="catalog-main">
+      <div class="cards-grid" id="grid">
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_basketbol/10149/" class="card" data-sub="nabor_basketbol" data-price="600">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Думочка &quot;Баскетбол&quot;1</span>
           <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
         </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="nabor_khoreografiya">
-      <h2 class="subsection__title">Набор &quot;Хореография&quot;<span class="subsection__count">1</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_khoreografiya/11135/" class="card">
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10046/" class="card" data-sub="nabor_gimnastika" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Думочка &quot;Гимнастика&quot;1</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/11137/" class="card" data-sub="nabor_gimnastika" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Думочка &quot;Гимнастика&quot;2</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10326/" class="card" data-sub="nabor_gimnastika" data-price="420">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Кружка &quot;Гимнастика&quot;1</span>
+          <div class="card__prices"><span class="card__price">420&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10057/" class="card" data-sub="nabor_gimnastika" data-price="1690" data-sizes="M|L|XL|XXL|116-122|128-134|140-146|152-158 (XS)|164-170 (S)|104-110">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Свитшот &quot;Гимнастика&quot;1</span>
+          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_gimnastika/10969/" class="card" data-sub="nabor_gimnastika" data-price="990" data-sizes="M|L|XL|XXL|116-122|128-134|140-146|152-158 (XS)|164-170 (S)|104-110">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Футболка &quot;Гимнастика&quot;1</span>
+          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10058/" class="card" data-sub="nabor_tennis" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Думочка &quot;Теннис&quot;1</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10143/" class="card" data-sub="nabor_tennis" data-price="420">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Кружка &quot;Теннис&quot;1</span>
+          <div class="card__prices"><span class="card__price">420&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10144/" class="card" data-sub="nabor_tennis" data-price="1690">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Термос &quot;Теннис&quot;1</span>
+          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_tennis/10967/" class="card" data-sub="nabor_tennis" data-price="990" data-sizes="116-122|128-134|140-146|152-158 (XS)|164-170 (S)|104-110">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Футболка &quot;Теннис&quot;1</span>
+          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_figurnoe_katanie/10991/" class="card" data-sub="nabor_figurnoe_katanie" data-price="1690" data-sizes="M|L|XL|XXL|116-122|128-134|140-146|152-158 (XS)|164-170 (S)|104-110">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Свитшот &quot;Фигуристка&quot;1</span>
+          <div class="card__prices"><span class="card__price">1 690&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_figurnoe_katanie/10989/" class="card" data-sub="nabor_figurnoe_katanie" data-price="990" data-sizes="M|L|XL|XXL|116-122|128-134|140-146|152-158 (XS)|164-170 (S)|104-110">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Футболка &quot;Фигуристка&quot;1</span>
+          <div class="card__prices"><span class="card__price">990&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/podarochnye_nabory_treneram_/nabor_khoreografiya/11135/" class="card" data-sub="nabor_khoreografiya" data-price="600">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Думочка 2</span>
           <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
         </a>
       </div>
+      <p class="catalog-empty" id="empty" hidden>Под фильтры ничего не подошло. Ослабьте условия или сбросьте их.</p>
     </div>
+  </div>
 </section>
 
 <div class="footer-wrap">
@@ -358,6 +373,103 @@
         document.body.style.overflow = '';
       }
     });
+  })();
+
+  // Фильтры каталога. Все товары раздела уже в разметке, поэтому отбор —
+  // это переключение hidden у карточек, без запросов и перерисовки сетки.
+  (function () {
+    var grid = document.getElementById('grid');
+    var panel = document.getElementById('filters');
+    if (!grid || !panel) return;
+
+    var cards = [].slice.call(grid.querySelectorAll('.card'));
+    var found = document.getElementById('found');
+    var empty = document.getElementById('empty');
+    var reset = document.getElementById('filters-reset');
+    var toggle = document.getElementById('filters-toggle');
+    var minEl = document.getElementById('price-min');
+    var maxEl = document.getElementById('price-max');
+
+    function plural(n) {
+      var d = n % 10, h = n % 100;
+      if (d === 1 && h !== 11) return 'товар';
+      if (d >= 2 && d <= 4 && (h < 10 || h > 20)) return 'товара';
+      return 'товаров';
+    }
+
+    function checked(name) {
+      return [].slice.call(panel.querySelectorAll('input[name="' + name + '"]:checked'))
+        .map(function (i) { return i.value; });
+    }
+
+    function apply() {
+      var subs = checked('sub'), brands = checked('brand'), sizes = checked('size');
+      var lo = minEl ? parseFloat(minEl.value) : NaN;
+      var hi = maxEl ? parseFloat(maxEl.value) : NaN;
+      var n = 0;
+
+      cards.forEach(function (c) {
+        var ok = true;
+        // Внутри одной группы условия через ИЛИ, между группами — И:
+        // «Edea или Risport» и при этом «размер 230».
+        if (subs.length && subs.indexOf(c.dataset.sub || '') === -1) ok = false;
+        if (ok && brands.length && brands.indexOf(c.dataset.brand || '') === -1) ok = false;
+        if (ok && sizes.length) {
+          var own = (c.dataset.sizes || '').split('|');
+          ok = sizes.some(function (s) { return own.indexOf(s) !== -1; });
+        }
+        var price = Number(c.dataset.price);
+        if (ok && !isNaN(lo) && price < lo) ok = false;
+        if (ok && !isNaN(hi) && price > hi) ok = false;
+
+        c.hidden = !ok;
+        if (ok) n++;
+      });
+
+      if (found) found.innerHTML = n + '&nbsp;' + plural(n);
+      if (empty) empty.hidden = n > 0;
+      var active = subs.length || brands.length || sizes.length ||
+        (minEl && minEl.value) || (maxEl && maxEl.value);
+      if (reset) reset.hidden = !active;
+    }
+
+    panel.addEventListener('change', apply);
+    // Цену пересчитываем на ввод, а не на change: иначе счётчик обновляется
+    // только когда поле теряет фокус, и правка выглядит как «не сработало».
+    panel.addEventListener('input', function (e) {
+      if (e.target === minEl || e.target === maxEl) apply();
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
+      if (minEl) minEl.value = '';
+      if (maxEl) maxEl.value = '';
+      apply();
+    });
+
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = panel.dataset.open === 'true';
+      panel.dataset.open = String(!open);
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
+    // включаем соответствующий фильтр вместо прокрутки к несуществующему блоку.
+    function fromHash() {
+      if (!location.hash) return;
+      var want = decodeURIComponent(location.hash.slice(1));
+      var box = panel.querySelector('input[name="sub"][value="' + want.replace(/"/g, '\\"') + '"]');
+      if (!box) return;
+      panel.querySelectorAll('input[name="sub"]').forEach(function (i) { i.checked = false; });
+      box.checked = true;
+      apply();
+    }
+
+    // hashchange обязателен: если уже стоишь на странице раздела и выбираешь
+    // в меню другой подраздел, меняется только якорь — браузер страницу
+    // не перезагружает, и без этого обработчика фильтр остался бы прежним.
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

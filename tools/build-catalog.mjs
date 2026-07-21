@@ -488,14 +488,36 @@ function productCard(it, depth) {
   const price = it.price
     ? `<div class="card__prices"><span class="card__price">${money(it.price)}&nbsp;₽</span></div>`
     : '<div class="card__prices"><span class="card__price card__price--none">Цена по запросу</span></div>';
+  // Фильтры работают на клиенте по этим data-атрибутам: все товары раздела уже
+  // в DOM, и перерисовка сводится к переключению display у карточек.
+  const data = [
+    `data-sub="${esc(it.sub || '')}"`,
+    `data-price="${it.price || 0}"`,
+    it.brand ? `data-brand="${esc(it.brand)}"` : '',
+    it.sizes && it.sizes.length ? `data-sizes="${esc(it.sizes.join('|'))}"` : '',
+  ].filter(Boolean).join(' ');
   // Карточка ведёт на боевой сайт: страниц товара у нас ещё нет, а внутренняя
   // ссылка отдавала бы 404 на каждый клик. Как появятся — заменить на href(it.url).
   return [
-    `        <a href="${SITE}${it.url}" class="card">`,
+    `        <a href="${SITE}${it.url}" class="card" ${data}>`,
     `          <div class="card__media">${media}</div>`,
     `          <span class="card__name">${esc(tidy(it.name))}</span>`,
     `          ${price}`,
     `        </a>`,
+  ].join('\n');
+}
+
+// Блок фильтра. Пустые пропускаем в вызывающем коде: панель «Бренд» с одним
+// пунктом ничего не отбирает и только занимает место в узкой колонке.
+function filterGroup(title, name, options) {
+  return [
+    `        <div class="filter">`,
+    `          <div class="filter__title">${esc(title)}</div>`,
+    `          <div class="filter__list">`,
+    ...options.map(([value, label, count]) =>
+      `            <label class="filter__row"><input type="checkbox" name="${name}" value="${esc(value)}"><span class="filter__label">${esc(label)}</span><span class="filter__count">${count}</span></label>`),
+    `          </div>`,
+    `        </div>`,
   ].join('\n');
 }
 
@@ -507,39 +529,66 @@ for (const s of sections) {
   const items = bySection.get(seg) || [];
   if (!items.length) { console.log(`  пропуск, нет товаров: ${s.title}`); continue; }
 
-  // Группируем по подразделам. Товары, лежащие прямо в разделе, идут первыми
-  // без заголовка — отдельная плашка «Разное» ради них только мусорила бы.
-  const groups = new Map();
-  const loose = [];
-  for (const it of items) {
-    if (!it.sub) { loose.push(it); continue; }
-    if (!groups.has(it.sub)) groups.set(it.sub, []);
-    groups.get(it.sub).push(it);
-  }
-
   // Заголовок подраздела берём из меню: там человеческое название, а в URL слаг.
   const subTitle = new Map(s.subs.filter((x) => x.anchor).map((x) => [x.anchor, x.title]));
 
-  const chips = [...groups.entries()]
-    .sort((a, b) => b[1].length - a[1].length)
-    .map(([sub, list]) =>
-      `      <a class="chip" href="#${sub}">${esc(tidy(subTitle.get(sub) || sub))}<span class="chip__count">${list.length}</span></a>`)
-    .join('\n');
+  // Товары идут одной сеткой, без заголовков подразделов: отбор ушёл в фильтры
+  // слева, и разбиение на группы теперь только мешало бы — при включённом
+  // фильтре половина заголовков осталась бы над пустотой.
+  const grid = items.map((it) => productCard(it, 2)).join('\n');
 
-  const blocks = [];
-  if (loose.length) {
-    blocks.push(`    <div class="cards-grid">\n${loose.map((it) => productCard(it, 2)).join('\n')}\n    </div>`);
+  // --- варианты фильтров считаем по товарам самого раздела ---
+  const count = (pick) => {
+    const m = new Map();
+    for (const it of items) for (const v of pick(it)) m.set(v, (m.get(v) || 0) + 1);
+    return m;
+  };
+
+  const subs = count((it) => (it.sub ? [it.sub] : []));
+  const brands = count((it) => (it.brand ? [it.brand] : []));
+  const sizes = count((it) => it.sizes || []);
+
+  const groupsHtml = [];
+  if (subs.size > 1) {
+    groupsHtml.push(filterGroup('Подраздел', 'sub',
+      [...subs.entries()].sort((a, b) => b[1] - a[1])
+        .map(([v, n]) => [v, tidy(subTitle.get(v) || v), n])));
   }
-  for (const [sub, list] of [...groups.entries()].sort((a, b) => b[1].length - a[1].length)) {
-    blocks.push([
-      `    <div class="subsection" id="${sub}">`,
-      `      <h2 class="subsection__title">${esc(tidy(subTitle.get(sub) || sub))}<span class="subsection__count">${list.length}</span></h2>`,
-      `      <div class="cards-grid">`,
-      list.map((it) => productCard(it, 2)).join('\n'),
-      `      </div>`,
-      `    </div>`,
-    ].join('\n'));
+  if (brands.size > 1) {
+    groupsHtml.push(filterGroup('Бренд', 'brand',
+      [...brands.entries()].sort((a, b) => b[1] - a[1]).map(([v, n]) => [v, v, n])));
   }
+  if (sizes.size > 1) {
+    // Размеры сортируем числом, если это число: иначе «205» встаёт между
+    // «20» и «21», и шкала читается как случайный набор.
+    groupsHtml.push(filterGroup('Размер', 'size',
+      [...sizes.entries()].sort((a, b) => {
+        const na = parseFloat(a[0]), nb = parseFloat(b[0]);
+        if (!isNaN(na) && !isNaN(nb)) return na - nb;
+        return a[0].localeCompare(b[0], 'ru');
+      }).map(([v, n]) => [v, v, n])));
+  }
+
+  const prices = items.map((it) => it.price || 0).filter(Boolean);
+  const minPrice = Math.min(...prices), maxPrice = Math.max(...prices);
+
+  const aside = [
+    `      <aside class="filters" id="filters">`,
+    `        <div class="filters__head">`,
+    `          <span class="filters__title">Фильтры</span>`,
+    `          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>`,
+    `        </div>`,
+    `        <div class="filter">`,
+    `          <div class="filter__title">Цена, ₽</div>`,
+    `          <div class="filter__price">`,
+    `            <input type="number" class="filter__num" id="price-min" inputmode="numeric" placeholder="${minPrice}" min="${minPrice}" max="${maxPrice}" aria-label="Цена от">`,
+    `            <span class="filter__dash">—</span>`,
+    `            <input type="number" class="filter__num" id="price-max" inputmode="numeric" placeholder="${maxPrice}" min="${minPrice}" max="${maxPrice}" aria-label="Цена до">`,
+    `          </div>`,
+    `        </div>`,
+    ...groupsHtml,
+    `      </aside>`,
+  ].join('\n');
 
   const without = items.filter((it) => !it.img).length;
   noPhoto += without;
@@ -576,10 +625,24 @@ ${upN(rawHeader, 2)}
 
   <div class="section__head">
     <h1 class="section-title">${esc(tidy(s.title))}</h1>
-    <span class="section__note">${items.length}&nbsp;${plural(items.length)}</span>
+    <span class="section__note" id="found" data-total="${items.length}">${items.length}&nbsp;${plural(items.length)}</span>
   </div>
-${chips ? `\n    <div class="chips">\n${chips}\n    </div>\n` : ''}
-${blocks.join('\n\n')}
+
+  <div class="catalog-layout">
+    <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
+      Фильтры
+      <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
+
+${aside}
+
+    <div class="catalog-main">
+      <div class="cards-grid" id="grid">
+${grid}
+      </div>
+      <p class="catalog-empty" id="empty" hidden>Под фильтры ничего не подошло. Ослабьте условия или сбросьте их.</p>
+    </div>
+  </div>
 </section>
 
 ${upN(rawFooter, 2)}

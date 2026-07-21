@@ -178,596 +178,606 @@
 
   <div class="section__head">
     <h1 class="section-title">Хранение и уход</h1>
-    <span class="section__note">110&nbsp;товаров</span>
+    <span class="section__note" id="found" data-total="110">110&nbsp;товаров</span>
   </div>
 
-    <div class="chips">
-      <a class="chip" href="#chekhly_sushki">уход за коньками<span class="chip__count">44</span></a>
-      <a class="chip" href="#sushki_v_botinki_">sushki_v_botinki_<span class="chip__count">29</span></a>
-      <a class="chip" href="#zashchita_na_lezviya_">zashchita_na_lezviya_<span class="chip__count">20</span></a>
-      <a class="chip" href="#termochekhly_na_botinki_">termochekhly_na_botinki_<span class="chip__count">11</span></a>
-      <a class="chip" href="#meshok_chekhol_dlya_konkov">meshok_chekhol_dlya_konkov<span class="chip__count">6</span></a>
-    </div>
+  <div class="catalog-layout">
+    <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
+      Фильтры
+      <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+    </button>
 
-    <div class="subsection" id="chekhly_sushki">
-      <h2 class="subsection__title">уход за коньками<span class="subsection__count">44</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9024/" class="card">
+      <aside class="filters" id="filters">
+        <div class="filters__head">
+          <span class="filters__title">Фильтры</span>
+          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Цена, ₽</div>
+          <div class="filter__price">
+            <input type="number" class="filter__num" id="price-min" inputmode="numeric" placeholder="600" min="600" max="5000" aria-label="Цена от">
+            <span class="filter__dash">—</span>
+            <input type="number" class="filter__num" id="price-max" inputmode="numeric" placeholder="5000" min="600" max="5000" aria-label="Цена до">
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Подраздел</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="sub" value="chekhly_sushki"><span class="filter__label">уход за коньками</span><span class="filter__count">44</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="sushki_v_botinki_"><span class="filter__label">sushki_v_botinki_</span><span class="filter__count">29</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="zashchita_na_lezviya_"><span class="filter__label">zashchita_na_lezviya_</span><span class="filter__count">20</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="termochekhly_na_botinki_"><span class="filter__label">termochekhly_na_botinki_</span><span class="filter__count">11</span></label>
+            <label class="filter__row"><input type="checkbox" name="sub" value="meshok_chekhol_dlya_konkov"><span class="filter__label">meshok_chekhol_dlya_konkov</span><span class="filter__count">6</span></label>
+          </div>
+        </div>
+        <div class="filter">
+          <div class="filter__title">Размер</div>
+          <div class="filter__list">
+            <label class="filter__row"><input type="checkbox" name="size" value="L"><span class="filter__label">L</span><span class="filter__count">11</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="M"><span class="filter__label">M</span><span class="filter__count">8</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="S"><span class="filter__label">S</span><span class="filter__count">11</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="XL"><span class="filter__label">XL</span><span class="filter__count">11</span></label>
+            <label class="filter__row"><input type="checkbox" name="size" value="XS"><span class="filter__label">XS</span><span class="filter__count">1</span></label>
+          </div>
+        </div>
+      </aside>
+
+    <div class="catalog-main">
+      <div class="cards-grid" id="grid">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/24340/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/24340.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ &quot;Краски&quot;"></div>
+          <span class="card__name">Защита лезвий SkaterZ &quot;Краски&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21493/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21493.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ &quot;Орнамент-неон&quot;"></div>
+          <span class="card__name">Защита лезвий SkaterZ &quot;Орнамент-неон&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21485/" class="card" data-sub="zashchita_na_lezviya_" data-price="1300">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21485.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ цветные"></div>
+          <span class="card__name">Защита лезвий SkaterZ цветные</span>
+          <div class="card__prices"><span class="card__price">1 300&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19681/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19681.webp" width="600" height="600" loading="lazy" alt="Чехлы  на лезвия SkaterZ &quot;Стрекоза&quot;"></div>
+          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Стрекоза&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13293/" class="card" data-sub="zashchita_na_lezviya_" data-price="1150">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/13293.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия &quot;ПЛАСТИКОВЫЕ&quot;"></div>
+          <span class="card__name">Чехлы на лезвия &quot;ПЛАСТИКОВЫЕ&quot;</span>
+          <div class="card__prices"><span class="card__price">1 150&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/25018/" class="card" data-sub="zashchita_na_lezviya_" data-price="1855" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/25018.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия коньков Edea SKATEGUARDS"></div>
+          <span class="card__name">Чехлы на лезвия коньков Edea SKATEGUARDS</span>
+          <div class="card__prices"><span class="card__price">1 855&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/9163/" class="card" data-sub="zashchita_na_lezviya_" data-price="1750">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Чехлы на лезвия пластиковые светодиодные 4</span>
+          <div class="card__prices"><span class="card__price">1 750&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17868/" class="card" data-sub="zashchita_na_lezviya_" data-price="3970" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17868.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17870/" class="card" data-sub="zashchita_na_lezviya_" data-price="3970" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17870.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17871/" class="card" data-sub="zashchita_na_lezviya_" data-price="3970" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17871.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17872/" class="card" data-sub="zashchita_na_lezviya_" data-price="3970" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17872.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17873/" class="card" data-sub="zashchita_na_lezviya_" data-price="5000" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17873.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17874/" class="card" data-sub="zashchita_na_lezviya_" data-price="3970" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17874.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17875/" class="card" data-sub="zashchita_na_lezviya_" data-price="5000" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17875.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17876/" class="card" data-sub="zashchita_na_lezviya_" data-price="5000" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17876.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
+          <span class="card__name">Чехлы на лезвия Edea</span>
+          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21486/" class="card" data-sub="zashchita_na_lezviya_" data-price="5000" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21486.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea E-Guards"></div>
+          <span class="card__name">Чехлы на лезвия Edea E-Guards</span>
+          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21487/" class="card" data-sub="zashchita_na_lezviya_" data-price="5000" data-brand="Edea">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21487.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea E-Guards"></div>
+          <span class="card__name">Чехлы на лезвия Edea E-Guards</span>
+          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19685/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19685.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Букашки&quot;"></div>
+          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Букашки&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13298/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/13298.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Камуфляж&quot;"></div>
+          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Камуфляж&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13299/" class="card" data-sub="zashchita_na_lezviya_" data-price="1600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/13299.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Механика&quot;"></div>
+          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Механика&quot;</span>
+          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20962/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20962.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-001"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-001</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20963/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20963.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-002"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-002</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20964/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20964.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-003"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-003</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20965/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20965.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-004"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-004</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20966/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20966.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-005"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-005</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20967/" class="card" data-sub="meshok_chekhol_dlya_konkov" data-price="795">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/20967.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-006"></div>
+          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-006</span>
+          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21745/" class="card" data-sub="sushki_v_botinki_" data-price="950">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21745.webp" width="600" height="600" loading="lazy" alt="Сушилки «Китенок» Абстракция"></div>
+          <span class="card__name">Сушилки «Китенок» Абстракция</span>
+          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21744/" class="card" data-sub="sushki_v_botinki_" data-price="950">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21744.webp" width="600" height="600" loading="lazy" alt="Сушилки «Китенок» Лабиринт"></div>
+          <span class="card__name">Сушилки «Китенок» Лабиринт</span>
+          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21742/" class="card" data-sub="sushki_v_botinki_" data-price="950">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21742.webp" width="600" height="600" loading="lazy" alt="Сушилки «Крокодильчик» Гавайи"></div>
+          <span class="card__name">Сушилки «Крокодильчик» Гавайи</span>
+          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21743/" class="card" data-sub="sushki_v_botinki_" data-price="950">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21743.webp" width="600" height="600" loading="lazy" alt="Сушилки «Крокодильчик» Полоска"></div>
+          <span class="card__name">Сушилки «Крокодильчик» Полоска</span>
+          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21120/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21120.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 010"></div>
+          <span class="card__name">Сушки для обуви 010</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21122/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21122.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 011"></div>
+          <span class="card__name">Сушки для обуви 011</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21123/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21123.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 012"></div>
+          <span class="card__name">Сушки для обуви 012</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21124/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21124.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 013"></div>
+          <span class="card__name">Сушки для обуви 013</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21125/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21125.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 015"></div>
+          <span class="card__name">Сушки для обуви 015</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21126/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21126.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 016"></div>
+          <span class="card__name">Сушки для обуви 016</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21127/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21127.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 017"></div>
+          <span class="card__name">Сушки для обуви 017</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21128/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21128.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 018"></div>
+          <span class="card__name">Сушки для обуви 018</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21129/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21129.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 019"></div>
+          <span class="card__name">Сушки для обуви 019</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21130/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21130.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 020"></div>
+          <span class="card__name">Сушки для обуви 020</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21131/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21131.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 021"></div>
+          <span class="card__name">Сушки для обуви 021</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21132/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21132.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 022"></div>
+          <span class="card__name">Сушки для обуви 022</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21133/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21133.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 023"></div>
+          <span class="card__name">Сушки для обуви 023</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21134/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21134.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 024"></div>
+          <span class="card__name">Сушки для обуви 024</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21135/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21135.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 025"></div>
+          <span class="card__name">Сушки для обуви 025</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21136/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21136.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 026"></div>
+          <span class="card__name">Сушки для обуви 026</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21121/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21121.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 09"></div>
+          <span class="card__name">Сушки для обуви 09</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9306/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 1</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9307/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 2</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9308/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 3</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9309/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 4</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9310/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 5</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17796/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 6</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17856/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><span class="ph"></span></div>
+          <span class="card__name">Сушки для обуви 7</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17877/" class="card" data-sub="sushki_v_botinki_" data-price="600">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/17877.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 8"></div>
+          <span class="card__name">Сушки для обуви 8</span>
+          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21547/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21547.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки лайм"></div>
+          <span class="card__name">Термо чехлы на ботинки лайм</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21552/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21552.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки оранж"></div>
+          <span class="card__name">Термо чехлы на ботинки оранж</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21542/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21542.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки телесные"></div>
+          <span class="card__name">Термо чехлы на ботинки телесные</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21557/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21557.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки темно синий"></div>
+          <span class="card__name">Термо чехлы на ботинки темно синий</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21537/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/21537.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинок черные"></div>
+          <span class="card__name">Термо чехлы на ботинок черные</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19737/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19737.webp" width="600" height="600" loading="lazy" alt="Чехлы для ботинок василек"></div>
+          <span class="card__name">Чехлы для ботинок василек</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19742/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19742.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок белые"></div>
+          <span class="card__name">Чехлы на ботинок белые</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19732/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19732.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок бирюза"></div>
+          <span class="card__name">Чехлы на ботинок бирюза</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19722/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19722.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок красные"></div>
+          <span class="card__name">Чехлы на ботинок красные</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19727/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/19727.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок фиолет"></div>
+          <span class="card__name">Чехлы на ботинок фиолет</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/8151/" class="card" data-sub="termochekhly_na_botinki_" data-price="835" data-sizes="XS|S|M|L|XL">
+          <div class="card__media"><img class="ph" src="../../assets/img/products/8151.webp" width="600" height="600" loading="lazy" alt="Чехлы термо на ботинки"></div>
+          <span class="card__name">Чехлы термо на ботинки</span>
+          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
+        </a>
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9024/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/9024.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 1"></div>
           <span class="card__name">Защита для лезвий (сушка) 1</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13193/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13193/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13193.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 10"></div>
           <span class="card__name">Защита для лезвий (сушка) 10</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13194/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13194/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13194.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 11"></div>
           <span class="card__name">Защита для лезвий (сушка) 11</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/17795/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/17795/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) 12</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/17854/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/17854/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) 13</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19271/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19271/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19271.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 15"></div>
           <span class="card__name">Защита для лезвий (сушка) 15</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9025/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9025/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/9025.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 2"></div>
           <span class="card__name">Защита для лезвий (сушка) 2</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9165/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9165/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) 3</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9166/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9166/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) 4</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13188/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13188/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13188.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 5"></div>
           <span class="card__name">Защита для лезвий (сушка) 5</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13189/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13189/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13189.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 6"></div>
           <span class="card__name">Защита для лезвий (сушка) 6</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13190/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13190/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13190.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 7"></div>
           <span class="card__name">Защита для лезвий (сушка) 7</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13191/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13191/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13191.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 8"></div>
           <span class="card__name">Защита для лезвий (сушка) 8</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13192/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13192/" class="card" data-sub="chekhly_sushki" data-price="900">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13192.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) 9"></div>
           <span class="card__name">Защита для лезвий (сушка) 9</span>
           <div class="card__prices"><span class="card__price">900&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9167/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9167/" class="card" data-sub="chekhly_sushki" data-price="920">
           <div class="card__media"><img class="ph" src="../../assets/img/products/9167.webp" width="600" height="600" loading="lazy" alt="Защита для лезвий (сушка) с пайетками 1"></div>
           <span class="card__name">Защита для лезвий (сушка) с пайетками 1</span>
           <div class="card__prices"><span class="card__price">920&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9168/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9168/" class="card" data-sub="chekhly_sushki" data-price="920">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) с пайетками 2</span>
           <div class="card__prices"><span class="card__price">920&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9169/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/9169/" class="card" data-sub="chekhly_sushki" data-price="920">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита для лезвий (сушка) с пайетками 3</span>
           <div class="card__prices"><span class="card__price">920&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19779/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19779/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19779.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка) пудель розовый"></div>
           <span class="card__name">Защита на лезвия(сушка) пудель розовый</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19787/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19787/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19787.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)Дракон"></div>
           <span class="card__name">Защита на лезвия(сушка)Дракон</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19788/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19788/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19788.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)енот"></div>
           <span class="card__name">Защита на лезвия(сушка)енот</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19782/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19782/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19782.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)зайка"></div>
           <span class="card__name">Защита на лезвия(сушка)зайка</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19786/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19786/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19786.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)кот"></div>
           <span class="card__name">Защита на лезвия(сушка)кот</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19789/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19789/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19789.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)лис"></div>
           <span class="card__name">Защита на лезвия(сушка)лис</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19784/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19784/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19784.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)лисичка"></div>
           <span class="card__name">Защита на лезвия(сушка)лисичка</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19780/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19780/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19780.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)панда"></div>
           <span class="card__name">Защита на лезвия(сушка)панда</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19785/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19785/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19785.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)пингвин"></div>
           <span class="card__name">Защита на лезвия(сушка)пингвин</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19790/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19790/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Защита на лезвия(сушка)сиам</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19783/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19783/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19783.webp" width="600" height="600" loading="lazy" alt="Защита на лезвия(сушка)такса"></div>
           <span class="card__name">Защита на лезвия(сушка)такса</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19791/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19791/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19791.webp" width="600" height="600" loading="lazy" alt="Сушка на лезвия(сушка) котик"></div>
           <span class="card__name">Сушка на лезвия(сушка) котик</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21786/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21786/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/21786.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Астроном - M"></div>
           <span class="card__name">Сушки «Два в одном» - Астроном - M</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23658/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23658/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/23658.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Букашки - M"></div>
           <span class="card__name">Сушки «Два в одном» - Букашки - M</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/24994/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/24994/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/24994.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Котики 1 - S"></div>
           <span class="card__name">Сушки «Два в одном» - Котики 1 - S</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23657/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23657/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/23657.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Осень - M"></div>
           <span class="card__name">Сушки «Два в одном» - Осень - M</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/24995/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/24995/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/24995.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Песики - S"></div>
           <span class="card__name">Сушки «Два в одном» - Песики - S</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23652/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23652/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Сушки «Два в одном» - Пингвис - S</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23656/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23656/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/23656.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Пурпур - M"></div>
           <span class="card__name">Сушки «Два в одном» - Пурпур - M</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21792/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21792/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/21792.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Dogs - S"></div>
           <span class="card__name">Сушки «Два в одном» - Dogs - S</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21785/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/21785/" class="card" data-sub="chekhly_sushki" data-price="1050">
           <div class="card__media"><img class="ph" src="../../assets/img/products/21785.webp" width="600" height="600" loading="lazy" alt="Сушки «Два в одном» - Summer Night - M"></div>
           <span class="card__name">Сушки «Два в одном» - Summer Night - M</span>
           <div class="card__prices"><span class="card__price">1 050&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23576/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23576/" class="card" data-sub="chekhly_sushki" data-price="2000">
           <div class="card__media"><img class="ph" src="../../assets/img/products/23576.webp" width="600" height="600" loading="lazy" alt="Сушки «Зверята» - Медвеженок"></div>
           <span class="card__name">Сушки «Зверята» - Медвеженок</span>
           <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19796/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19796/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19796.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия(сушки) «Два в одном» - Смайлики"></div>
           <span class="card__name">Чехлы на лезвия(сушки) «Два в одном» - Смайлики</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19797/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19797/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19797.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия(сушки) «Два в одном» - Тигруля"></div>
           <span class="card__name">Чехлы на лезвия(сушки) «Два в одном» - Тигруля</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19792/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19792/" class="card" data-sub="chekhly_sushki" data-price="1100">
           <div class="card__media"><img class="ph" src="../../assets/img/products/19792.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия(сушки) «Два в одном» - Exotic - M"></div>
           <span class="card__name">Чехлы на лезвия(сушки) «Два в одном» - Exotic - M</span>
           <div class="card__prices"><span class="card__price">1 100&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13209/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13209/" class="card" data-sub="chekhly_sushki" data-price="2150">
           <div class="card__media"><img class="ph" src="../../assets/img/products/13209.webp" width="600" height="600" loading="lazy" alt="Чехлы-игрушки на лезвия &quot;Единорожки&quot; белые"></div>
           <span class="card__name">Чехлы-игрушки на лезвия &quot;Единорожки&quot; белые</span>
           <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
         </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13208/" class="card">
+        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/13208/" class="card" data-sub="chekhly_sushki" data-price="2250" data-brand="Edea">
           <div class="card__media"><span class="ph"></span></div>
           <span class="card__name">Edea Чехлы-игрушки на лезвия &quot;Whale&quot;</span>
           <div class="card__prices"><span class="card__price">2 250&nbsp;₽</span></div>
         </a>
       </div>
+      <p class="catalog-empty" id="empty" hidden>Под фильтры ничего не подошло. Ослабьте условия или сбросьте их.</p>
     </div>
-
-    <div class="subsection" id="sushki_v_botinki_">
-      <h2 class="subsection__title">sushki_v_botinki_<span class="subsection__count">29</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21745/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21745.webp" width="600" height="600" loading="lazy" alt="Сушилки «Китенок» Абстракция"></div>
-          <span class="card__name">Сушилки «Китенок» Абстракция</span>
-          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21744/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21744.webp" width="600" height="600" loading="lazy" alt="Сушилки «Китенок» Лабиринт"></div>
-          <span class="card__name">Сушилки «Китенок» Лабиринт</span>
-          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21742/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21742.webp" width="600" height="600" loading="lazy" alt="Сушилки «Крокодильчик» Гавайи"></div>
-          <span class="card__name">Сушилки «Крокодильчик» Гавайи</span>
-          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21743/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21743.webp" width="600" height="600" loading="lazy" alt="Сушилки «Крокодильчик» Полоска"></div>
-          <span class="card__name">Сушилки «Крокодильчик» Полоска</span>
-          <div class="card__prices"><span class="card__price">950&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21120/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21120.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 010"></div>
-          <span class="card__name">Сушки для обуви 010</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21122/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21122.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 011"></div>
-          <span class="card__name">Сушки для обуви 011</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21123/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21123.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 012"></div>
-          <span class="card__name">Сушки для обуви 012</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21124/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21124.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 013"></div>
-          <span class="card__name">Сушки для обуви 013</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21125/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21125.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 015"></div>
-          <span class="card__name">Сушки для обуви 015</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21126/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21126.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 016"></div>
-          <span class="card__name">Сушки для обуви 016</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21127/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21127.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 017"></div>
-          <span class="card__name">Сушки для обуви 017</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21128/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21128.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 018"></div>
-          <span class="card__name">Сушки для обуви 018</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21129/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21129.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 019"></div>
-          <span class="card__name">Сушки для обуви 019</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21130/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21130.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 020"></div>
-          <span class="card__name">Сушки для обуви 020</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21131/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21131.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 021"></div>
-          <span class="card__name">Сушки для обуви 021</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21132/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21132.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 022"></div>
-          <span class="card__name">Сушки для обуви 022</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21133/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21133.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 023"></div>
-          <span class="card__name">Сушки для обуви 023</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21134/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21134.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 024"></div>
-          <span class="card__name">Сушки для обуви 024</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21135/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21135.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 025"></div>
-          <span class="card__name">Сушки для обуви 025</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21136/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21136.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 026"></div>
-          <span class="card__name">Сушки для обуви 026</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/21121/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21121.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 09"></div>
-          <span class="card__name">Сушки для обуви 09</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9306/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 1</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9307/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 2</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9308/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 3</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9309/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 4</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/9310/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 5</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17796/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 6</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17856/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Сушки для обуви 7</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/sushki_v_botinki_/17877/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17877.webp" width="600" height="600" loading="lazy" alt="Сушки для обуви 8"></div>
-          <span class="card__name">Сушки для обуви 8</span>
-          <div class="card__prices"><span class="card__price">600&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="zashchita_na_lezviya_">
-      <h2 class="subsection__title">zashchita_na_lezviya_<span class="subsection__count">20</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/24340/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/24340.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ &quot;Краски&quot;"></div>
-          <span class="card__name">Защита лезвий SkaterZ &quot;Краски&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21493/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21493.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ &quot;Орнамент-неон&quot;"></div>
-          <span class="card__name">Защита лезвий SkaterZ &quot;Орнамент-неон&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21485/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21485.webp" width="600" height="600" loading="lazy" alt="Защита лезвий SkaterZ цветные"></div>
-          <span class="card__name">Защита лезвий SkaterZ цветные</span>
-          <div class="card__prices"><span class="card__price">1 300&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19681/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19681.webp" width="600" height="600" loading="lazy" alt="Чехлы  на лезвия SkaterZ &quot;Стрекоза&quot;"></div>
-          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Стрекоза&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13293/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/13293.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия &quot;ПЛАСТИКОВЫЕ&quot;"></div>
-          <span class="card__name">Чехлы на лезвия &quot;ПЛАСТИКОВЫЕ&quot;</span>
-          <div class="card__prices"><span class="card__price">1 150&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/25018/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/25018.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия коньков Edea SKATEGUARDS"></div>
-          <span class="card__name">Чехлы на лезвия коньков Edea SKATEGUARDS</span>
-          <div class="card__prices"><span class="card__price">1 855&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/9163/" class="card">
-          <div class="card__media"><span class="ph"></span></div>
-          <span class="card__name">Чехлы на лезвия пластиковые светодиодные 4</span>
-          <div class="card__prices"><span class="card__price">1 750&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17868/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17868.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17870/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17870.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17871/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17871.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17872/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17872.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17873/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17873.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17874/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17874.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">3 970&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17875/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17875.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17876/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/17876.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea"></div>
-          <span class="card__name">Чехлы на лезвия Edea</span>
-          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21486/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21486.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea E-Guards"></div>
-          <span class="card__name">Чехлы на лезвия Edea E-Guards</span>
-          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/21487/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21487.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия Edea E-Guards"></div>
-          <span class="card__name">Чехлы на лезвия Edea E-Guards</span>
-          <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19685/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19685.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Букашки&quot;"></div>
-          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Букашки&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13298/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/13298.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Камуфляж&quot;"></div>
-          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Камуфляж&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/13299/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/13299.webp" width="600" height="600" loading="lazy" alt="Чехлы на лезвия SkaterZ &quot;Механика&quot;"></div>
-          <span class="card__name">Чехлы на лезвия SkaterZ &quot;Механика&quot;</span>
-          <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="termochekhly_na_botinki_">
-      <h2 class="subsection__title">termochekhly_na_botinki_<span class="subsection__count">11</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21547/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21547.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки лайм"></div>
-          <span class="card__name">Термо чехлы на ботинки лайм</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21552/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21552.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки оранж"></div>
-          <span class="card__name">Термо чехлы на ботинки оранж</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21542/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21542.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки телесные"></div>
-          <span class="card__name">Термо чехлы на ботинки телесные</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21557/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21557.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинки темно синий"></div>
-          <span class="card__name">Термо чехлы на ботинки темно синий</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/21537/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/21537.webp" width="600" height="600" loading="lazy" alt="Термо чехлы на ботинок черные"></div>
-          <span class="card__name">Термо чехлы на ботинок черные</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19737/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19737.webp" width="600" height="600" loading="lazy" alt="Чехлы для ботинок василек"></div>
-          <span class="card__name">Чехлы для ботинок василек</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19742/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19742.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок белые"></div>
-          <span class="card__name">Чехлы на ботинок белые</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19732/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19732.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок бирюза"></div>
-          <span class="card__name">Чехлы на ботинок бирюза</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19722/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19722.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок красные"></div>
-          <span class="card__name">Чехлы на ботинок красные</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/19727/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/19727.webp" width="600" height="600" loading="lazy" alt="Чехлы на ботинок фиолет"></div>
-          <span class="card__name">Чехлы на ботинок фиолет</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/termochekhly_na_botinki_/8151/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/8151.webp" width="600" height="600" loading="lazy" alt="Чехлы термо на ботинки"></div>
-          <span class="card__name">Чехлы термо на ботинки</span>
-          <div class="card__prices"><span class="card__price">835&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
-
-    <div class="subsection" id="meshok_chekhol_dlya_konkov">
-      <h2 class="subsection__title">meshok_chekhol_dlya_konkov<span class="subsection__count">6</span></h2>
-      <div class="cards-grid">
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20962/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20962.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-001"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-001</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20963/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20963.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-002"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-002</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20964/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20964.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-003"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-003</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20965/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20965.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-004"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-004</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20966/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20966.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-005"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-005</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-        <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/meshok_chekhol_dlya_konkov/20967/" class="card">
-          <div class="card__media"><img class="ph" src="../../assets/img/products/20967.webp" width="600" height="600" loading="lazy" alt="Мешок-чехол для коньков (2 шт.) АРТ. 19-006"></div>
-          <span class="card__name">Мешок-чехол для коньков (2 шт.) АРТ. 19-006</span>
-          <div class="card__prices"><span class="card__price">795&nbsp;₽</span></div>
-        </a>
-      </div>
-    </div>
+  </div>
 </section>
 
 <div class="footer-wrap">
@@ -843,6 +853,103 @@
         document.body.style.overflow = '';
       }
     });
+  })();
+
+  // Фильтры каталога. Все товары раздела уже в разметке, поэтому отбор —
+  // это переключение hidden у карточек, без запросов и перерисовки сетки.
+  (function () {
+    var grid = document.getElementById('grid');
+    var panel = document.getElementById('filters');
+    if (!grid || !panel) return;
+
+    var cards = [].slice.call(grid.querySelectorAll('.card'));
+    var found = document.getElementById('found');
+    var empty = document.getElementById('empty');
+    var reset = document.getElementById('filters-reset');
+    var toggle = document.getElementById('filters-toggle');
+    var minEl = document.getElementById('price-min');
+    var maxEl = document.getElementById('price-max');
+
+    function plural(n) {
+      var d = n % 10, h = n % 100;
+      if (d === 1 && h !== 11) return 'товар';
+      if (d >= 2 && d <= 4 && (h < 10 || h > 20)) return 'товара';
+      return 'товаров';
+    }
+
+    function checked(name) {
+      return [].slice.call(panel.querySelectorAll('input[name="' + name + '"]:checked'))
+        .map(function (i) { return i.value; });
+    }
+
+    function apply() {
+      var subs = checked('sub'), brands = checked('brand'), sizes = checked('size');
+      var lo = minEl ? parseFloat(minEl.value) : NaN;
+      var hi = maxEl ? parseFloat(maxEl.value) : NaN;
+      var n = 0;
+
+      cards.forEach(function (c) {
+        var ok = true;
+        // Внутри одной группы условия через ИЛИ, между группами — И:
+        // «Edea или Risport» и при этом «размер 230».
+        if (subs.length && subs.indexOf(c.dataset.sub || '') === -1) ok = false;
+        if (ok && brands.length && brands.indexOf(c.dataset.brand || '') === -1) ok = false;
+        if (ok && sizes.length) {
+          var own = (c.dataset.sizes || '').split('|');
+          ok = sizes.some(function (s) { return own.indexOf(s) !== -1; });
+        }
+        var price = Number(c.dataset.price);
+        if (ok && !isNaN(lo) && price < lo) ok = false;
+        if (ok && !isNaN(hi) && price > hi) ok = false;
+
+        c.hidden = !ok;
+        if (ok) n++;
+      });
+
+      if (found) found.innerHTML = n + '&nbsp;' + plural(n);
+      if (empty) empty.hidden = n > 0;
+      var active = subs.length || brands.length || sizes.length ||
+        (minEl && minEl.value) || (maxEl && maxEl.value);
+      if (reset) reset.hidden = !active;
+    }
+
+    panel.addEventListener('change', apply);
+    // Цену пересчитываем на ввод, а не на change: иначе счётчик обновляется
+    // только когда поле теряет фокус, и правка выглядит как «не сработало».
+    panel.addEventListener('input', function (e) {
+      if (e.target === minEl || e.target === maxEl) apply();
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
+      if (minEl) minEl.value = '';
+      if (maxEl) maxEl.value = '';
+      apply();
+    });
+
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = panel.dataset.open === 'true';
+      panel.dataset.open = String(!open);
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
+    // включаем соответствующий фильтр вместо прокрутки к несуществующему блоку.
+    function fromHash() {
+      if (!location.hash) return;
+      var want = decodeURIComponent(location.hash.slice(1));
+      var box = panel.querySelector('input[name="sub"][value="' + want.replace(/"/g, '\\"') + '"]');
+      if (!box) return;
+      panel.querySelectorAll('input[name="sub"]').forEach(function (i) { i.checked = false; });
+      box.checked = true;
+      apply();
+    }
+
+    // hashchange обязателен: если уже стоишь на странице раздела и выбираешь
+    // в меню другой подраздел, меняется только якорь — браузер страницу
+    // не перезагружает, и без этого обработчика фильтр остался бы прежним.
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

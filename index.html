@@ -540,6 +540,103 @@
     });
   })();
 
+  // Фильтры каталога. Все товары раздела уже в разметке, поэтому отбор —
+  // это переключение hidden у карточек, без запросов и перерисовки сетки.
+  (function () {
+    var grid = document.getElementById('grid');
+    var panel = document.getElementById('filters');
+    if (!grid || !panel) return;
+
+    var cards = [].slice.call(grid.querySelectorAll('.card'));
+    var found = document.getElementById('found');
+    var empty = document.getElementById('empty');
+    var reset = document.getElementById('filters-reset');
+    var toggle = document.getElementById('filters-toggle');
+    var minEl = document.getElementById('price-min');
+    var maxEl = document.getElementById('price-max');
+
+    function plural(n) {
+      var d = n % 10, h = n % 100;
+      if (d === 1 && h !== 11) return 'товар';
+      if (d >= 2 && d <= 4 && (h < 10 || h > 20)) return 'товара';
+      return 'товаров';
+    }
+
+    function checked(name) {
+      return [].slice.call(panel.querySelectorAll('input[name="' + name + '"]:checked'))
+        .map(function (i) { return i.value; });
+    }
+
+    function apply() {
+      var subs = checked('sub'), brands = checked('brand'), sizes = checked('size');
+      var lo = minEl ? parseFloat(minEl.value) : NaN;
+      var hi = maxEl ? parseFloat(maxEl.value) : NaN;
+      var n = 0;
+
+      cards.forEach(function (c) {
+        var ok = true;
+        // Внутри одной группы условия через ИЛИ, между группами — И:
+        // «Edea или Risport» и при этом «размер 230».
+        if (subs.length && subs.indexOf(c.dataset.sub || '') === -1) ok = false;
+        if (ok && brands.length && brands.indexOf(c.dataset.brand || '') === -1) ok = false;
+        if (ok && sizes.length) {
+          var own = (c.dataset.sizes || '').split('|');
+          ok = sizes.some(function (s) { return own.indexOf(s) !== -1; });
+        }
+        var price = Number(c.dataset.price);
+        if (ok && !isNaN(lo) && price < lo) ok = false;
+        if (ok && !isNaN(hi) && price > hi) ok = false;
+
+        c.hidden = !ok;
+        if (ok) n++;
+      });
+
+      if (found) found.innerHTML = n + '&nbsp;' + plural(n);
+      if (empty) empty.hidden = n > 0;
+      var active = subs.length || brands.length || sizes.length ||
+        (minEl && minEl.value) || (maxEl && maxEl.value);
+      if (reset) reset.hidden = !active;
+    }
+
+    panel.addEventListener('change', apply);
+    // Цену пересчитываем на ввод, а не на change: иначе счётчик обновляется
+    // только когда поле теряет фокус, и правка выглядит как «не сработало».
+    panel.addEventListener('input', function (e) {
+      if (e.target === minEl || e.target === maxEl) apply();
+    });
+
+    if (reset) reset.addEventListener('click', function () {
+      panel.querySelectorAll('input[type="checkbox"]').forEach(function (i) { i.checked = false; });
+      if (minEl) minEl.value = '';
+      if (maxEl) maxEl.value = '';
+      apply();
+    });
+
+    if (toggle) toggle.addEventListener('click', function () {
+      var open = panel.dataset.open === 'true';
+      panel.dataset.open = String(!open);
+      toggle.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
+    // включаем соответствующий фильтр вместо прокрутки к несуществующему блоку.
+    function fromHash() {
+      if (!location.hash) return;
+      var want = decodeURIComponent(location.hash.slice(1));
+      var box = panel.querySelector('input[name="sub"][value="' + want.replace(/"/g, '\\"') + '"]');
+      if (!box) return;
+      panel.querySelectorAll('input[name="sub"]').forEach(function (i) { i.checked = false; });
+      box.checked = true;
+      apply();
+    }
+
+    // hashchange обязателен: если уже стоишь на странице раздела и выбираешь
+    // в меню другой подраздел, меняется только якорь — браузер страницу
+    // не перезагружает, и без этого обработчика фильтр остался бы прежним.
+    window.addEventListener('hashchange', fromHash);
+    fromHash();
+  })();
+
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл
   // со scroll-snap, поэтому свайп и трекпад работают без нашего участия.
   document.querySelectorAll('.promo-slider').forEach(function (slider) {
