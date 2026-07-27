@@ -31,6 +31,12 @@ const SIZE = Number(arg('--size', 600));
 const QUALITY = Number(arg('--quality', 80));
 const MIN_PX = 400;   // мельче — карточка растягивает кадр в кашу
 
+// Галерея страницы товара: кадр там показывается на ~600 логических пикселей,
+// на ретине это 1200, но оригиналы донора часто и не дотягивают до такого —
+// 1000 берём как потолок, withoutEnlargement не даст растянуть мелкий.
+const GSIZE = Number(arg('--gallery-size', 1000));
+const GMAX = Number(arg('--gallery-max', 6));   // больше шести миниатюр никто не листает
+
 const { products } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'products.json'), 'utf8'));
 
 // Вырезанные лежат под именем «<номер>_<хэш исходника>.webp» — хэш и есть
@@ -97,6 +103,29 @@ mkdirSync(OUT, { recursive: true });
 const list = LIMIT ? products.slice(0, LIMIT) : products;
 const manifest = [];
 let cut = 0, raw = 0, skipped = 0, cached = 0, failed = 0;
+let shotsMade = 0, shotsCached = 0;
+
+// Кадры для галереи на странице товара: вырезанный идёт первым (он на прозрачном
+// фоне и в едином масштабе), дальше оригиналы по убыванию разрешения. Дедуп по
+// имени файла: вырезанный и его оригинал — один и тот же кадр, и в галерее они
+// стояли бы рядом как «два ракурса».
+function gallerySources(p) {
+  const seen = new Set();
+  const out = [];
+  for (const im of p.images || []) {
+    const hash = im.slice(im.lastIndexOf('/') + 1).replace(/\.[^.]+$/, '');
+    if (seen.has(hash)) continue;
+    seen.add(hash);
+    if (byHash.has(hash)) {
+      out.push({ src: join(NOBG, byHash.get(hash)), px: Infinity });
+      continue;
+    }
+    const d = dim(im);
+    const px = d ? Math.min(d[0], d[1]) : 0;
+    if (px >= MIN_PX) out.push({ src: join(SITE, im.replace(/^\//, '')), px });
+  }
+  return out.sort((a, b) => b.px - a.px).slice(0, GMAX);
+}
 
 for (const [i, p] of list.entries()) {
   if (!p.id) continue;
@@ -143,6 +172,28 @@ for (const [i, p] of list.entries()) {
     skipped++;
   }
 
+  // --- галерея страницы товара ---
+  const gallery = [];
+  for (const [n, shot] of gallerySources(p).entries()) {
+    const gname = `${p.id}-${n + 1}.webp`;
+    const gdest = join(OUT, gname);
+    if (!FORCE && existsSync(gdest)) {
+      gallery.push(`assets/img/products/${gname}`);
+      shotsCached++;
+      continue;
+    }
+    try {
+      await sharp(shot.src)
+        .resize(GSIZE, GSIZE, { fit: 'inside', withoutEnlargement: true })
+        .webp({ quality: QUALITY, alphaQuality: 100 })
+        .toFile(gdest);
+      gallery.push(`assets/img/products/${gname}`);
+      shotsMade++;
+    } catch (e) {
+      console.log(`  кадр ${gname}: ${e.message}`);
+    }
+  }
+
   manifest.push({
     id: p.id,
     name: (p.name || '').trim(),
@@ -152,6 +203,9 @@ for (const [i, p] of list.entries()) {
     cat: p.category || '',
     url: (p.url || '').replace('https://axelnn.ru', ''),
     img: src ? `assets/img/products/${name}` : null,
+    // Крупные кадры для страницы товара. Пустой массив — фото нет вовсе,
+    // страница обойдётся плейсхолдером.
+    gallery,
     cut: kind === 'cut',
     // Для фильтров на странице раздела. Бренд в доноре набран как придётся
     // (RUNA, Runa, EDEA, Edea) — сводим регистр, иначе одна марка даёт
@@ -170,5 +224,6 @@ console.log(`  вырезанных кадров : ${cut}`);
 console.log(`  оригиналов        : ${raw}`);
 console.log(`  уже были на диске : ${cached}`);
 console.log(`  без годного фото  : ${skipped}`);
+console.log(`  кадров галереи    : ${shotsMade} новых, ${shotsCached} уже были`);
 if (failed) console.log(`  ошибок            : ${failed}`);
 console.log(`Манифест: assets/products.json`);

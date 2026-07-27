@@ -6,9 +6,15 @@
 :root {
   /* Цвет */
   --ink: #1E2A2C;
-  --muted: #6B7476;        /* 4.79:1 на белом — проходит AA для мелкого текста */
+  /* 5.55:1 на белом, 4.93:1 на --grey, 4.64:1 на --canvas. Считать надо по самой
+     тёмной подложке, а не по белому: на светло-серой плашке страницы прежний
+     #6B7476 давал 4.01 — лид под заголовком, крошки и шапки таблиц не
+     дотягивали до нормы. На телефоне на улице это и читалось хуже всего. */
+  --muted: #616A6C;
   --teal: #1690A0;         /* акцент: линии, иконки, hover */
   --teal-deep: #0E7A88;    /* 5.05:1 с белым текстом — заливка кнопок */
+  --teal-ink: #0C6B77;     /* тот же акцент для ссылок на заливках: на --tint
+                              обычный --teal-deep даёт 4.12 при норме 4.5 */
   --tint: #DCEBED;
   --grey: #F0F2F2;         /* фон плейсхолдеров и фотографий товара */
   --line: #E4E6E6;
@@ -19,6 +25,18 @@
   --maxw: 1440px;
   --gutter: clamp(16px, 3vw, 32px);
 
+  /* Поля контейнера с запасом под вырез и скруглённые углы экрана. Мета стоит
+     с viewport-fit=cover, поэтому в ландшафте на телефоне env() отличен от нуля
+     и без max() первая колонка текста уезжала бы под «чёлку». */
+  --pad-l: max(var(--gutter), env(safe-area-inset-left));
+  --pad-r: max(var(--gutter), env(safe-area-inset-right));
+
+  /* Высота липкой шапки. Точное значение проставляет скрипт в конце страницы:
+     шапка растёт вместе с логотипом (clamp по ширине окна), и все отступы,
+     которые обязаны с ней совпадать — якоря подразделов, верх липких колонок,
+     начало выехавшего меню, — считаются отсюда, а не подбираются на глаз. */
+  --header-h: 56px;
+
   /* Вертикальный ритм. Один токен на все секции — иначе интервалы разъезжаются */
   --space-section: clamp(56px, 7vw, 112px);
   --space-head: clamp(28px, 3.4vw, 48px);
@@ -28,6 +46,19 @@
 * { box-sizing: border-box; }
 
 html, body { margin: 0; }
+
+/* Safari на телефоне при повороте в ландшафт сам увеличивает шрифт в узких
+   блоках — «чтобы читалось». В макете с clamp() это лишнее: размеры и так
+   считаются от ширины окна, а автоподгонка ломает их только в одной колонке. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Закрытое мобильное меню стоит за правым краем окна (translateX(100%)),
+     и документ считал его шириной: на 320px появлялась горизонтальная
+     прокрутка в пустоту на 320 лишних пикселей. Именно clip, а не hidden:
+     hidden делает корень контейнером прокрутки и ломает липкую шапку. */
+  overflow-x: clip;
+}
 
 body {
   background: #fff;
@@ -61,7 +92,8 @@ button { font: inherit; }
   width: 100%;
   max-width: var(--maxw);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding-left: var(--pad-l);
+  padding-right: var(--pad-r);
 }
 
 /* 12 колонок — общая сетка для блоков, которым нужна раскладка */
@@ -131,7 +163,8 @@ button { font: inherit; }
      с max-width, а шапку он на широком мониторе поджимал бы к центру, оставляя
      по краям пустоту. Логотип и корзину ищут в углах экрана — там их и держим. */
   padding-block: clamp(9px, 1vw, 13px);
-  padding-inline: var(--gutter);
+  padding-left: var(--pad-l);
+  padding-right: var(--pad-r);
 }
 
 .header__logo {
@@ -203,8 +236,31 @@ button { font: inherit; }
   transition: transform .25s ease;
 }
 
-.navitem--drop:hover .navlink__chev,
 .navitem--drop:focus-within .navlink__chev { transform: rotate(180deg); }
+
+@media (hover: hover) {
+  .navitem--drop:hover .navlink__chev { transform: rotate(180deg); }
+}
+
+/* Кнопка-шеврон рядом с «Каталогом». Нужна только в выехавшем меню: там
+   разделы прячутся в аккордеон, иначе пятнадцать строк каталога отжимают
+   «Контакты» на второй экран. На десктопе панель раскрывается наведением,
+   и отдельная кнопка была бы второй, спорящей с ним, мишенью. */
+.navlink__toggle {
+  display: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--muted);
+  /* Широкий паддинг, а не 20px по иконке: шеврон стоит вплотную к ссылке
+     «Каталог», и промах по нему уводил бы на витрину вместо раскрытия */
+  padding: 16px 14px;
+  margin-right: -10px;
+}
+
+.navlink__toggle svg { transition: transform .25s ease; }
+
+.navitem--drop[data-open="true"] .navlink__toggle svg { transform: rotate(180deg); }
 
 .megamenu {
   position: absolute;
@@ -217,13 +273,31 @@ button { font: inherit; }
   border-bottom: 1px solid var(--line);
   box-shadow: 0 24px 44px -30px rgba(30, 42, 44, .4);
   padding: clamp(24px, 3vw, 40px) var(--gutter);
+  /* Полтора десятка разделов с подразделами на ноутбуке с экраном 768px по
+     высоте не помещались: нижние колонки уходили за край, и добраться до них
+     было нельзя — панель не прокручивалась вместе со страницей. */
+  max-height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  overscroll-behavior: contain;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px);
   transition: opacity .22s ease, transform .22s ease, visibility .22s;
 }
 
-.navitem--drop:hover .megamenu,
+/* Раскрытие по наведению — только там, где наведение существует. На планшете
+   первый тап по «Каталогу» эмулирует hover и открывает панель, а переход
+   по ссылке при этом всё равно происходит: панель успевает мигнуть и уехать
+   вместе со страницей. С клавиатуры меню открывает :focus-within — оно ниже
+   и под медиазапрос не заведено. */
+@media (hover: hover) {
+  .navitem--drop:hover .megamenu {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+}
+
 .navitem--drop:focus-within .megamenu {
   opacity: 1;
   visibility: visible;
@@ -339,6 +413,13 @@ button { font: inherit; }
   color: var(--ink);
   cursor: pointer;
 }
+
+/* Открытое меню закрывается той же кнопкой, которой открывалось, — она
+   остаётся на виду и меняет три полоски на крестик. Отдельной кнопки закрытия
+   внутри панели нет намеренно: искать её пришлось бы в другом углу экрана. */
+.burger__close { display: none; }
+.burger[aria-expanded="true"] .burger__open { display: none; }
+.burger[aria-expanded="true"] .burger__close { display: block; }
 
 /* ==========================================================================
    Герой
@@ -1028,10 +1109,17 @@ button { font: inherit; }
   white-space: nowrap;
 }
 
+/* На телефоне жёстко две колонки. auto-fill с минимумом 200px на 390px
+   укладывался в одну, и витрина из пятнадцати разделов вытягивалась
+   на восемь с половиной тысяч пикселей — до нижних разделов не долистать. */
 .section-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 22vw, 280px), 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: clamp(16px, 1.8vw, 28px);
+}
+
+@media (min-width: 620px) {
+  .section-grid { grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 22vw, 280px), 1fr)); }
 }
 
 .section-card {
@@ -1117,7 +1205,7 @@ button { font: inherit; }
 
 .subsection {
   /* Шапка липкая, поэтому якорь без отступа прячет заголовок под неё */
-  scroll-margin-top: 90px;
+  scroll-margin-top: calc(var(--header-h) + 20px);
   margin-bottom: clamp(32px, 4vw, 56px);
 }
 
@@ -1158,16 +1246,19 @@ button { font: inherit; }
 .catalog-main { min-width: 0; }
 
 /* Три в ряд — как просили. auto-fill здесь не годится: он подстраивает число
-   колонок под ширину, и на 1920 их становилось шесть. */
+   колонок под ширину, и на 1920 их становилось шесть.
+   minmax(0, …) вместо голого 1fr: трек по умолчанию не даёт себя сжать уже
+   своего содержимого, и на 320px пара «Выбрать размер» + сердечко распирала
+   сетку до 342px — вся страница ползла вбок. */
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(14px, 1.6vw, 26px);
   margin-bottom: clamp(32px, 4vw, 56px);
 }
 
 @media (min-width: 700px) {
-  .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  .cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 .catalog-empty {
@@ -1186,19 +1277,12 @@ button { font: inherit; }
    без этого правила фильтр «скрывал» карточки, а они оставались на месте. */
 [hidden] { display: none !important; }
 
-/* До 900px панель свёрнута и раскрывается кнопкой: развёрнутый список из двух
-   десятков подразделов оттеснил бы товары на второй экран. */
-@media (max-width: 899px) {
-  .filters { display: none; }
-  .filters[data-open="true"] { display: grid; }
-}
-
 @media (min-width: 900px) {
   .filters {
     position: sticky;
     /* Шапка липкая: без отступа верх панели уезжает под неё */
-    top: 78px;
-    max-height: calc(100vh - 100px);
+    top: calc(var(--header-h) + 22px);
+    max-height: calc(100vh - var(--header-h) - 44px);
     overflow-y: auto;
     padding-right: 4px;
   }
@@ -1231,6 +1315,37 @@ button { font: inherit; }
 
 .filters__reset:hover { color: var(--teal); }
 
+/* Крестик и подложка нужны только листу на телефоне: на десктопе панель стоит
+   в колонке рядом с сеткой и закрывать её не от чего. Включаются ниже,
+   в медиазапросе «фильтры листом». */
+.filters__close,
+.filters__backdrop,
+.filters .filters__done { display: none; }
+
+.filters__close {
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  padding: 10px;
+  margin: -10px -10px -10px 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.filters__close:hover { color: var(--ink); }
+
+/* Итог отбора не отходя от фильтров: сколько товаров останется — на кнопке,
+   она же закрывает лист. Липкая, потому что список условий длиннее экрана. */
+.filters .filters__done {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  margin-top: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
 /* Кнопка нужна только там, где панель схлопывается, — на узком экране */
 .filters__toggle {
   display: inline-flex;
@@ -1248,6 +1363,22 @@ button { font: inherit; }
 
 @media (min-width: 900px) {
   .filters__toggle { display: none; }
+}
+
+/* Сколько фильтров уже стоит — прямо на кнопке. Иначе, закрыв лист, человек
+   видит короткую выдачу и не понимает, это весь раздел или остаток отбора. */
+.filters__toggle-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background: var(--teal-deep);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 0;
 }
 
 .filter__title {
@@ -1322,6 +1453,62 @@ button { font: inherit; }
 
 .filter__dash { color: var(--muted); }
 
+/* --- Фильтры листом (до 900px) ------------------------------------------
+   Раскрытая в потоке панель отжимала сетку товаров на второй экран: у одежды
+   два десятка подразделов плюс бренды и размеры, и после каждой галочки
+   приходилось листать вниз, чтобы увидеть, что изменилось. Лист лежит поверх
+   сетки — результат виден сразу под ним, и закрывается он одним движением.
+   Блок стоит последним в разделе: он переопределяет базовые правила панели,
+   а при равной специфичности выигрывает то, что ниже по файлу.
+   -------------------------------------------------------------------- */
+@media (max-width: 899.98px) {
+  .filters {
+    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 55;
+    max-height: 84dvh;
+    background: #fff;
+    box-shadow: 0 -20px 50px -18px rgba(30, 42, 44, .34);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0 var(--pad-r) calc(18px + env(safe-area-inset-bottom)) var(--pad-l);
+    gap: clamp(18px, 4vw, 26px);
+  }
+
+  .filters[data-open="true"] { display: grid; }
+
+  /* Шапка листа липнет к его верху: список условий длинный, и «Сбросить»
+     с крестиком обязаны оставаться на виду, куда бы его ни прокрутили. */
+  .filters__head {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    align-items: center;
+    background: #fff;
+    padding-top: 16px;
+  }
+
+  .filters__close { display: inline-flex; }
+
+  .filters .filters__done { display: block; }
+
+  /* Вложенный скролл на тач-экране — ловушка: палец, начавший движение внутри
+     списка, прокручивает список, а не лист, и кажется, что лист залип. */
+  .filter__list { max-height: none; overflow: visible; }
+
+  /* Затемнение под листом. Оно же — область «нажать мимо, чтобы закрыть». */
+  .filters__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 54;
+    background: rgba(30, 42, 44, .38);
+  }
+}
+
 .cards-grid .card { width: auto; }
 
 .card__price--none {
@@ -1370,7 +1557,14 @@ button { font: inherit; }
 .page-body.page-body--solo { grid-template-columns: 1fr; }
 
 /* --- Меню раздела ------------------------------------------------------- */
-.sidenav { position: sticky; top: clamp(80px, 9vw, 116px); }
+/* Липкой колонка становится только там, где она и есть колонка. До 900px
+   меню раздела едет наверх обычным списком, и sticky на нём приклеивал бы
+   этот список к верху экрана поверх текста. */
+.sidenav { position: static; }
+
+@media (min-width: 900px) {
+  .sidenav { position: sticky; top: calc(var(--header-h) + 28px); }
+}
 
 .sidenav__title {
   display: block;
@@ -1484,10 +1678,20 @@ button { font: inherit; }
 /* --- Таблица ------------------------------------------------------------
    Обёртка со скроллом обязательна: таблица сроков доставки в пять колонок
    на телефоне иначе распирает страницу по горизонтали. */
+/* Тень у обрезанного края — единственный признак, что таблицу можно тянуть
+   вбок. Без неё на телефоне пятая колонка просто не существует: край ровный,
+   полосы прокрутки нет. Слои с `local` едут вместе с содержимым и гасят тень,
+   когда до края уже докрутили; слои со `scroll` — сама тень, она стоит на месте. */
 .prose__table {
   overflow-x: auto;
+  overscroll-behavior-x: contain;
   margin: 0 0 1.4em;
   -webkit-overflow-scrolling: touch;
+  background:
+    linear-gradient(to right, #fff, rgba(255, 255, 255, 0)) left / 28px 100% no-repeat local,
+    linear-gradient(to left, #fff, rgba(255, 255, 255, 0)) right / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(30, 42, 44, .16), transparent) left / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(30, 42, 44, .16), transparent) right / 12px 100% no-repeat scroll;
 }
 
 .prose table {
@@ -1515,6 +1719,13 @@ button { font: inherit; }
 
 .prose tbody tr:hover td { background: #FAFBFB; }
 
+/* Меньше 520px таблице просто негде развернуться: тянуть её вбок на полтора
+   экрана хуже, чем на треть. Уплотняем — до 460px она доезжает почти целиком. */
+@media (max-width: 620px) {
+  .prose table { min-width: 460px; font-size: 12px; }
+  .prose th, .prose td { padding: 10px 12px; }
+}
+
 /* --- Выноска ------------------------------------------------------------
    Для одиночного важного факта в потоке текста (бесплатная доставка,
    срок возврата) — то, ради чего страницу и открывают. */
@@ -1529,6 +1740,11 @@ button { font: inherit; }
 
 .note p { margin: 0; }
 .note p + p { margin-top: .7em; }
+
+/* Ссылка внутри выноски и отзыва лежит не на белом, а на заливке —
+   и обычного акцента там на контраст не хватает. */
+.note a,
+.review a { color: var(--teal-ink); }
 
 /* --- Карточки фактов ----------------------------------------------------
    Контакты, реквизиты, способы доставки: пары «подпись — значение»,
@@ -1800,7 +2016,13 @@ a.brand:hover { background: var(--tint); }
   .categories__grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* --- от 1024px: категории в 6 колонок, подвал в 4 --- */
+/* --- подвал: 1 → 2 → 4 колонки ---
+   Промежуточной ступени не было, и на планшете четыре списка вытягивались
+   в одну колонку длиной в полтора экрана при пустых полях по бокам. */
+@media (min-width: 560px) {
+  .footer__top { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (min-width: 1024px) {
   .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; }
 }
@@ -1817,50 +2039,82 @@ a.brand:hover { background: var(--tint); }
   .svc { grid-template-columns: minmax(180px, 260px) 1fr; align-items: start; }
 }
 
-/* --- до 900px: меню уходит в бургер --- */
-@media (max-width: 900px) {
-  .trust { grid-template-columns: repeat(2, 1fr); }
-
+/* --- до 1100px: меню уходит в бургер ---
+   Порог не 900, а 1100: семь пунктов, телефон и три иконки в одну строку
+   помещаются только с 1200px, и на всём промежутке меню переносилось на вторую
+   строку — шапка распухала с 55 до 84px и наезжала на первый экран. */
+@media (max-width: 1099.98px) {
   .burger { display: inline-flex; }
 
   .header { padding-block: 14px; }
 
   .header__phone { display: none; }
 
+  /* Панель начинается ПОД шапкой, а не поверх неё. Раньше стояло inset: 0,
+     и белое полотно накрывало и логотип, и сам бургер: открытое меню нечем
+     было закрыть, оставалось только листать его до конца или уйти по ссылке. */
   .header__nav {
     position: fixed;
-    inset: 0;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 20;
     display: grid;
     align-content: start;
     justify-content: stretch;
     gap: 0;
     background: #fff;
-    padding: 84px var(--gutter) 40px;
+    padding: 6px var(--pad-l) calc(40px + env(safe-area-inset-bottom)) var(--pad-r);
     transform: translateX(100%);
     transition: transform .3s ease;
     overflow-y: auto;
+    /* Докрутив список до низа, палец продолжал тянуть за собой страницу
+       под панелью — и после закрытия меню человек оказывался не там, где был */
+    overscroll-behavior: contain;
   }
 
   .header__nav[data-open="true"] { transform: none; }
 
   .navlink {
-    font-size: 14px;
+    font-size: 15px;
     padding-block: 16px;
     border-bottom: 1px solid var(--line);
   }
 
   .navlink::after { display: none; }
 
-  /* В бургере наведения нет, поэтому панель просто раскрыта в потоке. Подразделы
-     здесь скрыты: двенадцать разделов с вложениями дают полсотни строк, и до
-     «Контактов» пришлось бы листать. Разделы ведут на свои страницы. */
-  .navitem--drop { display: block; }
+  /* Каталог — аккордеон: ссылка ведёт на витрину, шеврон рядом раскрывает
+     список разделов. Развёрнутый по умолчанию, он занимал весь экран, и до
+     «Услуг» с «Контактами» приходилось листать полтора экрана. */
+  .navitem--drop {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+
+  .navlink--drop { border-bottom: 0; }
 
   .navlink__chev { display: none; }
 
+  .navlink__toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+  }
+
+  /* Линия под строкой — общая для ссылки и кнопки, поэтому она на ячейке-фоне,
+     а не на самой ссылке: иначе подчёркивание обрывалось перед шевроном. */
+  .navlink--drop,
+  .navlink__toggle { box-shadow: inset 0 -1px 0 var(--line); }
+
   .megamenu {
+    grid-column: 1 / -1;
     position: static;
+    display: none;
+    max-height: none;
+    overflow: visible;
     opacity: 1;
     visibility: visible;
     transform: none;
@@ -1869,10 +2123,15 @@ a.brand:hover { background: var(--tint); }
     padding: 0;
   }
 
+  .navitem--drop[data-open="true"] .megamenu { display: block; }
+
   .megamenu__inner { columns: 1; }
 
   .megamenu__group { margin-bottom: 0; }
 
+  /* Подразделы здесь скрыты: пятнадцать разделов с вложениями дают полсотни
+     строк даже в раскрытом аккордеоне. Разделы ведут на свои страницы,
+     а там подраздел выбирается фильтром. */
   .megamenu__link { display: none; }
 
   .megamenu__title {
@@ -1891,17 +2150,30 @@ a.brand:hover { background: var(--tint); }
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1100px) {
   .nav__phone { display: none; }
+}
+
+/* На 1100–1249 меню уже развёрнуто, но телефон рядом с ним в строку не влезает.
+   Он не пропадает совсем — остаётся в подвале и на странице контактов. */
+@media (min-width: 1100px) and (max-width: 1249.98px) {
+  .header__phone { display: none; }
 }
 
 /* --- до 700px: герой становится вертикальным ---
    Левое пустое поле кадра на узком экране бесполезно: если оставить текст
    поверх фото, он ляжет на лицо. Разносим — снимок сверху, слово снизу. */
 @media (max-width: 700px) {
+  /* height обязательно снять, а не «отключить» через max-height: сверху стоит
+     height: clamp(340px, …) и overflow: hidden. Кадр 5/4 на телефоне сам по себе
+     выше этих 340px, поэтому весь блок под ним — заголовок, «Лёгкость и
+     точность», кнопка «В магазин» — просто обрезался. На 390px от героя
+     оставалась одна фотография без единого слова. */
   .hero {
+    height: auto;
     aspect-ratio: auto;
     max-height: none;
+    overflow: visible;
     display: grid;
   }
 
@@ -1913,11 +2185,905 @@ a.brand:hover { background: var(--tint); }
   .hero__inner {
     position: static;
     width: 100%;
-    padding: 26px var(--gutter) 4px;
+    padding: 26px var(--pad-r) 4px var(--pad-l);
     gap: 14px;
   }
+
+  /* Ограничение в 52% держало текст в пустом поле кадра, когда он лежал поверх
+     фотографии. Здесь фотография уже сверху, а под ней те же 52% — это 150px
+     на узком телефоне: надпись рассыпалась на три строки, а «В магазин»
+     переносилось внутри кнопки. */
+  .hero__stack { max-width: none; }
 
   .hero__title { font-size: clamp(30px, 9vw, 44px); }
 
   .carousel__nav { display: none; }
+}
+
+/* --- телефон в ландшафте ---
+   Экран 360px высотой, а герой считается от ширины: 50vw от 740px давало 370px,
+   и первый экран целиком занимала фотография — ни строки текста под ней.
+   Здесь высоту задаёт не ширина окна, а его высота. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .hero { height: clamp(240px, 66vh, 420px); }
+
+  .hero__title { font-size: clamp(26px, 6vh, 40px); }
+
+  .hero__stack { gap: 12px; }
+}
+
+/* ==========================================================================
+   Страница товара
+   ==========================================================================
+   Две колонки: слева галерея, справа блок покупки. Единственный брейкпоинт —
+   те же 900px, что у шапки и каталога: ниже колонки складываются в одну.
+   -------------------------------------------------------------------- */
+.product-page { padding-block: calc(var(--space-section) / 2); }
+
+.product {
+  display: grid;
+  gap: clamp(24px, 3.4vw, 56px);
+  align-items: start;
+  margin-top: clamp(18px, 2.2vw, 32px);
+}
+
+@media (min-width: 900px) {
+  .product { grid-template-columns: minmax(0, 1.15fr) minmax(340px, 1fr); }
+}
+
+/* --- Галерея ------------------------------------------------------------ */
+/* Миниатюры стоят колонкой слева от кадра: под кадром они отжимали бы цену
+   и кнопку ниже первого экрана, а именно их человек ищет первыми. */
+.gallery {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 700px) {
+  .gallery {
+    grid-template-columns: 74px minmax(0, 1fr);
+    grid-template-areas: 'thumbs stage';
+  }
+
+  .gallery__stage { grid-area: stage; }
+  .gallery__thumbs { grid-area: thumbs; }
+}
+
+/* Фон белый, object-fit: contain и общий паддинг — те же правила, что
+   у карточки в каталоге: товары сняты с разным запасом по краям. */
+.gallery__stage {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  /* min-height: 0 обязателен: стейдж — ячейка грида, а у неё min-height по
+     умолчанию auto. Вертикальный кадр (662×1000) распирал ячейку до своей
+     натуральной высоты, и вместо квадрата выходила полоса на полтора экрана —
+     aspect-ratio в этом споре проигрывает. */
+  min-height: 0;
+  background: #fff;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  padding: clamp(16px, 2.4vw, 40px);
+}
+
+/* Кадр вписываем по большей стороне, а не растягиваем: вертикальные и
+   горизонтальные кадры донора должны занимать одинаковый квадрат.
+   Размер даём в 100%, а вписывает object-fit — max-height в ячейке грида
+   считается от свободного места и вертикальный кадр всё равно вылезал. */
+.gallery__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.gallery__stage .ph { width: 100%; height: 100%; background: var(--grey); }
+
+.gallery__thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gallery__thumbs::-webkit-scrollbar { height: 0; display: none; }
+
+@media (min-width: 700px) {
+  .gallery__thumbs {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+}
+
+.gallery__thumb {
+  flex: 0 0 auto;
+  width: 66px;
+  height: 66px;
+  padding: 5px;
+  background: #fff;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: border-color .2s ease;
+}
+
+.gallery__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.gallery__thumb:hover { border-color: var(--pill); }
+.gallery__thumb.is-on { border-color: var(--teal-deep); }
+
+.gallery__note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* --- Блок покупки ------------------------------------------------------- */
+/* Липкий на десктопе: описание и лента похожих длинные, и без этого цена
+   с кнопкой уезжают из виду на первом же прокруте. */
+@media (min-width: 900px) {
+  .product__buy {
+    position: sticky;
+    top: calc(var(--header-h) + 40px);
+  }
+}
+
+.product__brand {
+  display: block;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--teal-deep);
+  margin-bottom: 10px;
+}
+
+.product__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.18;
+  margin: 0;
+  letter-spacing: .01em;
+}
+
+.product__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Точка-индикатор перед статусом: зелёная заливка тут была бы пятым цветом
+   в палитре, а фирменный teal читается как «есть» не хуже. */
+.product__stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink);
+}
+
+.product__stock::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+}
+
+.product__stock--no { color: var(--muted); }
+.product__stock--no::before { background: var(--pill); }
+
+.product__prices {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: clamp(18px, 2vw, 26px) 0;
+  padding-bottom: clamp(18px, 2vw, 26px);
+  border-bottom: 1px solid var(--line);
+}
+
+.product__price {
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.product__price--none {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.product__price-old {
+  font-size: 16px;
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+/* --- Размеры ------------------------------------------------------------ */
+.sizes { margin-bottom: clamp(20px, 2.4vw, 28px); }
+
+.sizes__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.sizes__title {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.sizes__help {
+  font-size: 12px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+
+.sizes__help:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
+
+.sizes__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.size { cursor: pointer; }
+
+/* Радиокнопку прячем, а не убираем: клавиатурная навигация и чтение
+   скринридером держатся именно на ней. */
+.size input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.size__val {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  font-size: 13px;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.size:hover .size__val { border-color: var(--pill); }
+.size input:checked + .size__val { border-color: var(--teal-deep); color: var(--teal-deep); }
+.size input:focus-visible + .size__val { outline: 2px solid var(--teal-deep); outline-offset: 2px; }
+
+/* Нажали «в корзину», не выбрав размер: подсвечиваем то, чего не хватает */
+.sizes--ask .size__val { border-color: var(--teal-deep); }
+.sizes--ask .sizes__title { color: var(--teal-deep); }
+
+/* --- Кнопки покупки ----------------------------------------------------- */
+.product__actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: clamp(22px, 2.6vw, 30px);
+}
+
+.product__add {
+  flex: 1 1 auto;
+  border: 1px solid var(--teal-deep);
+  cursor: pointer;
+  text-align: center;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+
+/* Подтверждение прямо на кнопке: тост внизу экрана легко пропустить,
+   если смотришь на кнопку, по которой только что кликнул. */
+.product__add.is-added,
+.card__buy.is-added {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.product__add.is-added::after,
+.card__buy.is-added::after { content: ' \2713'; }
+
+.iconbtn {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.iconbtn:hover { border-color: var(--teal-deep); color: var(--teal-deep); }
+
+.iconbtn.is-on {
+  color: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+
+.iconbtn.is-on svg { fill: currentColor; }
+
+/* --- Что входит в покупку ----------------------------------------------- */
+.perks {
+  list-style: none;
+  margin: 0 0 clamp(18px, 2vw, 24px);
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.perk {
+  display: flex;
+  gap: 11px;
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.perk svg { flex: 0 0 auto; margin-top: 2px; color: var(--teal); }
+.perk a { color: var(--ink); border-bottom: 1px solid var(--line); }
+.perk a:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
+
+.product__ask {
+  margin: 0;
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.product__ask a { color: var(--ink); }
+.product__ask a:hover { color: var(--teal-deep); }
+
+/* --- Описание и характеристики ------------------------------------------ */
+.product-section { padding-top: clamp(40px, 5vw, 72px); }
+
+.product-section__title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(20px, 2.2vw, 28px);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  margin: 0 0 clamp(16px, 2vw, 24px);
+}
+
+/* В .section__head отступ снизу задаёт сам блок — иначе он складывается
+   с отступом заголовка и «Похожие товары» отъезжают от своей ленты. */
+.section__head .product-section__title { margin-bottom: 0; }
+
+.product-descr { max-width: 74ch; }
+
+.specs {
+  margin: 0;
+  max-width: 74ch;
+  border-top: 1px solid var(--line);
+}
+
+.spec {
+  display: grid;
+  grid-template-columns: minmax(120px, 200px) 1fr;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+
+.spec__key { margin: 0; color: var(--muted); }
+.spec__val { margin: 0; }
+.spec__val a { border-bottom: 1px solid var(--line); }
+.spec__val a:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
+
+/* ==========================================================================
+   Кнопки на карточке каталога
+   ==========================================================================
+   Карточка перестала быть одной сплошной ссылкой: внутрь нужны кнопки,
+   а <button> внутри <a> — невалидная вложенность. Теперь .card — контейнер,
+   ссылка живёт в .card__link. Старая разметка (.card как <a>) осталась
+   в каруселях главной и продолжает работать: правила ниже её не касаются.
+   -------------------------------------------------------------------- */
+.card { position: relative; }
+
+.card__link { display: block; }
+
+.card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.card__buy {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.card__buy:hover {
+  background: var(--teal-deep);
+  border-color: var(--teal-deep);
+  color: #fff;
+}
+
+.card__fav {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.card__fav:hover { border-color: var(--pill); color: var(--ink); }
+
+.card__fav.is-on {
+  color: var(--teal-deep);
+  border-color: var(--teal-deep);
+}
+
+.card__fav.is-on svg { fill: currentColor; }
+
+/* ==========================================================================
+   Счётчик у иконок шапки
+   ========================================================================== */
+.header__tool { position: relative; }
+
+/* Кнопка корзины должна выглядеть как соседние ссылки-иконки, а не как
+   кнопка браузера по умолчанию. Паддинг при этом не обнуляем: на нём держится
+   зона нажатия 44×44, и без него по корзине на телефоне приходилось попадать
+   в саму иконку 20×20 — соседние «избранное» и «кабинет» ловили промахи. */
+button.header__tool {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.header__badge {
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--teal-deep);
+  color: #fff;
+  font-size: 10px;
+  line-height: 17px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Выдвижная корзина
+   ========================================================================== */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(30, 42, 44, .38);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.drawer--on .drawer__backdrop { opacity: 1; }
+
+.drawer__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(420px, 100%);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .28s ease;
+  box-shadow: -18px 0 46px rgba(30, 42, 44, .12);
+}
+
+.drawer--on .drawer__panel { transform: none; }
+
+/* Выезд — это движение через треть экрана. Кому оно мешает, тот выставил
+   флаг в системе: панель просто появляется на месте. */
+@media (prefers-reduced-motion: reduce) {
+  .drawer__panel, .drawer__backdrop { transition: none; }
+}
+
+.drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.drawer__title {
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.drawer__close {
+  background: none;
+  border: 0;
+  padding: 4px;
+  cursor: pointer;
+  color: var(--muted);
+  display: inline-flex;
+}
+
+.drawer__close:hover { color: var(--ink); }
+
+.drawer__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  /* Докрутив список до низа, палец тянул за собой страницу под панелью */
+  overscroll-behavior: contain;
+  padding: 6px var(--gutter);
+}
+
+.drawer__empty {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 28px 0;
+}
+
+.drawer__empty a { color: var(--teal-deep); border-bottom: 1px solid var(--line); }
+
+/* Панель прижата к правому краю экрана, поэтому справа поле считается от выреза:
+   в ландшафте на телефоне сумма заказа иначе упирается в скруглённый угол.
+   Снизу — запас под жестовую полосу, ею закрывалась кнопка «Оформить заказ». */
+.drawer__foot {
+  border-top: 1px solid var(--line);
+  padding: 18px max(var(--gutter), env(safe-area-inset-right)) calc(22px + env(safe-area-inset-bottom)) var(--gutter);
+}
+
+.drawer__sum {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.drawer__total {
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.drawer__btn {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* --- Строка товара в корзине -------------------------------------------- */
+.crow {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.crow:last-child { border-bottom: 0; }
+
+.crow__media {
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  padding: 5px;
+}
+
+.crow__media img { width: 100%; height: 100%; object-fit: contain; }
+
+.crow__body { min-width: 0; }
+
+.crow__name {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.crow__name:hover { color: var(--teal-deep); }
+
+.crow__size {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.crow__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 11px;
+}
+
+.crow__price {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.crow__del {
+  background: none;
+  border: 0;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--pill);
+  display: inline-flex;
+}
+
+.crow__del:hover { color: var(--ink); }
+
+.qty {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+}
+
+.qty__btn {
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.qty__btn:hover { color: var(--teal-deep); }
+
+.qty__val {
+  min-width: 26px;
+  text-align: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   Всплывающее уведомление
+   ========================================================================== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(26px + env(safe-area-inset-bottom));
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: calc(100vw - 2 * var(--gutter));
+  padding: 14px 20px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  transform: translate(-50%, 14px);
+  opacity: 0;
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+.toast--on { opacity: 1; transform: translate(-50%, 0); }
+
+.toast span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.toast a {
+  flex: 0 0 auto;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, .4);
+}
+
+.toast a:hover { border-color: #fff; }
+
+/* ==========================================================================
+   Страница корзины
+   ========================================================================== */
+.cart-layout {
+  display: grid;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: start;
+  margin-top: clamp(18px, 2.2vw, 32px);
+}
+
+@media (min-width: 900px) {
+  .cart-layout { grid-template-columns: minmax(0, 1fr) 320px; }
+}
+
+.cart-list { border-top: 1px solid var(--line); }
+
+/* На странице строка просторнее, чем в узкой панели: места хватает */
+.cart-list .crow {
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  padding: 20px 0;
+}
+
+.cart-list .crow__name { font-size: 14px; }
+
+.order {
+  border: 1px solid var(--line);
+  padding: clamp(20px, 2.4vw, 28px);
+}
+
+@media (min-width: 900px) {
+  .order { position: sticky; top: calc(var(--header-h) + 40px); }
+}
+
+.order__title {
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 0 0 18px;
+}
+
+.order__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.order__row--total {
+  margin-top: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+}
+
+.order__total {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.order__btn {
+  display: block;
+  width: 100%;
+  margin-top: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.order__note {
+  margin: 14px 0 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.order__note a { color: var(--ink); border-bottom: 1px solid var(--line); }
+.order__note a:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
+
+/* ==========================================================================
+   Пальцем, а не мышью
+   ==========================================================================
+   Всё, что решается не шириной окна, а типом указателя. Курсор наводится точно
+   и показывает hover; палец закрывает собой цель и промахивается. Разносим
+   строки списков ближе к 44px по высоте — норма зоны нажатия, — но только там,
+   где указатель грубый: на десктопе те же 44px превратили бы плотные перечни
+   подразделов и подвала в простыни.
+
+   Блок стоит в самом конце файла намеренно: он переопределяет отступы
+   компонентов, объявленных по всему файлу, а при равной специфичности
+   выигрывает то правило, что ниже.
+   -------------------------------------------------------------------- */
+@media (pointer: coarse) {
+  .filter__row { padding: 10px 0; }
+
+  .filter__row input { width: 19px; height: 19px; }
+
+  /* Меньше 16px — и Safari на iOS приближает страницу, когда встаёшь в поле.
+     Обратно она сама не отъезжает: человек остаётся на увеличенной вёрстке. */
+  .filter__num { font-size: 16px; padding: 11px 12px; }
+
+  .megamenu__link { padding-block: 9px; }
+
+  .footer__list { gap: 2px; }
+
+  .footer__list a {
+    display: inline-block;
+    padding-block: 9px;
+  }
+
+  .footer__social a { padding-block: 8px; }
+
+  .crumbs { gap: 6px 10px; }
+
+  .crumbs a { padding-block: 9px; }
+
+  .sidenav__list a { padding: 15px 0; }
+
+  /* Логотип в шапке — самая частая цель «вернуться на главную», а по высоте
+     это всего 26px картинки. Поле добираем паддингом, а отрицательное
+     внешнее поле возвращает шапке прежнюю высоту. */
+  .header__logo {
+    padding-block: 9px;
+    margin-block: -9px;
+  }
+
+  .section__link,
+  .sizes__help,
+  .footer__phone,
+  .footer__bottom a,
+  .nav__phone { padding-block: 9px; }
+
+  /* Точка промо-карусели — черта в 2px: без поля по ней просто не попасть */
+  .promo-slider__dot { padding: 16px 6px; }
+
+  .card__buy { padding: 14px; }
+
+  .chip { padding: 11px 16px; }
+
+  .drawer__close { padding: 11px; margin: -11px; }
+
+  .crow__del { padding: 10px; margin: -10px; }
+
+  .qty__btn { width: 38px; height: 38px; }
+}
+
+/* --- самые узкие экраны (320px и уже) ------------------------------------
+   Две карточки в ряд остаются, но кнопка «Выбрать размер» с сердечком в них
+   уже не помещается в прежнем наборе: 96 + 8 + 42 на трек в 137px. Ужимаем
+   надпись и сердечко — иначе пришлось бы разворачивать сетку в одну колонку
+   и вытягивать раздел вдвое. */
+@media (max-width: 359.98px) {
+  .card__buy {
+    padding: 12px 8px;
+    font-size: 10px;
+    letter-spacing: .04em;
+  }
+
+  .card__fav { width: 36px; }
+
+  .card__actions { gap: 6px; }
 }

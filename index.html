@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Аксель·НН — всё для фигурного катания в Нижнем Новгороде</title>
 <meta name="description" content="Коньки, ботинки, лезвия, одежда и аксессуары для фигурного катания. Магазин в Нижнем Новгороде с примеркой, заточка и установка лезвий, доставка по всей России.">
 <link rel="canonical" href="https://axelnn.ru/">
@@ -33,16 +33,23 @@
         <svg class="navlink__chev" width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
       </a>
 
+      <!-- Только для выехавшего меню: там «Каталог» остаётся ссылкой на витрину,
+           а разделы раскрывает эта кнопка. На десктопе она скрыта — панель
+           открывается наведением. -->
+      <button type="button" class="navlink__toggle" id="nav-catalog-toggle"
+              aria-expanded="false" aria-controls="megamenu" aria-label="Разделы каталога">
+        <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
+
       <!-- Разметку ниже пишет tools/build-catalog.mjs из данных донора. Руками не править. -->
       <!-- КАТАЛОГ:МЕНЮ:НАЧАЛО -->
       <div class="megamenu" id="megamenu">
         <div class="megamenu__inner">
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/figure-skates/">Фигурные коньки</a>
-            <a class="megamenu__link" href="/catalog/figure-skates/#konki_jackson"><span class="megamenu__name">Коньки Jackson</span><span class="megamenu__count">5</span></a>
+            <a class="megamenu__link" href="/catalog/figure-skates/#konki_jackson"><span class="megamenu__name">Коньки Jackson</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_edea____"><span class="megamenu__name">Коньки Edea</span><span class="megamenu__count">2</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_riedell_botinok_lezvie"><span class="megamenu__name">Коньки Riedell (Ботинок+лезвие)</span><span class="megamenu__count">1</span></a>
-            <a class="megamenu__link" href="/catalog/figure-skates/#konki_risport_botinok_lezvie"><span class="megamenu__name">Коньки Risport (Ботинок+лезвие)</span><span class="megamenu__count">1</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_runa"><span class="megamenu__name">Коньки Runa</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
@@ -57,7 +64,7 @@
             <a class="megamenu__title" href="/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termokostyumy"><span class="megamenu__name">Термокостюмы</span><span class="megamenu__count">114</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termoplatya"><span class="megamenu__name">Термоплатья</span><span class="megamenu__count">103</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#gimnastika"><span class="megamenu__name">Гимнастика</span><span class="megamenu__count">88</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#gimnastika"><span class="megamenu__name">Гимнастика</span><span class="megamenu__count">86</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termobryuki_termolosiny_termoyubki_termoshorty"><span class="megamenu__name">Термобрюки, термолосины, термоюбки, термошорты</span><span class="megamenu__count">86</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termovodolazki_termofutbolki"><span class="megamenu__name">Термо водолазки, термо футболки, термо лонгсливы</span><span class="megamenu__count">78</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termokombinezony"><span class="megamenu__name">Термокомбинезоны</span><span class="megamenu__count">38</span></a>
@@ -66,8 +73,8 @@
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/odezhda_dlya_malchikov/">Одежда для мальчиков</a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termokomplekty"><span class="megamenu__name">Термокостюмы</span><span class="megamenu__count">37</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobryuki"><span class="megamenu__name">Термобрюки</span><span class="megamenu__count">16</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termovodolazki%201"><span class="megamenu__name">Термо водолазки, термо футболки</span><span class="megamenu__count">7</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobryuki"><span class="megamenu__name">Термобрюки</span><span class="megamenu__count">12</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termovodolazki%201"><span class="megamenu__name">Термо водолазки, термо футболки</span><span class="megamenu__count">6</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#terkombinezony"><span class="megamenu__name">Теркомбинезоны</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#rubashka_bodi"><span class="megamenu__name">Рубашка-боди</span><span class="megamenu__count">3</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobele_"><span class="megamenu__name">Термобелье</span><span class="megamenu__count">3</span></a>
@@ -75,8 +82,7 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/odezhda_msk/">Одежда MSK</a>
-            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_devochek"><span class="megamenu__name">Футболки для девочек</span><span class="megamenu__count">76</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_malchikov_"><span class="megamenu__name">Футболки для мальчиков</span><span class="megamenu__count">40</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_malchikov_"><span class="megamenu__name">Футболки для мальчиков</span><span class="megamenu__count">10</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_msk/#komplekt_futbolka_shorty_khlopok"><span class="megamenu__name">Комплект (футболка+шорты) хлопок</span><span class="megamenu__count">5</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_msk/#shapki_"><span class="megamenu__name">Шапки</span><span class="megamenu__count">2</span></a>
           </div>
@@ -85,32 +91,31 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_na_kolesakh"><span class="megamenu__name">Сумки на колесах</span><span class="megamenu__count">28</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#portpledy"><span class="megamenu__name">Портпледы</span><span class="megamenu__count">23</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_runa"><span class="megamenu__name">RUNA</span><span class="megamenu__count">11</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#kosmetichki"><span class="megamenu__name">Косметички</span><span class="megamenu__count">11</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_na_kolesakh"><span class="megamenu__name">Сумки на колесах</span><span class="megamenu__count">25</span></a>
             <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#ryukzak_bilman"><span class="megamenu__name">Рюкзак &quot;Бильман&quot;</span><span class="megamenu__count">10</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_runa"><span class="megamenu__name">RUNA</span><span class="megamenu__count">9</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#kosmetichki"><span class="megamenu__name">Косметички</span><span class="megamenu__count">7</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#portpledy"><span class="megamenu__name">Портпледы</span><span class="megamenu__count">6</span></a>
             <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#edea_"><span class="megamenu__name">EDEA</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link megamenu__link--more" href="/catalog/sumki_ryukzaki/">Ещё 4</a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/khranenie_ukhod_za_konkami/">Хранение и уход</a>
-            <a class="megamenu__link" href="/catalog/khranenie_ukhod_za_konkami/#chekhly_sushki"><span class="megamenu__name">уход за коньками</span><span class="megamenu__count">110</span></a>
+            <a class="megamenu__link" href="/catalog/khranenie_ukhod_za_konkami/#chekhly_sushki"><span class="megamenu__name">уход за коньками</span><span class="megamenu__count">93</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/aksessuary_dlya_lda/">Аксессуары для льда</a>
             <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kovriki_"><span class="megamenu__name">Коврики для ног</span><span class="megamenu__count">42</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#golovnye_ubory_"><span class="megamenu__name">Головные уборы</span><span class="megamenu__count">40</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#salfetki_dlya_lezviy"><span class="megamenu__name">Салфетки для лезвий</span><span class="megamenu__count">30</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kover_dlya_ofp"><span class="megamenu__name">Ковер для ОФП</span><span class="megamenu__count">23</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#salfetki_dlya_lezviy"><span class="megamenu__name">Салфетки для лезвий</span><span class="megamenu__count">22</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kover_dlya_ofp"><span class="megamenu__name">Ковер для ОФП</span><span class="megamenu__count">20</span></a>
             <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#perchatki"><span class="megamenu__name">Перчатки</span><span class="megamenu__count">20</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#noski_"><span class="megamenu__name">Носки</span><span class="megamenu__count">2</span></a>
-            <a class="megamenu__link megamenu__link--more" href="/catalog/aksessuary_dlya_lda/">Ещё 1</a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#golovnye_ubory_"><span class="megamenu__name">Головные уборы</span><span class="megamenu__count">19</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#noski_"><span class="megamenu__name">Носки</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/trenazhery_/">Тренажёры</a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#spinnery_"><span class="megamenu__name">Спиннеры</span><span class="megamenu__count">31</span></a>
-            <a class="megamenu__link" href="/catalog/trenazhery_/#spinner_plyus"><span class="megamenu__name">Спиннер Плюс</span><span class="megamenu__count">5</span></a>
+            <a class="megamenu__link" href="/catalog/trenazhery_/#spinner_plyus"><span class="megamenu__name">Спиннер Плюс</span><span class="megamenu__count">3</span></a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#doska_dlya_otrabotki_vrashcheniya"><span class="megamenu__name">Доска для отработки вращения</span><span class="megamenu__count">1</span></a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#trenazhery_dlya_trenirovok_vne_lda"><span class="megamenu__name">Тренажеры для тренировок вне льда</span><span class="megamenu__count">1</span></a>
           </div>
@@ -119,21 +124,13 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/suveniry/">Сувениры</a>
-            <a class="megamenu__link" href="/catalog/suveniry/#podarochnye_nabory"><span class="megamenu__name">Подарочные наборы</span><span class="megamenu__count">77</span></a>
-            <a class="megamenu__link" href="/catalog/suveniry/#dumochki_pledy"><span class="megamenu__name">Думочки, пледы</span><span class="megamenu__count">28</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#podarochnye_nabory"><span class="megamenu__name">Подарочные наборы</span><span class="megamenu__count">46</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#futbolki_s_printami"><span class="megamenu__name">Футболки с принтами</span><span class="megamenu__count">13</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#dumochki_pledy"><span class="megamenu__name">Думочки, пледы</span><span class="megamenu__count">7</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#igrushki"><span class="megamenu__name">Игрушки</span><span class="megamenu__count">4</span></a>
-            <a class="megamenu__link" href="/catalog/suveniry/#kovriki_dlya_myshi"><span class="megamenu__name">Коврики для мыши</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#podarochnyy_meshok"><span class="megamenu__name">Подарочный мешок</span><span class="megamenu__count">3</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#salfetnitsy"><span class="megamenu__name">САЛФЕТНИЦЫ</span><span class="megamenu__count">2</span></a>
             <a class="megamenu__link megamenu__link--more" href="/catalog/suveniry/">Ещё 1</a>
-          </div>
-          <div class="megamenu__group">
-            <a class="megamenu__title" href="/catalog/podarochnye_nabory_treneram_/">Подарочные наборы тренерам</a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_gimnastika"><span class="megamenu__name">Набор &quot;Гимнастика&quot;</span><span class="megamenu__count">5</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_tennis"><span class="megamenu__name">Набор &quot;Теннис&quot;</span><span class="megamenu__count">4</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_figurnoe_katanie"><span class="megamenu__name">Набор &quot;Фигурное катание&quot;</span><span class="megamenu__count">2</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_basketbol"><span class="megamenu__name">Набор &quot;Баскетбол&quot;</span><span class="megamenu__count">1</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_khoreografiya"><span class="megamenu__name">Набор &quot;Хореография&quot;</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/edinyy_komandnyy_stil/">Единый командный стиль</a>
@@ -155,21 +152,54 @@
   <div class="header__tools">
     <a href="tel:+78314234796" class="header__phone">+7 831 423-47-96</a>
 
-    <a href="https://axelnn.ru/basket/#delayed" class="header__tool" aria-label="Избранное">
+    <a href="/favorites/" class="header__tool" aria-label="Избранное">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M12 20.5 4.4 12.9a4.6 4.6 0 0 1 6.5-6.5l1.1 1.1 1.1-1.1a4.6 4.6 0 0 1 6.5 6.5L12 20.5Z"/></svg>
+      <span class="header__badge" data-fav-count hidden>0</span>
     </a>
-    <a href="https://axelnn.ru/basket/" class="header__tool" aria-label="Корзина">
+    <!-- Иконка корзины — не ссылка, а кнопка: она выдвигает панель справа.
+         Полная страница /cart/ остаётся и открывается из панели. -->
+    <button type="button" class="header__tool" id="cart-open" aria-label="Корзина">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M6 6h15l-1.6 9.2a2 2 0 0 1-2 1.6H9.2a2 2 0 0 1-2-1.6L5.2 4.2A1 1 0 0 0 4.2 3.4H2.6"/><circle cx="9.5" cy="20" r="1.1"/><circle cx="17" cy="20" r="1.1"/></svg>
-    </a>
+      <span class="header__badge" data-cart-count hidden>0</span>
+    </button>
     <a href="https://axelnn.ru/personal/" class="header__tool" aria-label="Личный кабинет">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"/></svg>
     </a>
 
     <button type="button" class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="burger__open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="burger__close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
     </button>
   </div>
 </header>
+
+<!-- ПАНЕЛЬ КОРЗИНЫ. Пустая разметка: содержимое рисует assets/js/shop.js
+     из localStorage. Лежит внутри общей шапки, поэтому доезжает до всех
+     страниц вместе с ней. -->
+<div class="drawer" id="cart-drawer" hidden>
+  <div class="drawer__backdrop" data-cart-close></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Корзина">
+    <div class="drawer__head">
+      <span class="drawer__title">Корзина</span>
+      <button type="button" class="drawer__close" data-cart-close aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" id="cart-drawer-body"></div>
+    <div class="drawer__foot" id="cart-drawer-foot" hidden>
+      <div class="drawer__sum">
+        <span>Итого</span>
+        <span class="drawer__total" data-cart-total>0 ₽</span>
+      </div>
+      <a href="/cart/" class="btn drawer__btn">Оформить заказ</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Всплывающее уведомление «добавлено» -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="assets/js/shop.js" defer></script>
 <!-- ОБЩЕЕ:ШАПКА:КОНЕЦ -->
 
 <!-- ГЕРОЙ -->
@@ -222,32 +252,32 @@
 
   <div class="carousel">
     <div class="carousel__track cx-scroll">
-      <a href="https://axelnn.ru/catalog/figure-skates/konki_edea____/25014/" class="card">
+      <a href="/catalog/figure-skates/konki_edea____/25014/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-figurnye-konki-edea-overture-set-rotation.webp" width="1000" height="1000" loading="lazy" alt="Фигурные коньки Edea Overture Set Rotation"></div>
         <span class="card__name">Фигурные коньки Edea Overture Set Rotation</span>
         <div class="card__prices"><span class="card__price">34 500&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/botinki_dlya_figurnogo_kataniya/botinki_dlya_figurnogo_kataniya_risport/7142/" class="card">
+      <a href="/catalog/botinki_dlya_figurnogo_kataniya/botinki_dlya_figurnogo_kataniya_risport/7142/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-botinki-dlya-figurnogo-kataniya-risport-elec.webp" width="1000" height="1000" loading="lazy" alt="Ботинки для фигурного катания Risport Electra Light"></div>
         <span class="card__name">Ботинки для&nbsp;фигурного катания Risport Electra Light</span>
         <div class="card__prices"><span class="card__price">26 300&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/blades/7398/" class="card">
+      <a href="/catalog/blades/7398/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-lezviya-dlya-konkov-mk-professional.webp" width="1000" height="1000" loading="lazy" alt="Лезвия для коньков MK Professional"></div>
         <span class="card__name">Лезвия для&nbsp;коньков MK Professional</span>
         <div class="card__prices"><span class="card__price">27 000&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/sumki_ryukzaki/sumki_na_kolesakh/23645/" class="card">
+      <a href="/catalog/sumki_ryukzaki/sumki_na_kolesakh/23645/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-cube-kapibara-voshozhdenie-sumka-ryukzak-na-.webp" width="1000" height="1000" loading="lazy" alt="Сумка-рюкзак «Cube» Капибара"></div>
         <span class="card__name">Сумка-рюкзак «Cube» Капибара</span>
         <div class="card__prices"><span class="card__price">13 350&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/zashchita_figurista_/19912/" class="card">
+      <a href="/catalog/zashchita_figurista_/19912/" class="card">
         <div class="card__media card__media--bleed"><img class="ph" src="assets/img/catalog-nobg/item-zaschita-zapyastya-sprinter.webp" width="1000" height="1000" loading="lazy" alt="Защита запястья «Спринтер»"></div>
         <span class="card__name">Защита запястья «Спринтер»</span>
         <div class="card__prices"><span class="card__price">760&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/aksessuary_dlya_lda/perchatki/21507/" class="card">
+      <a href="/catalog/aksessuary_dlya_lda/perchatki/21507/" class="card">
         <div class="card__media card__media--bleed"><img class="ph" src="assets/img/catalog-nobg/item-termoperchatki-anti-slip.webp" width="1000" height="1000" loading="lazy" alt="Термоперчатки «Anti-Slip»"></div>
         <span class="card__name">Термоперчатки «Anti-Slip»</span>
         <div class="card__prices"><span class="card__price">1 300&nbsp;₽</span></div>
@@ -272,7 +302,7 @@
   <div class="promo-slider" data-autoplay="6500" aria-roledescription="карусель" aria-label="Разделы магазина">
     <div class="promo-slider__track cx-scroll">
 
-      <a href="https://axelnn.ru/catalog/botinki_dlya_figurnogo_kataniya/" class="promo">
+      <a href="/catalog/botinki_dlya_figurnogo_kataniya/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-botinki-edea-overture.webp" width="1000" height="1000" alt="Фигурные ботинки Edea Overture">
         <div class="promo__inner">
           <span class="promo__eyebrow">Сезон 2025&nbsp;/&nbsp;2026</span>
@@ -284,7 +314,7 @@
         </div>
       </a>
 
-      <a href="https://axelnn.ru/catalog/figure-skates/" class="promo">
+      <a href="/catalog/figure-skates/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-konki-jackson-elle.webp" width="1000" height="1000" loading="lazy" alt="Фигурные коньки Jackson Elle">
         <div class="promo__inner">
           <span class="promo__eyebrow">Готовый комплект</span>
@@ -296,7 +326,7 @@
         </div>
       </a>
 
-      <a href="https://axelnn.ru/catalog/blades/" class="promo">
+      <a href="/catalog/blades/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-lezviya-mk-professional.webp" width="1000" height="1000" loading="lazy" alt="Лезвия для коньков MK Professional">
         <div class="promo__inner">
           <span class="promo__eyebrow">Заточка и&nbsp;установка</span>
@@ -308,7 +338,7 @@
         </div>
       </a>
 
-      <a href="https://axelnn.ru/catalog/sumki_ryukzaki/" class="promo">
+      <a href="/catalog/sumki_ryukzaki/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-ryukzak-runa-zimniy-sad.webp" width="1000" height="1000" loading="lazy" alt="Рюкзак Runa «Зимний сад»">
         <div class="promo__inner">
           <span class="promo__eyebrow">Runa и&nbsp;портпледы</span>
@@ -320,7 +350,7 @@
         </div>
       </a>
 
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/" class="promo">
+      <a href="/catalog/khranenie_ukhod_za_konkami/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-meshok-chehol-19-006.webp" width="1000" height="1000" loading="lazy" alt="Мешок-чехол для коньков">
         <div class="promo__inner">
           <span class="promo__eyebrow">Чехлы и&nbsp;сушки</span>
@@ -332,7 +362,7 @@
         </div>
       </a>
 
-      <a href="https://axelnn.ru/catalog/trenazhery_/" class="promo">
+      <a href="/catalog/trenazhery_/" class="promo">
         <img class="promo__media" src="assets/img/catalog-nobg/promo-spinner-winter-fantasy.webp" width="1000" height="1000" loading="lazy" alt="Спиннер для отработки вращения">
         <div class="promo__inner">
           <span class="promo__eyebrow">Спиннеры и&nbsp;диски</span>
@@ -361,49 +391,49 @@
 <section class="section container">
   <div class="section__head">
     <h2 class="section-title">Уход и экипировка</h2>
-    <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/" class="section__link">Весь раздел
+    <a href="/catalog/khranenie_ukhod_za_konkami/" class="section__link">Весь раздел
       <svg width="42" height="8" viewBox="0 0 48 8" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M0 4h43M40 1l5 3-5 3"/></svg>
     </a>
   </div>
 
   <div class="carousel">
     <div class="carousel__track cx-scroll">
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17873/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/17873/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-chehly-na-lezviya-edea.webp" width="1000" height="1000" loading="lazy" alt="Чехлы на лезвия Edea"></div>
         <span class="card__name">Чехлы на&nbsp;лезвия Edea</span>
         <div class="card__prices"><span class="card__price">5 000&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/trenazhery_/spinner_plyus/21896/" class="card">
+      <a href="/catalog/trenazhery_/spinner_plyus/21896/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-spinner-plyus-v-lunnom-svete.webp" width="1000" height="1000" loading="lazy" alt="Спиннер Плюс «В лунном свете»"></div>
         <span class="card__name">Спиннер Плюс «В лунном свете»</span>
         <div class="card__prices"><span class="card__price">4 250&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19791/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19791/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-sushka-na-lezviya-sushka-kotik.webp" width="1000" height="1000" loading="lazy" alt="Сушка на лезвия «Котик»"></div>
         <span class="card__name">Сушка на&nbsp;лезвия «Котик»</span>
         <div class="card__prices"><span class="card__price">2 150&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19779/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/19779/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-zaschita-na-lezviya-sushka-pudel-rozovyy.webp" width="1000" height="1000" loading="lazy" alt="Сушка на лезвия «Пудель»"></div>
         <span class="card__name">Сушка на&nbsp;лезвия «Пудель»</span>
         <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23576/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/chekhly_sushki/23576/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-sushki-zveryata-medvezhenok.webp" width="1000" height="1000" loading="lazy" alt="Сушка на лезвия «Медвежонок»"></div>
         <span class="card__name">Сушка на&nbsp;лезвия «Медвежонок»</span>
         <div class="card__prices"><span class="card__price">2 000&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/24340/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/24340/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-zaschita-lezviy-skaterz-kraski.webp" width="1000" height="1000" loading="lazy" alt="Защита лезвий SkaterZ «Краски»"></div>
         <span class="card__name">Защита лезвий SkaterZ «Краски»</span>
         <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19681/" class="card">
+      <a href="/catalog/khranenie_ukhod_za_konkami/zashchita_na_lezviya_/19681/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-chehly-na-lezviya-skaterz-strekoza.webp" width="1000" height="1000" loading="lazy" alt="Чехлы на лезвия SkaterZ «Стрекоза»"></div>
         <span class="card__name">Чехлы на&nbsp;лезвия SkaterZ «Стрекоза»</span>
         <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
       </a>
-      <a href="https://axelnn.ru/catalog/trenazhery_/spinnery_/24326/" class="card">
+      <a href="/catalog/trenazhery_/spinnery_/24326/" class="card">
         <div class="card__media"><img class="ph" src="assets/img/catalog-nobg/item-diski-spinner-disk-smayliki.webp" width="1000" height="1000" loading="lazy" alt="Спиннер-диск «Смайлики»"></div>
         <span class="card__name">Спиннер-диск «Смайлики»</span>
         <div class="card__prices"><span class="card__price">1 600&nbsp;₽</span></div>
@@ -427,35 +457,35 @@
     <h2 class="section-title">Категории</h2>
   </div>
   <div class="categories__grid">
-    <a href="https://axelnn.ru/catalog/figure-skates/" class="category">
+    <a href="/catalog/figure-skates/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-konki-figurnye-runa-base.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Фигурные коньки</div>
     </a>
-    <a href="https://axelnn.ru/catalog/botinki_dlya_figurnogo_kataniya/" class="category">
+    <a href="/catalog/botinki_dlya_figurnogo_kataniya/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-figurnye-botinki-edea-overture-belye-1.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Ботинки</div>
     </a>
-    <a href="https://axelnn.ru/catalog/blades/" class="category">
+    <a href="/catalog/blades/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-lezviya-dlya-konkov-mk-professional.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Лезвия</div>
     </a>
-    <a href="https://axelnn.ru/catalog/odezhda_dlya_devochek/" class="category">
+    <a href="/catalog/odezhda_dlya_devochek/" class="category">
       <div class="category__media category__media--bleed-top"><img class="ph" src="assets/img/catalog-nobg/cat-kolgotki-so-strazami-art-1152.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Одежда</div>
     </a>
-    <a href="https://axelnn.ru/catalog/zashchita_figurista_/" class="category">
+    <a href="/catalog/zashchita_figurista_/" class="category">
       <div class="category__media category__media--bleed"><img class="ph" src="assets/img/catalog-nobg/cat-zaschita-zapyastya-sprinter.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Защита</div>
     </a>
-    <a href="https://axelnn.ru/catalog/khranenie_ukhod_za_konkami/" class="category">
+    <a href="/catalog/khranenie_ukhod_za_konkami/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-termochehly-na-botinok-chernye.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Хранение и уход</div>
     </a>
-    <a href="https://axelnn.ru/catalog/sumki_ryukzaki/" class="category">
+    <a href="/catalog/sumki_ryukzaki/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-ryukzak-runa-kotyata.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Сумки и рюкзаки</div>
     </a>
-    <a href="https://axelnn.ru/catalog/trenazhery_/" class="category">
+    <a href="/catalog/trenazhery_/" class="category">
       <div class="category__media"><img class="ph" src="assets/img/catalog-nobg/cat-spinner-disk-panda.webp" width="1000" height="1000" loading="lazy" alt=""></div>
       <div class="category__name">Тренажёры</div>
     </a>
@@ -481,12 +511,12 @@
     <div>
       <span class="footer__col-title">Каталог</span>
       <nav class="footer__list">
-        <a href="https://axelnn.ru/catalog/figure-skates/">Фигурные коньки</a>
-        <a href="https://axelnn.ru/catalog/botinki_dlya_figurnogo_kataniya/">Ботинки</a>
-        <a href="https://axelnn.ru/catalog/blades/">Лезвия</a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
-        <a href="https://axelnn.ru/catalog/zashchita_figurista_/">Защита фигуриста</a>
-        <a href="https://axelnn.ru/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
+        <a href="/catalog/figure-skates/">Фигурные коньки</a>
+        <a href="/catalog/botinki_dlya_figurnogo_kataniya/">Ботинки</a>
+        <a href="/catalog/blades/">Лезвия</a>
+        <a href="/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
+        <a href="/catalog/zashchita_figurista_/">Защита фигуриста</a>
+        <a href="/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
       </nav>
     </div>
 
@@ -512,7 +542,7 @@
 
   <div class="footer__bottom">
     <span>© 2026 Аксель·НН. Все права защищены.</span>
-    <a href="https://axelnn.ru/include/licenses_detail.php">Политика конфиденциальности</a>
+    <a href="company/rekvizity/">Реквизиты</a>
     <a href="help/">Условия</a>
   </div>
 </footer>
@@ -520,23 +550,73 @@
 <!-- ОБЩЕЕ:ПОДВАЛ:КОНЕЦ -->
 
 <script>
+  // Высота липкой шапки -> --header-h.
+  // От неё считаются: верх выехавшего меню, отступ якорей подразделов и верх
+  // липких колонок (фильтры, блок покупки, сумма заказа). Шапка растёт вместе
+  // с логотипом, заданным через clamp(), поэтому её высота зависит от ширины
+  // окна и одним числом в CSS не описывается — меряем по факту.
+  (function () {
+    var header = document.querySelector('.header');
+    if (!header) return;
+    var last = 0;
+    function measure() {
+      var h = Math.round(header.getBoundingClientRect().height);
+      if (!h || h === last) return;
+      last = h;
+      document.documentElement.style.setProperty('--header-h', h + 'px');
+    }
+    measure();
+    window.addEventListener('resize', measure);
+    window.addEventListener('orientationchange', measure);
+    // Шрифты приезжают позже разметки и меняют высоту строки в шапке
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  })();
+
   // Бургер
   (function () {
     var burger = document.getElementById('burger');
     var nav = document.getElementById('nav');
     if (!burger || !nav) return;
-    burger.addEventListener('click', function () {
-      var open = nav.dataset.open === 'true';
-      nav.dataset.open = String(!open);
-      burger.setAttribute('aria-expanded', String(!open));
-      document.body.style.overflow = open ? '' : 'hidden';
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target.closest('a')) {
-        nav.dataset.open = 'false';
-        burger.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+    var drop = nav.querySelector('.navitem--drop');
+    var dropToggle = document.getElementById('nav-catalog-toggle');
+
+    function set(open) {
+      nav.dataset.open = String(open);
+      burger.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+      // Закрыли меню — сворачиваем и каталог: открыв его в следующий раз,
+      // человек снова должен видеть все пункты, а не хвост прошлого сеанса.
+      if (!open && drop) {
+        drop.dataset.open = 'false';
+        if (dropToggle) dropToggle.setAttribute('aria-expanded', 'false');
       }
+    }
+
+    burger.addEventListener('click', function () {
+      set(nav.dataset.open !== 'true');
+    });
+
+    if (dropToggle && drop) dropToggle.addEventListener('click', function () {
+      var open = drop.dataset.open !== 'true';
+      drop.dataset.open = String(open);
+      dropToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) set(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.dataset.open === 'true') {
+        set(false);
+        burger.focus();
+      }
+    });
+
+    // Развернули окно с открытым меню — панель уезжает по медиазапросу, а
+    // overflow: hidden на body остаётся, и страница перестаёт прокручиваться.
+    window.addEventListener('resize', function () {
+      if (nav.dataset.open === 'true' && getComputedStyle(burger).display === 'none') set(false);
     });
   })();
 
@@ -552,6 +632,10 @@
     var empty = document.getElementById('empty');
     var reset = document.getElementById('filters-reset');
     var toggle = document.getElementById('filters-toggle');
+    var toggleCount = document.getElementById('filters-count');
+    var backdrop = document.getElementById('filters-backdrop');
+    var closeBtn = document.getElementById('filters-close');
+    var done = document.getElementById('filters-done');
     var minEl = document.getElementById('price-min');
     var maxEl = document.getElementById('price-max');
 
@@ -593,9 +677,17 @@
 
       if (found) found.innerHTML = n + '&nbsp;' + plural(n);
       if (empty) empty.hidden = n > 0;
-      var active = subs.length || brands.length || sizes.length ||
-        (minEl && minEl.value) || (maxEl && maxEl.value);
+      var active = subs.length + brands.length + sizes.length +
+        (minEl && minEl.value ? 1 : 0) + (maxEl && maxEl.value ? 1 : 0);
       if (reset) reset.hidden = !active;
+
+      // Сколько условий стоит — на кнопке «Фильтры»: свернув лист, человек
+      // видит короткую выдачу и должен понимать, это весь раздел или остаток.
+      if (toggleCount) {
+        toggleCount.hidden = !active;
+        toggleCount.textContent = String(active);
+      }
+      if (done) done.innerHTML = 'Показать ' + n + '&nbsp;' + plural(n);
     }
 
     panel.addEventListener('change', apply);
@@ -612,10 +704,33 @@
       apply();
     });
 
+    // До 900px панель — лист, выезжающий поверх сетки: под ним видно, как
+    // меняется выдача. Страницу под листом на это время держим на месте,
+    // иначе прокрутка «проваливается» с листа на каталог.
+    function openPanel(open) {
+      panel.dataset.open = String(open);
+      if (toggle) toggle.setAttribute('aria-expanded', String(open));
+      if (backdrop) backdrop.hidden = !open;
+      var sheet = toggle && getComputedStyle(toggle).display !== 'none';
+      document.body.style.overflow = open && sheet ? 'hidden' : '';
+    }
+
     if (toggle) toggle.addEventListener('click', function () {
-      var open = panel.dataset.open === 'true';
-      panel.dataset.open = String(!open);
-      toggle.setAttribute('aria-expanded', String(!open));
+      openPanel(panel.dataset.open !== 'true');
+    });
+
+    if (backdrop) backdrop.addEventListener('click', function () { openPanel(false); });
+    if (closeBtn) closeBtn.addEventListener('click', function () { openPanel(false); });
+    if (done) done.addEventListener('click', function () { openPanel(false); });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && panel.dataset.open === 'true') openPanel(false);
+    });
+
+    // Окно расширилось до двух колонок — панель снова в потоке, и запрет
+    // прокрутки на body вместе с подложкой должны сняться сами.
+    window.addEventListener('resize', function () {
+      if (toggle && getComputedStyle(toggle).display === 'none') openPanel(false);
     });
 
     // Ссылка из меню каталога приходит с якорем подраздела (#kolgotki_) —
@@ -635,6 +750,23 @@
     // не перезагружает, и без этого обработчика фильтр остался бы прежним.
     window.addEventListener('hashchange', fromHash);
     fromHash();
+  })();
+
+  // Галерея на странице товара: миниатюра меняет крупный кадр.
+  // Ленивая подгрузка тут не нужна — все кадры уже в DOM миниатюрами.
+  (function () {
+    var gal = document.getElementById('gallery');
+    var main = document.getElementById('gallery-img');
+    if (!gal || !main) return;
+
+    gal.addEventListener('click', function (e) {
+      var thumb = e.target.closest('.gallery__thumb');
+      if (!thumb) return;
+      main.src = thumb.dataset.src;
+      gal.querySelectorAll('.gallery__thumb').forEach(function (t) {
+        t.classList.toggle('is-on', t === thumb);
+      });
+    });
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

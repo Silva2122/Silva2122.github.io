@@ -8,10 +8,12 @@
 //   node tools/build-catalog.mjs          вставить меню в страницы
 //   node tools/build-catalog.mjs --dry    показать, ничего не записывая
 //
-// Источники: old_version/categories.json (URL и заголовки разделов),
-// old_version/products.json (сколько товаров реально лежит в разделе).
-import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync } from 'node:fs';
+// Источники: assets/products.json (что показываем — картинки, цены, размеры),
+// old_version/categories.json (URL и заголовки разделов),
+// old_version/products.json (оригиналы кадров для картинок разделов).
+import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
 import { join, basename, relative } from 'node:path';
+import { splitVisible, HIDE_NO_PHOTO } from './visible.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ROOT = base('..');
@@ -19,6 +21,18 @@ const DRY = process.argv.includes('--dry');
 
 const { categories } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'categories.json'), 'utf8'));
 const { products } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'products.json'), 'utf8'));
+
+// Манифест готовит tools/prepare-product-images.mjs: он ужимает кадры и решает,
+// какому товару достался вырезанный фон, а какому оригинал. Из него же берётся
+// и состав меню — раньше меню считалось по донору, и в нём стояли счётчики
+// вида «Одежда MSK 123», хотя на странице раздела карточек было втрое меньше.
+const MANIFEST = join(ROOT, 'assets', 'products.json');
+if (!existsSync(MANIFEST)) {
+  console.error('Нет assets/products.json — сначала прогони tools/prepare-product-images.mjs');
+  process.exit(1);
+}
+const catalogItems = JSON.parse(readFileSync(MANIFEST, 'utf8'));
+const { visible, hidden } = splitVisible(catalogItems);
 
 // Порядок в меню — не алфавитный и не по числу товаров. Сначала то, за чем
 // приходят в специализированный магазин (коньки, ботинки, лезвия), потом
@@ -82,9 +96,11 @@ const subUrl = (title, parent) => {
 // страницы раздела на диске просто нет — по заголовку он не находился и раздел
 // молча пропадал из каталога. Товар же всегда лежит по /catalog/<раздел>/…,
 // так что путь восстанавливается из любого из них.
+// Считаем по видимым товарам, а не по всему манифесту: раздел, из которого
+// после скрытия ничего не осталось, не должен попасть ни в меню, ни в витрину.
 const tree = new Map();
-for (const p of products) {
-  const [top, sub] = (p.category || '').split('/').map((s) => s.trim());
+for (const p of visible) {
+  const [top, sub] = (p.cat || '').split('/').map((s) => s.trim());
   if (!top) continue;
   const seg = (p.url || '').replace('https://axelnn.ru', '').split('/').filter(Boolean);
   // seg = ['catalog', <раздел>, (<подраздел>), <id>]
@@ -134,9 +150,26 @@ const sections = [...tree.entries()]
   })
   .filter((s) => s.url);   // без адреса ссылку не построить
 
-console.log(`Разделов: ${sections.length}, товаров: ${products.length}`);
+console.log(`Разделов: ${sections.length}, товаров: ${visible.length} из ${catalogItems.length}`);
+if (HIDE_NO_PHOTO && hidden.length) {
+  console.log(`Скрыто без фото: ${hidden.length} — вернутся сами, как только появятся кадры`);
+}
 for (const s of sections) {
   console.log(`  ${String(s.total).padStart(4)}  ${s.title.padEnd(32)} ${s.subs.length} подразделов`);
+}
+
+// Раздел целиком без видимых товаров — отдельной строкой в лог: молча
+// исчезнувший из меню раздел выглядит как поломка генератора.
+const hiddenSections = new Map();
+for (const p of hidden) {
+  const top = (p.cat || '').split('/')[0].trim();
+  const seg = (p.url || '').split('/').filter(Boolean)[1];
+  if (!top || tree.has(top)) continue;
+  if (!hiddenSections.has(top)) hiddenSections.set(top, { n: 0, seg });
+  hiddenSections.get(top).n++;
+}
+for (const [name, { n, seg }] of hiddenSections) {
+  console.log(`  скрыт раздел целиком: ${name} (${n} товаров без фото, /catalog/${seg}/)`);
 }
 
 // --- разметка меню --------------------------------------------------------
@@ -193,20 +226,31 @@ function menuMarkup(indent) {
 const START = '<!-- КАТАЛОГ:МЕНЮ:НАЧАЛО -->';
 const END = '<!-- КАТАЛОГ:МЕНЮ:КОНЕЦ -->';
 
-function inject(file) {
-  const path = join(ROOT, file);
-  if (!existsSync(path)) { console.log(`  пропуск, нет файла: ${file}`); return; }
-  const html = readFileSync(path, 'utf8');
-  const from = html.indexOf(START);
-  const to = html.indexOf(END);
-  if (from === -1 || to === -1) { console.log(`  пропуск, нет маркеров: ${file}`); return; }
+// Заменяет содержимое между маркерами ОБЩЕЕ:<name> или КАТАЛОГ:МЕНЮ.
+// Возвращает новый html или null, если маркеров нет.
+function replaceBlock(html, start, end, build) {
+  const from = html.indexOf(start);
+  const to = html.indexOf(end);
+  if (from === -1 || to === -1) return null;
 
   // Отступ маркера задаёт отступ вставки — иначе сгенерированный блок
   // выпадает из форматирования файла и diff становится нечитаемым.
   const lineStart = html.lastIndexOf('\n', from) + 1;
   const indent = from - lineStart;
 
-  const next = html.slice(0, from + START.length) + '\n' + menuMarkup(indent) + '\n' + ' '.repeat(indent) + html.slice(to);
+  return html.slice(0, from + start.length) + '\n' + build(indent) + '\n' + ' '.repeat(indent) + html.slice(to);
+}
+
+function inject(file) {
+  const path = join(ROOT, file);
+  if (!existsSync(path)) { console.log(`  пропуск, нет файла: ${file}`); return; }
+  const html = readFileSync(path, 'utf8');
+  // Страницы разделов и товаров собираются целиком ниже и в build-products.mjs,
+  // причём из той же главной — вставлять в них меню отдельно незачем.
+  if (html.includes('Страницу целиком собирает')) return;
+
+  const next = replaceBlock(html, START, END, menuMarkup);
+  if (next === null) { console.log(`  пропуск, нет маркеров: ${file}`); return; }
   if (next === html) { console.log(`  без изменений: ${file}`); return; }
   if (!DRY) writeFileSync(path, next, 'utf8');
   console.log(`  ${DRY ? '[dry] ' : ''}меню обновлено: ${file}`);
@@ -379,7 +423,44 @@ const rawFooter = between(home, 'ПОДВАЛ');
 const header = upN(rawHeader, 1);
 const footer = upN(rawFooter, 1);
 // Скрипт в конце главной один и тот же на всех страницах — берём его целиком.
-const script = home.slice(home.indexOf('<script>'), home.indexOf('</script>') + '</script>'.length);
+// Закрывающий тег ищем от начала самого скрипта, а не от начала файла: в шапке
+// теперь есть <script src="assets/js/shop.js">, и его </script> стоит раньше —
+// поиск с нуля давал пустой срез, и на страницах молча пропадали фильтры,
+// карусели и галерея.
+const scriptFrom = home.indexOf('<script>');
+const script = home.slice(scriptFrom, home.indexOf('</script>', scriptFrom) + '</script>'.length);
+
+// --- шапка и подвал во все страницы --------------------------------------
+// Раньше их копировал только генератор страниц каталога, а в company/, help/
+// и services/ они лежали как есть и расходились с главной на первой же правке.
+// Теперь во всех страницах стоят маркеры ОБЩЕЕ:*, и содержимое приезжает сюда
+// из index.html — как и меню, разнесённое выше.
+const HEAD_START = '<!-- ОБЩЕЕ:ШАПКА:НАЧАЛО -->', HEAD_END = '<!-- ОБЩЕЕ:ШАПКА:КОНЕЦ -->';
+const FOOT_START = '<!-- ОБЩЕЕ:ПОДВАЛ:НАЧАЛО -->', FOOT_END = '<!-- ОБЩЕЕ:ПОДВАЛ:КОНЕЦ -->';
+
+// Глубина страницы от корня: 'help/index.html' → 1, 'catalog/blades/index.html' → 2.
+const depthOf = (file) => file.split('/').length - 1;
+
+console.log('\nШапка и подвал:');
+let synced = 0;
+for (const file of PAGES) {
+  if (file === 'index.html') continue;   // источник — правится руками
+  const path = join(ROOT, file);
+  const html = readFileSync(path, 'utf8');
+  if (html.includes('Страницу целиком собирает')) continue;
+
+  const depth = depthOf(file);
+  let next = replaceBlock(html, HEAD_START, HEAD_END, () => upN(rawHeader, depth));
+  if (next === null) { console.log(`  пропуск, нет маркеров шапки: ${file}`); continue; }
+  const withFoot = replaceBlock(next, FOOT_START, FOOT_END, () => upN(rawFooter, depth));
+  if (withFoot !== null) next = withFoot;
+
+  if (next === html) continue;
+  if (!DRY) writeFileSync(path, next, 'utf8');
+  synced++;
+  console.log(`  ${DRY ? '[dry] ' : ''}обновлено: ${file}`);
+}
+console.log(`  синхронизировано страниц: ${synced}`);
 
 const cards = sections.map((s) => {
   const media = s.img
@@ -407,9 +488,9 @@ const page = `<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Каталог — Аксель·НН</title>
-<meta name="description" content="Коньки, ботинки, лезвия, одежда, сумки и аксессуары для фигурного катания. ${products.length} товаров в наличии, магазин в Нижнем Новгороде.">
+<meta name="description" content="Коньки, ботинки, лезвия, одежда, сумки и аксессуары для фигурного катания. ${visible.length} товаров в наличии, магазин в Нижнем Новгороде.">
 <link rel="canonical" href="https://axelnn.ru/catalog/">
 <meta name="theme-color" content="#0E7A88">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' font-size='26'>⛸</text></svg>">
@@ -434,7 +515,7 @@ ${header}
 
   <div class="section__head">
     <h1 class="section-title">Каталог</h1>
-    <span class="section__note">${products.length} товаров в&nbsp;${sections.length} разделах</span>
+    <span class="section__note">${visible.length} товаров в&nbsp;${sections.length} разделах</span>
   </div>
 
   <div class="section-grid">
@@ -459,19 +540,10 @@ console.log(`\n${DRY ? '[dry] ' : ''}Страница каталога: catalog/
 // Страницы разделов: /catalog/<раздел>/ со всеми товарами
 // ==========================================================================
 
-// Манифест готовит tools/prepare-product-images.mjs: он же ужимает кадры
-// и решает, какому товару достался вырезанный фон, а какому оригинал.
-const MANIFEST = join(ROOT, 'assets', 'products.json');
-if (!existsSync(MANIFEST)) {
-  console.log('\nНет assets/products.json — сначала прогони tools/prepare-product-images.mjs');
-  process.exit(0);
-}
-const catalogItems = JSON.parse(readFileSync(MANIFEST, 'utf8'));
-
 // Ключ группировки — тот же сегмент URL, что и у раздела: имена категорий
 // в products.json к путям не сводятся («Хранение» против khranenie_ukhod…).
 const bySection = new Map();
-for (const it of catalogItems) {
+for (const it of visible) {
   const seg = it.url.split('/').filter(Boolean);
   if (seg[0] !== 'catalog' || !seg[1]) continue;
   if (!bySection.has(seg[1])) bySection.set(seg[1], []);
@@ -490,20 +562,41 @@ function productCard(it, depth) {
     : '<div class="card__prices"><span class="card__price card__price--none">Цена по запросу</span></div>';
   // Фильтры работают на клиенте по этим data-атрибутам: все товары раздела уже
   // в DOM, и перерисовка сводится к переключению display у карточек.
+  // Заодно это и данные для корзины — их читает assets/js/shop.js по [data-product].
+  // Пути к картинке и странице там от корня: корзина рисуется на страницах
+  // любой глубины, и относительный путь из раздела указывал бы в никуда.
   const data = [
     `data-sub="${esc(it.sub || '')}"`,
     `data-price="${it.price || 0}"`,
     it.brand ? `data-brand="${esc(it.brand)}"` : '',
     it.sizes && it.sizes.length ? `data-sizes="${esc(it.sizes.join('|'))}"` : '',
+    'data-product',
+    `data-id="${esc(it.id)}"`,
+    `data-name="${esc(tidy(it.name))}"`,
+    `data-img="${it.img ? '/' + it.img : ''}"`,
+    `data-url="${esc(it.url)}"`,
   ].filter(Boolean).join(' ');
-  // Карточка ведёт на боевой сайт: страниц товара у нас ещё нет, а внутренняя
-  // ссылка отдавала бы 404 на каждый клик. Как появятся — заменить на href(it.url).
+
+  // Карточка больше не одна сплошная ссылка: внутри кнопки, а <button> внутри
+  // <a> — невалидная вложенность. Ссылка теперь на .card__link, кнопки рядом.
+  // Товар с размерами кладём в корзину без размера — уточнять его надо на
+  // странице товара, где размерная сетка видна целиком.
   return [
-    `        <a href="${SITE}${it.url}" class="card" ${data}>`,
-    `          <div class="card__media">${media}</div>`,
-    `          <span class="card__name">${esc(tidy(it.name))}</span>`,
-    `          ${price}`,
-    `        </a>`,
+    `        <div class="card" ${data}>`,
+    `          <a href="${href(it.url)}" class="card__link">`,
+    `            <div class="card__media">${media}</div>`,
+    `            <span class="card__name">${esc(tidy(it.name))}</span>`,
+    `            ${price}`,
+    `          </a>`,
+    `          <div class="card__actions">`,
+    it.sizes && it.sizes.length
+      ? `            <a class="card__buy" href="${href(it.url)}">Выбрать размер</a>`
+      : `            <button type="button" class="card__buy" data-add>В корзину</button>`,
+    `            <button type="button" class="card__fav" data-fav aria-pressed="false" aria-label="В избранное">`,
+    `              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 20.5 4.4 12.9a4.6 4.6 0 0 1 6.5-6.5l1.1 1.1 1.1-1.1a4.6 4.6 0 0 1 6.5 6.5L12 20.5Z"/></svg>`,
+    `            </button>`,
+    `          </div>`,
+    `        </div>`,
   ].join('\n');
 }
 
@@ -573,10 +666,16 @@ for (const s of sections) {
   const minPrice = Math.min(...prices), maxPrice = Math.max(...prices);
 
   const aside = [
+    // Подложка нужна только листу на телефоне: до 900px панель выезжает поверх
+    // сетки, и нажатие мимо неё обязано её закрывать. На десктопе она скрыта.
+    `      <div class="filters__backdrop" id="filters-backdrop" hidden></div>`,
     `      <aside class="filters" id="filters">`,
     `        <div class="filters__head">`,
     `          <span class="filters__title">Фильтры</span>`,
     `          <button type="button" class="filters__reset" id="filters-reset" hidden>Сбросить</button>`,
+    `          <button type="button" class="filters__close" id="filters-close" aria-label="Закрыть фильтры">`,
+    `            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>`,
+    `          </button>`,
     `        </div>`,
     `        <div class="filter">`,
     `          <div class="filter__title">Цена, ₽</div>`,
@@ -587,6 +686,10 @@ for (const s of sections) {
     `          </div>`,
     `        </div>`,
     ...groupsHtml,
+    // Итог отбора и выход из листа одной кнопкой. Число проставляет скрипт
+    // фильтров; в разметке лежит полное количество товаров раздела — столько
+    // и покажется, пока не выбрано ни одного условия.
+    `        <button type="button" class="btn filters__done" id="filters-done">Показать ${items.length}&nbsp;${plural(items.length)}</button>`,
     `      </aside>`,
   ].join('\n');
 
@@ -597,7 +700,7 @@ for (const s of sections) {
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(tidy(s.title))} — Аксель·НН</title>
 <meta name="description" content="${esc(tidy(s.title))}: ${items.length} ${plural(items.length)} для фигурного катания. Магазин в Нижнем Новгороде, доставка по России.">
 <link rel="canonical" href="https://axelnn.ru${s.url}">
@@ -631,6 +734,7 @@ ${upN(rawHeader, 2)}
   <div class="catalog-layout">
     <button type="button" class="filters__toggle" id="filters-toggle" aria-expanded="false" aria-controls="filters">
       Фильтры
+      <span class="filters__toggle-count" id="filters-count" hidden>0</span>
       <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
     </button>
 
@@ -663,3 +767,134 @@ ${script}
 }
 
 console.log(`\n${DRY ? '[dry] ' : ''}Страниц разделов: ${built}, товаров без фото всего: ${noPhoto}`);
+
+// --- убираем страницы скрытых разделов ------------------------------------
+// Раздел пропал из меню и витрины, но его страница, собранная прошлым прогоном,
+// осталась бы лежать на диске и открываться по прямой ссылке — с сеткой из
+// плейсхолдеров. Сносим её здесь же. Файл целиком генерируемый: вернётся
+// следующим прогоном, как только у товаров появятся кадры.
+const liveSegs = new Set(sections.map((s) => s.url.split('/').filter(Boolean)[1]));
+let dropped = 0;
+for (const e of readdirSync(outDir, { withFileTypes: true })) {
+  if (!e.isDirectory() || liveSegs.has(e.name)) continue;
+  const file = join(outDir, e.name, 'index.html');
+  if (!existsSync(file)) continue;
+  // Страховка от сноса чужого файла: удаляем только то, что подписано нами.
+  if (!readFileSync(file, 'utf8').includes('Страницу целиком собирает tools/build-catalog.mjs')) {
+    console.log(`  оставлен, собран не нами: /catalog/${e.name}/`);
+    continue;
+  }
+  if (!DRY) rmSync(file);
+  dropped++;
+  console.log(`  ${DRY ? '[dry] ' : ''}убрана страница скрытого раздела: /catalog/${e.name}/`);
+}
+if (dropped) console.log(`  скрытых разделов: ${dropped}`);
+
+// ==========================================================================
+// Корзина и избранное
+// ==========================================================================
+// Обе страницы пустые по разметке: содержимое рисует assets/js/shop.js
+// из localStorage. Здесь только каркас, крошки и блок оформления.
+
+function simplePage({ dir, title, descr, body }) {
+  const html = `<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>${esc(title)} — Аксель·НН</title>
+<meta name="description" content="${esc(descr)}">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E7A88">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' font-size='26'>⛸</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<!-- Страницу целиком собирает tools/build-catalog.mjs. Руками не править. -->
+
+${upN(rawHeader, 1)}
+
+${body}
+
+${upN(rawFooter, 1)}
+
+${script}
+
+</body>
+</html>
+`;
+  const out = join(ROOT, dir);
+  if (!DRY) {
+    mkdirSync(out, { recursive: true });
+    writeFileSync(join(out, 'index.html'), html, 'utf8');
+  }
+  console.log(`  ${DRY ? '[dry] ' : ''}/${dir}/`);
+}
+
+console.log('\nСлужебные страницы:');
+
+simplePage({
+  dir: 'cart',
+  title: 'Корзина',
+  descr: 'Ваша корзина в магазине Аксель·НН.',
+  body: `<section class="section container">
+  <nav class="crumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a>
+    <span class="crumbs__sep" aria-hidden="true">/</span>
+    <span class="crumbs__current" aria-current="page">Корзина</span>
+  </nav>
+
+  <div class="section__head">
+    <h1 class="section-title">Корзина</h1>
+    <span class="section__note" id="cart-page-count"></span>
+  </div>
+
+  <div class="cart-layout">
+    <div class="cart-list" id="cart-page"></div>
+
+    <aside class="order" id="cart-page-foot" hidden>
+      <h2 class="order__title">Ваш заказ</h2>
+      <div class="order__row">
+        <span>Товары</span>
+        <span data-cart-total>0 ₽</span>
+      </div>
+      <div class="order__row">
+        <span>Доставка</span>
+        <span>рассчитаем</span>
+      </div>
+      <div class="order__row order__row--total">
+        <span>Итого</span>
+        <span class="order__total" data-cart-total>0 ₽</span>
+      </div>
+      <button type="button" class="btn order__btn" data-copy-order>Скопировать заказ</button>
+      <p class="order__note">Позвоните <a href="tel:+78314234796">+7&nbsp;831&nbsp;423-47-96</a> — примем заказ,
+      подберём размер и рассчитаем доставку. Состав корзины можно скопировать кнопкой выше
+      и прислать в мессенджер. <a href="../help/delivery/">Условия доставки</a></p>
+    </aside>
+  </div>
+</section>`,
+});
+
+simplePage({
+  dir: 'favorites',
+  title: 'Избранное',
+  descr: 'Отложенные товары в магазине Аксель·НН.',
+  body: `<section class="section container">
+  <nav class="crumbs" aria-label="Хлебные крошки">
+    <a href="/">Главная</a>
+    <span class="crumbs__sep" aria-hidden="true">/</span>
+    <span class="crumbs__current" aria-current="page">Избранное</span>
+  </nav>
+
+  <div class="section__head">
+    <h1 class="section-title">Избранное</h1>
+    <span class="section__note" id="fav-page-count"></span>
+  </div>
+
+  <div id="fav-page"></div>
+</section>`,
+});

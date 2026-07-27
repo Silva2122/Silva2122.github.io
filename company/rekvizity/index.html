@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Реквизиты — Аксель·НН</title>
 <meta name="description" content="Реквизиты ИП Трофимова Галина Анатольевна: ИНН, ОГРН, расчётный счёт, банк, юридический адрес.">
 <link rel="canonical" href="https://axelnn.ru/company/rekvizity/">
@@ -16,6 +16,8 @@
 <body>
 
 <!-- ШАПКА -->
+<!-- ОБЩЕЕ:ШАПКА:НАЧАЛО -->
+<!-- ШАПКА -->
 <header class="header">
   <a href="../../index.html" class="header__logo">
     <img src="../../assets/img/logo.webp" width="572" height="128" alt="Аксель-НН — фигурное катание, Нижний Новгород">
@@ -23,9 +25,17 @@
 
   <nav class="header__nav" id="nav">
     <div class="navitem navitem--drop">
-      <a href="https://axelnn.ru/catalog/" class="navlink navlink--drop" aria-controls="megamenu">Каталог
+      <a href="/catalog/" class="navlink navlink--drop" aria-controls="megamenu">Каталог
         <svg class="navlink__chev" width="9" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
       </a>
+
+      <!-- Только для выехавшего меню: там «Каталог» остаётся ссылкой на витрину,
+           а разделы раскрывает эта кнопка. На десктопе она скрыта — панель
+           открывается наведением. -->
+      <button type="button" class="navlink__toggle" id="nav-catalog-toggle"
+              aria-expanded="false" aria-controls="megamenu" aria-label="Разделы каталога">
+        <svg width="12" height="8" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg>
+      </button>
 
       <!-- Разметку ниже пишет tools/build-catalog.mjs из данных донора. Руками не править. -->
       <!-- КАТАЛОГ:МЕНЮ:НАЧАЛО -->
@@ -33,10 +43,9 @@
         <div class="megamenu__inner">
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/figure-skates/">Фигурные коньки</a>
-            <a class="megamenu__link" href="/catalog/figure-skates/#konki_jackson"><span class="megamenu__name">Коньки Jackson</span><span class="megamenu__count">5</span></a>
+            <a class="megamenu__link" href="/catalog/figure-skates/#konki_jackson"><span class="megamenu__name">Коньки Jackson</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_edea____"><span class="megamenu__name">Коньки Edea</span><span class="megamenu__count">2</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_riedell_botinok_lezvie"><span class="megamenu__name">Коньки Riedell (Ботинок+лезвие)</span><span class="megamenu__count">1</span></a>
-            <a class="megamenu__link" href="/catalog/figure-skates/#konki_risport_botinok_lezvie"><span class="megamenu__name">Коньки Risport (Ботинок+лезвие)</span><span class="megamenu__count">1</span></a>
             <a class="megamenu__link" href="/catalog/figure-skates/#konki_runa"><span class="megamenu__name">Коньки Runa</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
@@ -51,7 +60,7 @@
             <a class="megamenu__title" href="/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termokostyumy"><span class="megamenu__name">Термокостюмы</span><span class="megamenu__count">114</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termoplatya"><span class="megamenu__name">Термоплатья</span><span class="megamenu__count">103</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#gimnastika"><span class="megamenu__name">Гимнастика</span><span class="megamenu__count">88</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#gimnastika"><span class="megamenu__name">Гимнастика</span><span class="megamenu__count">86</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termobryuki_termolosiny_termoyubki_termoshorty"><span class="megamenu__name">Термобрюки, термолосины, термоюбки, термошорты</span><span class="megamenu__count">86</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termovodolazki_termofutbolki"><span class="megamenu__name">Термо водолазки, термо футболки, термо лонгсливы</span><span class="megamenu__count">78</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_devochek/#termokombinezony"><span class="megamenu__name">Термокомбинезоны</span><span class="megamenu__count">38</span></a>
@@ -60,8 +69,8 @@
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/odezhda_dlya_malchikov/">Одежда для мальчиков</a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termokomplekty"><span class="megamenu__name">Термокостюмы</span><span class="megamenu__count">37</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobryuki"><span class="megamenu__name">Термобрюки</span><span class="megamenu__count">16</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termovodolazki%201"><span class="megamenu__name">Термо водолазки, термо футболки</span><span class="megamenu__count">7</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobryuki"><span class="megamenu__name">Термобрюки</span><span class="megamenu__count">12</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termovodolazki%201"><span class="megamenu__name">Термо водолазки, термо футболки</span><span class="megamenu__count">6</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#terkombinezony"><span class="megamenu__name">Теркомбинезоны</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#rubashka_bodi"><span class="megamenu__name">Рубашка-боди</span><span class="megamenu__count">3</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_dlya_malchikov/#termobele_"><span class="megamenu__name">Термобелье</span><span class="megamenu__count">3</span></a>
@@ -69,8 +78,7 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/odezhda_msk/">Одежда MSK</a>
-            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_devochek"><span class="megamenu__name">Футболки для девочек</span><span class="megamenu__count">76</span></a>
-            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_malchikov_"><span class="megamenu__name">Футболки для мальчиков</span><span class="megamenu__count">40</span></a>
+            <a class="megamenu__link" href="/catalog/odezhda_msk/#futbolki_dlya_malchikov_"><span class="megamenu__name">Футболки для мальчиков</span><span class="megamenu__count">10</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_msk/#komplekt_futbolka_shorty_khlopok"><span class="megamenu__name">Комплект (футболка+шорты) хлопок</span><span class="megamenu__count">5</span></a>
             <a class="megamenu__link" href="/catalog/odezhda_msk/#shapki_"><span class="megamenu__name">Шапки</span><span class="megamenu__count">2</span></a>
           </div>
@@ -79,32 +87,31 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_na_kolesakh"><span class="megamenu__name">Сумки на колесах</span><span class="megamenu__count">28</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#portpledy"><span class="megamenu__name">Портпледы</span><span class="megamenu__count">23</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_runa"><span class="megamenu__name">RUNA</span><span class="megamenu__count">11</span></a>
-            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#kosmetichki"><span class="megamenu__name">Косметички</span><span class="megamenu__count">11</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_na_kolesakh"><span class="megamenu__name">Сумки на колесах</span><span class="megamenu__count">25</span></a>
             <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#ryukzak_bilman"><span class="megamenu__name">Рюкзак &quot;Бильман&quot;</span><span class="megamenu__count">10</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#sumki_runa"><span class="megamenu__name">RUNA</span><span class="megamenu__count">9</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#kosmetichki"><span class="megamenu__name">Косметички</span><span class="megamenu__count">7</span></a>
+            <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#portpledy"><span class="megamenu__name">Портпледы</span><span class="megamenu__count">6</span></a>
             <a class="megamenu__link" href="/catalog/sumki_ryukzaki/#edea_"><span class="megamenu__name">EDEA</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link megamenu__link--more" href="/catalog/sumki_ryukzaki/">Ещё 4</a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/khranenie_ukhod_za_konkami/">Хранение и уход</a>
-            <a class="megamenu__link" href="/catalog/khranenie_ukhod_za_konkami/#chekhly_sushki"><span class="megamenu__name">уход за коньками</span><span class="megamenu__count">110</span></a>
+            <a class="megamenu__link" href="/catalog/khranenie_ukhod_za_konkami/#chekhly_sushki"><span class="megamenu__name">уход за коньками</span><span class="megamenu__count">93</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/aksessuary_dlya_lda/">Аксессуары для льда</a>
             <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kovriki_"><span class="megamenu__name">Коврики для ног</span><span class="megamenu__count">42</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#golovnye_ubory_"><span class="megamenu__name">Головные уборы</span><span class="megamenu__count">40</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#salfetki_dlya_lezviy"><span class="megamenu__name">Салфетки для лезвий</span><span class="megamenu__count">30</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kover_dlya_ofp"><span class="megamenu__name">Ковер для ОФП</span><span class="megamenu__count">23</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#salfetki_dlya_lezviy"><span class="megamenu__name">Салфетки для лезвий</span><span class="megamenu__count">22</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#kover_dlya_ofp"><span class="megamenu__name">Ковер для ОФП</span><span class="megamenu__count">20</span></a>
             <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#perchatki"><span class="megamenu__name">Перчатки</span><span class="megamenu__count">20</span></a>
-            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#noski_"><span class="megamenu__name">Носки</span><span class="megamenu__count">2</span></a>
-            <a class="megamenu__link megamenu__link--more" href="/catalog/aksessuary_dlya_lda/">Ещё 1</a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#golovnye_ubory_"><span class="megamenu__name">Головные уборы</span><span class="megamenu__count">19</span></a>
+            <a class="megamenu__link" href="/catalog/aksessuary_dlya_lda/#noski_"><span class="megamenu__name">Носки</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/trenazhery_/">Тренажёры</a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#spinnery_"><span class="megamenu__name">Спиннеры</span><span class="megamenu__count">31</span></a>
-            <a class="megamenu__link" href="/catalog/trenazhery_/#spinner_plyus"><span class="megamenu__name">Спиннер Плюс</span><span class="megamenu__count">5</span></a>
+            <a class="megamenu__link" href="/catalog/trenazhery_/#spinner_plyus"><span class="megamenu__name">Спиннер Плюс</span><span class="megamenu__count">3</span></a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#doska_dlya_otrabotki_vrashcheniya"><span class="megamenu__name">Доска для отработки вращения</span><span class="megamenu__count">1</span></a>
             <a class="megamenu__link" href="/catalog/trenazhery_/#trenazhery_dlya_trenirovok_vne_lda"><span class="megamenu__name">Тренажеры для тренировок вне льда</span><span class="megamenu__count">1</span></a>
           </div>
@@ -113,21 +120,13 @@
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/suveniry/">Сувениры</a>
-            <a class="megamenu__link" href="/catalog/suveniry/#podarochnye_nabory"><span class="megamenu__name">Подарочные наборы</span><span class="megamenu__count">77</span></a>
-            <a class="megamenu__link" href="/catalog/suveniry/#dumochki_pledy"><span class="megamenu__name">Думочки, пледы</span><span class="megamenu__count">28</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#podarochnye_nabory"><span class="megamenu__name">Подарочные наборы</span><span class="megamenu__count">46</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#futbolki_s_printami"><span class="megamenu__name">Футболки с принтами</span><span class="megamenu__count">13</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#dumochki_pledy"><span class="megamenu__name">Думочки, пледы</span><span class="megamenu__count">7</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#igrushki"><span class="megamenu__name">Игрушки</span><span class="megamenu__count">4</span></a>
-            <a class="megamenu__link" href="/catalog/suveniry/#kovriki_dlya_myshi"><span class="megamenu__name">Коврики для мыши</span><span class="megamenu__count">4</span></a>
             <a class="megamenu__link" href="/catalog/suveniry/#podarochnyy_meshok"><span class="megamenu__name">Подарочный мешок</span><span class="megamenu__count">3</span></a>
+            <a class="megamenu__link" href="/catalog/suveniry/#salfetnitsy"><span class="megamenu__name">САЛФЕТНИЦЫ</span><span class="megamenu__count">2</span></a>
             <a class="megamenu__link megamenu__link--more" href="/catalog/suveniry/">Ещё 1</a>
-          </div>
-          <div class="megamenu__group">
-            <a class="megamenu__title" href="/catalog/podarochnye_nabory_treneram_/">Подарочные наборы тренерам</a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_gimnastika"><span class="megamenu__name">Набор &quot;Гимнастика&quot;</span><span class="megamenu__count">5</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_tennis"><span class="megamenu__name">Набор &quot;Теннис&quot;</span><span class="megamenu__count">4</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_figurnoe_katanie"><span class="megamenu__name">Набор &quot;Фигурное катание&quot;</span><span class="megamenu__count">2</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_basketbol"><span class="megamenu__name">Набор &quot;Баскетбол&quot;</span><span class="megamenu__count">1</span></a>
-            <a class="megamenu__link" href="/catalog/podarochnye_nabory_treneram_/#nabor_khoreografiya"><span class="megamenu__name">Набор &quot;Хореография&quot;</span><span class="megamenu__count">1</span></a>
           </div>
           <div class="megamenu__group">
             <a class="megamenu__title" href="/catalog/edinyy_komandnyy_stil/">Единый командный стиль</a>
@@ -140,29 +139,64 @@
     <a href="../../help/" class="navlink">Как купить</a>
     <a href="../../info/brands/" class="navlink">Производители</a>
     <a href="../../contacts/stores/" class="navlink">Партнёры</a>
-    <a href="../" class="navlink">О компании</a>
+    <a href="../../company/" class="navlink">О компании</a>
     <a href="../../contacts/" class="navlink">Контакты</a>
     <a href="tel:+78314234796" class="logo nav__phone">+7 831 423-47-96</a>
   </nav>
 
+  
   <div class="header__tools">
     <a href="tel:+78314234796" class="header__phone">+7 831 423-47-96</a>
 
-    <a href="https://axelnn.ru/basket/#delayed" class="header__tool" aria-label="Избранное">
+    <a href="/favorites/" class="header__tool" aria-label="Избранное">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M12 20.5 4.4 12.9a4.6 4.6 0 0 1 6.5-6.5l1.1 1.1 1.1-1.1a4.6 4.6 0 0 1 6.5 6.5L12 20.5Z"/></svg>
+      <span class="header__badge" data-fav-count hidden>0</span>
     </a>
-    <a href="https://axelnn.ru/basket/" class="header__tool" aria-label="Корзина">
+    <!-- Иконка корзины — не ссылка, а кнопка: она выдвигает панель справа.
+         Полная страница /cart/ остаётся и открывается из панели. -->
+    <button type="button" class="header__tool" id="cart-open" aria-label="Корзина">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M6 6h15l-1.6 9.2a2 2 0 0 1-2 1.6H9.2a2 2 0 0 1-2-1.6L5.2 4.2A1 1 0 0 0 4.2 3.4H2.6"/><circle cx="9.5" cy="20" r="1.1"/><circle cx="17" cy="20" r="1.1"/></svg>
-    </a>
+      <span class="header__badge" data-cart-count hidden>0</span>
+    </button>
     <a href="https://axelnn.ru/personal/" class="header__tool" aria-label="Личный кабинет">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 19.5a6.5 6.5 0 0 1 13 0"/></svg>
     </a>
 
     <button type="button" class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="burger__open" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="burger__close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
     </button>
   </div>
 </header>
+
+<!-- ПАНЕЛЬ КОРЗИНЫ. Пустая разметка: содержимое рисует assets/js/shop.js
+     из localStorage. Лежит внутри общей шапки, поэтому доезжает до всех
+     страниц вместе с ней. -->
+<div class="drawer" id="cart-drawer" hidden>
+  <div class="drawer__backdrop" data-cart-close></div>
+  <aside class="drawer__panel" role="dialog" aria-modal="true" aria-label="Корзина">
+    <div class="drawer__head">
+      <span class="drawer__title">Корзина</span>
+      <button type="button" class="drawer__close" data-cart-close aria-label="Закрыть">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body" id="cart-drawer-body"></div>
+    <div class="drawer__foot" id="cart-drawer-foot" hidden>
+      <div class="drawer__sum">
+        <span>Итого</span>
+        <span class="drawer__total" data-cart-total>0 ₽</span>
+      </div>
+      <a href="/cart/" class="btn drawer__btn">Оформить заказ</a>
+    </div>
+  </aside>
+</div>
+
+<!-- Всплывающее уведомление «добавлено» -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="../../assets/js/shop.js" defer></script>
+<!-- ОБЩЕЕ:ШАПКА:КОНЕЦ -->
 
 <!-- ШАПКА СТРАНИЦЫ -->
 <div class="page-head">
@@ -241,6 +275,7 @@
 </div>
 
 <!-- ПОДВАЛ -->
+<!-- ОБЩЕЕ:ПОДВАЛ:НАЧАЛО -->
 <div class="footer-wrap">
 <footer class="footer container">
   <div class="footer__top">
@@ -258,12 +293,12 @@
     <div>
       <span class="footer__col-title">Каталог</span>
       <nav class="footer__list">
-        <a href="https://axelnn.ru/catalog/figure-skates/">Фигурные коньки</a>
-        <a href="https://axelnn.ru/catalog/botinki_dlya_figurnogo_kataniya/">Ботинки</a>
-        <a href="https://axelnn.ru/catalog/blades/">Лезвия</a>
-        <a href="https://axelnn.ru/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
-        <a href="https://axelnn.ru/catalog/zashchita_figurista_/">Защита фигуриста</a>
-        <a href="https://axelnn.ru/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
+        <a href="/catalog/figure-skates/">Фигурные коньки</a>
+        <a href="/catalog/botinki_dlya_figurnogo_kataniya/">Ботинки</a>
+        <a href="/catalog/blades/">Лезвия</a>
+        <a href="/catalog/odezhda_dlya_devochek/">Одежда для девочек</a>
+        <a href="/catalog/zashchita_figurista_/">Защита фигуриста</a>
+        <a href="/catalog/sumki_ryukzaki/">Сумки и рюкзаки</a>
       </nav>
     </div>
 
@@ -274,7 +309,7 @@
         <a href="../../services/">Услуги и заточка</a>
         <a href="../../info/brands/">Производители</a>
         <a href="../../contacts/stores/">Партнёры</a>
-        <a href="../">О компании</a>
+        <a href="../../company/">О компании</a>
         <a href="../../contacts/">Контакты</a>
       </nav>
     </div>
@@ -289,12 +324,12 @@
 
   <div class="footer__bottom">
     <span>© 2026 Аксель·НН. Все права защищены.</span>
-    <a href="https://axelnn.ru/include/licenses_detail.php">Политика конфиденциальности</a>
-    <a href="./">Реквизиты</a>
+    <a href="../../company/rekvizity/">Реквизиты</a>
     <a href="../../help/">Условия</a>
   </div>
 </footer>
 </div>
+<!-- ОБЩЕЕ:ПОДВАЛ:КОНЕЦ -->
 
 <script>
   // Бургер
