@@ -1762,6 +1762,13 @@ button { font: inherit; }
   background: #fff;
 }
 
+/* Четыре факта на всю ширину страницы: auto-fill укладывает три в ряд
+   и роняет четвёртый в пустую строку. Раскладываем парами — сетка
+   закрывается без дыры справа. До 620px колонка и так одна. */
+@media (min-width: 620px) {
+  .facts--pair { grid-template-columns: repeat(2, 1fr); }
+}
+
 .fact__label {
   display: block;
   font-size: 11px;
@@ -1874,45 +1881,6 @@ button { font: inherit; }
   text-transform: uppercase;
   color: var(--muted);
 }
-
-/* --- Партнёры ------------------------------------------------------------
-   Магазины, которые принимают наши заказы. Логотипы у них разной плотности
-   и с разным фоном — сажаем на светлую подложку и вписываем целиком. */
-.partners {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: clamp(18px, 2.2vw, 28px);
-  margin-bottom: clamp(24px, 3vw, 36px);
-}
-
-.partner {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--line);
-}
-
-/* Логотипов у партнёров нет: в фонде донора лежат картинки 100×44 и фото
-   витрины 51×69 — на карточке они читаются как брак. Карточка текстовая. */
-.partner__body { padding: clamp(20px, 2.2vw, 26px); }
-
-.prose .partner__name,
-.partner__name {
-  font-family: 'Montserrat', system-ui, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  margin: 0 0 1em;
-}
-
-.partner__rows { display: flex; flex-direction: column; gap: 10px; font-size: 13px; line-height: 1.55; }
-
-.partner__row { display: flex; gap: 10px; color: var(--muted); }
-
-.partner__row b { flex: 0 0 74px; font-weight: 400; color: var(--muted); opacity: .75; }
-
-.partner__row span, .partner__row a { color: var(--ink); }
-.partner__row a:hover { color: var(--teal-deep); }
 
 /* --- Бренды --------------------------------------------------------------
    Логотипов марок в фонде нет, поэтому плитка текстовая: имя набрано
@@ -2040,7 +2008,7 @@ a.brand:hover { background: var(--tint); }
 }
 
 /* --- до 1100px: меню уходит в бургер ---
-   Порог не 900, а 1100: семь пунктов, телефон и три иконки в одну строку
+   Порог не 900, а 1100: шесть пунктов, телефон и три иконки в одну строку
    помещаются только с 1200px, и на всём промежутке меню переносилось на вторую
    строку — шапка распухала с 55 до 84px и наезжала на первый экран. */
 @media (max-width: 1099.98px) {

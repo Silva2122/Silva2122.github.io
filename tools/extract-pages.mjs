@@ -16,7 +16,8 @@ const PAGES = [
   'company/reviews/index.html',
   'company/vacancy/index.html',
   'contacts/index.html',
-  'contacts/stores/index.html',
+  // 'contacts/stores/index.html' — партнёров на новом сайте нет: заказчик
+  // оставил один адрес, Бетанкура, 6. Страницу не переносим.
   'help/index.html',
   'help/delivery/index.html',
   'help/payment/index.html',
