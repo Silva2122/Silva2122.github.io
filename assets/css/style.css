@@ -471,13 +471,6 @@ button { font: inherit; }
   max-width: min(52%, 620px);
 }
 
-.hero__eyebrow {
-  font-size: clamp(10px, 1vw, 12px);
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--teal-deep);
-}
-
 .hero__title {
   font-family: 'Playfair Display', serif;
   font-weight: 400;
@@ -2153,11 +2146,13 @@ a.brand:hover { background: var(--tint); }
     object-position: 76% 0;
   }
 
+  /* Отступы те же, что у любой секции сайта: половина --space-section, сверху
+     и снизу поровну. Раньше стояло 26px сверху и 4px снизу — кнопка «В магазин»
+     упиралась в бирюзовую полосу под героем, и весь блок смотрелся сползшим. */
   .hero__inner {
     position: static;
     width: 100%;
-    padding: 26px var(--pad-r) 4px var(--pad-l);
-    gap: 14px;
+    padding: calc(var(--space-section) / 2) var(--pad-r) calc(var(--space-section) / 2) var(--pad-l);
   }
 
   /* Ограничение в 52% держало текст в пустом поле кадра, когда он лежал поверх
