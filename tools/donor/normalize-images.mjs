@@ -13,11 +13,11 @@
 //   node tools/normalize-images.mjs --fill 78  доля кадра под предмет, %
 import { readdirSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { startServer } from './serve.mjs';
-import { launch } from './browser.mjs';
+import { startServer } from '../serve.mjs';
+import { launch } from '../browser.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 
 const argv = process.argv.slice(2);
 const arg = (n, d) => { const i = argv.indexOf(n); return i !== -1 && argv[i + 1] ? argv[i + 1] : d; };

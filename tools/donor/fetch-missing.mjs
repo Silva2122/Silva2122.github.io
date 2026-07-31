@@ -3,8 +3,8 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SITE = base('../old_version/site');
-const MISSING = base('../old_version/_missing.json');
+const SITE = base('../../old_version/site');
+const MISSING = base('../../old_version/_missing.json');
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 const CONCURRENCY = 10;
 
@@ -19,7 +19,7 @@ function toPath(urlStr) {
 }
 
 // можно передать свой json: node fetch-missing.mjs old_version/_product-urls.json
-const src = process.argv[2] ? base('../' + process.argv[2].replace(/^\.?\/?/, '').replace(/^old_version\//, 'old_version/')) : MISSING;
+const src = process.argv[2] ? base('../../' + process.argv[2].replace(/^\.?\/?/, '').replace(/^old_version\//, 'old_version/')) : MISSING;
 const data = JSON.parse(await readFile(src, 'utf8'));
 const jobs = [...(data.missingPages || []), ...(data.missingAssets || []), ...(data.missing || [])];
 console.log(`К докачке: ${jobs.length}`);

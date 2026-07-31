@@ -7,7 +7,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 
 // Windows-путь из import.meta.url: срезаем ведущий слэш у /C:/...
-const root = new URL('../old_version/site/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
+const root = new URL('../../old_version/site/', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 
 const PAGES = [
   'company/index.html',

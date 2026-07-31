@@ -3,7 +3,7 @@
 // Связь между картинкой на сайте и её вырезанной версией не выводится из имени файла:
 // в assets/img/catalog/ лежит человекочитаемый слаг (item-chehly-na-lezviya-edea.jpg),
 // а remove-bg.mjs называет результат по хэшу исходника из /upload/iblock/.
-// Мост между ними — assets/content.json: там у каждого товара есть и `img` (путь
+// Мост между ними — tools/donor/content.json: там у каждого товара есть и `img` (путь
 // в доноре), и `local` (файл в assets). По `img` и находим кадр в отчёте remove-bg.
 //
 // Оригиналы не трогаем: вырезанные PNG кладутся рядом, в catalog-nobg/, чтобы
@@ -15,13 +15,13 @@ import { readFileSync, writeFileSync, copyFileSync, readdirSync, mkdirSync } fro
 import { join, basename } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 const NOBG = join(ROOT, '.shots', 'nobg', 'birefnet');
 const OUT = join(ROOT, 'assets', 'img', 'catalog-nobg');
 
 const HTML = process.argv.includes('--html');
 
-const content = JSON.parse(readFileSync(join(ROOT, 'assets', 'content.json'), 'utf8'));
+const content = JSON.parse(readFileSync(new URL('content.json', import.meta.url), 'utf8'));
 const report = JSON.parse(readFileSync(join(NOBG, '_report.json'), 'utf8'));
 
 // Отчёт покрывает пакетный прогон. Одиночные кадры (`--file`) в него не попадают:

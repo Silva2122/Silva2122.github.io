@@ -4,8 +4,8 @@ import { readFile, writeFile, readdir, access } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SITE = base('../old_version/site');
-const OUT = base('../old_version/_product-urls.json');
+const SITE = base('../../old_version/site');
+const OUT = base('../../old_version/_product-urls.json');
 
 async function* walk(dir) {
   let entries;

@@ -4,8 +4,8 @@ import { readFile, writeFile, readdir, access } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SITE = base('../old_version/site');
-const OUT = base('../old_version/_missing.json');
+const SITE = base('../../old_version/site');
+const OUT = base('../../old_version/_missing.json');
 
 const ASSET_RE = /\.(jpe?g|png|gif|svg|webp|ico|css|js|woff2?|ttf|eot|otf|mp4|webm|pdf)(\?|$)/i;
 const SKIP_RE = /(\/bitrix\/(?!cache|js|templates|panel|components)|compare\.php|\/personal\/|\/auth\/|\/cart\/|\/basket\/|\/search\/|\/local\/|action=|login=|register=|logout=|forgot_password=|change_password=|back_url|backurl|print=|clear_cache|bxajaxid|view_result|utm_|ADD_TO_COMPARE|SORT_FIELD|ORDER_BY|[?&](?:sort|order|display|mode)=|set_filter|del_filter|arrFilter|\/click\/|mailto:|tel:|javascript:)/i;

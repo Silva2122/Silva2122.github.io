@@ -1,4 +1,4 @@
-// Пересобирает ленты и сетку категорий в index.html из assets/content.json.
+// Пересобирает ленты и сетку категорий в index.html из tools/donor/content.json.
 // Здесь же живёт редакторская чистка названий: в базе Bitrix они сырые —
 // «Лезвия для конков MK Professional», «Фигурные коньки Edea OVERTURE SET ROTATION»,
 // «Сушка на лезвия(сушка) котик». В премиальную вёрстку так ставить нельзя.
@@ -6,9 +6,9 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 
-const data = JSON.parse(readFileSync(join(ROOT, 'assets', 'content.json'), 'utf8'));
+const data = JSON.parse(readFileSync(new URL('content.json', import.meta.url), 'utf8'));
 
 const TYPOS = {
   'конков': 'коньков', 'Термо ': 'Термо', 'колесах': 'колёсах', 'колесиках': 'колёсиках',

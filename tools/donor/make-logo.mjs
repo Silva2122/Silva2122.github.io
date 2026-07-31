@@ -17,7 +17,7 @@ import sharp from 'sharp';
 import { join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 
 const SRC = join(ROOT, 'old_version', 'site', 'upload', 'CNext', 'd6c', 'd6c4675f4532b8e931b26a3df1ad7ac8.jpg');
 const OUT = join(ROOT, 'assets', 'img', 'logo.webp');

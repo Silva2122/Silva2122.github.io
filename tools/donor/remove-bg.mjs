@@ -15,7 +15,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 const SITE = join(ROOT, 'old_version', 'site');
 
 const argv = process.argv.slice(2);

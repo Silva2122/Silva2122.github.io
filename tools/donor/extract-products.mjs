@@ -4,10 +4,10 @@ import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { join, relative, sep } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SITE = base('../old_version/site');
-const OUT = base('../old_version/products.json');
-const OUT_CAT = base('../old_version/categories.json');
-const OUT_MD = base('../old_version/products.md');
+const SITE = base('../../old_version/site');
+const OUT = base('../../old_version/products.json');
+const OUT_CAT = base('../../old_version/categories.json');
+const OUT_MD = base('../../old_version/products.md');
 
 // --- утилиты ---
 const decodeEnt = (s) => s

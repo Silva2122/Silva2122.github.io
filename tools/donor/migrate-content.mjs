@@ -14,7 +14,7 @@
 // разделы — из уже собранной витрины /catalog/, где стоят реальные картинки.
 import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, paths, readJSON, writeJSON, hasContent, segments } from './content.mjs';
+import { ROOT, paths, readJSON, writeJSON, hasContent, segments } from '../content.mjs';
 
 const FORCE = process.argv.includes('--force');
 

@@ -4,7 +4,7 @@ import { readdir, unlink, rmdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const SITE = base('../old_version/site');
+const SITE = base('../../old_version/site');
 const DRY = process.argv.includes('--dry');
 
 // мусор: всё с query, КРОМЕ чистой пагинации PAGEN_1=N

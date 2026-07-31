@@ -9,11 +9,11 @@
 //   node tools/image-audit.mjs --limit 200    быстрее, на выборке
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { startServer } from './serve.mjs';
-import { launch } from './browser.mjs';
+import { startServer } from '../serve.mjs';
+import { launch } from '../browser.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 const SITE = join(ROOT, 'old_version', 'site');
 
 const argv = process.argv.slice(2);

@@ -10,7 +10,7 @@ import { readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
-const ROOT = base('..');
+const ROOT = base('../..');
 const SITE = join(ROOT, 'old_version', 'site');
 const DRY = process.argv.includes('--dry');
 
@@ -171,6 +171,6 @@ const data = {
   categories: Object.fromEntries(Object.entries(catImages).map(([c, p]) => [c, attach(p, 'cat')])),
 };
 
-writeFileSync(join(ROOT, 'assets', 'content.json'), JSON.stringify(data, null, 2), 'utf8');
+writeFileSync(new URL('content.json', import.meta.url), JSON.stringify(data, null, 2), 'utf8');
 console.log(`\nСкопировано изображений: ${n} → assets/img/catalog/`);
-console.log('Данные: assets/content.json');
+console.log('Данные: tools/donor/content.json');
