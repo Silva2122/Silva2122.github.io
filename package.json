@@ -2,10 +2,11 @@
   "name": "axelnn",
   "version": "0.1.0",
   "scripts": {
+    "admin": "node admin/server.mjs",
     "serve": "node tools/serve.mjs",
     "shot": "node tools/shot.mjs",
     "audit": "node tools/audit.mjs",
-    "build": "node tools/build-catalog.mjs"
+    "build": "node tools/build-pages.mjs && node tools/build-catalog.mjs && node tools/build-products.mjs"
   },
   "license": "ISC",
   "type": "module",
