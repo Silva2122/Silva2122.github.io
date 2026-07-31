@@ -12,10 +12,11 @@
 // Порядок важен: сначала tools/build-catalog.mjs (он кладёт в index.html
 // актуальное меню каталога, а шапку мы берём оттуда целиком), потом этот
 // скрипт. Данные — assets/products.json (картинки, цены, размеры) и
-// old_version/products.json (описания).
+// content/products.json (описания, которые правит владелец через админку).
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { splitVisible, HIDE_NO_PHOTO } from './visible.mjs';
+import { loadProducts, hasContent } from './content.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ROOT = base('..');
@@ -24,9 +25,18 @@ const arg = (n, d) => { const i = argv.indexOf(n); return i !== -1 && argv[i + 1
 const DRY = argv.includes('--dry');
 const LIMIT = Number(arg('--limit', 0));
 
-const { products: donor } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'products.json'), 'utf8'));
 const manifest = JSON.parse(readFileSync(join(ROOT, 'assets', 'products.json'), 'utf8'));
-const byId = new Map(donor.map((p) => [String(p.id), p]));
+
+// Описания живут в content/products.json — там их правит админка, и там они
+// уже разбиты на абзацы. Донора хватает только на первый прогон на чистой
+// копии: он на 90 МБ, в репозиторий не попадает и на хостинге его нет.
+const donorFile = join(ROOT, 'old_version', 'products.json');
+const source = hasContent()
+  ? loadProducts()
+  : (existsSync(donorFile) ? JSON.parse(readFileSync(donorFile, 'utf8')).products : []);
+if (!hasContent()) console.log('⚠ Нет content/products.json — описания берём из донора');
+
+const byId = new Map(source.map((p) => [String(p.id), p]));
 
 // Те же таблицы, что в build-catalog.mjs: имена разделов в доноре набраны
 // как придётся, а в крошках и характеристиках должно стоять человеческое.
@@ -57,12 +67,15 @@ function plural(n, one, few, many) {
 }
 
 // --- описание -------------------------------------------------------------
-// В доноре description — это весь текстовый слой детальной страницы Aspro:
+// В content/products.json описание — уже готовый массив абзацев: его чистит
+// migrate-content.mjs и дальше правит владелец. Строка приезжает только
+// с донора, где description — весь текстовый слой детальной страницы Aspro:
 // после самого описания идут форма отзыва, форма вопроса и хвост «быстрого
 // просмотра» соседних товаров. Режем по первому же их маркеру.
 const JUNK = /(Отзывы|Оставить отзыв|Задать вопрос|Быстрый просмотр|Перетащите файлы|Ничего не найдено|Характеристики товара)/;
 
 function description(p) {
+  if (Array.isArray(p.description)) return p.description.filter(Boolean);
   let text = (p.description || '').replace(/\r/g, '');
   const hit = text.match(JUNK);
   if (hit) text = text.slice(0, hit.index);

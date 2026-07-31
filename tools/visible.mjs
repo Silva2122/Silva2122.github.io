@@ -12,9 +12,20 @@
 //
 // Раздел или подраздел, в котором не осталось ни одного видимого товара,
 // исчезает сам — он нигде не перечислен руками, а собирается из этого набора.
+import { loadSections } from './content.mjs';
+// Второй повод спрятать товар — снятый с сайта раздел. Раздел закрывают
+// в админке, а решение о его товарах принимается здесь же: иначе они пропали
+// бы из меню и с витрины, но собственные страницы получили бы и открывались
+// по прямой ссылке — с крошками в раздел, которого на сайте больше нет.
 export const HIDE_NO_PHOTO = true;
 
-export const isVisible = (it) => !HIDE_NO_PHOTO || Boolean(it.img);
+const closedSections = new Set(loadSections().filter((s) => s.hidden).map((s) => s.key));
+const sectionOf = (it) => String(it.url || '').split('/').filter(Boolean)[1] || null;
+
+export const isVisible = (it) =>
+  !it.hidden &&
+  !closedSections.has(sectionOf(it)) &&
+  (!HIDE_NO_PHOTO || Boolean(it.img));
 
 export const splitVisible = (items) => ({
   visible: items.filter(isVisible),

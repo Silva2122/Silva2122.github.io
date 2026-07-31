@@ -1,0 +1,331 @@
+/* ==========================================================================
+   Админка Аксель·НН
+   ==========================================================================
+   Отдельный файл, а не стили сайта: у магазина своя вёрстка с липкой шапкой,
+   каруселями и мегаменю — тащить её в редактор незачем. Общее — токены,
+   шрифт и повадки: тот же бирюзовый акцент, те же скругления и воздух,
+   чтобы владелец не чувствовал, что попал в чужую программу.
+   ========================================================================== */
+
+:root {
+  --ink: #1E2A2C;
+  --muted: #616A6C;
+  --teal: #1690A0;
+  --teal-deep: #0E7A88;
+  --tint: #DCEBED;
+  --grey: #F0F2F2;
+  --line: #E4E6E6;
+  --canvas: #EAEBEB;
+  --warn: #B3261E;
+  --ok: #1B7F4B;
+
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(30, 42, 44, .06), 0 8px 24px rgba(30, 42, 44, .06);
+  --side: 232px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+
+body {
+  font: 15px/1.5 Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-text-size-adjust: 100%;
+}
+
+button, input, select, textarea { font: inherit; color: inherit; }
+a { color: var(--teal-deep); }
+
+/* --- Кнопки -------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 20px;
+  border: 1px solid transparent; border-radius: 999px;
+  background: var(--teal-deep); color: #fff;
+  font-weight: 500; letter-spacing: .01em;
+  cursor: pointer; text-decoration: none;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.btn:hover { background: var(--teal); }
+.btn:disabled { opacity: .5; cursor: default; }
+
+.btn--ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+.btn--ghost:hover { background: var(--grey); border-color: var(--pill, #D8DDDD); }
+.btn--danger { background: #fff; color: var(--warn); border-color: #E7C6C4; }
+.btn--danger:hover { background: #FBEEED; }
+.btn--small { min-height: 36px; padding: 6px 14px; font-size: 14px; }
+
+.link {
+  background: none; border: 0; padding: 0;
+  color: var(--teal-deep); cursor: pointer; text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* --- Поля ---------------------------------------------------------------- */
+
+.field { display: block; margin-bottom: 18px; }
+.field__label { display: block; margin-bottom: 6px; font-size: 13px; color: var(--muted); }
+.field__hint { margin-top: 6px; font-size: 13px; color: var(--muted); }
+
+.input, .textarea, .select {
+  width: 100%; min-height: 46px; padding: 11px 14px;
+  border: 1px solid var(--line); border-radius: 10px; background: #fff;
+  outline: none; transition: border-color .15s, box-shadow .15s;
+}
+.input:focus, .textarea:focus, .select:focus {
+  border-color: var(--teal); box-shadow: 0 0 0 3px var(--tint);
+}
+.textarea { min-height: 150px; resize: vertical; line-height: 1.6; }
+/* Поле, которое растёт под текст: высоту ему выставляет скрипт после вставки
+   в документ, поэтому свой минимум здесь — в одну строку. */
+.textarea--auto { min-height: 46px; overflow: hidden; }
+
+.row { display: flex; gap: 14px; flex-wrap: wrap; }
+.row > * { flex: 1 1 180px; min-width: 0; }
+
+/* Переключатель «да/нет»: галочка на такой странице теряется, а решение
+   «показывать товар или нет» должно читаться с одного взгляда. */
+.switch { display: flex; align-items: center; gap: 12px; cursor: pointer; padding: 8px 0; }
+.switch input { position: absolute; opacity: 0; pointer-events: none; }
+.switch__track {
+  flex: 0 0 auto; width: 46px; height: 26px; border-radius: 999px;
+  background: var(--pill, #D8DDDD); position: relative; transition: background .15s;
+}
+.switch__track::after {
+  content: ''; position: absolute; inset: 3px auto 3px 3px; width: 20px;
+  border-radius: 50%; background: #fff; transition: transform .15s;
+}
+.switch input:checked + .switch__track { background: var(--teal-deep); }
+.switch input:checked + .switch__track::after { transform: translateX(20px); }
+.switch input:focus-visible + .switch__track { box-shadow: 0 0 0 3px var(--tint); }
+.switch__text { font-size: 14px; }
+/* Пояснение под подписью, а не следом за ней: в строку «В наличии» и
+   «Выключите — на странице будет под заказ» слипались в одно предложение. */
+.switch__text .field__hint { display: block; margin-top: 2px; }
+
+/* --- Каркас -------------------------------------------------------------- */
+
+.app { display: grid; grid-template-columns: var(--side) 1fr; min-height: 100vh; }
+
+.side {
+  background: #fff; border-right: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 4px; padding: 20px 14px;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+}
+.side__logo { display: block; margin: 0 6px 22px; }
+.side__logo img { width: 138px; height: auto; display: block; }
+/* Пункты меню — то ссылки, то кнопка «Выйти»: сбрасываем кнопочный вид,
+   иначе среди ссылок стоит серая рамка из браузерных умолчаний. */
+.side__link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px; border-radius: 10px;
+  color: var(--ink); text-decoration: none; font-size: 14.5px;
+  border: 0; background: none; width: 100%; text-align: left; cursor: pointer;
+}
+.side__link:hover { background: var(--grey); }
+.side__link[aria-current="page"] { background: var(--tint); color: var(--teal-deep); font-weight: 500; }
+.side__foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); }
+
+.main { padding: 28px clamp(16px, 3vw, 36px) 64px; max-width: 1240px; }
+
+.head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+}
+.head__title { margin: 0; font-size: clamp(24px, 3vw, 32px); font-weight: 500; letter-spacing: -.01em; }
+.head__sub { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 20px; box-shadow: var(--shadow);
+}
+.card + .card { margin-top: 18px; }
+.card__title { margin: 0 0 16px; font-size: 17px; font-weight: 500; }
+
+/* --- Сводка -------------------------------------------------------------- */
+
+.stats { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-bottom: 20px; }
+.stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.stat__n { font-size: 28px; font-weight: 500; line-height: 1.1; }
+.stat__t { color: var(--muted); font-size: 13px; margin-top: 4px; }
+
+/* --- Панель отбора ------------------------------------------------------- */
+
+.toolbar {
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 18px;
+}
+.toolbar .input, .toolbar .select { min-height: 44px; }
+.toolbar__search { flex: 1 1 260px; }
+.toolbar__pick { flex: 0 1 220px; }
+
+/* --- Список товаров ------------------------------------------------------ */
+
+.items { display: grid; gap: 12px; }
+
+.item {
+  display: grid; grid-template-columns: 74px 1fr auto; gap: 16px; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 16px; text-align: left; width: 100%; cursor: pointer;
+  transition: border-color .15s, box-shadow .15s;
+}
+.item:hover { border-color: var(--teal); box-shadow: var(--shadow); }
+.item__media {
+  width: 74px; height: 74px; border-radius: 10px; background: var(--grey);
+  display: grid; place-items: center; overflow: hidden;
+}
+.item__media img { width: 100%; height: 100%; object-fit: contain; }
+.item__media span { color: var(--muted); font-size: 11px; text-align: center; padding: 4px; }
+.item__name { font-weight: 500; margin-bottom: 4px; }
+.item__meta { color: var(--muted); font-size: 13px; display: flex; gap: 12px; flex-wrap: wrap; }
+.item__price { font-size: 17px; white-space: nowrap; text-align: right; }
+.item__old { color: var(--muted); text-decoration: line-through; font-size: 13px; display: block; }
+
+.tag {
+  display: inline-block; padding: 2px 10px; border-radius: 999px;
+  background: var(--grey); color: var(--muted); font-size: 12px;
+}
+.tag--off { background: #FBEEED; color: var(--warn); }
+.tag--wait { background: #FFF4E0; color: #8A5B00; }
+
+.empty { padding: 40px; text-align: center; color: var(--muted); }
+
+.pager { display: flex; gap: 10px; align-items: center; justify-content: center; margin-top: 22px; }
+.pager__now { color: var(--muted); font-size: 14px; }
+
+/* --- Редактор товара ----------------------------------------------------- */
+
+.editor { display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 22px; align-items: start; }
+
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.shot {
+  position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+  background: var(--grey); border: 1px solid var(--line); cursor: grab;
+}
+.shot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.shot[data-first]::before {
+  content: 'Главное'; position: absolute; left: 6px; top: 6px; z-index: 1;
+  padding: 2px 8px; border-radius: 999px; background: var(--teal-deep); color: #fff; font-size: 11px;
+}
+.shot__del {
+  position: absolute; right: 6px; top: 6px; width: 26px; height: 26px;
+  border: 0; border-radius: 50%; background: rgba(255, 255, 255, .92); color: var(--warn);
+  cursor: pointer; display: grid; place-items: center; font-size: 15px; line-height: 1;
+}
+.shot--over { outline: 2px dashed var(--teal); outline-offset: -2px; }
+
+/* display: block обязателен — это <label>, а строчный элемент не раздвигает
+   строку своими полями, и зона загрузки наезжала на сетку кадров. */
+.drop {
+  display: block;
+  margin-top: 12px; padding: 22px; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: var(--radius);
+  color: var(--muted); font-size: 14px; background: #fff;
+}
+.drop--over { border-color: var(--teal); background: var(--tint); color: var(--teal-deep); }
+.drop input { display: none; }
+
+.sizes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.size {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 8px 6px 14px; border-radius: 999px;
+  background: var(--grey); font-size: 14px;
+}
+.size button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 16px; line-height: 1; }
+.size button:hover { color: var(--warn); }
+
+.bar {
+  position: sticky; bottom: 0; margin-top: 22px; padding: 14px 0;
+  background: linear-gradient(to top, var(--canvas) 70%, rgba(234, 235, 235, 0));
+  display: flex; gap: 12px; flex-wrap: wrap; align-items: center;
+}
+.bar__spacer { flex: 1 1 auto; }
+
+/* --- Разделы ------------------------------------------------------------- */
+
+.section-row {
+  display: grid; grid-template-columns: 64px minmax(0, 1fr) auto auto; gap: 16px; align-items: center;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 16px;
+}
+.section-row + .section-row { margin-top: 10px; }
+.section-row__media {
+  width: 64px; height: 64px; border-radius: 10px; background: var(--grey);
+  overflow: hidden; display: grid; place-items: center; cursor: pointer; position: relative;
+}
+.section-row__media img { width: 100%; height: 100%; object-fit: contain; }
+.section-row__media span { font-size: 11px; color: var(--muted); text-align: center; }
+.section-row__media:hover::after {
+  content: 'Заменить'; position: absolute; inset: auto 0 0; padding: 3px;
+  background: rgba(30, 42, 44, .78); color: #fff; font-size: 10px; text-align: center;
+}
+.section-row__moves { display: flex; flex-direction: column; gap: 4px; }
+.move {
+  width: 30px; height: 26px; border: 1px solid var(--line); border-radius: 8px;
+  background: #fff; cursor: pointer; color: var(--muted); line-height: 1;
+}
+.move:hover:not(:disabled) { border-color: var(--teal); color: var(--teal-deep); }
+.move:disabled { opacity: .4; cursor: default; }
+
+/* --- Публикация ---------------------------------------------------------- */
+
+.log {
+  margin: 0; padding: 16px; border-radius: 10px; background: #14201F; color: #D6E4E3;
+  font: 13px/1.65 ui-monospace, "Cascadia Code", Consolas, monospace;
+  max-height: 420px; overflow: auto; white-space: pre-wrap; word-break: break-word;
+}
+
+.state { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
+.state__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+.state--run .state__dot { background: var(--teal); animation: pulse 1s infinite; }
+.state--ok .state__dot { background: var(--ok); }
+.state--bad .state__dot { background: var(--warn); }
+@keyframes pulse { 50% { opacity: .3; } }
+
+/* --- Вход ---------------------------------------------------------------- */
+
+.login { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login__box { width: 100%; max-width: 380px; background: #fff; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); }
+.login__logo { display: block; width: 150px; margin: 0 auto 22px; }
+.login__title { margin: 0 0 22px; font-size: 20px; font-weight: 500; text-align: center; }
+
+/* --- Сообщения ----------------------------------------------------------- */
+
+.note { padding: 12px 16px; border-radius: 10px; font-size: 14px; margin-bottom: 16px; }
+.note--bad { background: #FBEEED; color: var(--warn); }
+.note--ok { background: #E8F5EE; color: var(--ok); }
+
+.toast {
+  position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%);
+  background: var(--ink); color: #fff; padding: 12px 22px; border-radius: 999px;
+  box-shadow: var(--shadow); font-size: 14px; z-index: 50;
+}
+.toast[hidden] { display: none; }
+
+/* --- Узкий экран ---------------------------------------------------------- */
+
+@media (max-width: 899.98px) {
+  .app { grid-template-columns: 1fr; }
+  .side {
+    position: static; height: auto; flex-direction: row; align-items: center;
+    gap: 6px; overflow-x: auto; padding: 10px 12px;
+    border-right: 0; border-bottom: 1px solid var(--line);
+  }
+  .side__logo { display: none; }
+  .side__link { white-space: nowrap; padding: 9px 12px; }
+  .side__foot { margin: 0 0 0 auto; padding: 0; border: 0; }
+  .editor { grid-template-columns: 1fr; }
+  .item { grid-template-columns: 60px 1fr; }
+  .item__media { width: 60px; height: 60px; }
+  .item__price { grid-column: 2; text-align: left; }
+  .section-row { grid-template-columns: 56px 1fr auto; }
+  .section-row__moves { grid-column: 3; }
+}
+
+/* Пальцем промахнуться легче, чем мышью: зоны нажатия крупнее. */
+@media (pointer: coarse) {
+  .move { width: 40px; height: 34px; }
+  .shot__del { width: 32px; height: 32px; }
+}

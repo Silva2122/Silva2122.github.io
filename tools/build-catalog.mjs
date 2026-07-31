@@ -9,18 +9,33 @@
 //   node tools/build-catalog.mjs --dry    показать, ничего не записывая
 //
 // Источники: assets/products.json (что показываем — картинки, цены, размеры),
-// old_version/categories.json (URL и заголовки разделов),
-// old_version/products.json (оригиналы кадров для картинок разделов).
+// content/sections.json (заголовки, порядок и картинки разделов — их правит
+// админка). Донор нужен только на чистой копии, где content/ ещё не собран:
+// old_version/categories.json даёт URL разделов, old_version/products.json —
+// оригиналы кадров. Обоих может не быть, и это не ошибка.
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
 import { join, basename, relative } from 'node:path';
 import { splitVisible, HIDE_NO_PHOTO } from './visible.mjs';
+import { loadSections } from './content.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ROOT = base('..');
 const DRY = process.argv.includes('--dry');
 
-const { categories } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'categories.json'), 'utf8'));
-const { products } = JSON.parse(readFileSync(join(ROOT, 'old_version', 'products.json'), 'utf8'));
+const donorJSON = (name, key) => {
+  const file = join(ROOT, 'old_version', name);
+  return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8'))[key] || [] : [];
+};
+
+const categories = donorJSON('categories.json', 'categories');
+const products = donorJSON('products.json', 'products');
+
+// Разделы каталога: заголовок, порядок в меню, картинка на витрине.
+// Раньше это были три таблицы прямо в коде (ORDER, TITLES, SECTION_IMG) —
+// теперь они лежат в content/sections.json, и раздел переименовывается
+// или переставляется из админки, а не правкой генератора.
+const CONTENT_SECTIONS = loadSections();
+const secByKey = new Map(CONTENT_SECTIONS.map((s) => [s.key, s]));
 
 // Манифест готовит tools/prepare-product-images.mjs: он ужимает кадры и решает,
 // какому товару достался вырезанный фон, а какому оригинал. Из него же берётся
@@ -123,17 +138,25 @@ for (const p of visible) {
 // берём тот, что встречается чаще.
 const topPath = (paths) => [...paths.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
 
+// Порядок и заголовок берём из content/sections.json по сегменту адреса,
+// а ORDER с TITLES остаются запасным вариантом для чистой копии без content/.
+// Сортируем после map, а не до: до него у раздела ещё нет сегмента, а имя
+// категории в данных донора к нему не сводится.
+const rank = (s) => {
+  const meta = secByKey.get(s.key);
+  if (meta && Number.isFinite(meta.order)) return meta.order;
+  const i = ORDER.indexOf(s.name);
+  return i === -1 ? 99 : i;
+};
+
 const sections = [...tree.entries()]
-  .sort((a, b) => {
-    const ia = ORDER.indexOf(a[0]), ib = ORDER.indexOf(b[0]);
-    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
-  })
   .map(([name, node]) => {
     const seg = topPath(node.paths);
     const url = seg ? `/catalog/${seg}/` : topUrl(name);
     return {
+      key: seg,
       name,
-      title: TITLES[name] || name,
+      title: secByKey.get(seg)?.title || TITLES[name] || name,
       url,
       total: node.total,
       subs: [...node.subs.entries()]
@@ -148,7 +171,8 @@ const sections = [...tree.entries()]
         .filter((s) => s.url),
     };
   })
-  .filter((s) => s.url);   // без адреса ссылку не построить
+  .filter((s) => s.url)   // без адреса ссылку не построить
+  .sort((a, b) => rank(a) - rank(b));
 
 console.log(`Разделов: ${sections.length}, товаров: ${visible.length} из ${catalogItems.length}`);
 if (HIDE_NO_PHOTO && hidden.length) {
@@ -261,9 +285,13 @@ function inject(file) {
 // данных, поэтому обходим все страницы сайта. Список не держим руками: страниц
 // разделов пятнадцать, и они сами появляются ниже в этом же прогоне — ручной
 // перечень отстал бы от них на один запуск.
+// admin/ обходим стороной: это не страница сайта, а интерфейс владельца.
+// Маркеров ОБЩЕЕ:* в нём нет, но и меню каталога с шапкой магазина там ни к чему.
+const SKIP_DIRS = new Set(['node_modules', 'old_version', 'tools', 'admin', 'content']);
+
 function pages(dir = ROOT, acc = []) {
   for (const e of readdirSync(dir, { withFileTypes: true })) {
-    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'old_version' || e.name === 'tools') continue;
+    if (e.name.startsWith('.') || SKIP_DIRS.has(e.name)) continue;
     const p = join(dir, e.name);
     if (e.isDirectory()) pages(p, acc);
     // relative(), а не арифметика по длине ROOT: у ROOT есть завершающий слэш,
@@ -345,6 +373,22 @@ mkdirSync(RAW_OUT, { recursive: true });
 
 console.log('\nКартинки разделов:');
 for (const s of sections) {
+  // Картинка из content/sections.json — путь к готовому файлу в assets/.
+  // Её ставит админка, и она уже лежит в репозитории, поэтому ни донор,
+  // ни пул .shots/nobg/ для неё не нужны. Остальные ветки ниже — прежняя
+  // логика для чистой копии, где content/ ещё не собран.
+  const meta = secByKey.get(s.key);
+  const fromContent = meta?.img;
+  if (fromContent) {
+    // cut — вырезан ли фон. Кадр с фоном занимает плашку целиком и потому
+    // верстается модификатором --raw; вырезанный лежит с полями.
+    s.cut = Boolean(meta.cut);
+    s.img = existsSync(join(ROOT, fromContent)) ? fromContent : null;
+    if (!s.img) console.log(`  ⚠ ${s.title}: нет файла ${fromContent}`);
+    console.log(`  из content  ${s.title.padEnd(32)} ${s.img ? basename(s.img) : '— нет кадра'}`);
+    continue;
+  }
+
   const rule = SECTION_IMG[s.name];
   s.cut = rule !== null && rule !== undefined;
 

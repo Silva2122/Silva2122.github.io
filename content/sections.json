@@ -1,0 +1,137 @@
+[
+ {
+  "key": "figure-skates",
+  "name": "Фигурные коньки",
+  "title": "Фигурные коньки",
+  "img": "assets/img/catalog-nobg/cat-konki-figurnye-runa-base.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 0
+ },
+ {
+  "key": "botinki_dlya_figurnogo_kataniya",
+  "name": "Ботинки для фигурного катания",
+  "title": "Ботинки для фигурного катания",
+  "img": "assets/img/catalog-nobg/cat-figurnye-botinki-edea-overture-belye-1.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 1
+ },
+ {
+  "key": "blades",
+  "name": "Лезвия",
+  "title": "Лезвия",
+  "img": "assets/img/catalog-nobg/cat-lezviya-dlya-konkov-mk-professional.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 2
+ },
+ {
+  "key": "odezhda_dlya_devochek",
+  "name": "Одежда для девочек",
+  "title": "Одежда для девочек",
+  "img": "assets/img/catalog-nobg/cat-kolgotki-so-strazami-art-1152.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 3
+ },
+ {
+  "key": "odezhda_dlya_malchikov",
+  "name": "Одежда для мальчиков",
+  "title": "Одежда для мальчиков",
+  "img": "assets/img/catalog-raw/cat-odezhda-dlya-malchikov.jpg",
+  "cut": false,
+  "hidden": false,
+  "order": 4
+ },
+ {
+  "key": "odezhda_msk",
+  "name": "Одежда MSK",
+  "title": "Одежда MSK",
+  "img": "assets/img/catalog-raw/cat-odezhda-msk.jpg",
+  "cut": false,
+  "hidden": false,
+  "order": 5
+ },
+ {
+  "key": "zashchita_figurista_",
+  "name": "Защита фигуриста",
+  "title": "Защита фигуриста",
+  "img": "assets/img/catalog-nobg/cat-zaschita-zapyastya-sprinter.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 6
+ },
+ {
+  "key": "sumki_ryukzaki",
+  "name": "Сумки,рюкзаки",
+  "title": "Сумки и рюкзаки",
+  "img": "assets/img/catalog-nobg/cat-ryukzak-runa-kotyata.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 7
+ },
+ {
+  "key": "khranenie_ukhod_za_konkami",
+  "name": "Хранение",
+  "title": "Хранение и уход",
+  "img": "assets/img/catalog-nobg/cat-termochehly-na-botinok-chernye.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 8
+ },
+ {
+  "key": "aksessuary_dlya_lda",
+  "name": "Аксессуары для льда",
+  "title": "Аксессуары для льда",
+  "img": "assets/img/catalog-nobg/cat-aksessuary-dlya-lda.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 9
+ },
+ {
+  "key": "trenazhery_",
+  "name": "Тренажеры",
+  "title": "Тренажёры",
+  "img": "assets/img/catalog-nobg/cat-spinner-disk-panda.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 10
+ },
+ {
+  "key": "meshki_dlya_obuvi",
+  "name": "Мешки для обуви",
+  "title": "Мешки для обуви",
+  "img": "assets/img/catalog-nobg/cat-meshki-dlya-obuvi.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 11
+ },
+ {
+  "key": "suveniry",
+  "name": "Сувениры",
+  "title": "Сувениры",
+  "img": "assets/img/catalog-nobg/cat-suveniry.webp",
+  "cut": true,
+  "hidden": false,
+  "order": 12
+ },
+ {
+  "key": "edinyy_komandnyy_stil",
+  "name": "ЕДИНЫЙ КОМАНДНЫЙ СТИЛЬ",
+  "title": "Единый командный стиль",
+  "img": "assets/img/catalog-raw/cat-edinyy-komandnyy-stil.jpg",
+  "cut": false,
+  "hidden": false,
+  "order": 13
+ },
+ {
+  "key": "podarochnye_nabory_treneram_",
+  "name": "Подарочные наборы тренерам",
+  "title": "Подарочные наборы тренерам",
+  "img": null,
+  "cut": false,
+  "hidden": false,
+  "order": 14
+ }
+]
