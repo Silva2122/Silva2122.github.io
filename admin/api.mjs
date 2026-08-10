@@ -11,7 +11,7 @@ import {
 } from '../tools/content.mjs';
 import { slotsOf, sitePages, zonesFor, pageTitle } from '../tools/pages.mjs';
 import { json, fail, readBody, readJSONBody } from './http.mjs';
-import { COOKIE, TTL_DAYS, checkPassword, issueToken, validToken, cookieOf } from './auth.mjs';
+import { COOKIE, TTL_DAYS, checkPassword, issueToken, validToken, cookieOf, secureCookie } from './auth.mjs';
 import {
   PRODUCT_IMG, SECTION_IMG, PAGE_IMG,
   saveShot, shotName, refreshMain, removeAsset, saveHero,
@@ -86,12 +86,12 @@ export async function api(req, res, path, query, cfg) {
       return fail(res, 'Неверный логин или пароль', 401);
     }
     res.setHeader('Set-Cookie',
-      `${COOKIE}=${issueToken(cfg)}; Path=/; Max-Age=${TTL_DAYS * 24 * 3600}; HttpOnly; SameSite=Lax`);
+      `${COOKIE}=${issueToken(cfg)}; Path=/; Max-Age=${TTL_DAYS * 24 * 3600}; HttpOnly; SameSite=Lax${secureCookie(req)}`);
     return json(res, { ok: true });
   }
 
   if (path === '/api/logout' && req.method === 'POST') {
-    res.setHeader('Set-Cookie', `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax`);
+    res.setHeader('Set-Cookie', `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax${secureCookie(req)}`);
     return json(res, { ok: true });
   }
 

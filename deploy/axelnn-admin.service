@@ -1,0 +1,42 @@
+# systemd-юнит для админки на хостинге.
+#
+# Держит node admin/server.mjs запущенным постоянно: перезапускает при падении,
+# поднимает при перезагрузке сервера. Слушает 127.0.0.1 — наружу сайт отдаёт
+# nginx (deploy/nginx-axelnn.conf), сам процесс из интернета не виден.
+#
+# Установка (под root или через sudo):
+#   1) поправить ExecStart и WorkingDirectory под реальный путь на сервере
+#   2) sudo cp deploy/axelnn-admin.service /etc/systemd/system/
+#   3) sudo systemctl daemon-reload
+#   4) sudo systemctl enable --now axelnn-admin
+#
+# Логи: journalctl -u axelnn-admin -f
+
+[Unit]
+Description=Axelnn — сайт и админка (node admin/server.mjs)
+After=network.target
+
+[Service]
+Type=simple
+# Пользователь без root: владелец каталога сайта. Создать заранее:
+#   sudo adduser --system --group --home /var/www/axelnn axelnn
+User=axelnn
+Group=axelnn
+
+WorkingDirectory=/var/www/axelnn
+ExecStart=/usr/bin/node admin/server.mjs --port 4180
+Restart=on-failure
+RestartSec=3
+
+# Публикация из админки делает git commit/push — процессу нужен HOME,
+# чтобы git нашёл ~/.gitconfig и ключи.
+Environment=HOME=/var/www/axelnn
+Environment=NODE_ENV=production
+
+# Небольшая защита: процесс не должен писать за пределы своего каталога,
+# кроме как в assets/img (кадры) и content/ (данные) — они уже внутри него.
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

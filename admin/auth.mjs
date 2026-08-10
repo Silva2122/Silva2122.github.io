@@ -65,6 +65,11 @@ export function validToken(cfg, token) {
   return mac.length === expect.length && timingSafeEqual(Buffer.from(mac), Buffer.from(expect));
 }
 
+// За обратным прокси (nginx) TLS оканчивается перед Node, и сам сокет
+// «незашифрованный» — HTTPS выдаёт только заголовок от прокси.
+export const secureCookie = (req) =>
+  req.socket.encrypted || req.headers['x-forwarded-proto'] === 'https' ? '; Secure' : '';
+
 export const cookieOf = (req, name) => {
   const raw = req.headers.cookie || '';
   for (const part of raw.split(';')) {

@@ -4,7 +4,8 @@
 Статический сайт + админка, через которую владелец правит его сам.
 
 Подробное устройство — в [CLAUDE.md](CLAUDE.md). Инструкция владельцу сайта —
-в [admin/README.md](admin/README.md).
+в [admin/README.md](admin/README.md). Как выложить на боевой хостинг —
+в [deploy/README.md](deploy/README.md).
 
 ## Быстрый старт
 

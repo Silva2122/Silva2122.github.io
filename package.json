@@ -11,9 +11,11 @@
   "license": "ISC",
   "type": "module",
   "private": true,
+  "dependencies": {
+    "sharp": "^0.34.5"
+  },
   "devDependencies": {
     "@huggingface/transformers": "^4.2.0",
-    "playwright-core": "^1.61.1",
-    "sharp": "^0.34.5"
+    "playwright-core": "^1.61.1"
   }
 }
