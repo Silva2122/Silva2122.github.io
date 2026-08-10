@@ -84,21 +84,36 @@ sudo systemctl status axelnn-admin
 Поправьте в файле `WorkingDirectory`/`ExecStart`, если код лежит не в
 `/var/www/axelnn`.
 
-**6. nginx + HTTPS**
+**6. nginx (пока без HTTPS)**
 
 ```bash
 sudo cp deploy/nginx-axelnn.conf /etc/nginx/sites-available/axelnn
 sudo ln -s /etc/nginx/sites-available/axelnn /etc/nginx/sites-enabled/
 sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d axelnn.ru -d www.axelnn.ru
 ```
+
+В конфиге специально только 80-й порт: блок под 443 с несуществующим ещё
+сертификатом уронил бы `nginx -t`, и сайт не поднялся бы вообще. Сайт уже
+доступен по `http://IP-сервера/` — сертификат допишет certbot ниже.
 
 **7. DNS**
 
 A-запись `axelnn.ru` (и `www`) должна смотреть на IP этого сервера. Меняется
 у текущего регистратора/хостера — это не в коде и делается отдельно, обычно
 тем, у кого сейчас крутится Bitrix-версия. Смена вступает в силу не сразу
-(TTL записи, обычно до нескольких часов).
+(TTL записи, обычно до нескольких часов). **Без этого шага certbot ниже
+не сработает** — Let's Encrypt проверяет владение доменом, обращаясь на него
+по HTTP, и до переключения DNS попадёт на старый Bitrix-хостинг, а не сюда.
+
+**7.1. certbot — когда DNS уже смотрит на этот сервер**
+
+```bash
+sudo certbot --nginx -d axelnn.ru -d www.axelnn.ru
+```
+
+Сам допишет блок под 443 и сертификаты, переключит `location /` на редирект
+с 80 на 443. Проверить: `sudo nginx -t && sudo systemctl reload nginx`
+(certbot обычно делает reload сам).
 
 **8. Проверка**
 
