@@ -290,15 +290,22 @@
     var pickSection = el('select', { class: 'select' }, state.sections.map(function (s) {
       return el('option', { value: s.key, text: s.title });
     }));
-    var pickSub = el('select', { class: 'select' });
+    // Подразделов как отдельной сущности нет — они выводятся из товаров.
+    // Поэтому это поле, а не выпадающий список: можно выбрать из подсказки
+    // существующий, а можно вписать новое название — подраздел появится
+    // сам, как только в нём окажется первый товар (см. subTitle в api.mjs).
+    var subsList = el('datalist', { id: 'new-product-subs' });
+    var pickSub = el('input', {
+      class: 'input', list: 'new-product-subs',
+      placeholder: 'Например: Коньки Jackson (необязательно, можно вписать новый)',
+    });
     var name = el('input', { class: 'input', placeholder: 'Например: Чехлы на лезвия Edea' });
 
     function fillSubs() {
       var section = state.sections.filter(function (s) { return s.key === pickSection.value; })[0];
-      pickSub.innerHTML = '';
-      pickSub.appendChild(el('option', { value: '', text: 'Без подраздела' }));
+      subsList.innerHTML = '';
       (section ? section.subs : []).forEach(function (sub) {
-        pickSub.appendChild(el('option', { value: sub.key, text: sub.title }));
+        subsList.appendChild(el('option', { value: sub.title }));
       });
     }
     pickSection.addEventListener('change', fillSubs);
@@ -317,13 +324,13 @@
       el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Название' }), name]),
       el('div', { class: 'row' }, [
         el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Раздел' }), pickSection]),
-        el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Подраздел' }), pickSub]),
+        el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Подраздел' }), pickSub, subsList]),
       ]),
       el('div', { class: 'bar', style: 'position:static;background:none;margin-top:6px' }, [
         el('button', { class: 'btn', type: 'button', text: 'Создать', onclick: function () {
           if (!name.value.trim()) return toast('Впишите название', true);
           api('/api/products', { method: 'POST', body: {
-            name: name.value.trim(), section: pickSection.value, sub: pickSub.value,
+            name: name.value.trim(), section: pickSection.value, subTitle: pickSub.value.trim(),
           } }).then(function (p) {
             toast('Товар создан');
             location.hash = '#/products/' + encodeURIComponent(p.id);
@@ -586,6 +593,27 @@
       el('div', {}, [
         el('h1', { class: 'head__title', text: 'Разделы каталога' }),
         el('p', { class: 'head__sub', text: 'Порядок здесь — это порядок в меню, на витрине и в подвале сайта.' }),
+      ]),
+    ]));
+
+    var newTitle = el('input', { class: 'input', placeholder: 'Например: Термобельё' });
+    function addSection() {
+      if (!newTitle.value.trim()) return toast('Впишите название раздела', true);
+      api('/api/sections', { method: 'POST', body: { title: newTitle.value.trim() } })
+        .then(function (fresh) {
+          state.sections = fresh;
+          sections = fresh.slice();
+          newTitle.value = '';
+          draw();
+          toast('Раздел добавлен — теперь можно загрузить картинку и добавить в него товары');
+        })
+        .catch(function (e) { toast(e.message, true); });
+    }
+    newTitle.addEventListener('keydown', function (e) { if (e.key === 'Enter') addSection(); });
+    box.appendChild(el('div', { class: 'card' }, [
+      el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Новый раздел' }), newTitle]),
+      el('div', { class: 'bar', style: 'position:static;background:none;margin-top:6px' }, [
+        el('button', { class: 'btn', type: 'button', text: '+ Добавить раздел', onclick: addSection }),
       ]),
     ]));
 

@@ -154,9 +154,19 @@ export async function api(req, res, path, query, cfg) {
     // строятся из него, и повторный номер увёл бы новый товар на чужую страницу.
     const id = String(products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1);
 
-    const sub = (body.sub || '').trim();
+    // Подраздел нигде не хранится отдельной сущностью — он весь целиком
+    // выводится из товаров (см. subsOf выше). Значит «создать подраздел»
+    // и «положить в него первый товар» — одно и то же действие: если
+    // введённое название совпадает с уже существующим — используем его
+    // ключ, иначе заводим новый ключ из slug(), и подраздел появляется
+    // сам, как только он есть хотя бы у одного товара.
+    const subTitleInput = (body.subTitle || '').trim();
+    const existingSub = subTitleInput
+      ? subsOf(products, section.key).find((x) => x.title.toLowerCase() === subTitleInput.toLowerCase())
+      : null;
+    const sub = subTitleInput ? (existingSub ? existingSub.key : slug(subTitleInput)) : '';
     const url = sub ? `/catalog/${section.key}/${sub}/${id}/` : `/catalog/${section.key}/${id}/`;
-    const subTitle = sub ? subsOf(products, section.key).find((x) => x.key === sub)?.title : null;
+    const subTitle = existingSub ? existingSub.title : (subTitleInput || null);
 
     const product = {
       id,
@@ -270,6 +280,25 @@ export async function api(req, res, path, query, cfg) {
       order: i,
     })));
     return json(res, sectionsWithCounts());
+  }
+
+  // Раздел не может остаться без ключа сегмента URL — он и отличает
+  // разделы друг от друга, и на нём строятся адреса товаров в нём.
+  if (path === '/api/sections' && req.method === 'POST') {
+    const title = String((await readJSONBody(req)).title || '').trim();
+    if (!title) return fail(res, 'Впишите название раздела');
+
+    const sections = loadSections();
+    const base = slug(title) || 'razdel';
+    let key = base;
+    for (let n = 2; sections.some((s) => s.key === key); n++) key = `${base}-${n}`;
+
+    sections.push({
+      key, name: title, title, img: null, cut: false, hidden: false,
+      order: sections.reduce((m, s) => Math.max(m, s.order ?? 0), -1) + 1,
+    });
+    saveSections(sections);
+    return json(res, sectionsWithCounts(), 201);
   }
 
   const sectionPhoto = path.match(/^\/api\/sections\/([^/]+)\/photo$/);
