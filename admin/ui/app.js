@@ -319,7 +319,7 @@
         el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Раздел' }), pickSection]),
         el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Подраздел' }), pickSub]),
       ]),
-      el('div', { class: 'bar' }, [
+      el('div', { class: 'bar', style: 'position:static;background:none;margin-top:6px' }, [
         el('button', { class: 'btn', type: 'button', text: 'Создать', onclick: function () {
           if (!name.value.trim()) return toast('Впишите название', true);
           api('/api/products', { method: 'POST', body: {
@@ -330,7 +330,11 @@
           }).catch(function (e) { toast(e.message, true); });
         } }),
         el('button', { class: 'btn btn--ghost', type: 'button', text: 'Отмена', onclick: function () {
+          // Хэш уже #/products (сюда попадают без смены хэша, прямо из
+          // screenProducts) — просто выставить его снова hashchange не даст,
+          // нужен явный повторный рендер.
           location.hash = '#/products';
+          render();
         } }),
       ]),
     ]));
