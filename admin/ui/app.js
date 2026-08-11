@@ -380,8 +380,17 @@
     function drawSizes() {
       sizeBox.innerHTML = '';
       sizes.forEach(function (s, i) {
+        var sizePrice = el('input', {
+          class: 'size__price', type: 'number', min: '0', step: '10',
+          placeholder: price.value || 'как у товара',
+          value: s.price == null ? '' : s.price,
+        });
+        sizePrice.addEventListener('change', function () {
+          s.price = sizePrice.value === '' ? null : Number(sizePrice.value);
+        });
         sizeBox.appendChild(el('span', { class: 'size' }, [
-          document.createTextNode(s),
+          document.createTextNode(s.size),
+          sizePrice,
           el('button', { type: 'button', title: 'Убрать', text: '×', onclick: function () {
             sizes.splice(i, 1); drawSizes();
           } }),
@@ -395,7 +404,10 @@
       if (e.key !== 'Enter') return;
       e.preventDefault();
       var value = sizeInput.value.trim();
-      if (value && sizes.indexOf(value) === -1) { sizes.push(value); drawSizes(); }
+      if (value && sizes.every(function (s) { return s.size !== value; })) {
+        sizes.push({ size: value, price: null });
+        drawSizes();
+      }
       sizeInput.value = '';
     });
 
@@ -538,7 +550,9 @@
           el('h2', { class: 'card__title', text: 'Размеры' }),
           sizeBox,
           sizeInput,
-          el('p', { class: 'field__hint', text: 'Если размеры есть, покупатель выбирает их на странице товара.' }),
+          el('p', { class: 'field__hint', text: 'Если размеры есть, покупатель выбирает их на странице товара. '
+            + 'Цена у размера — необязательна: пусто значит «как обычная цена товара». Если у размеров разные цены, '
+            + 'в каталоге и в шапке страницы товара покажется «от» самой дешёвой.' }),
         ]),
 
         el('div', { class: 'card' }, [

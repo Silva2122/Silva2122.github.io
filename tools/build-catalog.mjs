@@ -601,8 +601,16 @@ function productCard(it, depth) {
   const media = it.img
     ? `<img class="ph" src="${upPath}${it.img}" width="600" height="600" loading="lazy" alt="${esc(it.name)}">`
     : '<span class="ph"></span>';
-  const price = it.price
-    ? `<div class="card__prices"><span class="card__price">${money(it.price)}&nbsp;₽</span></div>`
+
+  // Цена размера необязательна — пустая берёт цену товара. Если у размеров
+  // цены разные, честнее показать «от» самой дешёвой, а не цену товара как
+  // есть: она может не соответствовать ни одному конкретному размеру.
+  const sizePrices = (it.sizes || []).map((s) => s.price ?? it.price).filter((n) => n != null);
+  const fromPrice = sizePrices.length ? Math.min(...sizePrices) : it.price;
+  const priceVaries = sizePrices.length > 0 && new Set(sizePrices).size > 1;
+
+  const price = fromPrice
+    ? `<div class="card__prices"><span class="card__price">${priceVaries ? 'от&nbsp;' : ''}${money(fromPrice)}&nbsp;₽</span></div>`
     : '<div class="card__prices"><span class="card__price card__price--none">Цена по запросу</span></div>';
   // Фильтры работают на клиенте по этим data-атрибутам: все товары раздела уже
   // в DOM, и перерисовка сводится к переключению display у карточек.
@@ -611,9 +619,9 @@ function productCard(it, depth) {
   // любой глубины, и относительный путь из раздела указывал бы в никуда.
   const data = [
     `data-sub="${esc(it.sub || '')}"`,
-    `data-price="${it.price || 0}"`,
+    `data-price="${fromPrice || 0}"`,
     it.brand ? `data-brand="${esc(it.brand)}"` : '',
-    it.sizes && it.sizes.length ? `data-sizes="${esc(it.sizes.join('|'))}"` : '',
+    it.sizes && it.sizes.length ? `data-sizes="${esc(it.sizes.map((s) => s.size).join('|'))}"` : '',
     'data-product',
     `data-id="${esc(it.id)}"`,
     `data-name="${esc(tidy(it.name))}"`,
@@ -683,7 +691,7 @@ for (const s of sections) {
 
   const subs = count((it) => (it.sub ? [it.sub] : []));
   const brands = count((it) => (it.brand ? [it.brand] : []));
-  const sizes = count((it) => it.sizes || []);
+  const sizes = count((it) => (it.sizes || []).map((s) => s.size));
 
   const groupsHtml = [];
   if (subs.size > 1) {

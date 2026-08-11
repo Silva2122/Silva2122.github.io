@@ -216,9 +216,16 @@ function page(it) {
     .filter((x) => x.id !== it.id && x.img)
     .slice(0, 12);
 
-  const priceBlock = it.price
-    ? `<span class="product__price">${money(it.price)}&nbsp;₽</span>` +
-      (it.oldPrice && it.oldPrice > it.price ? `<span class="product__price-old">${money(it.oldPrice)}&nbsp;₽</span>` : '')
+  // Цена размера необязательна — пустая берёт цену товара. Если у размеров
+  // цены разные, в шапке товара честнее показать «от» самой дешёвой, а не
+  // цену товара как есть: она может не соответствовать ни одному размеру.
+  const sizePrices = sizes.map((s) => s.price ?? it.price).filter((n) => n != null);
+  const fromPrice = sizePrices.length ? Math.min(...sizePrices) : it.price;
+  const priceVaries = sizePrices.length > 0 && new Set(sizePrices).size > 1;
+
+  const priceBlock = fromPrice
+    ? `<span class="product__price">${priceVaries ? 'от&nbsp;' : ''}${money(fromPrice)}&nbsp;₽</span>` +
+      (it.oldPrice && it.oldPrice > fromPrice ? `<span class="product__price-old">${money(it.oldPrice)}&nbsp;₽</span>` : '')
     : '<span class="product__price product__price--none">Цена по запросу</span>';
 
   const sizeBlock = sizes.length ? [
@@ -229,7 +236,7 @@ function page(it) {
     '          </div>',
     '          <div class="sizes__list">',
     ...sizes.map((s, i) =>
-      `            <label class="size"><input type="radio" name="size" value="${esc(s)}"${sizes.length === 1 && i === 0 ? ' checked' : ''}><span class="size__val">${esc(s)}</span></label>`),
+      `            <label class="size"><input type="radio" name="size" value="${esc(s.size)}" data-price="${s.price ?? it.price ?? 0}"${sizes.length === 1 && i === 0 ? ' checked' : ''}><span class="size__val">${esc(s.size)}</span></label>`),
     '          </div>',
     '        </div>',
   ].join('\n') : '';
@@ -248,7 +255,7 @@ function page(it) {
     specRow('Бренд', it.brand ? esc(it.brand) : ''),
     specRow('Раздел', `<a href="${href(topUrl)}">${esc(tidy(it.topName))}</a>`),
     it.subName && subUrl ? specRow('Подраздел', `<a href="${href(subUrl)}">${esc(tidy(it.subName))}</a>`) : '',
-    specRow('Размеры', sizes.length ? esc(sizes.join(', ')) : ''),
+    specRow('Размеры', sizes.length ? esc(sizes.map((s) => s.size).join(', ')) : ''),
     specRow('Наличие', it.available ? 'В наличии' : 'Под заказ'),
   ].filter(Boolean).join('\n');
 
@@ -352,7 +359,7 @@ ${gallery(it, up)}
       <div class="product__buy" data-product
            data-id="${esc(it.id)}"
            data-name="${esc(tidy(it.name))}"
-           data-price="${it.price || 0}"
+           data-price="${fromPrice || 0}"
            data-img="${it.img ? '/' + it.img : ''}"
            data-url="${esc(it.url)}"
            data-need-size="${sizes.length > 1}">

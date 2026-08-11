@@ -235,6 +235,11 @@ a { color: var(--teal-deep); }
 }
 .size button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 16px; line-height: 1; }
 .size button:hover { color: var(--warn); }
+.size__price {
+  width: 74px; border: 0; background: #fff; border-radius: 999px;
+  padding: 3px 8px; font-size: 13px; color: var(--ink);
+}
+.size__price::placeholder { color: var(--muted); }
 
 .bar {
   position: sticky; bottom: 0; margin-top: 22px; padding: 14px 0;

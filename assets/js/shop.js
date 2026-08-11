@@ -66,17 +66,24 @@
   }
 
   // Читает товар из data-атрибутов контейнера. Размер берётся из выбранного
-  // переключателя внутри него, если он есть.
+  // переключателя внутри него, если он есть. Цена размера может отличаться
+  // от цены товара (см. data-price у самого input) — раз выбрали размер,
+  // берём цену именно его, а не общую цену товара.
   function productFrom(box) {
     if (!box) return null;
     var size = null;
+    var price = Number(box.dataset.price) || 0;
     var checked = box.querySelector('input[name="size"]:checked');
-    if (checked) size = checked.value;
-    else if (box.dataset.size) size = box.dataset.size;
+    if (checked) {
+      size = checked.value;
+      if (checked.dataset.price) price = Number(checked.dataset.price) || price;
+    } else if (box.dataset.size) {
+      size = box.dataset.size;
+    }
     return {
       id: box.dataset.id,
       name: box.dataset.name || '',
-      price: Number(box.dataset.price) || 0,
+      price: price,
       img: box.dataset.img || '',
       url: box.dataset.url || '',
       size: size,
@@ -417,6 +424,16 @@
         toast(url);
       }
     }
+  });
+
+  // Выбор размера может сменить цену — до выбора в шапке товара показана
+  // «от» самой дешёвой, а как только человек выбрал конкретный размер,
+  // должна остаться его точная цена, без «от».
+  document.addEventListener('change', function (e) {
+    if (e.target.name !== 'size' || !e.target.dataset.price) return;
+    var box = e.target.closest('[data-product]');
+    var priceEl = box && box.querySelector('.product__price');
+    if (priceEl) priceEl.textContent = money(Number(e.target.dataset.price));
   });
 
   // Esc закрывает панель — с модальным диалогом это ожидаемое поведение.

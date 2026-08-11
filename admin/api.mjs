@@ -231,7 +231,18 @@ export async function api(req, res, path, query, cfg) {
         oldPrice: body.oldPrice === '' || body.oldPrice == null ? null : Number(body.oldPrice),
         available: body.available !== false,
         brand: (body.brand || '').trim() || null,
-        sizes: Array.isArray(body.sizes) ? body.sizes.filter(Boolean) : product.sizes,
+        // Каждый размер несёт свою (необязательную) цену: пусто — значит
+        // берётся обычная цена товара. Хранится строго { size, price }, а
+        // не просто строкой — иначе показать «от» в каталоге было бы негде
+        // взять цену для сравнения.
+        sizes: Array.isArray(body.sizes)
+          ? body.sizes
+              .map((s) => ({
+                size: String((s && s.size) || '').trim(),
+                price: s && s.price !== '' && s.price != null ? Number(s.price) : null,
+              }))
+              .filter((s) => s.size)
+          : product.sizes,
         description: Array.isArray(body.description)
           ? body.description.map((s) => String(s).trim()).filter(Boolean)
           : product.description,
