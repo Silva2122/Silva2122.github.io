@@ -373,42 +373,74 @@
     var hidden = switchField('Скрыть с сайта', 'Товар останется здесь, но пропадёт из каталога', Boolean(p.hidden));
 
     // --- размеры ---
+    // Каждая строка читается как «размер — его цена». Цену видно сразу,
+    // а не нужно вспоминать, что скрыто в мелком поле рядом с меткой —
+    // с этой формой работает не разработчик, а владелец магазина.
     var sizes = (p.sizes || []).slice();
     var sizeBox = el('div', { class: 'sizes' });
-    var sizeInput = el('input', { class: 'input', placeholder: 'Например: 128 — и Enter' });
+    var sizeInput = el('input', { class: 'input', placeholder: 'Например: 128' });
+    var sizeAdd = el('button', { class: 'btn btn--ghost', type: 'button', text: 'Добавить размер' });
 
-    function drawSizes() {
-      sizeBox.innerHTML = '';
-      sizes.forEach(function (s, i) {
-        var sizePrice = el('input', {
-          class: 'size__price', type: 'number', min: '0', step: '10',
-          placeholder: price.value || 'как у товара',
-          value: s.price == null ? '' : s.price,
-        });
-        sizePrice.addEventListener('change', function () {
-          s.price = sizePrice.value === '' ? null : Number(sizePrice.value);
-        });
-        sizeBox.appendChild(el('span', { class: 'size' }, [
-          document.createTextNode(s.size),
-          sizePrice,
-          el('button', { type: 'button', title: 'Убрать', text: '×', onclick: function () {
-            sizes.splice(i, 1); drawSizes();
-          } }),
-        ]));
-      });
-      if (!sizes.length) sizeBox.appendChild(el('span', { class: 'field__hint', text: 'Размеров нет — товар кладётся в корзину сразу' }));
-    }
-    drawSizes();
-
-    sizeInput.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter') return;
-      e.preventDefault();
+    function addSize() {
       var value = sizeInput.value.trim();
       if (value && sizes.every(function (s) { return s.size !== value; })) {
         sizes.push({ size: value, price: null });
         drawSizes();
       }
       sizeInput.value = '';
+      sizeInput.focus();
+    }
+
+    function drawSizes() {
+      sizeBox.innerHTML = '';
+      if (!sizes.length) {
+        sizeBox.appendChild(el('p', { class: 'field__hint', text: 'Размеров нет — товар кладётся в корзину сразу, без выбора.' }));
+        return;
+      }
+      sizeBox.appendChild(el('div', { class: 'sizes__head' }, [
+        el('span', { text: 'Размер' }),
+        el('span', { text: 'Цена, ₽' }),
+        el('span', {}),
+      ]));
+      sizes.forEach(function (s, i) {
+        var basePrice = price.value ? Number(price.value) : null;
+        var sizePrice = el('input', {
+          class: 'size__price', type: 'number', min: '0', step: '10',
+          placeholder: basePrice ? String(basePrice) : 'как у товара',
+          value: s.price == null ? '' : s.price,
+        });
+        var status = el('span', { class: 'size__hint' });
+        var row = el('div', { class: 'size' }, [
+          el('span', { class: 'size__name', text: s.size }),
+          sizePrice,
+          status,
+          el('button', { type: 'button', title: 'Убрать размер', text: '×', onclick: function () {
+            sizes.splice(i, 1); drawSizes();
+          } }),
+        ]);
+        // И подпись, и подсветка строки обновляются сразу по вводу — не после
+        // того, как поле потеряет фокус: иначе результат виден с задержкой,
+        // будто ничего не произошло.
+        function drawStatus() {
+          var has = sizePrice.value !== '';
+          status.textContent = has ? 'своя цена' : 'как у товара';
+          row.classList.toggle('size--custom', has);
+        }
+        drawStatus();
+        sizePrice.addEventListener('input', drawStatus);
+        sizePrice.addEventListener('change', function () {
+          s.price = sizePrice.value === '' ? null : Number(sizePrice.value);
+        });
+        sizeBox.appendChild(row);
+      });
+    }
+    drawSizes();
+
+    sizeAdd.addEventListener('click', addSize);
+    sizeInput.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      addSize();
     });
 
     // --- фотографии ---
@@ -548,11 +580,12 @@
 
         el('div', { class: 'card' }, [
           el('h2', { class: 'card__title', text: 'Размеры' }),
+          el('p', { class: 'field__hint', text: 'Если размеры есть, покупатель на странице товара сначала выбирает размер, '
+            + 'и только потом кладёт товар в корзину.' }),
           sizeBox,
-          sizeInput,
-          el('p', { class: 'field__hint', text: 'Если размеры есть, покупатель выбирает их на странице товара. '
-            + 'Цена у размера — необязательна: пусто значит «как обычная цена товара». Если у размеров разные цены, '
-            + 'в каталоге и в шапке страницы товара покажется «от» самой дешёвой.' }),
+          el('div', { class: 'size-add' }, [sizeInput, sizeAdd]),
+          el('p', { class: 'field__hint', text: 'У размера можно поставить свою цену, если она отличается от цены товара выше — '
+            + 'например, для товара побольше. Не поставили — считается обычная цена товара.' }),
         ]),
 
         el('div', { class: 'card' }, [

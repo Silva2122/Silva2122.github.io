@@ -227,19 +227,33 @@ a { color: var(--teal-deep); }
 .drop--over { border-color: var(--teal); background: var(--tint); color: var(--teal-deep); }
 .drop input { display: none; }
 
-.sizes { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
-.size {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 8px 6px 14px; border-radius: 999px;
-  background: var(--grey); font-size: 14px;
+/* Строка = «размер — его цена», а не таблетка-тег: с формой работает
+   владелец магазина, а не разработчик, и связь размера с ценой рядом
+   с ним должна читаться сразу, без подсказок. */
+.sizes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.sizes__head {
+  display: grid; grid-template-columns: 90px 1fr 90px 28px; gap: 12px; align-items: center;
+  padding: 0 14px; font-size: 12px; color: var(--muted);
 }
-.size button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 16px; line-height: 1; }
-.size button:hover { color: var(--warn); }
+.size {
+  display: grid; grid-template-columns: 90px 1fr 90px 28px; gap: 12px; align-items: center;
+  padding: 10px 14px; border-radius: var(--radius); background: var(--grey);
+}
+/* Своя цена у размера — редкий случай, и строка с ней должна выделяться
+   в общем списке, а не теряться среди одинаковых серых. */
+.size--custom { background: var(--tint); }
+.size__name { font-size: 15px; font-weight: 600; }
 .size__price {
-  width: 74px; border: 0; background: #fff; border-radius: 999px;
-  padding: 3px 8px; font-size: 13px; color: var(--ink);
+  width: 100%; border: 1px solid var(--line); background: #fff; border-radius: 8px;
+  padding: 7px 10px; font-size: 14px; color: var(--ink);
 }
 .size__price::placeholder { color: var(--muted); }
+.size__hint { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.size button { border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 18px; line-height: 1; justify-self: center; }
+.size button:hover { color: var(--warn); }
+
+.size-add { display: flex; gap: 10px; margin-top: 4px; }
+.size-add .input { flex: 1 1 auto; }
 
 .bar {
   position: sticky; bottom: 0; margin-top: 22px; padding: 14px 0;
