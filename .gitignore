@@ -12,6 +12,9 @@ old_version/_missing.json
 dist/
 .shots/
 node_modules/
+# Кэш npm — на сервере HOME указывает в корень проекта (см. deploy/axelnn-admin.service),
+# и npm кладёт кэш прямо сюда, а не в домашнюю папку пользователя.
+.npm/
 
 # Системное
 Thumbs.db
