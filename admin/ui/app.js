@@ -467,6 +467,11 @@
           },
         }, [
           el('img', { src: '/' + src, alt: '' }),
+          el('button', {
+            class: 'shot__crop', type: 'button', title: 'Кадрировать',
+            html: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>',
+            onclick: function (e) { e.stopPropagation(); openCropper(src); },
+          }),
           el('button', { class: 'shot__del', type: 'button', title: 'Удалить фото', text: '×', onclick: function (e) {
             e.stopPropagation();
             gallery.splice(i, 1);
@@ -480,6 +485,102 @@
       }
     }
     drawShots();
+
+    // Кадрирование: квадратное окно поверх формы, фото внутри двигается
+    // и масштабируется мышью/пальцем — как обрезка фото профиля в соцсетях,
+    // а не свободный прямоугольник. Рамка на сайте тоже квадратная (см.
+    // .gallery__stage в style.css), так что результат совпадает с ней ровно.
+    function openCropper(src) {
+      var frame = 320;
+      var st = { scale: 1, min: 1, x: 0, y: 0, iw: 0, ih: 0 };
+
+      var stage = el('div', { class: 'crop-stage' });
+      var img = el('img', { class: 'crop-img', src: '/' + src, alt: '' });
+      stage.appendChild(img);
+
+      function clamp() {
+        var rw = st.iw * st.scale, rh = st.ih * st.scale;
+        st.x = Math.min(0, Math.max(frame - rw, st.x));
+        st.y = Math.min(0, Math.max(frame - rh, st.y));
+      }
+      function render() {
+        img.style.width = (st.iw * st.scale) + 'px';
+        img.style.height = (st.ih * st.scale) + 'px';
+        img.style.transform = 'translate(' + st.x + 'px,' + st.y + 'px)';
+      }
+
+      var zoom = el('input', { class: 'crop-zoom', type: 'range', min: '1', max: '3', step: '0.01', value: '1' });
+      zoom.addEventListener('input', function () {
+        // Центр видимой области должен остаться на месте, а не уехать —
+        // иначе от одного лишь движения ползунка кадр каждый раз прыгает.
+        var cx = (frame / 2 - st.x) / st.scale;
+        var cy = (frame / 2 - st.y) / st.scale;
+        st.scale = st.min * Number(zoom.value);
+        st.x = frame / 2 - cx * st.scale;
+        st.y = frame / 2 - cy * st.scale;
+        clamp();
+        render();
+      });
+
+      var dragging = null;
+      stage.addEventListener('pointerdown', function (e) {
+        dragging = { x: e.clientX, y: e.clientY, sx: st.x, sy: st.y };
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        st.x = dragging.sx + (e.clientX - dragging.x);
+        st.y = dragging.sy + (e.clientY - dragging.y);
+        clamp();
+        render();
+      });
+      stage.addEventListener('pointerup', function () { dragging = null; });
+      stage.addEventListener('pointercancel', function () { dragging = null; });
+
+      img.addEventListener('load', function () {
+        st.iw = img.naturalWidth;
+        st.ih = img.naturalHeight;
+        st.min = frame / Math.min(st.iw, st.ih);
+        st.scale = st.min;
+        st.x = (frame - st.iw * st.scale) / 2;
+        st.y = (frame - st.ih * st.scale) / 2;
+        render();
+      });
+
+      var saveBtn = el('button', { class: 'btn', type: 'button', text: 'Сохранить' });
+      var cancelBtn = el('button', { class: 'btn btn--ghost', type: 'button', text: 'Отмена' });
+      var overlay = el('div', { class: 'crop-overlay' }, [
+        el('div', { class: 'crop-modal' }, [
+          el('h2', { class: 'card__title', text: 'Кадрирование фото' }),
+          el('p', { class: 'field__hint', text: 'Перетащите фото и подберите масштаб — что видно в квадрате, то и останется на сайте.' }),
+          stage,
+          zoom,
+          el('div', { class: 'bar', style: 'position:static;background:none;margin-top:14px' }, [saveBtn, cancelBtn]),
+        ]),
+      ]);
+
+      cancelBtn.onclick = function () { overlay.remove(); };
+      saveBtn.onclick = function () {
+        saveBtn.disabled = true;
+        var size = frame / st.scale;
+        var x = -st.x / st.scale;
+        var y = -st.y / st.scale;
+        api('/api/products/' + encodeURIComponent(p.id) + '/photo/crop', {
+          method: 'POST', body: { src: src, x: x, y: y, size: size },
+        }).then(function (fresh) {
+          overlay.remove();
+          gallery = fresh.gallery.slice();
+          p.img = fresh.img;
+          drawShots();
+          toast('Фото обрезано');
+        }).catch(function (e) {
+          saveBtn.disabled = false;
+          toast(e.message, true);
+        });
+      };
+
+      document.body.appendChild(overlay);
+    }
 
     var fileInput = el('input', { type: 'file', accept: 'image/*', multiple: true, onchange: function () {
       upload(fileInput.files);

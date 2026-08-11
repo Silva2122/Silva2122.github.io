@@ -14,7 +14,7 @@ import { json, fail, readBody, readJSONBody } from './http.mjs';
 import { COOKIE, TTL_DAYS, checkPassword, issueToken, validToken, cookieOf, secureCookie } from './auth.mjs';
 import {
   PRODUCT_IMG, SECTION_IMG, PAGE_IMG,
-  saveShot, shotName, refreshMain, removeAsset, saveHero,
+  saveShot, cropShot, shotName, refreshMain, removeAsset, saveHero,
 } from './images.mjs';
 import { startPublish, publishState, isRunning } from './publish.mjs';
 
@@ -269,6 +269,46 @@ export async function api(req, res, path, query, cfg) {
       saveProducts(products);
       return json(res, { ok: true });
     }
+  }
+
+  // Кадрирование уже залитого фото — квадратом под рамку на сайте. Координаты
+  // приходят в пикселях исходного файла: их считает браузер (см. openCropper
+  // в ui/app.js), сервер только режет sharp'ом и переиздаёт webp под тем же
+  // конвейером, что и обычная заливка.
+  //
+  // Фото ищем по пути (src), а не по индексу в галерее: если владелец успел
+  // перетащить кадры местами, но ещё не сохранил форму, локальный индекс
+  // на клиенте и порядок в сохранённом товаре могут разойтись — обрезали бы
+  // не тот кадр.
+  const cropMatch = path.match(/^\/api\/products\/([^/]+)\/photo\/crop$/);
+  if (cropMatch && req.method === 'POST') {
+    const id = decodeURIComponent(cropMatch[1]);
+    const products = loadProducts();
+    const product = products.find((p) => String(p.id) === id);
+    if (!product) return fail(res, 'Товар не найден', 404);
+
+    const body = await readJSONBody(req);
+    const index = (product.gallery || []).indexOf(body.src);
+    if (index === -1) return fail(res, 'Такого фото нет', 404);
+    const src = product.gallery[index];
+    if (!existsSync(join(ROOT, src))) return fail(res, 'Такого фото нет', 404);
+
+    const rect = { x: Number(body.x) || 0, y: Number(body.y) || 0, size: Number(body.size) || 0 };
+    if (!(rect.size > 0)) return fail(res, 'Некорректная область кадрирования');
+
+    const buffer = readFileSync(join(ROOT, src));
+    const name = shotName(product.id, Buffer.concat([buffer, Buffer.from(JSON.stringify(rect))]));
+    mkdirSync(PRODUCT_IMG, { recursive: true });
+    try {
+      await cropShot(buffer, join(PRODUCT_IMG, name), rect);
+    } catch {
+      return fail(res, 'Не получилось обрезать фото — попробуйте другую область');
+    }
+    removeAsset(src);
+    product.gallery[index] = `assets/img/products/${name}`;
+    if (index === 0) await refreshMain(product);
+    saveProducts(products);
+    return json(res, product);
   }
 
   // --- разделы ---

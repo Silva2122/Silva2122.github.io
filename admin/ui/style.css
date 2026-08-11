@@ -214,7 +214,33 @@ a { color: var(--teal-deep); }
   border: 0; border-radius: 50%; background: rgba(255, 255, 255, .92); color: var(--warn);
   cursor: pointer; display: grid; place-items: center; font-size: 15px; line-height: 1;
 }
+.shot__crop {
+  position: absolute; right: 6px; bottom: 6px; width: 26px; height: 26px;
+  border: 0; border-radius: 50%; background: rgba(255, 255, 255, .92); color: var(--ink);
+  cursor: pointer; display: grid; place-items: center;
+}
+.shot__crop:hover { color: var(--teal-deep); }
 .shot--over { outline: 2px dashed var(--teal); outline-offset: -2px; }
+
+/* --- Кадрирование фото ----------------------------------------------------
+   Квадратное окно поверх формы: фото внутри двигается и масштабируется —
+   как обрезка фото профиля в соцсетях, а не свободный прямоугольник.
+   Рамка на сайте (.gallery__stage) тоже квадратная, результат совпадёт с ней. */
+.crop-overlay {
+  position: fixed; inset: 0; background: rgba(20, 26, 27, .55);
+  display: grid; place-items: center; padding: 20px; z-index: 100;
+}
+.crop-modal {
+  background: #fff; border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 22px; width: 100%; max-width: 400px;
+}
+.crop-stage {
+  position: relative; width: 320px; height: 320px; max-width: 100%; aspect-ratio: 1;
+  overflow: hidden; border-radius: 10px; background: var(--grey);
+  margin: 14px auto 0; touch-action: none; cursor: grab;
+}
+.crop-img { position: absolute; left: 0; top: 0; max-width: none; user-select: none; -webkit-user-drag: none; }
+.crop-zoom { width: 100%; margin-top: 14px; }
 
 /* display: block обязателен — это <label>, а строчный элемент не раздвигает
    строку своими полями, и зона загрузки наезжала на сетку кадров. */
