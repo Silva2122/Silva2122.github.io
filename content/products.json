@@ -1,5 +1,23 @@
 [
  {
+  "id": "25081",
+  "name": "Термо комбинезон \"МИЯ\"",
+  "price": null,
+  "oldPrice": null,
+  "available": true,
+  "cat": "Одежда для девочек",
+  "url": "/catalog/odezhda_dlya_devochek/25081/",
+  "brand": null,
+  "sizes": [],
+  "description": [],
+  "img": "assets/img/products/25081.webp",
+  "gallery": [
+   "assets/img/products/25081-ad422193.webp"
+  ],
+  "cut": false,
+  "hidden": false
+ },
+ {
   "id": "16341",
   "name": "Повязка термо \"Сказочные герои\"",
   "price": 1250,
