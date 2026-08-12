@@ -1102,6 +1102,14 @@ button { font: inherit; }
 
 .footer__bottom a:hover { color: var(--teal-deep); }
 
+.footer__legal {
+  margin: 10px 0 0;
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 760px;
+}
+
 /* ==========================================================================
    Внутренняя страница
    Общий каркас для всех информационных разделов: шапка с крошками,
