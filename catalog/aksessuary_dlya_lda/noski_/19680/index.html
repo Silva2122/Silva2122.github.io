@@ -587,6 +587,24 @@
         t.classList.toggle('is-on', t === thumb);
       });
     });
+
+    // Увеличение по наведению — только там, где есть настоящий курсор:
+    // на тачскрине «водить мышью над фото» не бывает, а масштаб пальцами
+    // и так работает через сам браузер, свой обработчик тут только мешал бы.
+    var stage = gal.querySelector('.gallery__stage');
+    if (stage && window.matchMedia && matchMedia('(hover: hover)').matches) {
+      stage.addEventListener('mousemove', function (e) {
+        var rect = stage.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        main.style.transformOrigin = x + '% ' + y + '%';
+        main.style.transform = 'scale(2.2)';
+      });
+      stage.addEventListener('mouseleave', function () {
+        main.style.transform = '';
+        main.style.transformOrigin = '';
+      });
+    }
   })();
 
   // Промо-карусель: автоплей, стрелки, точки. Сама прокрутка — нативный скролл

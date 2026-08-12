@@ -2290,6 +2290,14 @@ a.brand:hover { background: var(--tint); }
   object-fit: contain;
 }
 
+/* Увеличение по наведению: transform-origin и scale ставит JS по курсору
+   (см. инлайн-скрипт в конце index.html), CSS тут только про то, что курсор
+   должен показать «можно приблизить», и что stage режет вылезающий край
+   (overflow: hidden уже есть выше — увеличенный кадр сам не вылезет). */
+@media (hover: hover) {
+  .gallery__stage { cursor: zoom-in; }
+}
+
 .gallery__stage .ph { width: 100%; height: 100%; background: var(--grey); }
 
 .gallery__thumbs {
