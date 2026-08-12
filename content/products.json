@@ -1,14 +1,98 @@
 [
  {
+  "id": "25082",
+  "name": "Платье термо \"Аллира\"",
+  "price": 4200,
+  "oldPrice": null,
+  "available": true,
+  "cat": "Одежда для девочек/Термоплатья",
+  "url": "/catalog/odezhda_dlya_devochek/termoplatya/25082/",
+  "brand": "StudioSports",
+  "sizes": [
+   {
+    "size": "110",
+    "price": null
+   },
+   {
+    "size": "116",
+    "price": null
+   },
+   {
+    "size": "122",
+    "price": null
+   },
+   {
+    "size": "128",
+    "price": null
+   },
+   {
+    "size": "134",
+    "price": null
+   },
+   {
+    "size": "140",
+    "price": null
+   },
+   {
+    "size": "146",
+    "price": null
+   }
+  ],
+  "description": [],
+  "img": "assets/img/products/25082.webp",
+  "gallery": [
+   "assets/img/products/25082-f8e69df3.webp"
+  ],
+  "cut": false,
+  "hidden": false
+ },
+ {
   "id": "25081",
   "name": "Термо комбинезон \"МИЯ\"",
-  "price": null,
-  "oldPrice": null,
+  "price": 4100,
+  "oldPrice": 5700,
   "available": true,
   "cat": "Одежда для девочек",
   "url": "/catalog/odezhda_dlya_devochek/25081/",
-  "brand": null,
-  "sizes": [],
+  "brand": "StudioSports",
+  "sizes": [
+   {
+    "size": "110",
+    "price": 7300
+   },
+   {
+    "size": "116",
+    "price": 7400
+   },
+   {
+    "size": "122",
+    "price": 7800
+   },
+   {
+    "size": "128",
+    "price": 7990
+   },
+   {
+    "size": "134",
+    "price": 8600
+   },
+   {
+    "size": "140",
+    "price": 8600
+   },
+   {
+    "size": "146",
+    "price": 8970
+   },
+   {
+    "size": "152",
+    "price": 7900
+   },
+   {
+    "size": "158",
+    "price": 9900
+   }
+  ],
   "description": [],
   "img": "assets/img/products/25081.webp",
   "gallery": [
