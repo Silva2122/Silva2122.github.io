@@ -1003,6 +1003,7 @@
       var email = el('input', { class: 'input', type: 'email', value: site.email || '', placeholder: 'info@axelnn.ru' });
       var vk = el('input', { class: 'input', value: site.vk || '', placeholder: 'https://vk.com/axelnn' });
       var telegram = el('input', { class: 'input', value: site.telegram || '', placeholder: 'https://t.me/…' });
+      var instagram = el('input', { class: 'input', value: site.instagram || '', placeholder: 'https://www.instagram.com/…' });
 
       box.appendChild(el('div', { class: 'card' }, [
         el('label', { class: 'field' }, [
@@ -1013,7 +1014,9 @@
         el('div', { class: 'row' }, [
           el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'ВКонтакте' }), vk]),
           el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Телеграм' }), telegram]),
+          el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Instagram' }), instagram]),
         ]),
+        el('p', { class: 'field__hint', text: 'Телеграм и Instagram — это ещё и баннеры «Мы в Telegram/Instagram» на главной.' }),
         el('p', { class: 'field__hint', text: 'Адрес и режим работы правятся текстом — в разделе «Тексты страниц», страница «Контакты».' }),
       ]));
 
@@ -1021,7 +1024,7 @@
         el('button', { class: 'btn', type: 'button', text: 'Сохранить', onclick: function () {
           api('/api/site', { method: 'PUT', body: {
             phone: phone.value.trim(), email: email.value.trim(),
-            vk: vk.value.trim(), telegram: telegram.value.trim(),
+            vk: vk.value.trim(), telegram: telegram.value.trim(), instagram: instagram.value.trim(),
           } }).then(function () { toast('Сохранено. Опубликуйте, чтобы увидеть на сайте'); })
             .catch(function (e) { toast(e.message, true); });
         } }),

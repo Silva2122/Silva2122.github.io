@@ -44,16 +44,22 @@ function applyContacts(html, site) {
       .replace(/(>)\s*[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\s*(<)/gi, `$1${site.email}$2`);
   }
 
-  // Соцсети — две ссылки подряд в подвале, порядок в разметке фиксирован.
-  if (site.vk || site.telegram) {
-    const links = [site.vk, site.telegram];
+  // Соцсети — ссылки подряд внутри контейнера, порядок в разметке фиксирован.
+  const socialLinks = (html, className, links) => {
+    if (!links.some(Boolean)) return html;
     let i = 0;
-    out = out.replace(/(<div class="footer__social">)([\s\S]*?)(<\/div>)/g, (all, open, body, close) =>
+    const re = new RegExp(`(<div class="${className}">)([\\s\\S]*?)(<\\/div>)`, 'g');
+    return html.replace(re, (all, open, body, close) =>
       open + body.replace(/href="[^"]*"/g, () => {
         const href = links[i++] || '';
         return href ? `href="${href}"` : 'href="#"';
       }) + close);
-  }
+  };
+
+  out = socialLinks(out, 'footer__social', [site.vk, site.telegram]);
+  // Баннеры «Мы в Telegram / Мы в Instagram» — только на главной, но
+  // регулярка просто не найдёт .socials на остальных страницах и не тронет их.
+  out = socialLinks(out, 'socials', [site.telegram, site.instagram]);
 
   return out;
 }

@@ -961,6 +961,47 @@ button { font: inherit; }
 }
 
 /* ==========================================================================
+   Соцсети — баннеры на главной
+   ========================================================================== */
+.socials {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 620px) {
+  .socials { grid-template-columns: 1fr 1fr; }
+}
+
+.social-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: clamp(20px, 2.4vw, 30px);
+  border-radius: 9px;
+  background: var(--teal-deep);
+  color: #fff;
+  transition: background-color .2s ease;
+}
+
+.social-banner:hover { background: var(--teal); }
+
+.social-banner__icon { flex: 0 0 auto; }
+
+.social-banner__text { display: flex; flex-direction: column; gap: 4px; }
+
+.social-banner__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(19px, 1.8vw, 22px);
+}
+
+.social-banner__sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, .8);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
    Подвал
    ========================================================================== */
 .footer-wrap {
