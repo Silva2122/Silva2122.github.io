@@ -17,6 +17,7 @@ import {
   saveShot, cropShot, shotName, refreshMain, removeAsset, saveHero,
 } from './images.mjs';
 import { startPublish, publishState, isRunning } from './publish.mjs';
+import { sendOrderMail, mailConfigured } from './mail.mjs';
 
 // --- данные для интерфейса ------------------------------------------------
 
@@ -97,6 +98,55 @@ export async function api(req, res, path, query, cfg) {
 
   if (path === '/api/session') {
     return json(res, { authed, login: authed ? cfg.login : null });
+  }
+
+  // --- заказ из корзины ---
+  // Публичный маршрут: его вызывает страница /cart/, а не вошедший владелец.
+  if (path === '/api/order' && req.method === 'POST') {
+    const body = await readJSONBody(req);
+
+    // Скрытое поле формы: человек его не видит и не заполняет, а бот-заполнитель
+    // форм — заполняет. Заказ в таком случае тихо не отправляем, но и не пугаем
+    // бота ошибкой, чтобы не подсказывать, что поле — ловушка.
+    if (String(body.company || '').trim()) return json(res, { ok: true });
+
+    const name = String(body.name || '').trim().slice(0, 200);
+    const phone = String(body.phone || '').trim().slice(0, 40);
+    const items = Array.isArray(body.items) ? body.items.slice(0, 100) : [];
+    if (!phone) return fail(res, 'Укажите телефон для связи');
+    if (!items.length) return fail(res, 'Корзина пуста');
+    if (!mailConfigured()) return fail(res, 'Приём заказов на почту сейчас недоступен — позвоните нам', 503);
+
+    const lines = items.map((it, i) => {
+      const qty = Math.max(1, Number(it.qty) || 1);
+      const price = Number(it.price) || 0;
+      const size = it.size ? String(it.size).trim().slice(0, 40) : '';
+      const url = it.url ? String(it.url).trim().slice(0, 300) : '';
+      return `${i + 1}. ${String(it.name || 'товар').trim().slice(0, 200)}`
+        + (size ? `, размер ${size}` : '')
+        + ` — ${qty} шт` + (price ? ` × ${price} ₽` : '')
+        + (url ? `\n   https://axelnn.ru${url}` : '');
+    });
+    const total = items.reduce((sum, it) =>
+      sum + (Number(it.price) || 0) * Math.max(1, Number(it.qty) || 1), 0);
+
+    const text = [
+      'Заказ с сайта axelnn.ru',
+      `Имя: ${name || '—'}`,
+      `Телефон: ${phone}`,
+      '',
+      ...lines,
+      '',
+      `Итого: ${total} ₽`,
+    ].join('\n');
+
+    try {
+      await sendOrderMail({ subject: `Заказ с сайта — ${name || phone}`, text });
+    } catch (e) {
+      console.error('Отправка заказа не удалась:', e);
+      return fail(res, 'Не получилось отправить заказ — позвоните нам', 502);
+    }
+    return json(res, { ok: true });
   }
 
   // Всё остальное — только для вошедшего.

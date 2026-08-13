@@ -28,3 +28,6 @@ assets/img/catalog-original/
 # Сам content/ в репозиторий идёт — это данные сайта, а этот файл нет.
 content/.admin.json
 
+# SMTP-пароль приложения для отправки заказов из корзины на почту.
+content/.smtp.json
+

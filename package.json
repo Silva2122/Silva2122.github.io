@@ -12,6 +12,7 @@
   "type": "module",
   "private": true,
   "dependencies": {
+    "nodemailer": "^9.0.5",
     "sharp": "^0.34.5"
   },
   "devDependencies": {

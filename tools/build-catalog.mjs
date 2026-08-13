@@ -922,10 +922,22 @@ simplePage({
         <span>Итого</span>
         <span class="order__total" data-cart-total>0 ₽</span>
       </div>
-      <button type="button" class="btn order__btn" data-copy-order>Скопировать заказ</button>
-      <p class="order__note">Позвоните <a href="tel:+78314234796">+7&nbsp;831&nbsp;423-47-96</a> — примем заказ,
-      подберём размер и рассчитаем доставку. Состав корзины можно скопировать кнопкой выше
-      и прислать в мессенджер. <a href="../help/delivery/">Условия доставки</a></p>
+      <form class="order__form" id="order-form" novalidate>
+        <label class="order__field">
+          <span>Имя</span>
+          <input type="text" name="name" autocomplete="name">
+        </label>
+        <label class="order__field">
+          <span>Телефон</span>
+          <input type="tel" name="phone" autocomplete="tel" placeholder="+7 900 000-00-00" required>
+        </label>
+        <input class="order__hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button type="submit" class="btn order__btn">Отправить заказ</button>
+      </form>
+      <button type="button" class="btn btn--ghost order__btn" data-copy-order>Скопировать заказ</button>
+      <p class="order__note">Оставьте телефон — перезвоним сами. Или позвоните
+      <a href="tel:+78314234796">+7&nbsp;831&nbsp;423-47-96</a> — примем заказ, подберём размер
+      и рассчитаем доставку. <a href="../help/delivery/">Условия доставки</a></p>
     </aside>
   </div>
 </section>`,

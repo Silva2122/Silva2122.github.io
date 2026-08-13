@@ -3027,6 +3027,41 @@ button.header__tool {
 .order__note a { color: var(--ink); border-bottom: 1px solid var(--line); }
 .order__note a:hover { color: var(--teal-deep); border-color: var(--teal-deep); }
 
+.order__field {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.order__field span { display: block; margin-bottom: 6px; }
+
+.order__field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 9px 10px;
+  font: inherit;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.order__field input:focus-visible { border-color: var(--teal-deep); }
+
+/* Ловушка для ботов-заполнителей форм: человек её не видит и не сможет
+   заполнить, а автозаполнение форм — заполнит. Не display:none и не
+   hidden — это боты умеют распознавать и пропускать. */
+.order__hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
 /* ==========================================================================
    Пальцем, а не мышью
    ==========================================================================

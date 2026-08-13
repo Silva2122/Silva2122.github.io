@@ -1,7 +1,10 @@
 /* ==========================================================================
    Корзина и избранное
    ==========================================================================
-   Бэкенда у нового сайта нет, поэтому обе сущности живут в localStorage.
+   Корзина и избранное живут в localStorage — своего хранилища на сервере
+   у них нет. Отправка заказа (форма на /cart/) — единственное место, где
+   скрипт стучится на сервер: POST /api/order в admin/api.mjs пересылает
+   письмом то, что видит здесь, дальше сервер не хранит.
    Скрипт подключён в общей шапке и потому есть на каждой странице: счётчики
    у иконок, выдвижная панель корзины и разметка страниц /cart/ и /favorites/
    собираются здесь же.
@@ -248,8 +251,8 @@
     }
   }
 
-  // Состав заказа простым текстом — его отправляют в мессенджер или диктуют
-  // по телефону. Бэкенда у сайта нет, и «заявка принята» была бы неправдой.
+  // Состав заказа простым текстом — можно скопировать и прислать в мессенджер
+  // или продиктовать по телефону, если форма ниже почему-то не отправляется.
   function orderText(list) {
     var lines = list.map(function (it, i) {
       return (i + 1) + '. ' + it.name + (it.size ? ', размер ' + it.size : '') +
@@ -257,6 +260,50 @@
     });
     lines.push('Итого: ' + money(cartTotal(list)));
     return 'Заказ в Аксель·НН\n' + lines.join('\n');
+  }
+
+  // --- отправка заказа на почту --------------------------------------------
+  function sendOrder(form) {
+    var list = read(CART);
+    if (!list.length) return;
+
+    var phone = form.phone.value.trim();
+    if (!phone) {
+      form.phone.focus();
+      toast('Укажите телефон для связи');
+      return;
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Отправляем…';
+
+    fetch('/api/order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: form.name.value.trim(),
+        phone: phone,
+        company: form.company.value,
+        items: list.map(function (it) {
+          return { id: it.id, name: it.name, size: it.size, qty: it.qty, price: it.price, url: it.url };
+        }),
+      }),
+    })
+      .then(function (r) { return r.json().then(function (data) { return { ok: r.ok, data: data }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error((res.data && res.data.error) || 'Не получилось отправить заказ');
+        write(CART, []);
+        form.reset();
+        toast('Заказ отправлен — мы свяжемся с вами');
+      })
+      .catch(function (err) {
+        toast(err.message || 'Не получилось отправить, позвоните нам');
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.textContent = 'Отправить заказ';
+      });
   }
 
   function favCard(it) {
@@ -424,6 +471,14 @@
         toast(url);
       }
     }
+  });
+
+  // Отправка заказа с телефоном и именем — форма только в блоке заказа
+  document.addEventListener('submit', function (e) {
+    var form = e.target.closest('#order-form');
+    if (!form) return;
+    e.preventDefault();
+    sendOrder(form);
   });
 
   // Выбор размера может сменить цену — до выбора в шапке товара показана
