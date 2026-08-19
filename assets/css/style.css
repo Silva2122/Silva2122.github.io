@@ -2347,6 +2347,90 @@ a.brand:hover { background: var(--tint); }
   color: var(--muted);
 }
 
+/* ==========================================================================
+   Полноэкранный просмотр фотографий товара — клик по крупному кадру
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  /* Сплошной, не полупрозрачный: тонкая заливка поверх контрастного чёрного
+     текста на белом фоне страницы (заголовок, цена) всё равно просвечивала
+     призраком даже на 92% альфы. */
+  background: #0b1011;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.lightbox--on .lightbox__backdrop { opacity: 1; }
+
+.lightbox__stage {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 960px);
+  height: min(88vh, 960px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(.97);
+  transition: opacity .2s ease, transform .2s ease;
+  touch-action: pan-y;
+}
+
+.lightbox--on .lightbox__stage { opacity: 1; transform: none; }
+
+.lightbox__img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .12);
+  color: #fff;
+  cursor: pointer;
+  transition: background .15s ease;
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover { background: rgba(255, 255, 255, .22); }
+
+.lightbox__close { top: clamp(10px, 3vw, 26px); right: clamp(10px, 3vw, 26px); }
+.lightbox__nav { top: 50%; transform: translateY(-50%); }
+.lightbox__nav--prev { left: clamp(6px, 2vw, 22px); }
+.lightbox__nav--next { right: clamp(6px, 2vw, 22px); }
+
+.lightbox__count {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(10px, 3vw, 22px);
+  transform: translateX(-50%);
+  margin: 0;
+  color: rgba(255, 255, 255, .78);
+  font-size: 13px;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__backdrop, .lightbox__stage { transition: none; }
+}
+
 /* --- Блок покупки ------------------------------------------------------- */
 /* Липкий на десктопе: описание и лента похожих длинные, и без этого цена
    с кнопкой уезжают из виду на первом же прокруте. */
