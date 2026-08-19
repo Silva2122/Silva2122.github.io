@@ -113,6 +113,9 @@ export const saveSections = (list) => writeJSON(paths.sections, list);
 export const loadSite = () => readJSON(paths.site, {});
 export const saveSite = (data) => writeJSON(paths.site, data);
 
+// Телефон в href="tel:" — только цифры и плюс, без пробелов/скобок/дефисов.
+export const digits = (s) => String(s || '').replace(/[^\d+]/g, '');
+
 export const loadHome = () => readJSON(paths.home, {});
 export const saveHome = (data) => writeJSON(paths.home, data);
 

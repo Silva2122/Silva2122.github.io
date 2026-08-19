@@ -14,9 +14,9 @@
 // скрипт. Данные — assets/products.json (картинки, цены, размеры) и
 // content/products.json (описания, которые правит владелец через админку).
 import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, relative } from 'node:path';
 import { splitVisible, HIDE_NO_PHOTO } from './visible.mjs';
-import { loadProducts, hasContent } from './content.mjs';
+import { loadProducts, hasContent, loadSite, digits } from './content.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ROOT = base('..');
@@ -37,6 +37,13 @@ const source = hasContent()
 if (!hasContent()) console.log('⚠ Нет content/products.json — описания берём из донора');
 
 const byId = new Map(source.map((p) => [String(p.id), p]));
+
+// Телефон берём из content/site.json — если вписать его строкой здесь,
+// правка в админке до этого шаблона не доедет, и на карточке товара
+// останется прошлый номер, хотя шапка и подвал уже покажут новый.
+const site = loadSite();
+const phoneHref = digits(site.phone);
+const phoneText = site.phone || '';
 
 // Те же таблицы, что в build-catalog.mjs: имена разделов в доноре набраны
 // как придётся, а в крошках и характеристиках должно стоять человеческое.
@@ -401,7 +408,7 @@ ${sizeBlock}
           </li>
         </ul>
 
-        <p class="product__ask">Не уверены с&nbsp;размером? Позвоните: <a href="tel:+78314234796">+7&nbsp;831&nbsp;423-47-96</a></p>
+        <p class="product__ask">Не уверены с&nbsp;размером? Позвоните: <a href="tel:${phoneHref}">${phoneText}</a></p>
       </div>
     </div>
   </div>
@@ -442,23 +449,35 @@ for (const it of list) {
   if (built % 300 === 0) console.log(`  ${built}/${list.length}…`);
 }
 
-// --- убираем страницы скрытых товаров -------------------------------------
-// Прошлый прогон собрал страницу на каждый товар манифеста, включая те, что
-// теперь скрыты. Ссылок на них не осталось, но по прямому адресу они бы
-// открывались с пустой галереей — сносим. При --limit не трогаем ничего:
-// это частичный прогон для проверки, а не полная пересборка.
+// --- убираем страницы скрытых и удалённых товаров --------------------------
+// Прошлый прогон собрал страницу на каждый видимый тогда товар — включая те,
+// что с тех пор скрыты (нет фото, закрыт раздел) или вовсе исчезли из
+// манифеста (товар удалили в админке). Идём по диску, а не по списку скрытых
+// из текущего манифеста: удалённый товар в манифесте не значится вообще,
+// и по одной только разнице «было видимо — стало скрыто» его страницу
+// было бы не найти. Ссылок на такие страницы не осталось, но по прямому
+// адресу они бы открывались со вчерашними (или вовсе пустыми) данными.
+// При --limit не трогаем ничего: это частичный прогон для проверки.
 let removed = 0;
-if (!LIMIT && HIDE_NO_PHOTO) {
-  for (const it of hidden) {
-    const seg = it.url.split('/').filter(Boolean);
-    if (seg[0] !== 'catalog' || seg.length < 3) continue;
-    const file = join(ROOT, ...seg, 'index.html');
-    if (!existsSync(file)) continue;
-    // Страховка от сноса чужого файла: удаляем только подписанное нами.
-    if (!readFileSync(file, 'utf8').includes('Страницу целиком собирает tools/build-products.mjs')) continue;
-    if (!DRY) rmSync(file);
-    removed++;
-  }
+if (!LIMIT) {
+  const visibleIds = new Set(visible.map((it) => String(it.id)));
+  const marker = 'Страницу целиком собирает tools/build-products.mjs';
+
+  const walk = (dir) => {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      const p = join(dir, e.name);
+      if (e.isDirectory()) { walk(p); continue; }
+      if (e.name !== 'index.html') continue;
+      const seg = relative(ROOT, dir).split(/[\\/]/).filter(Boolean);
+      const id = seg[seg.length - 1];
+      if (seg[0] !== 'catalog' || seg.length < 3 || visibleIds.has(id)) continue;
+      // Страховка от сноса чужого файла: удаляем только подписанное нами.
+      if (!readFileSync(p, 'utf8').includes(marker)) continue;
+      if (!DRY) rmSync(p);
+      removed++;
+    }
+  };
+  walk(join(ROOT, 'catalog'));
 
   // После сноса остаются пустые папки товаров и подразделов — в них уже нечему
   // лежать, а в дереве проекта они выглядят как существующие адреса.

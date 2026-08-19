@@ -13,7 +13,7 @@
 // показывает актуальный текст, а не расходится с сайтом.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { ROOT, loadPages, savePages, loadSite } from './content.mjs';
+import { ROOT, loadPages, savePages, loadSite, digits } from './content.mjs';
 import { slotsOf, applyEdits, sitePages, zonesFor } from './pages.mjs';
 import { typo } from './typo.mjs';
 
@@ -24,16 +24,21 @@ const DRY = process.argv.includes('--dry');
 // и в ссылке. Ищем их по маске, а не по прошлому значению: прошлое пришлось бы
 // где-то хранить, и первая же правка руками рассинхронизировала бы таблицу.
 
-const digits = (s) => String(s || '').replace(/[^\d+]/g, '');
-
 function applyContacts(html, site) {
   let out = html;
 
   if (site.phone) {
     out = out
       .replace(/href="tel:[^"]*"/g, `href="tel:${digits(site.phone)}"`)
-      // Текст ссылки: телефон набран как «+7 831 423-47-96» и стоит между тегами.
-      .replace(/(>)\s*\+7[\s\-()\d]{9,}\s*(<)/g, `$1${site.phone}$2`);
+      // Текст ссылки: там, где он и есть сам телефон («+7 831…»), берём его
+      // целиком по границам тега <a href="tel:…">…</a>, а не по маске «похоже
+      // на телефон, и сразу за ним идёт <» — та однажды не смогла дочистить
+      // склеенные два номера (см. историю коммита), потому что цепляла только
+      // хвост вплотную к закрывающему тегу. У части ссылок в тексте кнопки
+      // стоит не номер, а подпись («Позвонить») — такие не трогаем: проверяем,
+      // что текущий текст начинается с «+», прежде чем стирать его целиком.
+      .replace(/(<a[^>]*href="tel:[^"]*"[^>]*>)([^<]*)(<\/a>)/g, (m, open, body, close) =>
+        /^\s*\+/.test(body) ? `${open}${site.phone}${close}` : m);
   }
 
   if (site.email) {
@@ -41,7 +46,11 @@ function applyContacts(html, site) {
       // Хвост после адреса сохраняем: у кнопки «Отправить резюме» в mailto
       // стоит ?subject=…, и замена ссылки целиком стирала тему письма.
       .replace(/href="mailto:[^"?]*([^"]*)"/g, `href="mailto:${site.email}$1"`)
-      .replace(/(>)\s*[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\s*(<)/gi, `$1${site.email}$2`);
+      // Текст ссылки — та же логика, что у телефона: заменяем целиком, но
+      // только там, где он и есть сам адрес (содержит «@»), не трогая кнопки
+      // с подписью вроде «Отправить резюме».
+      .replace(/(<a[^>]*href="mailto:[^"]*"[^>]*>)([^<]*)(<\/a>)/g, (m, open, body, close) =>
+        body.includes('@') ? `${open}${site.email}${close}` : m);
   }
 
   // Соцсети — ссылки подряд внутри контейнера, порядок в разметке фиксирован.

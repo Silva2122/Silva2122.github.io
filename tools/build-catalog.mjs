@@ -16,7 +16,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, copyFileSync, readdirSync, rmSync } from 'node:fs';
 import { join, basename, relative } from 'node:path';
 import { splitVisible, HIDE_NO_PHOTO } from './visible.mjs';
-import { loadSections } from './content.mjs';
+import { loadSections, loadSite, digits } from './content.mjs';
 
 const base = (u) => new URL(u, import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const ROOT = base('..');
@@ -36,6 +36,12 @@ const products = donorJSON('products.json', 'products');
 // или переставляется из админки, а не правкой генератора.
 const CONTENT_SECTIONS = loadSections();
 const secByKey = new Map(CONTENT_SECTIONS.map((s) => [s.key, s]));
+
+// Телефон — из content/site.json, а не строкой: иначе правка в админке
+// до /cart/ не доедет, хотя шапка и подвал на той же странице её уже покажут.
+const site = loadSite();
+const phoneHref = digits(site.phone);
+const phoneText = site.phone || '';
 
 // Манифест готовит tools/prepare-product-images.mjs: он ужимает кадры и решает,
 // какому товару достался вырезанный фон, а какому оригинал. Из него же берётся
@@ -936,7 +942,7 @@ simplePage({
       </form>
       <button type="button" class="btn btn--ghost order__btn" data-copy-order>Скопировать заказ</button>
       <p class="order__note">Оставьте телефон — перезвоним сами. Или позвоните
-      <a href="tel:+78314234796">+7&nbsp;831&nbsp;423-47-96</a> — примем заказ, подберём размер
+      <a href="tel:${phoneHref}">${phoneText}</a> — примем заказ, подберём размер
       и рассчитаем доставку. <a href="../help/delivery/">Условия доставки</a></p>
     </aside>
   </div>
