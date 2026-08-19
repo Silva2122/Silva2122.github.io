@@ -284,6 +284,133 @@
     ]);
   }
 
+  // Порядок товаров — вкладка на экране «Разделы каталога» (см. screenSections).
+  // Список — все товары раздела разом, без пагинации и фильтров списка
+  // товаров: страницу на сайте выше не собрать по кускам, значит и порядок
+  // выше не выставить по кускам.
+  //
+  // Перетаскивание мышью удобно для соседних карточек, но в разделе может
+  // быть и полтысячи товаров — тащить один в конец через весь список
+  // неудобно. Поэтому у каждой карточки есть ещё и поле «место»: вписал
+  // число — карточка встала туда без перетаскивания.
+  function drawOrderTab() {
+    var wrap = el('div');
+
+    var pickSection = el('select', { class: 'select toolbar__pick' });
+    state.sections.forEach(function (s) {
+      pickSection.appendChild(el('option', { value: s.key, text: s.title + ' (' + s.total + ')' }));
+    });
+    wrap.appendChild(el('div', { class: 'toolbar' }, [pickSection]));
+
+    var list = el('div', { class: 'items' });
+    var bar = el('div', { class: 'bar' });
+    wrap.appendChild(list);
+    wrap.appendChild(bar);
+
+    var items = [];
+    var dirty = false;
+    var dragFrom = null;
+    var current = '';
+
+    function drawBar() {
+      bar.innerHTML = '';
+      bar.appendChild(el('button', {
+        class: 'btn', type: 'button', text: dirty ? 'Сохранить порядок' : 'Порядок сохранён', disabled: !dirty,
+        onclick: save,
+      }));
+    }
+
+    function draw() {
+      list.innerHTML = '';
+      if (!items.length) {
+        list.appendChild(el('div', { class: 'empty', text: 'В этом разделе нет товаров.' }));
+        return;
+      }
+      items.forEach(function (p, i) {
+        var posInput = el('input', {
+          class: 'input order-row__pos', type: 'number', min: '1', max: String(items.length),
+          value: String(i + 1), title: 'Место в разделе — впишите число вместо перетаскивания',
+          onclick: function (e) { e.stopPropagation(); },
+        });
+        posInput.addEventListener('change', function () {
+          var to = Math.min(items.length, Math.max(1, Number(posInput.value) || (i + 1))) - 1;
+          if (to === i) { posInput.value = String(i + 1); return; }
+          var moved = items.splice(i, 1)[0];
+          items.splice(to, 0, moved);
+          dirty = true;
+          draw();
+          drawBar();
+        });
+
+        var row = el('div', {
+          class: 'item order-row', draggable: true,
+          ondragstart: function (e) { dragFrom = i; e.dataTransfer.effectAllowed = 'move'; },
+          ondragover: function (e) { e.preventDefault(); row.classList.add('shot--over'); },
+          ondragleave: function () { row.classList.remove('shot--over'); },
+          ondrop: function (e) {
+            e.preventDefault();
+            row.classList.remove('shot--over');
+            if (dragFrom == null || dragFrom === i) return;
+            var moved = items.splice(dragFrom, 1)[0];
+            items.splice(i, 0, moved);
+            dragFrom = null;
+            dirty = true;
+            draw();
+            drawBar();
+          },
+        }, [
+          el('span', { class: 'order-row__handle', 'aria-hidden': 'true', text: '⠿' }),
+          el('div', { class: 'item__media' }, [
+            p.img ? el('img', { src: '/' + p.img, alt: '', loading: 'lazy' }) : el('span', { text: 'нет фото' }),
+          ]),
+          el('div', {}, [
+            el('div', { class: 'item__name', text: p.name }),
+            el('div', { class: 'item__meta' }, [el('span', { text: 'арт. ' + p.id })]),
+          ]),
+          posInput,
+        ]);
+        list.appendChild(row);
+      });
+    }
+
+    function load(sectionKey) {
+      current = sectionKey;
+      pickSection.value = sectionKey;
+      list.innerHTML = '';
+      list.appendChild(el('div', { class: 'empty', text: 'Загружаем…' }));
+      dirty = false;
+      drawBar();
+      api('/api/products/order?' + new URLSearchParams({ section: sectionKey })).then(function (data) {
+        items = data;
+        draw();
+        drawBar();
+      }).catch(function (e) { toast(e.message, true); });
+    }
+
+    function save() {
+      api('/api/products/order', {
+        method: 'PUT', body: { section: current, ids: items.map(function (p) { return p.id; }) },
+      }).then(function () {
+        dirty = false;
+        drawBar();
+        toast('Порядок сохранён');
+      }).catch(function (e) { toast(e.message, true); });
+    }
+
+    pickSection.addEventListener('change', function () {
+      if (dirty && !confirm('Несохранённый порядок будет потерян. Сменить раздел?')) {
+        pickSection.value = current;
+        return;
+      }
+      load(pickSection.value);
+    });
+
+    if (state.sections.length) load(state.sections[0].key);
+    else list.appendChild(el('div', { class: 'empty', text: 'Сначала добавьте раздел.' }));
+
+    return wrap;
+  }
+
   function newProduct() {
     if (!state.sections.length) return toast('Сначала должны появиться разделы', true);
 
@@ -740,9 +867,48 @@
     box.appendChild(el('div', { class: 'head' }, [
       el('div', {}, [
         el('h1', { class: 'head__title', text: 'Разделы каталога' }),
-        el('p', { class: 'head__sub', text: 'Порядок здесь — это порядок в меню, на витрине и в подвале сайта.' }),
+        el('p', { class: 'head__sub', text: 'Разделы, их состав в меню и порядок товаров внутри каждого.' }),
       ]),
     ]));
+
+    var tabs = el('div', { class: 'tabs' });
+    var body = el('div');
+    box.appendChild(tabs);
+    box.appendChild(body);
+
+    var active = 'list';
+    var TABS = [['list', 'Разделы'], ['order', 'Порядок товаров']];
+
+    function drawTabs() {
+      tabs.innerHTML = '';
+      TABS.forEach(function (t) {
+        tabs.appendChild(el('button', {
+          class: 'tab' + (active === t[0] ? ' tab--active' : ''), type: 'button', text: t[1],
+          onclick: function () {
+            if (active === t[0]) return;
+            active = t[0];
+            drawTabs();
+            drawBody();
+          },
+        }));
+      });
+    }
+
+    function drawBody() {
+      body.innerHTML = '';
+      body.appendChild(active === 'list' ? drawSectionsTab() : drawOrderTab());
+    }
+
+    drawTabs();
+    drawBody();
+  }
+
+  // Вкладка «Разделы»: список, порядок в меню (стрелками — разделов
+  // от силы полтора десятка, тащить мышью ради этого незачем), названия
+  // и видимость. Порядок товаров внутри раздела — соседняя вкладка,
+  // drawOrderTab ниже.
+  function drawSectionsTab() {
+    var wrap = el('div');
 
     var newTitle = el('input', { class: 'input', placeholder: 'Например: Термобельё' });
     function addSection() {
@@ -758,7 +924,7 @@
         .catch(function (e) { toast(e.message, true); });
     }
     newTitle.addEventListener('keydown', function (e) { if (e.key === 'Enter') addSection(); });
-    box.appendChild(el('div', { class: 'card' }, [
+    wrap.appendChild(el('div', { class: 'card' }, [
       el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Новый раздел' }), newTitle]),
       el('div', { class: 'bar', style: 'position:static;background:none;margin-top:6px' }, [
         el('button', { class: 'btn', type: 'button', text: '+ Добавить раздел', onclick: addSection }),
@@ -766,7 +932,7 @@
     ]));
 
     var list = el('div');
-    box.appendChild(list);
+    wrap.appendChild(list);
 
     var sections = state.sections.slice();
 
@@ -828,9 +994,11 @@
 
     draw();
 
-    box.appendChild(el('div', { class: 'bar' }, [
+    wrap.appendChild(el('div', { class: 'bar' }, [
       el('button', { class: 'btn', type: 'button', text: 'Сохранить порядок и названия', onclick: save }),
     ]));
+
+    return wrap;
   }
 
   // ==========================================================================
