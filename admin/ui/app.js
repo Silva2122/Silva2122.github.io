@@ -613,12 +613,13 @@
     }
     drawShots();
 
-    // Кадрирование: квадратное окно поверх формы, фото внутри двигается
+    // Кадрирование: окно 4:5 поверх формы, фото внутри двигается
     // и масштабируется мышью/пальцем — как обрезка фото профиля в соцсетях,
-    // а не свободный прямоугольник. Рамка на сайте тоже квадратная (см.
-    // .gallery__stage в style.css), так что результат совпадает с ней ровно.
+    // а не свободный прямоугольник. Рамка на сайте той же пропорции (карточка
+    // в каталоге и .gallery__stage — обе 4:5), так что результат совпадает
+    // с обеими сразу, а не только с одной из них.
     function openCropper(src) {
-      var frame = 320;
+      var frameW = 280, frameH = 350;
       var st = { scale: 1, min: 1, x: 0, y: 0, iw: 0, ih: 0 };
 
       var stage = el('div', { class: 'crop-stage' });
@@ -627,8 +628,8 @@
 
       function clamp() {
         var rw = st.iw * st.scale, rh = st.ih * st.scale;
-        st.x = Math.min(0, Math.max(frame - rw, st.x));
-        st.y = Math.min(0, Math.max(frame - rh, st.y));
+        st.x = Math.min(0, Math.max(frameW - rw, st.x));
+        st.y = Math.min(0, Math.max(frameH - rh, st.y));
       }
       function render() {
         img.style.width = (st.iw * st.scale) + 'px';
@@ -640,11 +641,11 @@
       zoom.addEventListener('input', function () {
         // Центр видимой области должен остаться на месте, а не уехать —
         // иначе от одного лишь движения ползунка кадр каждый раз прыгает.
-        var cx = (frame / 2 - st.x) / st.scale;
-        var cy = (frame / 2 - st.y) / st.scale;
+        var cx = (frameW / 2 - st.x) / st.scale;
+        var cy = (frameH / 2 - st.y) / st.scale;
         st.scale = st.min * Number(zoom.value);
-        st.x = frame / 2 - cx * st.scale;
-        st.y = frame / 2 - cy * st.scale;
+        st.x = frameW / 2 - cx * st.scale;
+        st.y = frameH / 2 - cy * st.scale;
         clamp();
         render();
       });
@@ -667,10 +668,13 @@
       img.addEventListener('load', function () {
         st.iw = img.naturalWidth;
         st.ih = img.naturalHeight;
-        st.min = frame / Math.min(st.iw, st.ih);
+        // Минимальный масштаб — тот, что покрывает рамку по обеим сторонам
+        // сразу (как cover), а не только по меньшей стороне: иначе на узком
+        // портретном кадре в широкой рамке по бокам осталась бы пустота.
+        st.min = Math.max(frameW / st.iw, frameH / st.ih);
         st.scale = st.min;
-        st.x = (frame - st.iw * st.scale) / 2;
-        st.y = (frame - st.ih * st.scale) / 2;
+        st.x = (frameW - st.iw * st.scale) / 2;
+        st.y = (frameH - st.ih * st.scale) / 2;
         render();
       });
 
@@ -679,7 +683,7 @@
       var overlay = el('div', { class: 'crop-overlay' }, [
         el('div', { class: 'crop-modal' }, [
           el('h2', { class: 'card__title', text: 'Кадрирование фото' }),
-          el('p', { class: 'field__hint', text: 'Перетащите фото и подберите масштаб — что видно в квадрате, то и останется на сайте.' }),
+          el('p', { class: 'field__hint', text: 'Перетащите фото и подберите масштаб — что видно в рамке, то и останется на сайте.' }),
           stage,
           zoom,
           el('div', { class: 'bar', style: 'position:static;background:none;margin-top:14px' }, [saveBtn, cancelBtn]),
@@ -689,11 +693,12 @@
       cancelBtn.onclick = function () { overlay.remove(); };
       saveBtn.onclick = function () {
         saveBtn.disabled = true;
-        var size = frame / st.scale;
+        var w = frameW / st.scale;
+        var h = frameH / st.scale;
         var x = -st.x / st.scale;
         var y = -st.y / st.scale;
         api('/api/products/' + encodeURIComponent(p.id) + '/photo/crop', {
-          method: 'POST', body: { src: src, x: x, y: y, size: size },
+          method: 'POST', body: { src: src, x: x, y: y, w: w, h: h },
         }).then(function (fresh) {
           overlay.remove();
           gallery = fresh.gallery.slice();

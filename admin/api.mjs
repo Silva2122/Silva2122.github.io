@@ -357,10 +357,10 @@ export async function api(req, res, path, query, cfg) {
     }
   }
 
-  // Кадрирование уже залитого фото — квадратом под рамку на сайте. Координаты
-  // приходят в пикселях исходного файла: их считает браузер (см. openCropper
-  // в ui/app.js), сервер только режет sharp'ом и переиздаёт webp под тем же
-  // конвейером, что и обычная заливка.
+  // Кадрирование уже залитого фото — прямоугольником 4:5 под рамку на сайте.
+  // Координаты приходят в пикселях исходного файла: их считает браузер (см.
+  // openCropper в ui/app.js), сервер только режет sharp'ом и переиздаёт webp
+  // под тем же конвейером, что и обычная заливка.
   //
   // Фото ищем по пути (src), а не по индексу в галерее: если владелец успел
   // перетащить кадры местами, но ещё не сохранил форму, локальный индекс
@@ -379,8 +379,8 @@ export async function api(req, res, path, query, cfg) {
     const src = product.gallery[index];
     if (!existsSync(join(ROOT, src))) return fail(res, 'Такого фото нет', 404);
 
-    const rect = { x: Number(body.x) || 0, y: Number(body.y) || 0, size: Number(body.size) || 0 };
-    if (!(rect.size > 0)) return fail(res, 'Некорректная область кадрирования');
+    const rect = { x: Number(body.x) || 0, y: Number(body.y) || 0, w: Number(body.w) || 0, h: Number(body.h) || 0 };
+    if (!(rect.w > 0 && rect.h > 0)) return fail(res, 'Некорректная область кадрирования');
 
     const buffer = readFileSync(join(ROOT, src));
     const name = shotName(product.id, Buffer.concat([buffer, Buffer.from(JSON.stringify(rect))]));

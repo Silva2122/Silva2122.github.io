@@ -25,19 +25,21 @@ export async function saveShot(buffer, dest, size) {
     .toFile(dest);
 }
 
-// Кадрирование уже залитого кадра — квадратом, как рамка на сайте. Источник —
-// сам сохранённый webp (он уже развёрнут по EXIF и перекодирован в saveShot,
-// повторно поворачивать не нужно). Координаты — пиксели исходного файла,
-// их считает браузер, а не сервер: сервер только выполняет вырезку.
+// Кадрирование уже залитого кадра — прямоугольником 4:5, как рамка на сайте
+// (карточка в каталоге и галерея товара — обе 4:5). Источник — сам сохранённый
+// webp (он уже развёрнут по EXIF и перекодирован в saveShot, повторно
+// поворачивать не нужно). Координаты — пиксели исходного файла, их считает
+// браузер, а не сервер: сервер только выполняет вырезку.
 export async function cropShot(buffer, dest, rect) {
   const img = sharp(buffer);
   const meta = await img.metadata();
-  const size = Math.max(1, Math.min(Math.round(rect.size), meta.width, meta.height));
-  const left = Math.max(0, Math.min(Math.round(rect.x), meta.width - size));
-  const top = Math.max(0, Math.min(Math.round(rect.y), meta.height - size));
+  const width = Math.max(1, Math.min(Math.round(rect.w), meta.width));
+  const height = Math.max(1, Math.min(Math.round(rect.h), meta.height));
+  const left = Math.max(0, Math.min(Math.round(rect.x), meta.width - width));
+  const top = Math.max(0, Math.min(Math.round(rect.y), meta.height - height));
   await img
-    .extract({ left, top, width: size, height: size })
-    .resize(1000, 1000, { fit: 'inside', withoutEnlargement: true })
+    .extract({ left, top, width, height })
+    .resize(800, 1000, { fit: 'inside', withoutEnlargement: true })
     .webp(WEBP)
     .toFile(dest);
 }
