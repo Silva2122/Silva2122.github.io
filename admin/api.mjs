@@ -16,6 +16,7 @@ import {
   PRODUCT_IMG, SECTION_IMG, PAGE_IMG,
   saveShot, cropShot, shotName, refreshMain, removeAsset, saveHero,
 } from './images.mjs';
+import { saveVideo, MAX_INPUT as MAX_VIDEO_INPUT } from './video.mjs';
 import { startPublish, publishState, isRunning } from './publish.mjs';
 import { sendOrderMail, mailConfigured } from './mail.mjs';
 
@@ -37,6 +38,12 @@ const brief = (p) => ({
   hidden: Boolean(p.hidden),
   brand: p.brand || null,
 });
+
+// Элемент галереи — либо путь к фото (строка), либо { video, poster }
+// (см. admin/video.mjs). Один хелпер вместо ветвления в каждом месте,
+// которое чистит файлы за собой.
+const galleryPaths = (g) => (typeof g === 'string' ? [g] : [g.video, g.poster].filter(Boolean));
+const removeGalleryItem = (g) => galleryPaths(g).forEach(removeAsset);
 
 // Подразделы нигде не перечислены — они выводятся из адресов товаров,
 // как и всё остальное дерево каталога. Заголовок берём из поля cat
@@ -336,9 +343,12 @@ export async function api(req, res, path, query, cfg) {
       });
 
       if (Array.isArray(body.gallery)) {
-        const kept = new Set(body.gallery);
-        for (const old of product.gallery || []) if (!kept.has(old)) removeAsset(old);
-        product.gallery = body.gallery.filter((g) => existsSync(join(ROOT, g)));
+        const kept = new Set(body.gallery.flatMap(galleryPaths));
+        for (const old of product.gallery || []) {
+          for (const p of galleryPaths(old)) if (!kept.has(p)) removeAsset(p);
+        }
+        product.gallery = body.gallery.filter((g) =>
+          galleryPaths(g).every((p) => existsSync(join(ROOT, p))));
       }
       // Главный кадр пересобираем, только если первый в галерее сменился:
       // sharp на каждое сохранение формы — это лишняя секунда на пустом месте.
@@ -349,7 +359,7 @@ export async function api(req, res, path, query, cfg) {
     }
 
     if (req.method === 'DELETE' && !isPhoto) {
-      for (const g of product.gallery || []) removeAsset(g);
+      for (const g of product.gallery || []) removeGalleryItem(g);
       removeAsset(product.img);
       products.splice(idx, 1);
       saveProducts(products);
@@ -393,6 +403,37 @@ export async function api(req, res, path, query, cfg) {
     removeAsset(src);
     product.gallery[index] = `assets/img/products/${name}`;
     if (index === 0) await refreshMain(product);
+    saveProducts(products);
+    return json(res, product);
+  }
+
+  // Заливка видео — тело запроса целиком, тем же приёмом, что и фото.
+  // Сжатие идёт через ffmpeg (admin/video.mjs) и может занять секунды —
+  // именно под это в nginx поднят proxy_read_timeout (deploy/nginx-axelnn.conf).
+  const videoMatch = path.match(/^\/api\/products\/([^/]+)\/video$/);
+  if (videoMatch && req.method === 'POST') {
+    const id = decodeURIComponent(videoMatch[1]);
+    const products = loadProducts();
+    const product = products.find((p) => String(p.id) === id);
+    if (!product) return fail(res, 'Товар не найден', 404);
+
+    let buffer;
+    try {
+      buffer = await readBody(req, MAX_VIDEO_INPUT);
+    } catch (e) {
+      return fail(res, e.message);
+    }
+    if (!buffer.length) return fail(res, 'Пустой файл');
+
+    let saved;
+    try {
+      saved = await saveVideo(buffer, product.id);
+    } catch (e) {
+      return fail(res, e.message || 'Не получилось обработать видео');
+    }
+
+    product.gallery = [...(product.gallery || []), saved];
+    await refreshMain(product);
     saveProducts(products);
     return json(res, product);
   }

@@ -26,7 +26,7 @@ export async function readBody(req, limit = 25 * 1024 * 1024) {
   let size = 0;
   for await (const chunk of req) {
     size += chunk.length;
-    if (size > limit) throw new Error('Файл больше 25 МБ — уменьшите его');
+    if (size > limit) throw new Error(`Файл больше ${Math.round(limit / 1024 / 1024)} МБ — уменьшите его`);
     chunks.push(chunk);
   }
   return Buffer.concat(chunks);

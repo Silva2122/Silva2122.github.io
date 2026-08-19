@@ -2309,6 +2309,24 @@ a.brand:hover { background: var(--tint); }
 
 .gallery__stage .ph { width: 100%; height: 100%; background: var(--grey); }
 
+/* Значок play на стейдже — ролик там показан постером (см. gallery() в
+   tools/build-products.mjs), сыграть видео целиком можно только в полно-
+   экранном просмотре, отсюда и подсказка, что клик — не просто зум. */
+.gallery__stage-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(11, 16, 17, .55);
+  color: #fff;
+  pointer-events: none;
+}
+
 .gallery__thumbs {
   display: flex;
   gap: 8px;
@@ -2328,6 +2346,7 @@ a.brand:hover { background: var(--tint); }
 }
 
 .gallery__thumb {
+  position: relative;
   flex: 0 0 auto;
   width: 66px;
   height: 66px;
@@ -2340,6 +2359,16 @@ a.brand:hover { background: var(--tint); }
 .gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gallery__thumb:hover { border-color: var(--pill); }
 .gallery__thumb.is-on { border-color: var(--teal-deep); }
+
+.gallery__thumb-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 16, 17, .28);
+  color: #fff;
+  pointer-events: none;
+}
 
 .gallery__note {
   margin: 0;
@@ -2389,6 +2418,7 @@ a.brand:hover { background: var(--tint); }
 .lightbox--on .lightbox__stage { opacity: 1; transform: none; }
 
 .lightbox__img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox__video { max-width: 100%; max-height: 100%; }
 
 .lightbox__close,
 .lightbox__nav {

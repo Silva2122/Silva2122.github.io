@@ -216,6 +216,7 @@
       <div class="gallery" id="gallery">
         <div class="gallery__stage">
           <img class="gallery__img" id="gallery-img" src="../../../assets/img/products/7398-1.webp" alt="Лезвия для конков MK Professional" width="1000" height="1000" fetchpriority="high">
+          <span class="gallery__stage-play" hidden aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
         </div>
       </div>
 
@@ -625,19 +626,32 @@
     var main = document.getElementById('gallery-img');
     if (!gal || !main) return;
 
-    gal.addEventListener('click', function (e) {
-      var thumb = e.target.closest('.gallery__thumb');
-      if (!thumb) return;
-      main.src = thumb.dataset.src;
-      gal.querySelectorAll('.gallery__thumb').forEach(function (t) {
-        t.classList.toggle('is-on', t === thumb);
-      });
-    });
-
     // Увеличение по наведению — только там, где есть настоящий курсор:
     // на тачскрине «водить мышью над фото» не бывает, а масштаб пальцами
     // и так работает через сам браузер, свой обработчик тут только мешал бы.
     var stage = gal.querySelector('.gallery__stage');
+
+    // У видео в галерее (см. admin/video.mjs) на месте главного кадра —
+    // его постер, тем же способом, что и обычное фото: играть ролик прямо
+    // в маленьком стейдже незачем, для этого есть полноэкранный просмотр
+    // ниже. Значок play на стейдже — просто подсказка, что там видео.
+    var stagePlay = stage ? stage.querySelector('.gallery__stage-play') : null;
+    function markVideo(on) {
+      if (stagePlay) stagePlay.hidden = !on;
+    }
+
+    gal.addEventListener('click', function (e) {
+      var thumb = e.target.closest('.gallery__thumb');
+      if (!thumb) return;
+      main.src = thumb.dataset.src;
+      markVideo(Boolean(thumb.dataset.video));
+      gal.querySelectorAll('.gallery__thumb').forEach(function (t) {
+        t.classList.toggle('is-on', t === thumb);
+      });
+    });
+    markVideo(Boolean(gal.querySelector('.gallery__thumb.is-on') &&
+      gal.querySelector('.gallery__thumb.is-on').dataset.video));
+
     if (stage && window.matchMedia && matchMedia('(hover: hover)').matches) {
       stage.addEventListener('mousemove', function (e) {
         var rect = stage.getBoundingClientRect();
@@ -661,12 +675,13 @@
     // карточки, и можно пролистать все кадры товара подряд.
     if (stage) {
       var shots = Array.prototype.map.call(
-        gal.querySelectorAll('.gallery__thumb'), function (t) { return t.dataset.src; });
-      if (!shots.length && main.src) shots = [main.src];
+        gal.querySelectorAll('.gallery__thumb'),
+        function (t) { return { img: t.dataset.src, video: t.dataset.video || null }; });
+      if (!shots.length && main.src) shots = [{ img: main.src, video: null }];
     }
 
     if (stage && shots.length) {
-      var box, boxImg, boxCount, prevBtn, nextBtn, idx = 0;
+      var box, boxImg, boxVideo, boxCount, prevBtn, nextBtn, idx = 0;
 
       function buildBox() {
         box = document.createElement('div');
@@ -680,7 +695,7 @@
           '<button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Предыдущее фото">' +
           '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>' +
           '</button>' +
-          '<div class="lightbox__stage"><img class="lightbox__img" alt=""></div>' +
+          '<div class="lightbox__stage"><img class="lightbox__img" alt=""><video class="lightbox__video" controls playsinline hidden></video></div>' +
           '<button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Следующее фото">' +
           '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>' +
           '</button>' +
@@ -688,6 +703,7 @@
         document.body.appendChild(box);
 
         boxImg = box.querySelector('.lightbox__img');
+        boxVideo = box.querySelector('.lightbox__video');
         boxCount = box.querySelector('.lightbox__count');
         prevBtn = box.querySelector('.lightbox__nav--prev');
         nextBtn = box.querySelector('.lightbox__nav--next');
@@ -699,9 +715,15 @@
 
         // Свайп на тачскрине — просто сравниваем X в начале и в конце
         // касания, без библиотек: разница за 40px читаем как «пролистнуть».
+        // На видео своя перетаскиваемая полоса перемотки — свайп-пролистывание
+        // поверх нее только мешало бы попасть по ней пальцем, поэтому свайп
+        // работает только пока открыто фото (см. shots[idx].video в конце).
         var startX = null;
         var boxStage = box.querySelector('.lightbox__stage');
-        boxStage.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+        boxStage.addEventListener('pointerdown', function (e) {
+          if (shots[idx].video) return;
+          startX = e.clientX;
+        });
         boxStage.addEventListener('pointerup', function (e) {
           if (startX == null) return;
           var dx = e.clientX - startX;
@@ -712,7 +734,20 @@
       }
 
       function renderBox() {
-        boxImg.src = shots[idx];
+        var shot = shots[idx];
+        boxVideo.pause();
+        if (shot.video) {
+          boxImg.hidden = true;
+          boxVideo.hidden = false;
+          boxVideo.poster = shot.img;
+          if (boxVideo.currentSrc !== shot.video) boxVideo.src = shot.video;
+        } else {
+          boxVideo.hidden = true;
+          boxVideo.removeAttribute('src');
+          boxVideo.load();
+          boxImg.hidden = false;
+          boxImg.src = shot.img;
+        }
         var multi = shots.length > 1;
         prevBtn.hidden = nextBtn.hidden = boxCount.hidden = !multi;
         if (multi) boxCount.textContent = (idx + 1) + ' из ' + shots.length;
@@ -736,6 +771,7 @@
 
       function closeBox() {
         if (!box) return;
+        boxVideo.pause();
         box.classList.remove('lightbox--on');
         document.body.style.overflow = '';
         setTimeout(function () { if (box && !box.classList.contains('lightbox--on')) box.hidden = true; }, 200);

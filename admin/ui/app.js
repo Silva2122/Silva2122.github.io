@@ -577,7 +577,13 @@
 
     function drawShots() {
       shots.innerHTML = '';
-      gallery.forEach(function (src, i) {
+      gallery.forEach(function (item, i) {
+        // Кадр — либо путь к фото (строка), либо { video, poster } с видео
+        // (см. admin/video.mjs): на месте картинки везде постер, а кадрировать
+        // можно только фото — у видео вместо ножниц значок play.
+        var isVideo = item && typeof item === 'object';
+        var poster = isVideo ? item.poster : item;
+
         var cell = el('div', {
           class: 'shot', draggable: 'true', 'data-first': i === 0 ? true : null,
           ondragstart: function () { dragFrom = i; },
@@ -593,13 +599,16 @@
             drawShots();
           },
         }, [
-          el('img', { src: '/' + src, alt: '' }),
-          el('button', {
+          el('img', { src: '/' + poster, alt: '' }),
+          isVideo ? el('span', {
+            class: 'shot__video', 'aria-hidden': 'true',
+            html: '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+          }) : el('button', {
             class: 'shot__crop', type: 'button', title: 'Кадрировать',
             html: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 2v14a2 2 0 0 0 2 2h14"/><path d="M18 22V8a2 2 0 0 0-2-2H2"/></svg>',
-            onclick: function (e) { e.stopPropagation(); openCropper(src); },
+            onclick: function (e) { e.stopPropagation(); openCropper(poster); },
           }),
-          el('button', { class: 'shot__del', type: 'button', title: 'Удалить фото', text: '×', onclick: function (e) {
+          el('button', { class: 'shot__del', type: 'button', title: isVideo ? 'Удалить видео' : 'Удалить фото', text: '×', onclick: function (e) {
             e.stopPropagation();
             gallery.splice(i, 1);
             drawShots();
@@ -719,6 +728,35 @@
       fileInput.value = '';
     } });
 
+    // Видео — отдельная кнопка, а не часть общей зоны для фото: заливка идёт
+    // с сжатием на сервере (ffmpeg, см. admin/video.mjs) и может занять
+    // десятки секунд, это стоит явно показать, а не просто ждать спиннер.
+    var videoInput = el('input', { type: 'file', accept: 'video/*', style: 'display:none', onchange: function () {
+      if (videoInput.files[0]) uploadVideo(videoInput.files[0]);
+      videoInput.value = '';
+    } });
+    var videoBtn = el('button', {
+      class: 'btn btn--ghost btn--small', type: 'button', text: '+ Добавить видео',
+      onclick: function () { videoInput.click(); },
+    });
+
+    function uploadVideo(file) {
+      videoBtn.disabled = true;
+      videoBtn.textContent = 'Обрабатываем видео…';
+      api('/api/products/' + encodeURIComponent(p.id) + '/video', { method: 'POST', body: file })
+        .then(function (fresh) {
+          gallery = fresh.gallery.slice();
+          p.img = fresh.img;
+          drawShots();
+          toast('Видео добавлено');
+        })
+        .catch(function (e) { toast(e.message, true); })
+        .then(function () {
+          videoBtn.disabled = false;
+          videoBtn.textContent = '+ Добавить видео';
+        });
+    }
+
     var drop = el('label', { class: 'drop',
       ondragover: function (e) { e.preventDefault(); drop.classList.add('drop--over'); },
       ondragleave: function () { drop.classList.remove('drop--over'); },
@@ -792,7 +830,8 @@
         el('h2', { class: 'card__title', text: 'Фотографии' }),
         shots,
         drop,
-        el('p', { class: 'field__hint', text: 'Первое фото — главное: оно стоит в каталоге. Перетащите кадр, чтобы поменять порядок.' }),
+        el('div', { class: 'bar', style: 'position:static;background:none;margin-top:10px' }, [videoBtn, videoInput]),
+        el('p', { class: 'field__hint', text: 'Первое фото — главное: оно стоит в каталоге. Перетащите кадр, чтобы поменять порядок. Видео — до 30 секунд, тоже можно перетащить в любое место.' }),
       ]),
 
       el('div', {}, [

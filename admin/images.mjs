@@ -52,15 +52,18 @@ export const shotName = (prefix, buffer) =>
 
 // Главный кадр карточки собираем из первого кадра галереи: порядок фото
 // владелец меняет перетаскиванием, и «главное» должно ехать за ним само.
+// Первым кадром бывает и видео (см. admin/video.mjs) — тогда источник
+// не оно само (sharp видео не читает), а его постер.
 export async function refreshMain(product) {
   const first = (product.gallery || [])[0];
-  if (!first || !existsSync(join(ROOT, first))) {
+  const src = typeof first === 'string' ? first : first?.poster;
+  if (!src || !existsSync(join(ROOT, src))) {
     product.img = null;
     return;
   }
   mkdirSync(PRODUCT_IMG, { recursive: true });
   const name = `${product.id}.webp`;
-  await saveShot(readFileSync(join(ROOT, first)), join(PRODUCT_IMG, name), 600);
+  await saveShot(readFileSync(join(ROOT, src)), join(PRODUCT_IMG, name), 600);
   product.img = `assets/img/products/${name}`;
 }
 
@@ -78,12 +81,13 @@ export async function saveHero(buffer) {
   return 'assets/img/hero.jpg';
 }
 
-// Удаляем только то, что сами и положили: путь обязан лежать внутри assets/img,
-// иначе кривой запрос вынес бы что угодно из репозитория.
+// Удаляем только то, что сами и положили: путь обязан лежать внутри assets/img
+// или assets/video (второе — под ролики из admin/video.mjs), иначе кривой
+// запрос вынес бы что угодно из репозитория.
 export function removeAsset(rel) {
   if (!rel) return;
   const file = resolve(ROOT, rel);
-  const dir = resolve(ROOT, 'assets', 'img');
-  if (file !== dir && !file.startsWith(dir + sep)) return;
+  const dirs = [resolve(ROOT, 'assets', 'img'), resolve(ROOT, 'assets', 'video')];
+  if (!dirs.some((dir) => file === dir || file.startsWith(dir + sep))) return;
   try { rmSync(file, { force: true }); } catch {}
 }

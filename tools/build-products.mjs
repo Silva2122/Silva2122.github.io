@@ -153,8 +153,12 @@ const script = home.slice(scriptFrom, home.indexOf('</script>', scriptFrom) + '<
 // --- разметка -------------------------------------------------------------
 
 // Галерея. Крупный кадр + миниатюры; переключение — в общем скрипте сайта.
+// Кадр галереи — либо путь к фото (строка), либо { video, poster } (видео
+// из админки, см. admin/video.mjs): на миниатюре и в стейдже до клика в лайтбокс
+// показывается постер, как обычное фото, плюс значок play различает их на глаз.
 function gallery(it, up) {
-  const shots = it.gallery && it.gallery.length ? it.gallery : (it.img ? [it.img] : []);
+  const raw = it.gallery && it.gallery.length ? it.gallery : (it.img ? [it.img] : []);
+  const shots = raw.map((s) => (typeof s === 'string' ? { img: s } : { img: s.poster, video: s.video }));
   if (!shots.length) {
     return [
       '      <div class="gallery">',
@@ -164,20 +168,23 @@ function gallery(it, up) {
     ].join('\n');
   }
 
+  const play = '<span class="gallery__thumb-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>';
+
   const thumbs = shots.length > 1 ? [
     '        <div class="gallery__thumbs">',
-    ...shots.map((src, i) =>
+    ...shots.map((s, i) =>
       // width/height у миниатюры — размер, который ей задаёт CSS, а не размер
       // файла: место под кнопку резервируется до загрузки кадра, и колонка
       // миниатюр не дёргается по мере их подгрузки.
-      `          <button type="button" class="gallery__thumb${i === 0 ? ' is-on' : ''}" data-src="${up}${src}" aria-label="Кадр ${i + 1} из ${shots.length}"><img src="${up}${src}" width="56" height="56" alt="" loading="lazy"></button>`),
+      `          <button type="button" class="gallery__thumb${i === 0 ? ' is-on' : ''}" data-src="${up}${s.img}"${s.video ? ` data-video="${up}${s.video}"` : ''} aria-label="${s.video ? 'Видео' : 'Кадр'} ${i + 1} из ${shots.length}"><img src="${up}${s.img}" width="56" height="56" alt="" loading="lazy">${s.video ? play : ''}</button>`),
     '        </div>',
   ].join('\n') : '';
 
   return [
     '      <div class="gallery" id="gallery">',
     '        <div class="gallery__stage">',
-    `          <img class="gallery__img" id="gallery-img" src="${up}${shots[0]}" alt="${esc(tidy(it.name))}" width="1000" height="1000" fetchpriority="high">`,
+    `          <img class="gallery__img" id="gallery-img" src="${up}${shots[0].img}" alt="${esc(tidy(it.name))}" width="1000" height="1000" fetchpriority="high">`,
+    `          <span class="gallery__stage-play"${shots[0].video ? '' : ' hidden'} aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>`,
     '        </div>',
     thumbs,
     '      </div>',
