@@ -343,7 +343,7 @@
         });
 
         var row = el('div', {
-          class: 'item order-row', draggable: true,
+          class: 'item order-row', draggable: 'true',
           ondragstart: function (e) { dragFrom = i; e.dataTransfer.effectAllowed = 'move'; },
           ondragover: function (e) { e.preventDefault(); row.classList.add('shot--over'); },
           ondragleave: function () { row.classList.remove('shot--over'); },
@@ -579,7 +579,7 @@
       shots.innerHTML = '';
       gallery.forEach(function (src, i) {
         var cell = el('div', {
-          class: 'shot', draggable: true, 'data-first': i === 0 ? true : null,
+          class: 'shot', draggable: 'true', 'data-first': i === 0 ? true : null,
           ondragstart: function () { dragFrom = i; },
           ondragover: function (e) { e.preventDefault(); cell.classList.add('shot--over'); },
           ondragleave: function () { cell.classList.remove('shot--over'); },
