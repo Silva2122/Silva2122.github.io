@@ -26,6 +26,13 @@ function transport(c) {
       port: c.port || 465,
       secure: c.secure !== false,
       auth: { user: c.user, pass: c.pass },
+      // Дефолт nodemailer — две минуты: покупатель столько ждать не будет,
+      // а nginx впереди сбрасывает соединение раньше (proxy_read_timeout 60с),
+      // и ответ с ошибкой до браузера всё равно не доехал бы. Быстрый таймаут
+      // укладывается в это окно и даёт покупателю понятную ошибку вовремя.
+      connectionTimeout: 8000,
+      greetingTimeout: 8000,
+      socketTimeout: 8000,
     });
   }
   return transporter;
