@@ -30,8 +30,8 @@
   "key": "odezhda_dlya_devochek",
   "name": "Одежда для девочек",
   "title": "Одежда для девочек",
-  "img": "assets/img/catalog-nobg/cat-kolgotki-so-strazami-art-1152.webp",
-  "cut": true,
+  "img": "assets/img/catalog-raw/cat-odezhda-dlya-devochek-e923ff1a.webp",
+  "cut": false,
   "hidden": false,
   "order": 3
  },
@@ -133,5 +133,23 @@
   "cut": false,
   "hidden": false,
   "order": 14
+ },
+ {
+  "key": "long",
+  "name": "лонг",
+  "title": "лонг",
+  "img": null,
+  "cut": false,
+  "hidden": false,
+  "order": 15
+ },
+ {
+  "key": "longsliv",
+  "name": "лонгслив",
+  "title": "лонгслив",
+  "img": null,
+  "cut": false,
+  "hidden": false,
+  "order": 16
  }
 ]
