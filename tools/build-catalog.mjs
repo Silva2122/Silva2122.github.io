@@ -642,7 +642,7 @@ function productCard(it, depth) {
   return [
     `        <div class="card" ${data}>`,
     `          <a href="${href(it.url)}" class="card__link">`,
-    `            <div class="card__media">${media}</div>`,
+    `            <div class="card__media card__media--fill">${media}</div>`,
     `            <span class="card__name">${esc(tidy(it.name))}</span>`,
     `            ${price}`,
     `          </a>`,

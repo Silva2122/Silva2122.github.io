@@ -314,7 +314,7 @@
       '<div class="card" data-product data-id="' + esc(it.id) + '" data-name="' + esc(it.name) + '"',
       '     data-price="' + (it.price || 0) + '" data-img="' + esc(it.img) + '" data-url="' + esc(it.url) + '">',
       '  <a class="card__link" href="' + esc(it.url) + '">',
-      '    <div class="card__media">' + media + '</div>',
+      '    <div class="card__media card__media--fill">' + media + '</div>',
       '    <span class="card__name">' + esc(it.name) + '</span>',
       '    <div class="card__prices"><span class="card__price">' +
            (it.price ? money(it.price) : 'Цена по запросу') + '</span></div>',

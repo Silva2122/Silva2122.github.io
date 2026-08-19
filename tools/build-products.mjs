@@ -195,7 +195,7 @@ function miniCard(it, up) {
     : '<span class="card__price card__price--none">Цена по запросу</span>';
   return [
     `        <a href="${href(it.url)}" class="card">`,
-    `          <div class="card__media">${media}</div>`,
+    `          <div class="card__media card__media--fill">${media}</div>`,
     `          <span class="card__name">${esc(tidy(it.name))}</span>`,
     `          <div class="card__prices">${price}</div>`,
     '        </a>',
