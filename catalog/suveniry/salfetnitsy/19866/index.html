@@ -599,20 +599,9 @@
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
 
-        // object-fit: contain оставляет поля у некадратных фото (кадр донора
-        // может быть каким угодно — портрет, альбом), а рамка на фото всегда
-        // квадратная. Без поправки курсор у края рамки целился бы в пустое
-        // поле, а не в край самого кадра — прижимаем точку увеличения
-        // к границам реально отрисованного фото, а не всей плашки.
-        var nw = main.naturalWidth, nh = main.naturalHeight;
-        if (nw && nh) {
-          var fit = Math.min(rect.width / nw, rect.height / nh);
-          var rw = nw * fit, rh = nh * fit;
-          var padX = (rect.width - rw) / 2, padY = (rect.height - rh) / 2;
-          x = Math.min(Math.max(x, padX), padX + rw);
-          y = Math.min(Math.max(y, padY), padY + rh);
-        }
-
+        // object-fit: cover заполняет рамку целиком без полей — курсор
+        // целится прямо в координаты плашки, поправка на пустое поле
+        // (как при contain) тут не нужна.
         main.style.transformOrigin = (x / rect.width * 100) + '% ' + (y / rect.height * 100) + '%';
         main.style.transform = 'scale(2.2)';
       });

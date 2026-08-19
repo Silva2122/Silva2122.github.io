@@ -2276,8 +2276,10 @@ a.brand:hover { background: var(--tint); }
   .gallery__thumbs { grid-area: thumbs; }
 }
 
-/* Фон белый, object-fit: contain и общий паддинг — те же правила, что
-   у карточки в каталоге: товары сняты с разным запасом по краям. */
+/* Фон белый, object-fit: cover без паддинга — те же правила, что у карточки
+   в каталоге (card__media--fill): кадр заполняет рамку целиком, а не вписан
+   в неё с полями. У «Кадрировать» в админке результат ровно квадратный —
+   под этот же квадрат и рассчитана рамка. */
 .gallery__stage {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -2289,17 +2291,12 @@ a.brand:hover { background: var(--tint); }
   background: #fff;
   border: 1px solid var(--line);
   overflow: hidden;
-  padding: clamp(16px, 2.4vw, 40px);
 }
 
-/* Кадр вписываем по большей стороне, а не растягиваем: вертикальные и
-   горизонтальные кадры донора должны занимать одинаковый квадрат.
-   Размер даём в 100%, а вписывает object-fit — max-height в ячейке грида
-   считается от свободного места и вертикальный кадр всё равно вылезал. */
 .gallery__img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 /* Увеличение по наведению: transform-origin и scale ставит JS по курсору
@@ -2334,14 +2331,13 @@ a.brand:hover { background: var(--tint); }
   flex: 0 0 auto;
   width: 66px;
   height: 66px;
-  padding: 5px;
   background: #fff;
   border: 1px solid var(--line);
   cursor: pointer;
   transition: border-color .2s ease;
 }
 
-.gallery__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.gallery__thumb img { width: 100%; height: 100%; object-fit: cover; }
 .gallery__thumb:hover { border-color: var(--pill); }
 .gallery__thumb.is-on { border-color: var(--teal-deep); }
 
