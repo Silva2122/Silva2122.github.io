@@ -55,6 +55,11 @@ export async function startPublish({ push = false } = {}) {
     say('Правим тексты страниц и контакты…');
     let ok = await run(process.execPath, ['tools/build-pages.mjs']);
 
+    if (ok) {
+      say('Собираем подборки на главной…');
+      ok = await run(process.execPath, ['tools/build-home.mjs']);
+    }
+
     say('Готовим данные каталога…');
     const manifest = syncManifest();
     say(`Товаров в каталоге: ${manifest.length}`);

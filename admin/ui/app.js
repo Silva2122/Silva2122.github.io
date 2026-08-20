@@ -121,6 +121,7 @@
   var MENU = [
     { key: 'products', title: 'Товары' },
     { key: 'sections', title: 'Разделы каталога' },
+    { key: 'home', title: 'Главная страница' },
     { key: 'texts', title: 'Тексты страниц' },
     { key: 'contacts', title: 'Контакты' },
     { key: 'publish', title: 'Публикация' },
@@ -939,6 +940,169 @@
   }
 
   // ==========================================================================
+  // Главная страница — подборки товаров («Новинки», «Скидки и акции»)
+  // ==========================================================================
+  // Список подборок и их заголовки задаёт сервер (tools/content.mjs:
+  // HOME_COLLECTIONS) — здесь их ровно две, и третья не появится сама;
+  // сам заголовок блока («Новинки») правится в «Текстах страниц» как
+  // обычный слот, здесь только состав и порядок товаров.
+
+  function screenHome() {
+    var box = el('div');
+    frame(box);
+
+    box.appendChild(el('div', { class: 'head' }, [
+      el('div', {}, [
+        el('h1', { class: 'head__title', text: 'Главная страница' }),
+        el('p', { class: 'head__sub', text: 'Товары в подборках на главной. Заголовки блоков — во вкладке «Тексты страниц».' }),
+      ]),
+    ]));
+
+    var body = el('div', {}, [el('div', { class: 'empty', text: 'Загружаем…' })]);
+    box.appendChild(body);
+
+    var collections = [];
+    var dirty = false;
+
+    var saveBtn = el('button', { class: 'btn', type: 'button', text: 'Подборки сохранены', disabled: true, onclick: save });
+    var bar = el('div', { class: 'bar' }, [saveBtn]);
+
+    function markDirty() {
+      dirty = true;
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Сохранить подборки';
+    }
+
+    function save() {
+      api('/api/home', {
+        method: 'PUT',
+        body: collections.map(function (c) { return { key: c.key, ids: c.items.map(function (p) { return p.id; }) }; }),
+      }).then(function (fresh) {
+        collections = fresh;
+        dirty = false;
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Подборки сохранены';
+        draw();
+        toast('Подборки сохранены');
+      }).catch(function (e) { toast(e.message, true); });
+    }
+
+    function collectionBlock(c) {
+      var wrap = el('div', { class: 'card' }, [el('h2', { class: 'card__title', text: c.title })]);
+      var list = el('div', { class: 'items' });
+      var dragFrom = null;
+
+      function drawList() {
+        list.innerHTML = '';
+        if (!c.items.length) {
+          list.appendChild(el('div', { class: 'empty', text: 'Пока пусто — найдите товар ниже и добавьте.' }));
+          return;
+        }
+        c.items.forEach(function (p, i) {
+          var marks = [el('span', { text: 'арт. ' + p.id })];
+          if (p.hidden) marks.push(el('span', { class: 'tag tag--off', text: 'скрыт' }));
+
+          var row = el('div', {
+            class: 'item order-row', draggable: 'true',
+            ondragstart: function (e) { dragFrom = i; e.dataTransfer.effectAllowed = 'move'; },
+            ondragover: function (e) { e.preventDefault(); row.classList.add('shot--over'); },
+            ondragleave: function () { row.classList.remove('shot--over'); },
+            ondrop: function (e) {
+              e.preventDefault();
+              row.classList.remove('shot--over');
+              if (dragFrom == null || dragFrom === i) return;
+              var moved = c.items.splice(dragFrom, 1)[0];
+              c.items.splice(i, 0, moved);
+              dragFrom = null;
+              markDirty();
+              drawList();
+            },
+          }, [
+            el('span', { class: 'order-row__handle', 'aria-hidden': 'true', text: '⠿' }),
+            el('div', { class: 'item__media' }, [
+              p.img ? el('img', { src: '/' + p.img, alt: '', loading: 'lazy' }) : el('span', { text: 'нет фото' }),
+            ]),
+            el('div', {}, [
+              el('div', { class: 'item__name', text: p.name }),
+              el('div', { class: 'item__meta' }, marks),
+            ]),
+            el('button', {
+              class: 'home-row__del', type: 'button', title: 'Убрать из подборки', text: '×',
+              onclick: function (e) {
+                e.stopPropagation();
+                c.items.splice(i, 1);
+                markDirty();
+                drawList();
+              },
+            }),
+          ]);
+          list.appendChild(row);
+        });
+      }
+      drawList();
+
+      // Добавление — поиск тем же запросом, что и в списке товаров
+      // (GET /api/products?q=), результат один клик добавляет в конец списка.
+      var search = el('input', { class: 'input', type: 'search', placeholder: 'Добавить товар — название или артикул' });
+      var results = el('div', { class: 'home-search__results' });
+      var typing = null;
+
+      search.addEventListener('input', function () {
+        clearTimeout(typing);
+        var q = search.value.trim();
+        results.innerHTML = '';
+        if (!q) return;
+        typing = setTimeout(function () {
+          api('/api/products?' + new URLSearchParams({ q: q, per: 6 })).then(function (data) {
+            results.innerHTML = '';
+            if (!data.items.length) {
+              results.appendChild(el('div', { class: 'field__hint', text: 'Ничего не нашлось.' }));
+              return;
+            }
+            data.items.forEach(function (p) {
+              var already = c.items.some(function (x) { return x.id === p.id; });
+              results.appendChild(el('button', {
+                class: 'item home-search__row', type: 'button', disabled: already,
+                onclick: function () {
+                  c.items.push({ id: p.id, name: p.name, img: p.img, price: p.price, hidden: p.hidden });
+                  search.value = '';
+                  results.innerHTML = '';
+                  markDirty();
+                  drawList();
+                },
+              }, [
+                el('div', { class: 'item__media' }, [
+                  p.img ? el('img', { src: '/' + p.img, alt: '', loading: 'lazy' }) : el('span', { text: 'нет фото' }),
+                ]),
+                el('div', {}, [
+                  el('div', { class: 'item__name', text: p.name }),
+                  el('div', { class: 'item__meta' }, [el('span', { text: 'арт. ' + p.id })]),
+                ]),
+                already ? el('span', { class: 'tag', text: 'уже в подборке' }) : null,
+              ]));
+            });
+          }).catch(function (e) { toast(e.message, true); });
+        }, 250);
+      });
+
+      wrap.appendChild(list);
+      wrap.appendChild(el('div', { class: 'home-search' }, [search, results]));
+      return wrap;
+    }
+
+    function draw() {
+      body.innerHTML = '';
+      collections.forEach(function (c) { body.appendChild(collectionBlock(c)); });
+      body.appendChild(bar);
+    }
+
+    api('/api/home').then(function (data) {
+      collections = data;
+      draw();
+    }).catch(function (e) { toast(e.message, true); });
+  }
+
+  // ==========================================================================
   // Разделы каталога
   // ==========================================================================
 
@@ -1375,6 +1539,7 @@
     if (state.route.name === 'products' && state.route.id) return screenProduct(state.route.id);
     if (state.route.name === 'products') return screenProducts();
     if (state.route.name === 'sections') return screenSections();
+    if (state.route.name === 'home') return screenHome();
     if (state.route.name === 'texts' && state.route.id) return screenText(state.route.id);
     if (state.route.name === 'texts') return screenTexts();
     if (state.route.name === 'contacts') return screenContacts();

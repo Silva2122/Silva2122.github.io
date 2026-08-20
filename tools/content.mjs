@@ -119,6 +119,16 @@ export const digits = (s) => String(s || '').replace(/[^\d+]/g, '');
 export const loadHome = () => readJSON(paths.home, {});
 export const saveHome = (data) => writeJSON(paths.home, data);
 
+// Подборки товаров на главной — карусели «Новинки» и «Скидки и акции»
+// (см. tools/build-home.mjs). Заголовки правятся как обычный текстовый слот
+// (tools/pages.mjs подхватывает <h2 class="section-title">) — здесь только
+// известные ключи и подписи для админки, состав и порядок товаров лежат
+// в content/home.json по этим же ключам.
+export const HOME_COLLECTIONS = [
+  { key: 'new', title: 'Новинки' },
+  { key: 'sale', title: 'Скидки и акции' },
+];
+
 export const loadPages = () => readJSON(paths.pages, {});
 export const savePages = (data) => writeJSON(paths.pages, data);
 

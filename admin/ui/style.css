@@ -201,6 +201,21 @@ a { color: var(--teal-deep); }
 .order-row__pos { min-height: 40px; padding: 6px 4px; text-align: center; cursor: auto; }
 .order-row.shot--over { outline: 2px dashed var(--teal); outline-offset: -2px; }
 
+/* --- Подборки на главной --------------------------------------------------- */
+
+.home-row__del {
+  width: 100%; min-height: 40px;
+  border: 1px solid var(--line); border-radius: 8px; background: #fff;
+  color: var(--warn); cursor: pointer; font-size: 18px; line-height: 1;
+}
+.home-row__del:hover { background: #FBEEED; border-color: #E7C6C4; }
+
+.home-search { margin-top: 14px; }
+.home-search__results { margin-top: 8px; display: grid; gap: 8px; }
+.home-search__row { text-align: left; cursor: pointer; }
+.home-search__row:disabled { opacity: .5; cursor: default; }
+.home-search__row .tag { justify-self: end; }
+
 .tag {
   display: inline-block; padding: 2px 10px; border-radius: 999px;
   background: var(--grey); color: var(--muted); font-size: 12px;

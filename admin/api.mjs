@@ -8,6 +8,7 @@ import { join } from 'node:path';
 import {
   ROOT, loadProducts, saveProducts, loadSections, saveSections,
   loadSite, saveSite, loadPages, savePages, segments, slug,
+  loadHome, saveHome, HOME_COLLECTIONS,
 } from '../tools/content.mjs';
 import { slotsOf, sitePages, zonesFor, pageTitle } from '../tools/pages.mjs';
 import { json, fail, readBody, readJSONBody } from './http.mjs';
@@ -512,6 +513,43 @@ export async function api(req, res, path, query, cfg) {
     section.cut = false;
     saveSections(sections);
     return json(res, sectionsWithCounts());
+  }
+
+  // --- подборки на главной ---
+  // Состав карусели «Новинки»/«Скидки и акции» — id товаров в content/home.json
+  // (см. tools/build-home.mjs); заголовки блоков правятся как обычный
+  // текстовый слот в «Текстах страниц», здесь только сами товары.
+  function homeWithProducts() {
+    const home = loadHome();
+    const products = loadProducts();
+    const byId = new Map(products.map((p) => [String(p.id), p]));
+    return HOME_COLLECTIONS.map((c) => ({
+      key: c.key,
+      title: c.title,
+      items: (home[c.key] || [])
+        .map((id) => byId.get(String(id)))
+        .filter(Boolean)
+        .map((p) => ({ id: p.id, name: p.name, img: p.img, price: p.price, hidden: Boolean(p.hidden) })),
+    }));
+  }
+
+  if (path === '/api/home' && req.method === 'GET') {
+    return json(res, homeWithProducts());
+  }
+
+  if (path === '/api/home' && req.method === 'PUT') {
+    const body = await readJSONBody(req);
+    if (!Array.isArray(body)) return fail(res, 'Ожидался список подборок');
+
+    const validIds = new Set(loadProducts().map((p) => String(p.id)));
+    const keys = new Set(HOME_COLLECTIONS.map((c) => c.key));
+    const home = {};
+    for (const c of body) {
+      if (!keys.has(c.key)) continue;
+      home[c.key] = Array.isArray(c.ids) ? c.ids.map(String).filter((id) => validIds.has(id)) : [];
+    }
+    saveHome(home);
+    return json(res, homeWithProducts());
   }
 
   // --- контакты ---
