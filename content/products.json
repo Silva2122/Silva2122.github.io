@@ -46,7 +46,8 @@
    "assets/img/products/25092-fa080b05.webp",
    "assets/img/products/25092-08256f54.webp",
    "assets/img/products/25092-a481e4d8.webp",
-   "assets/img/products/25092-1dbee481.webp"
+   "assets/img/products/25092-1dbee481.webp",
+   "assets/img/products/25092-70c32b8d.webp"
   ],
   "cut": false,
   "hidden": false
@@ -5514,39 +5515,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1705
    },
    {
     "size": "128",
-    "price": null
+    "price": 1705
    },
    {
     "size": "134",
-    "price": null
+    "price": 1705
    },
    {
     "size": "140",
-    "price": null
+    "price": 1890
    },
    {
     "size": "146",
-    "price": null
+    "price": 1890
    },
    {
     "size": "152",
-    "price": null
+    "price": 2175
    },
    {
     "size": "158",
-    "price": null
+    "price": 2175
    },
    {
     "size": "164",
-    "price": null
+    "price": 2255
    },
    {
     "size": "170",
-    "price": null
+    "price": 2420
    }
   ],
   "description": [
@@ -5586,39 +5587,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1705
    },
    {
     "size": "128",
-    "price": null
+    "price": 1705
    },
    {
     "size": "134",
-    "price": null
+    "price": 1705
    },
    {
     "size": "140",
-    "price": null
+    "price": 1890
    },
    {
     "size": "146",
-    "price": null
+    "price": 1890
    },
    {
     "size": "152",
-    "price": null
+    "price": 2175
    },
    {
     "size": "158",
-    "price": null
+    "price": 2175
    },
    {
     "size": "164",
-    "price": null
+    "price": 2255
    },
    {
     "size": "170",
-    "price": null
+    "price": 2420
    }
   ],
   "description": [
@@ -5658,39 +5659,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1705
    },
    {
     "size": "128",
-    "price": null
+    "price": 1705
    },
    {
     "size": "134",
-    "price": null
+    "price": 1705
    },
    {
     "size": "140",
-    "price": null
+    "price": 1890
    },
    {
     "size": "146",
-    "price": null
+    "price": 1890
    },
    {
     "size": "152",
-    "price": null
+    "price": 2175
    },
    {
     "size": "158",
-    "price": null
+    "price": 2175
    },
    {
     "size": "164",
-    "price": null
+    "price": 2255
    },
    {
     "size": "170",
-    "price": null
+    "price": 2420
    }
   ],
   "description": [
@@ -6459,51 +6460,51 @@
   "sizes": [
    {
     "size": "104",
-    "price": null
+    "price": 925
    },
    {
     "size": "110",
-    "price": null
+    "price": 925
    },
    {
     "size": "116",
-    "price": null
+    "price": 925
    },
    {
     "size": "122",
-    "price": null
+    "price": 1065
    },
    {
     "size": "128",
-    "price": null
+    "price": 1065
    },
    {
     "size": "134",
-    "price": null
+    "price": 1065
    },
    {
     "size": "140",
-    "price": null
+    "price": 1130
    },
    {
     "size": "146",
-    "price": null
+    "price": 1130
    },
    {
     "size": "152",
-    "price": null
+    "price": 1250
    },
    {
     "size": "158",
-    "price": null
+    "price": 1250
    },
    {
     "size": "164",
-    "price": null
+    "price": 1325
    },
    {
     "size": "170",
-    "price": null
+    "price": 1415
    }
   ],
   "description": [
@@ -6542,39 +6543,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1065
    },
    {
     "size": "128",
-    "price": null
+    "price": 1065
    },
    {
     "size": "134",
-    "price": null
+    "price": 1065
    },
    {
     "size": "140",
-    "price": null
+    "price": 1130
    },
    {
     "size": "146",
-    "price": null
+    "price": 1130
    },
    {
     "size": "152",
-    "price": null
+    "price": 1250
    },
    {
     "size": "158",
-    "price": null
+    "price": 1250
    },
    {
     "size": "164",
-    "price": null
+    "price": 1325
    },
    {
     "size": "170",
-    "price": null
+    "price": 1415
    }
   ],
   "description": [
@@ -6613,39 +6614,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1065
    },
    {
     "size": "128",
-    "price": null
+    "price": 1065
    },
    {
     "size": "134",
-    "price": null
+    "price": 1065
    },
    {
     "size": "140",
-    "price": null
+    "price": 1130
    },
    {
     "size": "146",
-    "price": null
+    "price": 1130
    },
    {
     "size": "152",
-    "price": null
+    "price": 1250
    },
    {
     "size": "158",
-    "price": null
+    "price": 1250
    },
    {
     "size": "164",
-    "price": null
+    "price": 1325
    },
    {
     "size": "170",
-    "price": null
+    "price": 1415
    }
   ],
   "description": [
@@ -6685,39 +6686,39 @@
    },
    {
     "size": "122",
-    "price": null
+    "price": 1065
    },
    {
     "size": "128",
-    "price": null
+    "price": 1065
    },
    {
     "size": "134",
-    "price": null
+    "price": 1065
    },
    {
     "size": "140",
-    "price": null
+    "price": 1130
    },
    {
     "size": "146",
-    "price": null
+    "price": 1130
    },
    {
     "size": "152",
-    "price": null
+    "price": 1250
    },
    {
     "size": "158",
-    "price": null
+    "price": 1250
    },
    {
     "size": "164",
-    "price": null
+    "price": 1325
    },
    {
     "size": "170",
-    "price": null
+    "price": 1415
    }
   ],
   "description": [
