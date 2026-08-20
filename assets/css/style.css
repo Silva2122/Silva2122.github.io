@@ -2828,6 +2828,166 @@ button.header__tool {
 }
 
 /* ==========================================================================
+   Поиск по каталогу
+   ========================================================================== */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  display: flex;
+  justify-content: center;
+  padding: min(12vh, 90px) var(--gutter) 24px;
+  overflow-y: auto;
+}
+
+.search-overlay__backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 16, 17, .5);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.search-overlay--on .search-overlay__backdrop { opacity: 1; }
+
+.search-panel {
+  position: relative;
+  z-index: 1;
+  width: min(600px, 100%);
+  height: fit-content;
+  max-height: 100%;
+  background: #fff;
+  box-shadow: 0 30px 70px -24px rgba(30, 42, 44, .45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-14px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.search-overlay--on .search-panel { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .search-overlay__backdrop, .search-panel { transition: none; }
+}
+
+.search-panel__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+  padding: 0 var(--gutter);
+  border-bottom: 1px solid var(--line);
+}
+
+.search-panel__icon { flex: 0 0 auto; color: var(--muted); }
+
+.search-panel__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: 0;
+  padding: 18px 0;
+  font: inherit;
+  font-size: 16px;
+  color: var(--ink);
+  background: none;
+  outline: none;
+}
+
+.search-panel__input::placeholder { color: var(--muted); }
+
+/* У <input type="search"> в Chrome/Safari своя иконка очистки — рисовать
+   рядом свою незачем, крестик закрытия панели и так под рукой. */
+.search-panel__input::-webkit-search-cancel-button { -webkit-appearance: none; }
+
+.search-panel__close {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.search-panel__close:hover { color: var(--ink); }
+
+.search-panel__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0 var(--gutter);
+}
+
+.search-hint {
+  margin: 0;
+  padding: 22px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.search-hint a { color: var(--teal-deep); }
+
+.search-result {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: 10px 8px;
+  margin: 0 -8px;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-result:last-child { border-bottom: 0; }
+.search-result:hover, .search-result.is-active { background: var(--grey); }
+
+.search-result__media {
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border: 1px solid var(--line);
+  overflow: hidden;
+  padding: 4px;
+}
+
+.search-result__media img { width: 100%; height: 100%; object-fit: contain; }
+
+.search-result__body { min-width: 0; }
+
+.search-result__name {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.35;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-result__cat {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.search-result__price {
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+/* На узком экране панель занимает весь экран — плавающая карточка
+   посередине телефона только теряла бы место под клавиатурой. */
+@media (max-width: 619.98px) {
+  .search-overlay { padding: 0; }
+  .search-panel { width: 100%; height: 100%; max-height: none; }
+}
+
+/* ==========================================================================
    Выдвижная корзина
    ========================================================================== */
 .drawer {

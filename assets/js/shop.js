@@ -173,6 +173,92 @@
     setTimeout(function () { if (drawer && !drawer.classList.contains('drawer--on')) drawer.hidden = true; }, 250);
   }
 
+  // --- поиск ---------------------------------------------------------------
+  // Индекс (assets/search.json, см. tools/build-search.mjs) — только видимые
+  // на сайте товары, без размеров и галереи. Подгружается лениво, при первом
+  // открытии поиска: тянуть 300 КБ ради значка в шапке на каждой странице
+  // незачем, а второе открытие уже возьмёт индекс из памяти.
+  var search = null, searchInput = null, searchBody = null;
+  var searchIndex = null, searchLoading = null;
+
+  function loadSearchIndex() {
+    if (searchIndex) return Promise.resolve(searchIndex);
+    if (!searchLoading) {
+      searchLoading = fetch('/assets/search.json')
+        .then(function (r) { return r.json(); })
+        .then(function (data) { searchIndex = data; return data; })
+        .catch(function () { searchLoading = null; return []; });
+    }
+    return searchLoading;
+  }
+
+  function openSearch() {
+    search = search || document.getElementById('search-overlay');
+    searchInput = searchInput || document.getElementById('search-input');
+    searchBody = searchBody || document.getElementById('search-results');
+    if (!search) return;
+    search.hidden = false;
+    requestAnimationFrame(function () { search.classList.add('search-overlay--on'); });
+    document.body.style.overflow = 'hidden';
+    // iOS клавиатура сама раздвигает вьюпорт и подбрасывает overlay, если
+    // фокус ставить синхронно с открытием — маленькая задержка снимает дёрг.
+    setTimeout(function () { searchInput.focus(); }, 60);
+    loadSearchIndex();
+  }
+
+  function closeSearch() {
+    if (!search) return;
+    search.classList.remove('search-overlay--on');
+    document.body.style.overflow = '';
+    setTimeout(function () { if (search && !search.classList.contains('search-overlay--on')) search.hidden = true; }, 200);
+  }
+
+  function searchResultRow(p, active) {
+    var price = p.price ? (p.priceFrom ? 'от ' : '') + money(p.price) : 'Цена по запросу';
+    var cat = (p.cat || '').split('/').pop();
+    return '<a class="search-result' + (active ? ' is-active' : '') + '" href="' + esc(p.url) + '">' +
+      '<span class="search-result__media">' + (p.img ? '<img src="/' + esc(p.img) + '" alt="" loading="lazy">' : '') + '</span>' +
+      '<span class="search-result__body">' +
+        '<span class="search-result__name">' + esc(p.name) + '</span>' +
+        (cat ? '<span class="search-result__cat">' + esc(cat) + '</span>' : '') +
+      '</span>' +
+      '<span class="search-result__price">' + price + '</span>' +
+    '</a>';
+  }
+
+  // Слова запроса ищем по отдельности («edea коньки» находит «Коньки Edea…»
+  // не только при точном порядке слов) — по названию, бренду, категории
+  // и артикулу разом.
+  function searchMatch(q, p) {
+    var hay = (p.name + ' ' + (p.brand || '') + ' ' + p.cat + ' ' + p.id).toLowerCase();
+    return q.split(/\s+/).filter(Boolean).every(function (w) { return hay.indexOf(w) !== -1; });
+  }
+
+  function runSearch(raw) {
+    var q = raw.trim().toLowerCase();
+    if (!q) {
+      searchBody.innerHTML = '<p class="search-hint">Начните вводить название, бренд или артикул товара.</p>';
+      return;
+    }
+    loadSearchIndex().then(function (index) {
+      // Пока грузился индекс, человек мог напечатать ещё — запрос устарел.
+      if (searchInput.value.trim().toLowerCase() !== q) return;
+      var matches = index.filter(function (p) { return searchMatch(q, p); });
+      // Совпадение в начале названия — выше совпадения где-то в середине.
+      matches.sort(function (a, b) {
+        var an = a.name.toLowerCase().indexOf(q) === 0 ? 0 : 1;
+        var bn = b.name.toLowerCase().indexOf(q) === 0 ? 0 : 1;
+        return an - bn;
+      });
+      if (!matches.length) {
+        searchBody.innerHTML = '<p class="search-hint">Ничего не нашлось. Проверьте название или позвоните — подскажем: ' +
+          '<a href="tel:+79290534796">+7 929 053-47-96</a>.</p>';
+        return;
+      }
+      searchBody.innerHTML = matches.slice(0, 30).map(function (p, i) { return searchResultRow(p, i === 0); }).join('');
+    });
+  }
+
   // Строка товара в панели и на странице корзины — разметка одна.
   function cartRow(it) {
     var key = keyOf(it);
@@ -387,6 +473,8 @@
     // Открыть/закрыть панель
     if (t.closest('#cart-open')) { e.preventDefault(); openDrawer(); return; }
     if (t.closest('[data-cart-close]')) { e.preventDefault(); closeDrawer(); return; }
+    if (t.closest('#search-open')) { e.preventDefault(); openSearch(); return; }
+    if (t.closest('[data-search-close]')) { e.preventDefault(); closeSearch(); return; }
 
     // Количество и удаление внутри строки корзины
     var qtyBtn = t.closest('[data-qty]');
@@ -491,9 +579,42 @@
     if (priceEl) priceEl.textContent = money(Number(e.target.dataset.price));
   });
 
+  // Не на каждое нажатие — список в тысячу товаров при вводе не должен мигать.
+  var searchTyping = null;
+  document.addEventListener('input', function (e) {
+    if (e.target.id !== 'search-input') return;
+    clearTimeout(searchTyping);
+    var q = e.target.value;
+    searchTyping = setTimeout(function () { runSearch(q); }, 150);
+  });
+
   // Esc закрывает панель — с модальным диалогом это ожидаемое поведение.
+  // Стрелки и Enter в поиске двигают подсветку по списку результатов —
+  // после ввода запроса руки уже на клавиатуре, тянуться к мыши незачем.
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && drawer && drawer.classList.contains('drawer--on')) closeDrawer();
+    if (e.key === 'Escape') {
+      if (search && search.classList.contains('search-overlay--on')) { closeSearch(); return; }
+      if (drawer && drawer.classList.contains('drawer--on')) closeDrawer();
+      return;
+    }
+
+    if (!search || search.hidden || document.activeElement !== searchInput) return;
+    if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Enter') return;
+
+    var items = Array.prototype.slice.call(searchBody.querySelectorAll('.search-result'));
+    if (!items.length) return;
+
+    if (e.key === 'Enter') {
+      var active = searchBody.querySelector('.search-result.is-active');
+      if (active) location.href = active.href;
+      return;
+    }
+
+    e.preventDefault();
+    var idx = items.findIndex(function (a) { return a.classList.contains('is-active'); });
+    idx = e.key === 'ArrowDown' ? Math.min(items.length - 1, idx + 1) : Math.max(0, idx - 1);
+    items.forEach(function (a, i) { a.classList.toggle('is-active', i === idx); });
+    items[idx].scrollIntoView({ block: 'nearest' });
   });
 
   // Соседняя вкладка положила товар в корзину — счётчик здесь должен об этом
