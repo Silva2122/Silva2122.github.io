@@ -300,7 +300,14 @@
     state.sections.forEach(function (s) {
       pickSection.appendChild(el('option', { value: s.key, text: s.title + ' (' + s.total + ')' }));
     });
-    wrap.appendChild(el('div', { class: 'toolbar' }, [pickSection]));
+
+    // Подраздел — вторым выбором: список зависит от раздела, поэтому
+    // заполняется заново при каждой его смене (см. fillSubs). У разделов
+    // без подразделов (лезвия, мешки для обуви…) второй select просто
+    // не появляется — сужать там нечего, порядок и так один список.
+    var pickSub = el('select', { class: 'select toolbar__pick' });
+
+    wrap.appendChild(el('div', { class: 'toolbar' }, [pickSection, pickSub]));
 
     var list = el('div', { class: 'items' });
     var bar = el('div', { class: 'bar' });
@@ -311,6 +318,7 @@
     var dirty = false;
     var dragFrom = null;
     var current = '';
+    var currentSub = '';
 
     function drawBar() {
       bar.innerHTML = '';
@@ -323,7 +331,7 @@
     function draw() {
       list.innerHTML = '';
       if (!items.length) {
-        list.appendChild(el('div', { class: 'empty', text: 'В этом разделе нет товаров.' }));
+        list.appendChild(el('div', { class: 'empty', text: currentSub ? 'В этом подразделе нет товаров.' : 'В этом разделе нет товаров.' }));
         return;
       }
       items.forEach(function (p, i) {
@@ -373,14 +381,31 @@
       });
     }
 
-    function load(sectionKey) {
+    // Список подразделов заново на каждую смену раздела: у «Одежды для
+    // девочек» их полтора десятка, у «Мешков для обуви» — ни одного.
+    function fillSubs(sectionKey) {
+      var section = state.sections.filter(function (s) { return s.key === sectionKey; })[0];
+      var subs = (section && section.subs) || [];
+      pickSub.innerHTML = '';
+      pickSub.hidden = !subs.length;
+      pickSub.appendChild(el('option', { value: '', text: 'Все подразделы (' + (section ? section.total : 0) + ')' }));
+      subs.forEach(function (s) {
+        pickSub.appendChild(el('option', { value: s.key, text: s.title + ' (' + s.count + ')' }));
+      });
+    }
+
+    function load(sectionKey, subKey) {
       current = sectionKey;
+      currentSub = subKey || '';
       pickSection.value = sectionKey;
+      pickSub.value = currentSub;
       list.innerHTML = '';
       list.appendChild(el('div', { class: 'empty', text: 'Загружаем…' }));
       dirty = false;
       drawBar();
-      api('/api/products/order?' + new URLSearchParams({ section: sectionKey })).then(function (data) {
+      var q = { section: sectionKey };
+      if (currentSub) q.sub = currentSub;
+      api('/api/products/order?' + new URLSearchParams(q)).then(function (data) {
         items = data;
         draw();
         drawBar();
@@ -388,9 +413,9 @@
     }
 
     function save() {
-      api('/api/products/order', {
-        method: 'PUT', body: { section: current, ids: items.map(function (p) { return p.id; }) },
-      }).then(function () {
+      var body = { section: current, ids: items.map(function (p) { return p.id; }) };
+      if (currentSub) body.sub = currentSub;
+      api('/api/products/order', { method: 'PUT', body: body }).then(function () {
         dirty = false;
         drawBar();
         toast('Порядок сохранён');
@@ -402,11 +427,24 @@
         pickSection.value = current;
         return;
       }
-      load(pickSection.value);
+      fillSubs(pickSection.value);
+      load(pickSection.value, '');
     });
 
-    if (state.sections.length) load(state.sections[0].key);
-    else list.appendChild(el('div', { class: 'empty', text: 'Сначала добавьте раздел.' }));
+    pickSub.addEventListener('change', function () {
+      if (dirty && !confirm('Несохранённый порядок будет потерян. Сменить подраздел?')) {
+        pickSub.value = currentSub;
+        return;
+      }
+      load(current, pickSub.value);
+    });
+
+    if (state.sections.length) {
+      fillSubs(state.sections[0].key);
+      load(state.sections[0].key, '');
+    } else {
+      list.appendChild(el('div', { class: 'empty', text: 'Сначала добавьте раздел.' }));
+    }
 
     return wrap;
   }

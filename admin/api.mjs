@@ -250,11 +250,21 @@ export async function api(req, res, path, query, cfg) {
   // Порядок товаров в разделе — это порядок записей в content/products.json,
   // отдельного поля order у товара нет (так же, как порядок карточек в галерее
   // определяется порядком в product.gallery). Экран «Порядок» в админке
-  // работает со всем разделом сразу, без пагинации списка.
+  // работает со всем разделом сразу, без пагинации списка; необязательный
+  // sub сужает список до одного подраздела — в «Одежде для девочек» 500+
+  // товаров, и без сужения перебирать нужный подраздел в общей куче тяжело.
+  // Позиции самих товаров при этом остаются в разделе — сужение только
+  // для показа и для того, какие карточки участвуют в перестановке.
+  const orderSlot = (p, sectionKey, subKey) => {
+    const seg = segments(p.url);
+    return seg.top === sectionKey && (!subKey || seg.sub === subKey);
+  };
+
   if (path === '/api/products/order' && req.method === 'GET') {
     const sectionKey = query.get('section') || '';
+    const subKey = query.get('sub') || '';
     const items = loadProducts()
-      .filter((p) => segments(p.url).top === sectionKey)
+      .filter((p) => orderSlot(p, sectionKey, subKey))
       .map((p) => ({ id: p.id, name: p.name, img: p.img }));
     return json(res, items);
   }
@@ -262,22 +272,23 @@ export async function api(req, res, path, query, cfg) {
   if (path === '/api/products/order' && req.method === 'PUT') {
     const body = await readJSONBody(req);
     const sectionKey = String(body.section || '');
+    const subKey = body.sub ? String(body.sub) : '';
     const ids = Array.isArray(body.ids) ? body.ids.map(String) : null;
     if (!sectionKey || !ids) return fail(res, 'Не хватает данных для сохранения порядка');
 
     const products = loadProducts();
-    const bySection = new Map(
-      products.filter((p) => segments(p.url).top === sectionKey).map((p) => [String(p.id), p]));
+    const bySlot = new Map(
+      products.filter((p) => orderSlot(p, sectionKey, subKey)).map((p) => [String(p.id), p]));
     // Список успел разойтись с сервером (товар добавили/скрыли/удалили,
     // пока владелец тащил карточки) — переставлять по частично устаревшему
     // списку опаснее, чем попросить обновить страницу.
-    if (ids.length !== bySection.size || !ids.every((id) => bySection.has(id))) {
+    if (ids.length !== bySlot.size || !ids.every((id) => bySlot.has(id))) {
       return fail(res, 'Список товаров успел измениться — обновите страницу');
     }
 
     let i = 0;
     const reordered = products.map((p) => (
-      segments(p.url).top === sectionKey ? bySection.get(ids[i++]) : p
+      orderSlot(p, sectionKey, subKey) ? bySlot.get(ids[i++]) : p
     ));
     saveProducts(reordered);
     return json(res, { ok: true });
