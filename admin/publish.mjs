@@ -79,6 +79,11 @@ export async function startPublish({ push = false } = {}) {
       ok = await run(process.execPath, ['tools/build-search.mjs']);
     }
 
+    if (ok) {
+      say('Собираем sitemap.xml…');
+      ok = await run(process.execPath, ['tools/build-sitemap.mjs']);
+    }
+
     if (ok && push) {
       say('Отправляем на сайт…');
       ok = await run('git', ['add', '-A'])

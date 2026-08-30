@@ -319,6 +319,23 @@ function page(it) {
     } : {}),
   });
 
+  const breadcrumbItems = [
+    { name: 'Главная', url: '/' },
+    { name: tidy(it.topName), url: topUrl },
+    ...(it.subName && subUrl ? [{ name: tidy(it.subName), url: subUrl }] : []),
+    { name: tidy(it.name) },
+  ];
+  const breadcrumbLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbItems.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      ...(c.url ? { item: `https://axelnn.ru${c.url}` } : {}),
+    })),
+  });
+
   const summary = descr.length
     ? descr.join(' ').slice(0, 155)
     : `${tidy(it.name)} — ${tidy(it.topName)}. Магазин Аксель·НН в Нижнем Новгороде, доставка по России.`;
@@ -343,6 +360,7 @@ ${it.img ? `<meta property="og:image" content="https://axelnn.ru/${it.img}">` : 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${up}assets/css/style.css">
 <script type="application/ld+json">${ld}</script>
+<script type="application/ld+json">${breadcrumbLd}</script>
 </head>
 <body>
 

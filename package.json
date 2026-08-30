@@ -6,7 +6,7 @@
     "serve": "node tools/serve.mjs",
     "shot": "node tools/shot.mjs",
     "audit": "node tools/audit.mjs",
-    "build": "node tools/build-pages.mjs && node tools/build-catalog.mjs && node tools/build-products.mjs"
+    "build": "node tools/build-pages.mjs && node tools/build-catalog.mjs && node tools/build-products.mjs && node tools/build-sitemap.mjs"
   },
   "license": "ISC",
   "type": "module",

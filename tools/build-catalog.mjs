@@ -514,7 +514,7 @@ console.log(`  синхронизировано страниц: ${synced}`);
 
 const cards = sections.map((s) => {
   const media = s.img
-    ? `<img class="ph" src="../${s.img}" width="1000" height="1000" loading="lazy" alt="">`
+    ? `<img class="ph" src="../${s.img}" width="1000" height="1000" loading="lazy" alt="${esc(tidy(s.title))}">`
     : '<span class="ph"></span>';
   return [
     `      <a href="${href(s.url)}" class="section-card">`,
@@ -754,20 +754,37 @@ for (const s of sections) {
   const without = items.filter((it) => !it.img).length;
   noPhoto += without;
 
+  const sectionDescr = `${tidy(s.title)}: ${items.length} ${plural(items.length)} для фигурного катания. Магазин в Нижнем Новгороде, доставка по России.`;
+  const sectionBreadcrumbLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Главная', item: 'https://axelnn.ru/' },
+      { '@type': 'ListItem', position: 2, name: 'Каталог', item: 'https://axelnn.ru/catalog/' },
+      { '@type': 'ListItem', position: 3, name: tidy(s.title) },
+    ],
+  });
+
   const sectionPage = `<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(tidy(s.title))} — Аксель·НН</title>
-<meta name="description" content="${esc(tidy(s.title))}: ${items.length} ${plural(items.length)} для фигурного катания. Магазин в Нижнем Новгороде, доставка по России.">
+<meta name="description" content="${esc(sectionDescr)}">
 <link rel="canonical" href="https://axelnn.ru${s.url}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(tidy(s.title))} — Аксель·НН">
+<meta property="og:description" content="${esc(sectionDescr)}">
+${s.img ? `<meta property="og:image" content="https://axelnn.ru/${s.img}">` : ''}
+<meta property="og:url" content="https://axelnn.ru${s.url}">
 <meta name="theme-color" content="#0E7A88">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='25' font-size='26'>⛸</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
+<script type="application/ld+json">${sectionBreadcrumbLd}</script>
 </head>
 <body>
 
