@@ -183,7 +183,7 @@ function gallery(it, up) {
   return [
     '      <div class="gallery" id="gallery">',
     '        <div class="gallery__stage">',
-    `          <img class="gallery__img" id="gallery-img" src="${up}${shots[0].img}" alt="${esc(tidy(it.name))}" width="1000" height="1000" fetchpriority="high">`,
+    `          <img class="gallery__img" id="gallery-img" src="${up}${shots[0].img}" alt="${esc(tidy(it.name))}" width="1800" height="1800" fetchpriority="high">`,
     `          <span class="gallery__stage-play"${shots[0].video ? '' : ' hidden'} aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>`,
     '        </div>',
     thumbs,
@@ -195,7 +195,7 @@ function gallery(it, up) {
 // они бы отняли место у названия, а купить можно на самой странице товара.
 function miniCard(it, up) {
   const media = it.img
-    ? `<img class="ph" src="${up}${it.img}" width="600" height="600" loading="lazy" alt="${esc(tidy(it.name))}">`
+    ? `<img class="ph" src="${up}${it.img}" width="900" height="900" loading="lazy" alt="${esc(tidy(it.name))}">`
     : '<span class="ph"></span>';
   const price = it.price
     ? `<span class="card__price">${money(it.price)}&nbsp;₽</span>`

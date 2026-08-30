@@ -314,7 +314,7 @@ export async function api(req, res, path, query, cfg) {
       mkdirSync(PRODUCT_IMG, { recursive: true });
       const name = shotName(product.id, buffer);
       try {
-        await saveShot(buffer, join(PRODUCT_IMG, name), 1000);
+        await saveShot(buffer, join(PRODUCT_IMG, name), 1800);
       } catch {
         return fail(res, 'Не похоже на картинку — нужен JPG, PNG или WebP');
       }
