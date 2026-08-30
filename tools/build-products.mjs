@@ -25,6 +25,20 @@ const arg = (n, d) => { const i = argv.indexOf(n); return i !== -1 && argv[i + 1
 const DRY = argv.includes('--dry');
 const LIMIT = Number(arg('--limit', 0));
 
+// Счётчик Яндекс.Метрики (id 112096375, заведён 2026-08-31) — тот же код,
+// что и в tools/build-catalog.mjs, см. комментарий там.
+const METRIKA = `<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112096375', 'ym');
+
+    ym(112096375, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112096375" style="position:absolute; left:-9999px;" alt="" /></div></noscript>`;
+
 const manifest = JSON.parse(readFileSync(join(ROOT, 'assets', 'products.json'), 'utf8'));
 
 // Описания живут в content/products.json — там их правит админка, и там они
@@ -361,6 +375,7 @@ ${it.img ? `<meta property="og:image" content="https://axelnn.ru/${it.img}">` : 
 <link rel="stylesheet" href="${up}assets/css/style.css">
 <script type="application/ld+json">${ld}</script>
 <script type="application/ld+json">${breadcrumbLd}</script>
+${METRIKA}
 </head>
 <body>
 

@@ -55,6 +55,10 @@ const PUBLIC_DIRS = new Set([
   'assets', 'cart', 'catalog', 'company', 'contacts', 'favorites', 'help', 'info', 'services',
 ]);
 const PUBLIC_ROOT_FILES = new Set(['index.html', 'robots.txt', 'sitemap.xml']);
+// Файлы подтверждения прав на сайт (Яндекс.Вебмастер, Google Search Console
+// и т.п.) — каждый раз новое имя с кодом верификации, поэтому шаблон, а не
+// список: перевыпустят подтверждение — не придётся снова лезть в код.
+const VERIFICATION_FILE = /^(yandex_[0-9a-f]+|google[0-9a-f]+)\.html$/;
 
 function fileFor(pathname) {
   let rel;
@@ -63,7 +67,7 @@ function fileFor(pathname) {
 
   const segs = rel ? rel.split('/') : [];
   if (segs.some((seg) => seg === '.' || seg === '..' || seg.startsWith('.'))) return null;
-  if (segs.length && !PUBLIC_DIRS.has(segs[0]) && !PUBLIC_ROOT_FILES.has(segs[0])) return null;
+  if (segs.length && !PUBLIC_DIRS.has(segs[0]) && !PUBLIC_ROOT_FILES.has(segs[0]) && !(segs.length === 1 && VERIFICATION_FILE.test(segs[0]))) return null;
 
   const target = resolve(ROOT, rel);
   if (target !== resolve(ROOT) && !target.startsWith(resolve(ROOT) + sep)) return null;
