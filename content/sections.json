@@ -39,7 +39,7 @@
   "key": "odezhda_dlya_malchikov",
   "name": "Одежда для мальчиков",
   "title": "Одежда для мальчиков",
-  "img": "assets/img/catalog-raw/cat-odezhda-dlya-malchikov.jpg",
+  "img": "assets/img/catalog-raw/cat-odezhda-dlya-malchikov-50526eb4.webp",
   "cut": false,
   "hidden": false,
   "order": 4
@@ -75,8 +75,8 @@
   "key": "khranenie_ukhod_za_konkami",
   "name": "Хранение",
   "title": "Хранение и уход",
-  "img": "assets/img/catalog-nobg/cat-termochehly-na-botinok-chernye.webp",
-  "cut": true,
+  "img": "assets/img/catalog-raw/cat-hranenie-i-uhod-138b7c0c.webp",
+  "cut": false,
   "hidden": false,
   "order": 8
  },
@@ -111,8 +111,8 @@
   "key": "suveniry",
   "name": "Сувениры",
   "title": "Сувениры",
-  "img": "assets/img/catalog-nobg/cat-suveniry.webp",
-  "cut": true,
+  "img": "assets/img/catalog-raw/cat-suveniry-8270e0be.webp",
+  "cut": false,
   "hidden": false,
   "order": 12
  },
@@ -151,5 +151,14 @@
   "cut": false,
   "hidden": false,
   "order": 16
+ },
+ {
+  "key": "termokostyumy-s-yubkami",
+  "name": "Термокостюмы с юбками",
+  "title": "Термокостюмы с юбками",
+  "img": null,
+  "cut": false,
+  "hidden": false,
+  "order": 17
  }
 ]
