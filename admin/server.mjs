@@ -45,10 +45,25 @@ const config = loadConfig();
 
 // --- статика --------------------------------------------------------------
 
+// Раздаём только витрину сайта, а не весь ROOT: раньше сервер отдавал
+// по HTTP вообще любой файл репозитория, включая content/.admin.json
+// (хеш пароля и ключ подписи куки входа) и content/.smtp.json (пароль
+// от почты) — их и утащили curl'ом 30.08.2026 (см. журнал nginx). Здесь
+// список того, что действительно относится к сайту; content/, tools/,
+// admin/api.mjs и всё остальное с диска наружу не смотрит.
+const PUBLIC_DIRS = new Set([
+  'assets', 'cart', 'catalog', 'company', 'contacts', 'favorites', 'help', 'info', 'services',
+]);
+const PUBLIC_ROOT_FILES = new Set(['index.html', 'robots.txt', 'sitemap.xml']);
+
 function fileFor(pathname) {
   let rel;
   try { rel = decodeURIComponent(pathname); } catch { return null; }
   rel = rel.replace(/\/+/g, '/').replace(/^\//, '');
+
+  const segs = rel ? rel.split('/') : [];
+  if (segs.some((seg) => seg === '.' || seg === '..' || seg.startsWith('.'))) return null;
+  if (segs.length && !PUBLIC_DIRS.has(segs[0]) && !PUBLIC_ROOT_FILES.has(segs[0])) return null;
 
   const target = resolve(ROOT, rel);
   if (target !== resolve(ROOT) && !target.startsWith(resolve(ROOT) + sep)) return null;
