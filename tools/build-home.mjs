@@ -31,7 +31,7 @@ const money = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 
 function card(it) {
   const media = it.img
-    ? `<img class="ph" src="${esc(it.img)}" width="900" height="900" loading="lazy" alt="${esc(tidy(it.name))}">`
+    ? `<img class="ph" src="${esc(it.img)}" width="1200" height="1200" loading="lazy" alt="${esc(tidy(it.name))}">`
     : '<span class="ph"></span>';
 
   // Та же арифметика «от», что у карточки раздела: если у размеров цены

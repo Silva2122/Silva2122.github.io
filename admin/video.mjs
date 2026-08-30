@@ -74,7 +74,7 @@ export async function saveVideo(buffer, id) {
     const posterName = `${id}-${hash}-poster.webp`;
     const posterDir = join(ROOT, 'assets', 'img', 'products');
     mkdirSync(posterDir, { recursive: true });
-    await saveShot(readFileSync(tmpPoster), join(posterDir, posterName), 1800);
+    await saveShot(readFileSync(tmpPoster), join(posterDir, posterName), 2400);
 
     return {
       video: `assets/video/products/${name}`,

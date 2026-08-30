@@ -605,7 +605,7 @@ const money = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 function productCard(it, depth) {
   const upPath = '../'.repeat(depth);
   const media = it.img
-    ? `<img class="ph" src="${upPath}${it.img}" width="900" height="900" loading="lazy" alt="${esc(it.name)}">`
+    ? `<img class="ph" src="${upPath}${it.img}" width="1200" height="1200" loading="lazy" alt="${esc(it.name)}">`
     : '<span class="ph"></span>';
 
   // Цена размера необязательна — пустая берёт цену товара. Если у размеров

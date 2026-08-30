@@ -1,17 +1,18 @@
 // Кадры, залитые через админку.
 //
 // Размеры и настройки те же, что у tools/prepare-product-images.mjs: карточка
-// в сетке живёт на 900px, галерея товара на 1800px, fit: 'inside' — кадр
+// в сетке живёт на 1200px, галерея товара на 2400px, fit: 'inside' — кадр
 // не обрезается, потому что у товара он может быть какой угодно формы,
 // и кроп срезал бы половину конька. Разъедься эти числа — залитое из админки
 // фото стояло бы в сетке иначе, чем всё остальное.
 //
-// Числа подняты с прежних 600/1000 (2026-08-30): на плотных экранах (3x —
-// свежие айфоны) карточка на 340px CSS-ширины требует больше 1000px кадра,
-// а полноэкранный просмотр (см. index.html, клик по фото) делает нехватку
-// разрешения особенно заметной. Уже загруженные фото это не улучшает —
-// апскейл существующих 1000px кадров добавил бы не резкости, а мыла; выигрыш
-// только для того, что зальют заново.
+// Числа подняты с прежних 600/1000 (2026-08-30), а потом ещё раз с 900/1800
+// (2026-08-31, вместе с качеством webp 80→90) — владелица заметила, что даже
+// после первой правки свежезалитое фото выглядит хуже, чем то, что она
+// заливала. Порог теперь заметно выше того, что вообще показывается на
+// экране (см. предыдущую правку про 3x-плотность и полноэкранный просмотр) —
+// дальше поднимать уже не даст видимой резкости, а только раздует диск,
+// который и так был причиной падений сервера дважды в этом месяце.
 import { existsSync, readFileSync, mkdirSync, rmSync } from 'node:fs';
 import { join, resolve, sep } from 'node:path';
 import { createHash } from 'node:crypto';
@@ -22,7 +23,7 @@ export const PRODUCT_IMG = join(ROOT, 'assets', 'img', 'products');
 export const SECTION_IMG = join(ROOT, 'assets', 'img', 'catalog-raw');
 export const PAGE_IMG = join(ROOT, 'assets', 'img', 'pages');
 
-const WEBP = { quality: 80, alphaQuality: 100 };
+const WEBP = { quality: 90, alphaQuality: 100 };
 
 export async function saveShot(buffer, dest, size) {
   await sharp(buffer)
@@ -46,7 +47,7 @@ export async function cropShot(buffer, dest, rect) {
   const top = Math.max(0, Math.min(Math.round(rect.y), meta.height - height));
   await img
     .extract({ left, top, width, height })
-    .resize(1440, 1800, { fit: 'inside', withoutEnlargement: true })
+    .resize(1920, 2400, { fit: 'inside', withoutEnlargement: true })
     .webp(WEBP)
     .toFile(dest);
 }
@@ -70,7 +71,7 @@ export async function refreshMain(product) {
   }
   mkdirSync(PRODUCT_IMG, { recursive: true });
   const name = `${product.id}.webp`;
-  await saveShot(readFileSync(join(ROOT, src)), join(PRODUCT_IMG, name), 900);
+  await saveShot(readFileSync(join(ROOT, src)), join(PRODUCT_IMG, name), 1200);
   product.img = `assets/img/products/${name}`;
 }
 
