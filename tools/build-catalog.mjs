@@ -558,7 +558,7 @@ ${header}
 
 <section class="section container">
   <nav class="crumbs" aria-label="Хлебные крошки">
-    <a href="../index.html">Главная</a>
+    <a href="/">Главная</a>
     <span class="crumbs__sep" aria-hidden="true">/</span>
     <span class="crumbs__current" aria-current="page">Каталог</span>
   </nav>
