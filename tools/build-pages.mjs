@@ -66,9 +66,11 @@ function applyContacts(html, site) {
   };
 
   out = socialLinks(out, 'footer__social', [site.vk, site.telegram]);
-  // Баннеры «Мы в Telegram / Мы в Instagram» — только на главной, но
-  // регулярка просто не найдёт .socials на остальных страницах и не тронет их.
-  out = socialLinks(out, 'socials', [site.telegram, site.instagram]);
+  // Баннеры на главной — Telegram, Instagram, VK, MAX, в этом порядке разметки.
+  // У MAX своего поля в content/site.json нет (ссылки пока нет) — пустое
+  // значение сюда и должно попадать, socialLinks сама поставит "#".
+  // Регулярка просто не найдёт .socials на остальных страницах и не тронет их.
+  out = socialLinks(out, 'socials', [site.telegram, site.instagram, site.vk, site.max]);
 
   return out;
 }

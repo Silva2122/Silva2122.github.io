@@ -103,6 +103,7 @@
     if (hit) hit.qty += item.qty || 1;
     else list.push(item);
     write(CART, list);
+    if (window.ym) ym(112096375, 'reachGoal', 'add_to_cart');
   }
 
   function setQty(key, qty) {
@@ -133,6 +134,7 @@
     var added = next.length === list.length;
     if (added) next.push(item);
     write(FAV, next);
+    if (added && window.ym) ym(112096375, 'reachGoal', 'add_to_fav');
     return added;
   }
 
@@ -382,6 +384,7 @@
         write(CART, []);
         form.reset();
         toast('Заказ отправлен — мы свяжемся с вами');
+        if (window.ym) ym(112096375, 'reachGoal', 'order_submit');
       })
       .catch(function (err) {
         toast(err.message || 'Не получилось отправить, позвоните нам');

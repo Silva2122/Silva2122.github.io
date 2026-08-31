@@ -31,3 +31,7 @@ content/.admin.json
 # SMTP-пароль приложения для отправки заказов из корзины на почту.
 content/.smtp.json
 
+# OAuth-токен Яндекс.Метрики/Вебмастера — для отчётов и управления целями,
+# не для сайта. Заведён 2026-08-31, права metrika:read/write + webmaster:hostinfo/verify.
+content/.yandex.json
+
