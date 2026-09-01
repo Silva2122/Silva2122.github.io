@@ -530,6 +530,44 @@
     frame(box);
 
     var name = el('input', { class: 'input', value: p.name || '' });
+
+    // Раздел/подраздел — не из p.cat (это просто текст для показа, у части
+    // товаров он может не совпасть ни с одним разделом), а из p.url: это тот
+    // же источник истины, что и на сервере. Иначе на товаре с нестандартным
+    // cat форма молча подставила бы первый раздел в списке, и обычное
+    // «Сохранить» без намерения переносить товар всё равно увело бы его туда.
+    var curSeg = (function () {
+      var seg = String(p.url || '').split('/').filter(Boolean);
+      return {
+        top: seg[0] === 'catalog' ? (seg[1] || null) : null,
+        sub: seg[0] === 'catalog' && seg.length >= 4 ? seg[2] : null,
+      };
+    })();
+    var currentSection = state.sections.filter(function (s) { return s.key === curSeg.top; })[0] || state.sections[0];
+    var curSub = currentSection
+      ? currentSection.subs.filter(function (x) { return x.key === curSeg.sub; })[0]
+      : null;
+
+    var pickSection = el('select', { class: 'select' }, state.sections.map(function (s) {
+      return el('option', { value: s.key, text: s.title, selected: currentSection && s.key === currentSection.key ? true : null });
+    }));
+    // Подразделов как отдельной сущности нет — они выводятся из товаров.
+    // Поэтому это поле, а не выпадающий список: см. тот же приём в newProduct().
+    var subsList = el('datalist', { id: 'product-edit-subs' });
+    var pickSub = el('input', {
+      class: 'input', list: 'product-edit-subs', value: curSub ? curSub.title : '',
+      placeholder: 'Без подраздела — товар прямо в разделе',
+    });
+    function fillSubs() {
+      var section = state.sections.filter(function (s) { return s.key === pickSection.value; })[0];
+      subsList.innerHTML = '';
+      (section ? section.subs : []).forEach(function (sub) {
+        subsList.appendChild(el('option', { value: sub.title }));
+      });
+    }
+    pickSection.addEventListener('change', fillSubs);
+    fillSubs();
+
     var price = el('input', { class: 'input', type: 'number', min: '0', step: '10', value: p.price == null ? '' : p.price });
     var oldPrice = el('input', { class: 'input', type: 'number', min: '0', step: '10', value: p.oldPrice == null ? '' : p.oldPrice });
     var brand = el('input', { class: 'input', value: p.brand || '' });
@@ -841,6 +879,8 @@
     function save(then) {
       api('/api/products/' + encodeURIComponent(p.id), { method: 'PUT', body: {
         name: name.value,
+        section: pickSection.value,
+        subTitle: pickSub.value.trim(),
         price: price.value,
         oldPrice: oldPrice.value,
         available: available.input.checked,
@@ -851,15 +891,17 @@
         gallery: gallery,
       } }).then(function (fresh) {
         state.product = fresh;
+        headSub.textContent = 'Артикул ' + fresh.id + ' · ' + (fresh.cat || '—');
         toast('Сохранено');
         if (then) then();
       }).catch(function (e) { toast(e.message, true); });
     }
 
+    var headSub = el('p', { class: 'head__sub', text: 'Артикул ' + p.id + ' · ' + (p.cat || '—') });
     box.appendChild(el('div', { class: 'head' }, [
       el('div', {}, [
         el('h1', { class: 'head__title', text: p.name || 'Товар' }),
-        el('p', { class: 'head__sub', text: 'Артикул ' + p.id + ' · ' + (p.cat || '—') }),
+        headSub,
       ]),
       el('a', { class: 'btn btn--ghost', href: p.url, target: '_blank', text: 'Открыть на сайте ↗' }),
     ]));
@@ -877,6 +919,10 @@
         el('div', { class: 'card' }, [
           el('h2', { class: 'card__title', text: 'Основное' }),
           el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Название' }), name]),
+          el('div', { class: 'row' }, [
+            el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Раздел' }), pickSection]),
+            el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Подраздел' }), pickSub, subsList]),
+          ]),
           el('div', { class: 'row' }, [
             el('label', { class: 'field' }, [el('span', { class: 'field__label', text: 'Цена, ₽' }), price]),
             el('label', { class: 'field' }, [

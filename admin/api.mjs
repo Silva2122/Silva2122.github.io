@@ -328,8 +328,24 @@ export async function api(req, res, path, query, cfg) {
       const body = await readJSONBody(req);
       const before = (product.gallery || [])[0];
 
-      // Правим только то, что редактируется в админке: адрес и артикул товара
-      // менять нельзя — на них завязаны и страница, и ссылки с неё.
+      // Артикул (id) неприкасаем — на нём завязаны и адрес, и ссылки с него.
+      // А вот сам раздел/подраздел товара сменить можно: та же логика подбора
+      // подраздела, что и при создании (см. POST /api/products выше), только
+      // id остаётся прежним — старая страница исчезнет при следующей публикации
+      // (см. чистку по фактическому пути в tools/build-products.mjs).
+      if (body.section) {
+        const section = loadSections().find((s) => s.key === body.section);
+        if (!section) return fail(res, 'Не выбран раздел');
+        const subTitleInput = (body.subTitle || '').trim();
+        const existingSub = subTitleInput
+          ? subsOf(products, section.key).find((x) => x.title.toLowerCase() === subTitleInput.toLowerCase())
+          : null;
+        const sub = subTitleInput ? (existingSub ? existingSub.key : slug(subTitleInput)) : '';
+        product.url = sub ? `/catalog/${section.key}/${sub}/${id}/` : `/catalog/${section.key}/${id}/`;
+        product.cat = subTitleInput ? `${section.name}/${existingSub ? existingSub.title : subTitleInput}` : section.name;
+      }
+
+      // Правим то, что редактируется в админке дальше как обычные поля.
       Object.assign(product, {
         name: String(body.name ?? product.name).trim(),
         price: body.price === '' || body.price == null ? null : Number(body.price),

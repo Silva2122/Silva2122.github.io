@@ -501,6 +501,12 @@ for (const it of list) {
 let removed = 0;
 if (!LIMIT) {
   const visibleIds = new Set(visible.map((it) => String(it.id)));
+  // Товар мог не исчезнуть, а переехать в другой раздел/подраздел (кнопка
+  // «Раздел» в карточке товара, admin/api.mjs) — id остаётся видимым, но по
+  // старому пути страница ему больше не принадлежит. Сверяем не только id,
+  // но и сам путь, иначе старая страница остаётся сиротой навсегда — ровно
+  // тот же класс бага, что чинили 19.08.2026 для удалённых товаров.
+  const pathById = new Map(visible.map((it) => [String(it.id), it.url.split('/').filter(Boolean).join('/')]));
   const marker = 'Страницу целиком собирает tools/build-products.mjs';
 
   const walk = (dir) => {
@@ -510,7 +516,9 @@ if (!LIMIT) {
       if (e.name !== 'index.html') continue;
       const seg = relative(ROOT, dir).split(/[\\/]/).filter(Boolean);
       const id = seg[seg.length - 1];
-      if (seg[0] !== 'catalog' || seg.length < 3 || visibleIds.has(id)) continue;
+      if (seg[0] !== 'catalog' || seg.length < 3) continue;
+      const isCurrent = visibleIds.has(id) && pathById.get(id) === seg.join('/');
+      if (isCurrent) continue;
       // Страховка от сноса чужого файла: удаляем только подписанное нами.
       if (!readFileSync(p, 'utf8').includes(marker)) continue;
       if (!DRY) rmSync(p);
